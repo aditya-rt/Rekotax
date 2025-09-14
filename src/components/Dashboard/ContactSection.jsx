@@ -41,16 +41,16 @@ export default function ContactSection() {
         px: { xs: 2, md: 8 },
       }}
     >
-   <Grid container spacing={6} alignItems="center" wrap="nowrap">
-  {/* LEFT: text (same sizing pattern as your hero) */}
-  <Grid item xs={6} md={4} zeroMinWidth sx={{ minWidth: 0 }}>
+<Grid container spacing={6} alignItems="flex-start" wrap="nowrap">
+  {/* LEFT: text */}
+  <Grid item xs={9} md={0} zeroMinWidth sx={{ minWidth: 0 }}>
     <Typography
       variant="h2"
       sx={{
         fontWeight: 900,
         letterSpacing: 0.3,
-        fontSize: { xs: 38, md: 72 },
-        lineHeight: 1.05,
+        fontSize: { xs: 34, md: 56 },   // smaller like image 1
+        lineHeight: 1.1,
         mb: 3,
       }}
     >
@@ -59,7 +59,7 @@ export default function ContactSection() {
 
     <Typography
       sx={{
-        fontSize: { xs: 16, md: 20 },
+        fontSize: { xs: 16, md: 18 },
         lineHeight: 1.8,
         opacity: 0.95,
         mb: 5,
@@ -75,10 +75,10 @@ export default function ContactSection() {
     </Typography>
 
     <Stack spacing={1.2} sx={{ mb: 4 }}>
-      <Typography sx={{ fontSize: { xs: 18, md: 22 } }}>
+      <Typography sx={{ fontSize: { xs: 18, md: 20 } }}>
         +91-9220580062
       </Typography>
-      <Typography sx={{ fontSize: { xs: 18, md: 22 } }}>
+      <Typography sx={{ fontSize: { xs: 18, md: 20 } }}>
         business@rekotax.com
       </Typography>
     </Stack>
@@ -103,51 +103,28 @@ export default function ContactSection() {
     </Stack>
   </Grid>
 
-  {/* RIGHT: form (same sizing pattern as your hero’s right side) */}
+  {/* RIGHT: form */}
   <Grid
     item
     xs={12}
-    md={6}
+    md={8}
     zeroMinWidth
-    sx={{ minWidth: 0, display: "flex", justifyContent: "center" }}
+    sx={{
+      minWidth: 0,
+      display: "flex",
+      justifyContent: "flex-start",  // align left like image 1
+    }}
   >
-    <Box sx={{ width: "100%", maxWidth: 560 }}>
+    <Box sx={{ width: "100%", maxWidth: 840 }}>
       <Typography variant="h4" sx={{ fontWeight: 900, mb: 4 }}>
         Fill this form to connect with our CA team
       </Typography>
 
       <Box component="form" onSubmit={handleSubmit}>
-        <RoundedTextField
-          required
-          label="Name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <RoundedTextField
-          required
-          label="Phone Number"
-          name="phone"
-          type="tel"
-          value={form.phone}
-          onChange={handleChange}
-        />
-        <RoundedTextField
-          required
-          label="Your email"
-          name="email"
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-        />
-        <RoundedTextField
-          label="Message"
-          name="message"
-          multiline
-          minRows={5}
-          value={form.message}
-          onChange={handleChange}
-        />
+        <RoundedTextField required label="Name" name="name" value={form.name} onChange={handleChange} />
+        <RoundedTextField required label="Phone Number" name="phone" type="tel" value={form.phone} onChange={handleChange} />
+        <RoundedTextField required label="Your email" name="email" type="email" value={form.email} onChange={handleChange} />
+        <RoundedTextField label="Message" name="message" multiline minRows={5} value={form.message} onChange={handleChange} />
 
         <Button
           type="submit"
@@ -172,6 +149,8 @@ export default function ContactSection() {
     </Box>
   </Grid>
 </Grid>
+
+
 
     </Box>
   );

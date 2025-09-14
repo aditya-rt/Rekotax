@@ -1,19 +1,62 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Dashboard/Home';
-import Navbar from './components/Navbar/Navbar';
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import Home from "./components/Dashboard/Home";
+import Navbar from "./components/Navbar/Navbar";
 
-function App() {
+function SmartHideNavbar({ children }) {
+  const [visible, setVisible] = useState(true);
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      const goingDown = y > lastY.current;
+      const atTop = y < 10;
+
+      // near bottom?
+      const docH = document.documentElement.scrollHeight;
+      const winH = window.innerHeight;
+      const nearBottom = y + winH > docH - 10;
+
+      if (atTop || nearBottom) {
+        setVisible(true);               // always show at very top & at footer
+      } else {
+        setVisible(!goingDown);         // show when scrolling up, hide when down
+      }
+
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1300,
+        transform: visible ? "translateY(0)" : "translateY(-100%)",
+        transition: "transform 240ms ease",
+        willChange: "transform",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+export default function App() {
   return (
     <Router>
-      {/* Navbar is outside Routes so it is always visible */}
-      <Navbar />
+      <SmartHideNavbar>
+        <Navbar />
+      </SmartHideNavbar>
+
       <Routes>
-        {/* default home route */}
         <Route path="/" element={<Home />} />
-        {/* Add more routes if needed */}
       </Routes>
     </Router>
   );
 }
-
-export default App;
