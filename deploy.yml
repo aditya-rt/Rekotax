@@ -1,0 +1,49 @@
+name: Build & Deploy to Hostinger
+
+on:
+  push:
+    branches: [ main ]   # change if your default branch is different
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build
+        run: npm run build   # CRA -> build/, Vite -> dist/
+
+      # --- Deploy CRA build/ if it exists ---
+      - name: Deploy CRA build/ via FTP
+        if: ${{ hashFiles('build/**') != '' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: build/
+          server-dir: ${{ secrets.REMOTE_DIR || 'public_html/' }}
+          dangerous-clean-slate: true
+
+      # --- Deploy Vite dist/ if it exists ---
+      - name: Deploy Vite dist/ via FTP
+        if: ${{ hashFiles('dist/**') != '' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/
+          server-dir: ${{ secrets.REMOTE_DIR || 'public_html/' }}
+          dangerous-clean-slate: true
