@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import Home from "./components/Dashboard/Home";
 import Navbar from "./components/Navbar/Navbar";
+import GstRegistration from "./components/Registration/GSTRegistration/GstRegistration";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -56,6 +57,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/gst-registration" element={<GstRegistration />} />
       </Routes>
     </Router>
   );
