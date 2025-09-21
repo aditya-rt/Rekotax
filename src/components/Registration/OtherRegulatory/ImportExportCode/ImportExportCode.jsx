@@ -1,10 +1,10 @@
 import React from "react";
 import {
   Box, Grid, Button, Typography, List, ListItem, ListItemText, Accordion,
-  AccordionSummary, AccordionDetails
+  AccordionSummary, AccordionDetails, Container
 
 } from "@mui/material";
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Footer from "../../../Dashboard/Footer";
 import ContactSection from "../../../Dashboard/ContactSection";
@@ -35,8 +35,8 @@ const InfoCard = ({ title, description }) => (
 );
 
 export default function ImportExportCode() {
-    const footerRef = useRef(null);
-  
+  const footerRef = useRef(null);
+
   const faqs = [
     {
       q: "What is an Import-Export Code (IEC)?",
@@ -79,13 +79,124 @@ export default function ImportExportCode() {
       a: "Rekotax offers a complete end-to-end service for IEC registration. We assist with document preparation, ensure an error-free online application, and provide support for annual updates, making the entire process fast and seamless for you."
     }
   ];
-
+  const Pill = ({ children }) => (
+    <Box
+      sx={{
+        display: "inline-block",
+        bgcolor: "rgba(255,255,255,0.1)",
+        px: 2.5,
+        py: 0.8,
+        borderRadius: 5,
+        fontSize: "0.95rem",
+        mb: 3,
+      }}
+    >
+      {children}
+    </Box>
+  );
   const [expanded, setExpanded] = useState(false);
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
   return (
     <Box sx={{ backgroundColor: "#fff", color: "#333", lineHeight: 1.6, py: 6, px: { xs: 2, md: 6 } }}>
+      <Box
+        sx={{
+          background: "linear-gradient(90deg,#0f2555 0%,#0f3d7c 100%)",
+          color: "#fff",
+          py: { xs: 8, md: 12 },
+          textAlign: "center",
+        }}
+      >
+        <Container maxWidth="md">
+          <Pill>Online Import-Export Code Registration Services in India</Pill>
+
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 700,
+              fontSize: { xs: "2rem", md: "2.8rem" },
+              mb: 2,
+            }}
+          >
+            Fast, Accurate, and Hassle-free Import-Export Code (IEC) Registration
+          </Typography>
+
+          <Typography
+            sx={{
+              fontSize: { xs: "1rem", md: "1.2rem" },
+              maxWidth: 700,
+              mx: "auto",
+              mb: 4,
+              color: "rgba(255,255,255,0.9)",
+            }}
+          >
+            An Import-Export Code (IEC) is the essential first step for any business aiming to enter the global marketplace, 
+            serving as the primary license for importing and exporting goods. At Rekotax, we manage the entire IEC registration from start to finish, 
+            ensuring you can focus on expanding your business internationally while we handle the foundational legal requirements.
+          </Typography>
+
+          {/* CTA Buttons */}
+          <Box sx={{ mb: 5 }}>
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#fff",
+                color: "#0f2555",
+                fontWeight: 600,
+                px: 4,
+                py: 1.2,
+                borderRadius: 10,
+                mr: 2,
+                "&:hover": { bgcolor: "#f0f0f0" },
+              }}
+            >
+              Start Registration
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{
+                color: "#fff",
+                borderColor: "rgba(255,255,255,0.7)",
+                px: 4,
+                py: 1.2,
+                borderRadius: 10,
+                "&:hover": { borderColor: "#fff" },
+              }}
+              href="tel:+919220580062"
+            >
+              +91-9220580062
+            </Button>
+          </Box>
+
+          {/* Highlights */}
+          <Grid container spacing={2} justifyContent="center">
+            {["Typical approvals: 5-7 days*", "CA/CS assisted end-to-end", "Paperless & transparent tracking"].map(
+              (item) => (
+                <Grid item xs={12} sm="auto" key={item}>
+                  <Box
+                    sx={{
+                      bgcolor: "rgba(255,255,255,0.1)",
+                      px: 3,
+                      py: 1,
+                      borderRadius: 20,
+                      fontSize: "0.95rem",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {item}
+                  </Box>
+                </Grid>
+              )
+            )}
+          </Grid>
+
+          <Typography sx={{ mt: 2, fontSize: "0.8rem", color: "rgba(255,255,255,0.6)" }}>
+            *Subject to government verification and completeness of documents.
+          </Typography>
+        </Container>
+      </Box>
+
       <Typography
         variant="h3"
         sx={{ textAlign: "center", color: BrandColor, fontWeight: 700, mb: 6, mt: 4 }}
@@ -905,30 +1016,30 @@ export default function ImportExportCode() {
       </Box>
 
 
-         <Box
-                      sx={{
-                          mt: 0,
-                          mb: 0,
-                          pb: 0,
-                          mx: { xs: 2, md: -4 },
-                      }}
-                      ref={footerRef}
-                  >
-                      <ContactSection />
-                  </Box>
-      
-      
-                  <Box
-                      sx={{
-                          mt: 0,
-                          mb: 0,
-                          pb: 0,
-                          mx: { xs: 2, md: -4 },
-                      }}
-                      ref={footerRef}
-                  >
-                      <Footer />
-                  </Box>
+      <Box
+        sx={{
+          mt: 0,
+          mb: 0,
+          pb: 0,
+          mx: { xs: 2, md: -4 },
+        }}
+        ref={footerRef}
+      >
+        <ContactSection />
+      </Box>
+
+
+      <Box
+        sx={{
+          mt: 0,
+          mb: 0,
+          pb: 0,
+          mx: { xs: 2, md: -4 },
+        }}
+        ref={footerRef}
+      >
+        <Footer />
+      </Box>
     </Box>
   );
 }
