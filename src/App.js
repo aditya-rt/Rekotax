@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import Home from "./components/Dashboard/Home";
 import Navbar from "./components/Navbar/Navbar";
-import GstRegistration from "./components/Registration/GSTRegistration/GstRegistration";
+import GstRegistration from "./components/Registration/OtherRegulatory/GSTRegistration/GstRegistration";
+import LutRegistration from "./components/Registration/OtherRegulatory/LUTRegistration/LutRegistration";
+import ImportExportCode from "./components/Registration/OtherRegulatory/ImportExportCode/ImportExportCode";
+import OPCRegistrationHero from "./components/Registration/StartNewBusiness/OPC/Opc";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -58,6 +61,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gst-registration" element={<GstRegistration />} />
+        <Route path="/lut-registration" element={<LutRegistration />} />
+        <Route path="/import-export-code" element={<ImportExportCode />} />
+        <Route path="/opc-registration" element={<OPCRegistrationHero />} />
       </Routes>
     </Router>
   );

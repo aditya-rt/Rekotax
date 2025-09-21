@@ -13,7 +13,7 @@ import { useTheme } from "@mui/material/styles";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
-import GSTRegistration from "../Registration/GSTRegistration/GstRegistration";
+import GstRegistratio from "../Registration/OtherRegulatory/GSTRegistration/GstRegistration";
 
 export default function Navbar() {
   const theme = useTheme();
@@ -179,8 +179,12 @@ export default function Navbar() {
                             cursor: "pointer",
                             "&:hover": { textDecoration: "underline" },
                           }}
-                          // hook up routes later if needed
-                          // onClick={() => { closeMenu("services"); navigate("/some-route"); }}
+                          onClick={() => {
+                            if (text === "One Person Company (OPC)") {
+                              closeMenu("services");
+                              navigate("/opc-registration");
+                            }
+                          }}
                         >
                           {text}
                         </Typography>
@@ -239,6 +243,14 @@ export default function Navbar() {
                             if (text === "Goods & Service Tax (GST)") {
                               closeMenu("services");
                               navigate("/gst-registration");
+                            }
+                            if (text === "LUT Registration") {
+                              closeMenu("services");
+                              navigate("/lut-registration");
+                            }
+                            if (text === "Import Export Code") {
+                              closeMenu("services");
+                              navigate("/import-export-code");
                             }
                           }}
                         >

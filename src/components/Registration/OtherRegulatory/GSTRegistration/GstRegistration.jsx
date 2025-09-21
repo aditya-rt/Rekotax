@@ -26,8 +26,8 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useRef, useState, useEffect } from "react";
-import Footer from "../../Dashboard/Footer.jsx";
-import ContactSection from "../../Dashboard/ContactSection.jsx";
+import Footer from "../../../Dashboard/Footer.jsx";
+import ContactSection from "../../../Dashboard/ContactSection.jsx";
 
 
 const Pill = ({ children }) => (
