@@ -7,6 +7,15 @@ import GstRegistration from "./components/Registration/OtherRegulatory/GSTRegist
 import LutRegistration from "./components/Registration/OtherRegulatory/LUTRegistration/LutRegistration";
 import ImportExportCode from "./components/Registration/OtherRegulatory/ImportExportCode/ImportExportCode";
 import OPCRegistrationHero from "./components/Registration/StartNewBusiness/OPC/Opc";
+import Plc from "./components/Registration/StartNewBusiness/PrivateLimitedCompany/Plc";
+import Llp from "./components/Registration/StartNewBusiness/LLP/Llp";
+import SectionAndCompany from "./components/Registration/StartNewBusiness/SectionAndCompany/SectionAndCompany";
+import Partnershipfirm from "./components/Registration/StartNewBusiness/PartnershipFirm/Partnershipfirm";
+import SoleProprietorship from "./components/Registration/StartNewBusiness/SoleProprietorship/SoleProprietorship";
+import PublicCompany from "./components/Registration/StartNewBusiness/PublicCompany/PublicCompany";
+import NidhiCompany from "./components/Registration/StartNewBusiness/NidhiCompany/NidhiCompany";
+import ProducerCompany from "./components/Registration/StartNewBusiness/ProducerCompany/ProducerCompany";
+
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -64,6 +73,14 @@ export default function App() {
         <Route path="/lut-registration" element={<LutRegistration />} />
         <Route path="/import-export-code" element={<ImportExportCode />} />
         <Route path="/opc-registration" element={<OPCRegistrationHero />} />
+        <Route path="/plc-registration" element={<Plc />} />
+        <Route path = "/llp-registration" element={<Llp />} />
+        <Route path = "/section-and-company" element={<SectionAndCompany />} />
+        <Route path = "/partnership-firm" element={<Partnershipfirm />} />
+        <Route path = "/sole-proprietorship" element={<SoleProprietorship />} />
+        <Route path = "/public-company" element={<PublicCompany />} />
+        <Route path = "/nidhi-company" element={<NidhiCompany />} />
+        <Route path = "/producer-company" element={<ProducerCompany />} />
       </Routes>
     </Router>
   );

@@ -1,17 +1,22 @@
 import React from "react";
-import { Box, Grid, Typography, TextField, Button, Collapse } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  Collapse,
+} from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import { useState, useRef } from 'react';
+import { useState, useRef } from "react";
 import Footer from "../../../Dashboard/Footer";
 import ContactSection from "../../../Dashboard/ContactSection";
 
 const BrandColor = "#0f2555";
 
-
 export default function OPCRegistrationHero() {
-
   const BrandColor = "#0f2555";
   const faqs = [
     {
@@ -111,9 +116,7 @@ export default function OPCRegistrationHero() {
       a: "Yes, with at least one Indian director. Foreign ownership is allowed under FDI norms for most sectors.",
     },
   ];
-    const footerRef = useRef(null);
-
-  
+  const footerRef = useRef(null);
 
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -167,7 +170,7 @@ export default function OPCRegistrationHero() {
         spacing={3}
         alignItems="flex-start"
         justifyContent="space-between"
-        wrap="nowrap"            // keep both columns on one row (md+)
+        wrap="nowrap" // keep both columns on one row (md+)
       >
         {/* LEFT: text (narrower, like your reference) */}
         <Grid item xs={12} md={3} zeroMinWidth sx={{ minWidth: 0 }}>
@@ -180,8 +183,8 @@ export default function OPCRegistrationHero() {
 
           <Typography sx={{ mb: 3, fontSize: "1.1rem" }}>
             Register your Private Limited Company with Rekotax — experience fast
-            setup, full legal <br /> compliance, expert documentation, and dedicated
-            support to launch your <br /> business effortlessly.
+            setup, full legal <br /> compliance, expert documentation, and
+            dedicated support to launch your <br /> business effortlessly.
           </Typography>
 
           <ul style={{ paddingLeft: "1rem", marginBottom: "1.5rem" }}>
@@ -189,13 +192,16 @@ export default function OPCRegistrationHero() {
               Company Registered in Just <strong>7–10 Days</strong>
             </li>
             <li>
-              <strong>End-to-End Documentation:</strong> Name Approval, MOA & AOA
+              <strong>End-to-End Documentation:</strong> Name Approval, MOA &
+              AOA
             </li>
             <li>
-              <strong>Complete Incorporation Kit:</strong> COI, DIN, DSC, PAN & TAN
+              <strong>Complete Incorporation Kit:</strong> COI, DIN, DSC, PAN &
+              TAN
             </li>
             <li>
-              <strong>Trusted</strong> by Entrepreneurs, Backed by Industry Experts
+              <strong>Trusted</strong> by Entrepreneurs, Backed by Industry
+              Experts
             </li>
             <li>
               Handled by <strong>MCA-Registered Professionals</strong>
@@ -223,7 +229,7 @@ export default function OPCRegistrationHero() {
         <Grid item xs={12} md={9} zeroMinWidth sx={{ minWidth: 0 }}>
           <Box
             sx={{
-              ml: { md: 2 },                 // small gutter on desktop
+              ml: { md: 2 }, // small gutter on desktop
               backgroundColor: "rgba(255,255,255,0.1)",
               borderRadius: 3,
               p: 4,
@@ -231,7 +237,7 @@ export default function OPCRegistrationHero() {
               flexDirection: "column",
               gap: 3,
               boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
-              maxWidth: 720,                 // keep a nice readable width
+              maxWidth: 720, // keep a nice readable width
             }}
           >
             <Typography
@@ -285,11 +291,21 @@ export default function OPCRegistrationHero() {
         </Grid>
       </Grid>
 
-
-      <Box sx={{ py: { xs: 5, md: 10 }, px: { xs: -2, md: 8 }, backgroundColor: "#f5f7fb" }}>
+      <Box
+        sx={{
+          py: { xs: 5, md: 10 },
+          px: { xs: -2, md: 8 },
+          backgroundColor: "#f5f7fb",
+        }}
+      >
         <Typography
           variant="h4"
-          sx={{ color: BrandColor, fontWeight: 700, textAlign: "center", mb: 2 }}
+          sx={{
+            color: BrandColor,
+            fontWeight: 700,
+            textAlign: "center",
+            mb: 2,
+          }}
         >
           Documents Required
         </Typography>
@@ -347,7 +363,12 @@ export default function OPCRegistrationHero() {
                 <Box sx={{ mb: 2, textAlign: "center" }}>{card.icon}</Box>
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: 700, color: BrandColor, mb: 2, textAlign: "center" }}
+                  sx={{
+                    fontWeight: 700,
+                    color: BrandColor,
+                    mb: 2,
+                    textAlign: "center",
+                  }}
                 >
                   {card.title}
                 </Typography>
@@ -372,19 +393,18 @@ export default function OPCRegistrationHero() {
         </Grid>
       </Box>
 
-
       <Box
         sx={{
           py: { xs: 6, md: 10 },
           px: { xs: 2, md: 8 },
-          backgroundColor: "#f5f7fb",   // light grey background
+          backgroundColor: "#f5f7fb", // light grey background
           textAlign: "center",
         }}
       >
         <Typography
           variant="h4"
           sx={{
-            color: "#6b7280",           // soft grey tone like in the screenshot
+            color: "#6b7280", // soft grey tone like in the screenshot
             fontWeight: 700,
             mb: 2,
             fontSize: { xs: "2rem", md: "2.8rem" }, // responsive font size
@@ -402,51 +422,56 @@ export default function OPCRegistrationHero() {
             mx: "auto",
           }}
         >
-          Setting up your OPC is simpler than you think — especially with Rekotax
-          guiding every step. <br />
+          Setting up your OPC is simpler than you think — especially with
+          Rekotax guiding every step. <br />
           Here’s a streamlined breakdown of the entire process:
         </Typography>
       </Box>
 
-
-      <Box sx={{ py: { xs: 6, md: 10 }, px: { xs: 1, md: 2 }, backgroundColor: "#f4f6f8" }}>
+      <Box
+        sx={{
+          py: { xs: 6, md: 10 },
+          px: { xs: 1, md: 2 },
+          backgroundColor: "#f4f6f8",
+        }}
+      >
         <Grid container spacing={4} justifyContent="center">
           {[
             {
               num: "1",
               title: "Reserve Company Name",
-              desc: "Choose 3–6 unique name options that reflect your business. We’ll help you check availability and ensure it ends with “(OPC) Private Limited”."
+              desc: "Choose 3–6 unique name options that reflect your business. We’ll help you check availability and ensure it ends with “(OPC) Private Limited”.",
             },
             {
               num: "2",
               title: "Get DSC & DIN",
-              desc: "Apply for Digital Signature Certificate and Director Identification Number to sign and file incorporation forms online."
+              desc: "Apply for Digital Signature Certificate and Director Identification Number to sign and file incorporation forms online.",
             },
             {
               num: "3",
               title: "Submit Incorporation Docs",
-              desc: "Prepare and submit MOA, AOA, INC-3 (Nominee consent), INC-9 (Director declaration) using the SPICe+ form on the MCA portal."
+              desc: "Prepare and submit MOA, AOA, INC-3 (Nominee consent), INC-9 (Director declaration) using the SPICe+ form on the MCA portal.",
             },
             {
               num: "4",
               title: "Pay Government Fees",
-              desc: "Pay applicable government and stamp duties based on the state and authorized capital — we’ll calculate and manage this for you."
+              desc: "Pay applicable government and stamp duties based on the state and authorized capital — we’ll calculate and manage this for you.",
             },
             {
               num: "5",
               title: "Get Certificate of Incorporation",
-              desc: "Registrar verifies your application and issues the Certificate of Incorporation (COI) with your unique CIN — you’re now legally registered!"
+              desc: "Registrar verifies your application and issues the Certificate of Incorporation (COI) with your unique CIN — you’re now legally registered!",
             },
             {
               num: "6",
               title: "Post-Incorporation Compliance",
-              desc: "Open a current account, apply for PAN, TAN & GST, and set up accounting and compliance systems. We’ll guide you through everything."
-            }
+              desc: "Open a current account, apply for PAN, TAN & GST, and set up accounting and compliance systems. We’ll guide you through everything.",
+            },
           ].map((step, index) => (
             <Grid
               item
               xs={12}
-              md={4}   // force exactly 3 per row on md+
+              md={4} // force exactly 3 per row on md+
               key={index}
               sx={{ display: "flex", justifyContent: "center" }}
             >
@@ -462,8 +487,8 @@ export default function OPCRegistrationHero() {
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-5px)",
-                    boxShadow: "0 12px 28px rgba(0,0,0,0.12)"
-                  }
+                    boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
+                  },
                 }}
               >
                 <Box
@@ -480,7 +505,7 @@ export default function OPCRegistrationHero() {
                     justifyContent: "center",
                     mx: "auto",
                     mb: 2,
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.15)"
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
                   }}
                 >
                   {step.num}
@@ -493,7 +518,12 @@ export default function OPCRegistrationHero() {
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ fontSize: "0.95em", color: "#444", textAlign: "left", lineHeight: 1.6 }}
+                  sx={{
+                    fontSize: "0.95em",
+                    color: "#444",
+                    textAlign: "left",
+                    lineHeight: 1.6,
+                  }}
                 >
                   {step.desc}
                 </Typography>
@@ -502,10 +532,6 @@ export default function OPCRegistrationHero() {
           ))}
         </Grid>
       </Box>
-
-
-
-
 
       <Box
         sx={{
@@ -518,22 +544,18 @@ export default function OPCRegistrationHero() {
         <Typography
           variant="h4"
           sx={{
-            color: "#6b7280",           // soft grey tone
+            color: "#6b7280", // soft grey tone
             fontWeight: 700,
             mb: 2,
             fontSize: { xs: "2rem", md: "2.8rem" },
             lineHeight: 1.3,
-            textAlign: "center",        // ✅ center the text
+            textAlign: "center", // ✅ center the text
           }}
         >
           Why Rekotax?
         </Typography>
 
-        <Grid
-          container
-          spacing={3}
-          justifyContent="center"
-        >
+        <Grid container spacing={3} justifyContent="center">
           {[
             {
               number: "1",
@@ -630,7 +652,6 @@ export default function OPCRegistrationHero() {
         </Grid>
       </Box>
 
-
       <Box
         sx={{
           fontFamily: "'Open Sans', sans-serif",
@@ -642,33 +663,61 @@ export default function OPCRegistrationHero() {
           color: "#333",
         }}
       >
-
         <Typography
           variant="h4"
           sx={{
-            color: "#6b7280",           // soft grey tone
+            color: "#6b7280", // soft grey tone
             fontWeight: 700,
             mb: 2,
             fontSize: { xs: "2rem", md: "2.8rem" },
             lineHeight: 1.3,
-            textAlign: "center",        // ✅ center the text
+            textAlign: "center", // ✅ center the text
           }}
         >
           OPC Regstration: A Complete Guide
         </Typography>
         {/* Section 1 */}
-        <Box sx={{ backgroundColor: "#fff", p: 3, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            p: 3,
+            mb: 4,
+            borderRadius: 2,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+          }}
+        >
           <Typography variant="h4" sx={{ color: "#0f3d7c", mb: 2 }}>
             What is One Person Company (OPC) Registration?
           </Typography>
           <Typography>
-            One Person Company (OPC) is a unique business structure introduced under the Companies Act, 2013 that empowers a solo entrepreneur to incorporate a private limited company with limited liability. OPC blends the simplicity of sole proprietorship with the advantages of a corporate entity, including a distinct legal identity and reduced personal financial risk.
+            One Person Company (OPC) is a unique business structure introduced
+            under the Companies Act, 2013 that empowers a solo entrepreneur to
+            incorporate a private limited company with limited liability. OPC
+            blends the simplicity of sole proprietorship with the advantages of
+            a corporate entity, including a distinct legal identity and reduced
+            personal financial risk.
           </Typography>
         </Box>
 
         {/* Section 2 */}
-        <Box sx={{ backgroundColor: "#fff", p: 3, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
-          <Typography variant="h5" sx={{ color: "#0f3d7c", mb: 2, borderBottom: "2px solid #0f3d7c", pb: 1 }}>
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            p: 3,
+            mb: 4,
+            borderRadius: 2,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#0f3d7c",
+              mb: 2,
+              borderBottom: "2px solid #0f3d7c",
+              pb: 1,
+            }}
+          >
             Why Choose OPC?
           </Typography>
           <ul>
@@ -680,71 +729,182 @@ export default function OPCRegistrationHero() {
         </Box>
 
         {/* Section 3 */}
-        <Box sx={{ backgroundColor: "#fff", p: 3, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
-          <Typography variant="h5" sx={{ color: "#0f3d7c", mb: 2, borderBottom: "2px solid #0f3d7c", pb: 1 }}>
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            p: 3,
+            mb: 4,
+            borderRadius: 2,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#0f3d7c",
+              mb: 2,
+              borderBottom: "2px solid #0f3d7c",
+              pb: 1,
+            }}
+          >
             Types of OPC in India
           </Typography>
           <ul>
-            <li><strong>OPC Limited by Shares:</strong> Liability limited to the unpaid amount on shares held.</li>
-            <li><strong>OPC Limited by Guarantee with Share Capital:</strong> Liability includes unpaid share capital and a pre-decided guarantee amount.</li>
-            <li><strong>OPC Limited by Guarantee without Share Capital:</strong> Operates without share capital; liability limited to guarantee only.</li>
-            <li><strong>Unlimited OPC with Share Capital:</strong> Offers share capital but does not limit personal liability; higher risk.</li>
-            <li><strong>Unlimited OPC without Share Capital:</strong> High-risk model with unlimited personal liability and no share issuance.</li>
+            <li>
+              <strong>OPC Limited by Shares:</strong> Liability limited to the
+              unpaid amount on shares held.
+            </li>
+            <li>
+              <strong>OPC Limited by Guarantee with Share Capital:</strong>{" "}
+              Liability includes unpaid share capital and a pre-decided
+              guarantee amount.
+            </li>
+            <li>
+              <strong>OPC Limited by Guarantee without Share Capital:</strong>{" "}
+              Operates without share capital; liability limited to guarantee
+              only.
+            </li>
+            <li>
+              <strong>Unlimited OPC with Share Capital:</strong> Offers share
+              capital but does not limit personal liability; higher risk.
+            </li>
+            <li>
+              <strong>Unlimited OPC without Share Capital:</strong> High-risk
+              model with unlimited personal liability and no share issuance.
+            </li>
           </ul>
         </Box>
 
         {/* Section 4 */}
-        <Box sx={{ backgroundColor: "#fff", p: 3, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
-          <Typography variant="h5" sx={{ color: "#0f3d7c", mb: 2, borderBottom: "2px solid #0f3d7c", pb: 1 }}>
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            p: 3,
+            mb: 4,
+            borderRadius: 2,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#0f3d7c",
+              mb: 2,
+              borderBottom: "2px solid #0f3d7c",
+              pb: 1,
+            }}
+          >
             Key Characteristics of an OPC
           </Typography>
           <ul>
-            <li><strong>Sole Ownership, Full Control:</strong> One person holds 100% ownership and makes all decisions.</li>
-            <li><strong>Nominee Appointment is Mandatory:</strong> Ensures business continuity.</li>
-            <li><strong>Limited Liability:</strong> Personal assets are protected.</li>
-            <li><strong>Separate Legal Entity:</strong> Company is legally distinct from the owner.</li>
-            <li><strong>Professional Image:</strong> Adds credibility with "(OPC) Private Limited" tag.</li>
-            <li><strong>Swift Decision-Making:</strong> No board needed for decisions.</li>
-            <li><strong>Basic Compliance:</strong> Requires 2 board meetings annually, 90 days apart.</li>
-            <li><strong>Bank Loan Friendly:</strong> Easier access to funding and credit.</li>
-            <li><strong>Scalable:</strong> Can convert to Private Limited Company.</li>
-            <li><strong>Tax Smart:</strong> Enjoy deductions and corporate tax benefits.</li>
-            <li><strong>Leadership with Expertise:</strong> Appoint up to 15 directors.</li>
-            <li><strong>Exclusive Ownership Rule:</strong> One OPC per person; nominee in others allowed.</li>
+            <li>
+              <strong>Sole Ownership, Full Control:</strong> One person holds
+              100% ownership and makes all decisions.
+            </li>
+            <li>
+              <strong>Nominee Appointment is Mandatory:</strong> Ensures
+              business continuity.
+            </li>
+            <li>
+              <strong>Limited Liability:</strong> Personal assets are protected.
+            </li>
+            <li>
+              <strong>Separate Legal Entity:</strong> Company is legally
+              distinct from the owner.
+            </li>
+            <li>
+              <strong>Professional Image:</strong> Adds credibility with "(OPC)
+              Private Limited" tag.
+            </li>
+            <li>
+              <strong>Swift Decision-Making:</strong> No board needed for
+              decisions.
+            </li>
+            <li>
+              <strong>Basic Compliance:</strong> Requires 2 board meetings
+              annually, 90 days apart.
+            </li>
+            <li>
+              <strong>Bank Loan Friendly:</strong> Easier access to funding and
+              credit.
+            </li>
+            <li>
+              <strong>Scalable:</strong> Can convert to Private Limited Company.
+            </li>
+            <li>
+              <strong>Tax Smart:</strong> Enjoy deductions and corporate tax
+              benefits.
+            </li>
+            <li>
+              <strong>Leadership with Expertise:</strong> Appoint up to 15
+              directors.
+            </li>
+            <li>
+              <strong>Exclusive Ownership Rule:</strong> One OPC per person;
+              nominee in others allowed.
+            </li>
           </ul>
         </Box>
 
         {/* Section 5 */}
-        <Box sx={{ backgroundColor: "#fff", p: 3, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
-          <Typography variant="h5" sx={{ color: "#0f3d7c", mb: 2, borderBottom: "2px solid #0f3d7c", pb: 1 }}>
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            p: 3,
+            mb: 4,
+            borderRadius: 2,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#0f3d7c",
+              mb: 2,
+              borderBottom: "2px solid #0f3d7c",
+              pb: 1,
+            }}
+          >
             Benefits of OPC Registration
           </Typography>
-          <Typography variant="h6" sx={{ mt: 2 }}>Limited Liability Protection</Typography>
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Limited Liability Protection
+          </Typography>
           <ul>
             <li>Personal savings and assets are safe from company debts.</li>
             <li>Encourages entrepreneurship with lower financial risks.</li>
           </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>Enhanced Business Credibility</Typography>
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Enhanced Business Credibility
+          </Typography>
           <ul>
             <li>Improves trust with clients, suppliers, and investors.</li>
             <li>Legally structured and professionally managed.</li>
           </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>Complete Operational Control</Typography>
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Complete Operational Control
+          </Typography>
           <ul>
             <li>Make fast decisions independently.</li>
             <li>Quickly adapt to market changes.</li>
           </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>Tax & Financial Benefits</Typography>
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Tax & Financial Benefits
+          </Typography>
           <ul>
             <li>Corporate tax rates and deductions available.</li>
             <li>Depreciation benefits lower taxable income.</li>
           </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>Easy Access to Credit & Capital</Typography>
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Easy Access to Credit & Capital
+          </Typography>
           <ul>
             <li>Easier to open accounts and secure loans.</li>
             <li>Ready for funding and conversion to Pvt Ltd.</li>
           </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>Business Continuity & Legacy Planning</Typography>
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Business Continuity & Legacy Planning
+          </Typography>
           <ul>
             <li>Nominee ensures continuity in the founder's absence.</li>
             <li>Supports long-term growth and succession.</li>
@@ -752,25 +912,73 @@ export default function OPCRegistrationHero() {
         </Box>
 
         {/* Section 6 */}
-        <Box sx={{ backgroundColor: "#fff", p: 3, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
-          <Typography variant="h5" sx={{ color: "#0f3d7c", mb: 2, borderBottom: "2px solid #0f3d7c", pb: 1 }}>
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            p: 3,
+            mb: 4,
+            borderRadius: 2,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#0f3d7c",
+              mb: 2,
+              borderBottom: "2px solid #0f3d7c",
+              pb: 1,
+            }}
+          >
             Post-Registration Compliance
           </Typography>
           <ul>
-            <li><strong>Annual Filing:</strong> File returns and financials with MCA.</li>
-            <li><strong>Board Meetings:</strong> At least two per financial year.</li>
-            <li><strong>Accounting Standards:</strong> Maintain proper books and registers.</li>
-            <li><strong>Tax Filing:</strong> Annual income tax return and applicable TDS.</li>
-            <li><strong>GST Filing:</strong> Monthly or quarterly returns (if registered).</li>
+            <li>
+              <strong>Annual Filing:</strong> File returns and financials with
+              MCA.
+            </li>
+            <li>
+              <strong>Board Meetings:</strong> At least two per financial year.
+            </li>
+            <li>
+              <strong>Accounting Standards:</strong> Maintain proper books and
+              registers.
+            </li>
+            <li>
+              <strong>Tax Filing:</strong> Annual income tax return and
+              applicable TDS.
+            </li>
+            <li>
+              <strong>GST Filing:</strong> Monthly or quarterly returns (if
+              registered).
+            </li>
           </ul>
         </Box>
 
         {/* Section 7 */}
-        <Box sx={{ backgroundColor: "#fff", p: 3, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
-          <Typography variant="h5" sx={{ color: "#0f3d7c", mb: 2, borderBottom: "2px solid #0f3d7c", pb: 1 }}>
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            p: 3,
+            mb: 4,
+            borderRadius: 2,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#0f3d7c",
+              mb: 2,
+              borderBottom: "2px solid #0f3d7c",
+              pb: 1,
+            }}
+          >
             Certificate of Incorporation: Your Legal Identity
           </Typography>
-          <Typography>The Certificate of Incorporation (COI) from MCA includes:</Typography>
+          <Typography>
+            The Certificate of Incorporation (COI) from MCA includes:
+          </Typography>
           <ul>
             <li>Company Identification Number (CIN)</li>
             <li>Date of Incorporation</li>
@@ -790,16 +998,16 @@ export default function OPCRegistrationHero() {
         <Typography
           variant="h4"
           sx={{
-            color: "#6b7280",           // soft grey tone
+            color: "#6b7280", // soft grey tone
             fontWeight: 700,
             mb: 2,
             fontSize: { xs: "2rem", md: "2.8rem" },
             lineHeight: 1.3,
             bgcolor: "#fff",
-            textAlign: "center",        // ✅ center the text
+            textAlign: "center", // ✅ center the text
           }}
         >
-          Comparisions
+          Comparisons
         </Typography>
         <Box
           component="table"
@@ -843,7 +1051,6 @@ export default function OPCRegistrationHero() {
             },
           }}
         >
-
           <Box component="thead">
             <Box component="tr">
               <Box component="th"> </Box>
@@ -959,112 +1166,115 @@ export default function OPCRegistrationHero() {
       </Box>
 
       {/* FAQ Section */}
-   <Box sx={{ bgcolor: "#eef2f7", py: { xs: 4, md: 6 }, px: { xs: 2, md: 0 } }}>
       <Box
-        sx={{
-          maxWidth: 900,
-          mx: "auto",
-          bgcolor: "#ffffff",
-          borderRadius: 2,
-          boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-          p: { xs: 2, md: 3 },
-          fontFamily: "'Open Sans', sans-serif",
-        }}
+        sx={{ bgcolor: "#eef2f7", py: { xs: 4, md: 6 }, px: { xs: 2, md: 0 } }}
       >
-        <Typography
-          variant="h4"
-          sx={{ color: "#0f2555", fontWeight: 700, textAlign: "center", mb: 2 }}
+        <Box
+          sx={{
+            maxWidth: 900,
+            mx: "auto",
+            bgcolor: "#ffffff",
+            borderRadius: 2,
+            boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+            p: { xs: 2, md: 3 },
+            fontFamily: "'Open Sans', sans-serif",
+          }}
         >
-          Frequently Asked Questions (FAQs)
-        </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              color: "#0f2555",
+              fontWeight: 700,
+              textAlign: "center",
+              mb: 2,
+            }}
+          >
+            Frequently Asked Questions (FAQs)
+          </Typography>
 
-        {faqs.map((faq, idx) => {
-          const isOpen = openIndex === idx;
-          return (
-            <Box
-              key={idx}
-              sx={{
-                borderBottom: "1px solid #e6e9ef",
-                py: 2,
-              }}
-            >
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
               <Box
-                onClick={() => setOpenIndex(isOpen ? -1 : idx)}
+                key={idx}
                 sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  cursor: "pointer",
+                  borderBottom: "1px solid #e6e9ef",
+                  py: 2,
                 }}
               >
-                <Typography
-                  sx={{ fontSize: "1rem", fontWeight: 600, color: "#0f2555" }}
-                >
-                  {faq.q}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: "1.4rem",
-                    fontWeight: 700,
-                    color: "#0f2555",
-                    width: 24,
-                    textAlign: "center",
-                    lineHeight: 1,
-                    userSelect: "none",
-                  }}
-                >
-                  {isOpen ? "−" : "+"}
-                </Typography>
-              </Box>
-
-              <Collapse in={isOpen} timeout="auto" unmountOnExit={false}>
                 <Box
+                  onClick={() => setOpenIndex(isOpen ? -1 : idx)}
                   sx={{
-                    mt: 1.5,
-                    bgcolor: "#fafbff",
-                    border: "1px solid #e9ecf5",
-                    borderRadius: 1,
-                    p: 2,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    cursor: "pointer",
                   }}
                 >
-                  <Typography sx={{ fontSize: "0.95rem", color: "#111" }}>
-                    {faq.a}
+                  <Typography
+                    sx={{ fontSize: "1rem", fontWeight: 600, color: "#0f2555" }}
+                  >
+                    {faq.q}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "1.4rem",
+                      fontWeight: 700,
+                      color: "#0f2555",
+                      width: 24,
+                      textAlign: "center",
+                      lineHeight: 1,
+                      userSelect: "none",
+                    }}
+                  >
+                    {isOpen ? "−" : "+"}
                   </Typography>
                 </Box>
-              </Collapse>
-            </Box>
-          );
-        })}
+
+                <Collapse in={isOpen} timeout="auto" unmountOnExit={false}>
+                  <Box
+                    sx={{
+                      mt: 1.5,
+                      bgcolor: "#fafbff",
+                      border: "1px solid #e9ecf5",
+                      borderRadius: 1,
+                      p: 2,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: "0.95rem", color: "#111" }}>
+                      {faq.a}
+                    </Typography>
+                  </Box>
+                </Collapse>
+              </Box>
+            );
+          })}
+        </Box>
       </Box>
-    </Box>
 
+      <Box
+        sx={{
+          mt: 0,
+          mb: 0,
+          pb: 0,
+          mx: { xs: 2, md: -4 },
+        }}
+        ref={footerRef}
+      >
+        <ContactSection />
+      </Box>
 
-    <Box
-                sx={{
-                    mt: 0,
-                    mb: 0,
-                    pb: 0,
-                    mx: { xs: 2, md: -4 },
-                }}
-                ref={footerRef}
-            >
-                <ContactSection />
-            </Box>
-
-
-            <Box
-                sx={{
-                    mt: 0,
-                    mb: 0,
-                    pb: 0,
-                    mx: { xs: 2, md: -4 },
-                }}
-                ref={footerRef}
-            >
-                <Footer />
-            </Box>
-
-
+      <Box
+        sx={{
+          mt: 0,
+          mb: 0,
+          pb: 0,
+          mx: { xs: 2, md: -4 },
+        }}
+        ref={footerRef}
+      >
+        <Footer />
+      </Box>
     </Box>
   );
 }
