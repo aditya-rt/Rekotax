@@ -103,10 +103,10 @@ export default function FloatingHero() {
           border-radius: 18px;
           border: 1px solid rgba(255,255,255,0.35);
           color: #fff;
-          padding: 14px 24px;
+          padding: 10px 16px;
           font-weight: 600;
-          font-size: 1rem;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+          font-size: 0.9rem;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.22);
           white-space: nowrap;
           transition: transform .4s ease, box-shadow .4s ease, background .4s ease;
           z-index: 2;

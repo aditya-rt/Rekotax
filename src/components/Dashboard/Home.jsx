@@ -1,201 +1,239 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import GlassBarsSection from "./GlassBarsSection";
 import FloatingHero from "./FloatingHero";
 import AboutAndServices from "./AboutAndServices";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
-import {
-  Box, Grid, Typography, Button, Fab
-} from "@mui/material";
+import { Box, Grid, Typography, Button, Fab } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 export default function Home() {
-  // Floating section label
-  const [activeSection, setActiveSection] = useState("");
-
-  // Refs to sections
+  const [activeSection] = useState("");
   const heroRef = useRef(null);
   const glassRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
   const footerRef = useRef(null);
 
-useEffect(() => {
-  const opts = { root: null, rootMargin: "0px", threshold: 0.55 }; // >50% in view
-  const io = new IntersectionObserver((entries) => {
-    // collect all visible sections
-    const visible = new Set(entries.filter(e => e.isIntersecting).map(e => e.target));
-
-    // priority order: hero (hide), services, about, contact, footer
-    if (visible.has(heroRef.current)) {
-      setActiveSection("");                // at top: hide banner
-    } else if (visible.has(glassRef.current)) {
-      setActiveSection("Our Services");
-    } else if (visible.has(aboutRef.current)) {
-      setActiveSection("About Details");
-    } else if (visible.has(contactRef.current)) {
-      setActiveSection("Contact");
-    } 
-    
-  }, opts);
-
-  [heroRef, glassRef, aboutRef, contactRef, footerRef].forEach((r) => {
-    if (r.current) io.observe(r.current);
-  });
-
-  return () => io.disconnect();
-}, []);
-
-
-
   return (
     <Box
       sx={{
-        bgcolor: "#0f2555",
-        backgroundImage: "none",
-        pt: { xs: 6, md: 10 },
-        pb: 0,
-        px: { xs: 2, md: 8 },
+        // keep the gradient background
         color: "#fff",
         position: "relative",
         overflow: "hidden",
         minHeight: "100vh",
+        bgcolor: "transparent",
+        backgroundImage: `
+          radial-gradient(1000px 600px at 76% 60%, rgba(77,147,255,0.20), rgba(77,147,255,0) 60%),
+          radial-gradient(800px 420px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%),
+          linear-gradient(180deg, #0B2A5A 0%, #0A244B 100%)
+        `,
+        backgroundBlendMode: "screen, normal, normal",
+        backgroundRepeat: "no-repeat",
+
+        // page gutters & top offset for fixed AppBar
+        maxWidth: 1400,
+        mx: "auto",
+        px: { xs: 2, sm: 3, md: 6 },
+        pt: { xs: "calc(56px + 20px)", md: "calc(64px + 32px)" }, // navbar height + breathing room
+        pb: { xs: 6, md: 10 },
       }}
     >
-      {/* Floating section label (top-right) */}
-    {/* Floating section label (top-left instead of top-right) */}
-{/* Floating section banner */}
-<Box
-  sx={{
-    position: "fixed",
-    top: activeSection === "Footer Page Details" ? 64 : 0, // push below navbar at footer
-    left: 0,
-    width: "100%",
-    bgcolor: "#228B22",
-    color: "#fff",
-    px: { xs: 2, md: 6 },
-    py: 1.5,
-    fontWeight: 700,
-    fontSize: 20,
-    zIndex: 1300,
-    textAlign: "left",
-    boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
-    transition: "transform 0.3s ease, opacity 0.3s ease, top 0.2s ease",
-    transform: activeSection ? "translateY(0)" : "translateY(-100%)",
-    opacity: activeSection ? 1 : 0,
-  }}
->
-  {activeSection}
-</Box>
-
+      {/* Floating section banner (kept) */}
+      <Box
+        sx={{
+          position: "fixed",
+          top: activeSection ? 64 : 0,
+          left: 0,
+          width: "100%",
+          bgcolor: "#228B22",
+          color: "#fff",
+          px: { xs: 2, md: 6 },
+          py: 1.5,
+          fontWeight: 700,
+          fontSize: 20,
+          zIndex: 1300,
+          textAlign: "left",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
+          transition: "transform 0.3s ease, opacity 0.3s ease, top 0.2s ease",
+          transform: activeSection ? "translateY(0)" : "translateY(-100%)",
+          opacity: activeSection ? 1 : 0,
+        }}
+      >
+        {activeSection}
+      </Box>
 
       {/* HERO + COPY */}
-    <Grid container spacing={3} alignItems="center" wrap="nowrap" ref={heroRef}>
-  {/* LEFT: text (narrower) */}
-  <Grid item xs={12} md={3} zeroMinWidth sx={{ minWidth: 0 }}>
-    <Typography
-      component="h1"
-      sx={{
-        fontWeight: 900,
-        letterSpacing: 0.2,
-        lineHeight: 1.05,
-        fontSize: { xs: 36, md: 48 },
-        mb: 3,
-      }}
-    >
-      Navigating Regulations,<br />Accelerating Success
-    </Typography>
+      <Grid
+        container
+        alignItems="center"
+        ref={heroRef}
+        sx={{
+          flexWrap: { xs: "wrap", md: "nowrap" }, // stack on small, row on md+
+        }}
+        columnSpacing={{ xs: 0, sm: 6, md: 10 }}
+        rowSpacing={{ xs: 4, sm: 5, md: 0 }}
+      >
+        {/* LEFT: text */}
+        <Grid item xs={12} md={5} zeroMinWidth sx={{ minWidth: 0 }}>
+          <Typography
+            component="h1"
+            sx={{
+              color: "#FFFFFF",
+              fontFamily: "'Open Sans', sans-serif",
+              fontWeight: 700,
+              letterSpacing: 0.3,
+              lineHeight: { xs: 1.1, md: 1.05 },
+              fontSize: { xs: 32, sm: 42, md: 55 },
+              mb: { xs: 2, md: 3 },
+            }}
+          >
+            <Box component="span" sx={{ display: "block" }}>
+              Navigating Regulations,
+            </Box>
+            <Box
+              component="span"
+              sx={{ display: "block", mt: { xs: 0.5, sm: 0.75, md: 1.25 } }}
+            >
+              Accelerating Success
+            </Box>
+          </Typography>
 
-    <Typography sx={{ mt: 1.5, color: "rgba(255,255,255,0.92)", fontSize: { xs: 16, md: 18 } }}>
-      At Rekotax, we understand that your vision is big and your goals are even
-      bigger. <br/>We’re here to ensure that compliance and financial management never slow you<br/> down.
-    </Typography>
+          <Typography
+            sx={{
+              mt: { xs: 1, md: 1.5 },
+              color: "#B5B7BB",
+              fontSize: { xs: 15, sm: 16, md: 18 },
+              lineHeight: { xs: 1.5, md: 1.45 },
+              textAlign: "left",
+              maxWidth: { xs: "100%", md: "60ch" },
+              fontFamily: "'Open Sans', sans-serif",
+            }}
+          >
+            At Rekotax, we understand that your vision is big and your goals are
+            even bigger. We’re here to ensure that compliance and financial
+            management never slow you down.
+          </Typography>
 
-    <Typography sx={{ mt: 2, color: "rgba(255,255,255,0.85)", fontSize: { xs: 16, md: 18 } }}>
-      Focus on what you do best - growing your business - and leave the complexities<br/> of
-      tax planning, registration, and compliance to us. With our expert-led solutions <br/>tailored
-      to your needs, we’ll handle the rest, empowering your ambition every step of the way.
-    </Typography>
+          <Typography
+            sx={{
+              mt: { xs: 2, md: 3 },
+              color: "#B5B7BB",
+              fontSize: { xs: 15, sm: 16, md: 18 },
+              lineHeight: { xs: 1.5, md: 1.45 },
+              textAlign: "left",
+              maxWidth: { xs: "100%", md: "60ch" },
+              fontFamily: "'Open Sans', sans-serif",
+            }}
+          >
+            Focus on what you do best—growing your business—and leave the
+            complexities of tax planning, registration, and compliance to us.
+            With our expert-led solutions tailored to your needs, we’ll handle
+            the rest, empowering your ambition every step of the way.
+          </Typography>
 
-    <Button
-      size="large"
-      variant="contained"
-      endIcon={<ArrowForwardIosIcon fontSize="small" />}
-      sx={{
-        mt: 4,
-        px: 4,
-        py: 1.4,
-        fontWeight: 800,
-        borderRadius: 999,
-        bgcolor: "transparent",
-        backgroundImage: "linear-gradient(90deg,#4da3ff 0%, #3b7dff 100%)",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
-        "&:hover": { backgroundImage: "linear-gradient(90deg,#5ab2ff 0%, #4888ff 100%)" },
-      }}
-    >
-      Get Started
-    </Button>
-  </Grid>
+          <Box
+            sx={{
+              mt: { xs: 3, md: 4 },
+              display: "flex",
+              justifyContent: { xs: "center", md: "flex-start" },
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              size="large"
+              variant="contained"
+              endIcon={<ArrowForwardIosIcon fontSize="small" />}
+              sx={{
+                px: { xs: 3, md: 4 },
+                py: 1.4,
+                fontWeight: 800,
+                borderRadius: 999,
+                bgcolor: "transparent",
+                backgroundImage:
+                  "linear-gradient(90deg,#4da3ff 0%, #3b7dff 100%)",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+                width: { xs: "100%", sm: "auto" }, // full width on phones
+                "&:hover": {
+                  backgroundImage:
+                    "linear-gradient(90deg,#5ab2ff 0%, #4888ff 100%)",
+                },
+              }}
+            >
+              Get Started
+            </Button>
+          </Box>
+        </Grid>
 
-  {/* RIGHT: floating hero (wider) */}
-  <Grid
-    item
-    xs={12}
-    md={9}
-    zeroMinWidth
-    sx={{ minWidth: 0, display: "flex", justifyContent: "center" }}
-  >
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: 720,                 // use the extra width
-        height: { xs: 360, md: 560 },
-        position: "relative",
-        "& .rk-hero": { minHeight: "auto !important", height: "100%", padding: 0 },
-        "& .rk-hero .consultant-img": { maxWidth: { xs: 260, md: 460 } },
-        "& .rk-hero .box1": { top: "8%", left: "2%" },
-        "& .rk-hero .box2": { top: "18%", right: 0 },
-        "& .rk-hero .box3": { bottom: "14%", left: "2%" },
-        "& .rk-hero .box4": { bottom: "6%", right: "2%" },
-        "& .rk-hero .box5": { top: 0, left: "50%", transform: "translateX(-50%)" },
-      }}
-    >
-      <FloatingHero />
-    </Box>
-  </Grid>
-</Grid>
+        {/* RIGHT: floating hero (bounded & responsive) */}
+        <Grid
+          item
+          xs={12}
+          md={9}
+          zeroMinWidth
+          sx={{
+            minWidth: 0,
+            display: "flex",
+            justifyContent: "center",
+            overflow: "visible",
+            flexShrink: 0,
+          }}
+        >
+          <Box
+            sx={{
+              width: "100%",
+              maxWidth: { xs: 320, sm: 480, md: 660 },
+              height: { xs: 240, sm: 360, md: 520 },
+              position: "relative",
+              overflow: "visible",
+              "& .rk-hero": {
+                minHeight: "auto !important",
+                height: "100%",
+                padding: 0,
+                overflow: "visible", // keep chips inside the box on mobile
+              },
+              "& .rk-hero .consultant-img": {
+                maxWidth: { xs: 180, sm: 260, md: 300 },
+              },
+              "& .rk-hero .box1": { top: "8%", left: "2%" },
+              "& .rk-hero .box2": { top: "18%", right: 0 },
+              "& .rk-hero .box3": { bottom: "14%", left: "2%" },
+              "& .rk-hero .box4": { bottom: "6%", right: "2%" },
+              "& .rk-hero .box5": {
+                top: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+              },
+            }}
+          >
+            <FloatingHero />
+          </Box>
+        </Grid>
+      </Grid>
 
-
-      {/* Our Services (Glass bars) */}
-      <Box sx={{ mt: 0, mx: { xs: -5, md: -10 } }} ref={glassRef}>
+      {/* Sections */}
+      <Box sx={{ mt: { xs: 2, md: 4 }, mx: { xs: -2, md: -6 } }} ref={glassRef}>
         <GlassBarsSection />
       </Box>
 
-      {/* About & Services */}
-      <Box sx={{ mt: 0, mx: { xs: -5, md: -10 } }} ref={aboutRef}>
+      <Box sx={{ mt: { xs: 2, md: 4 }, mx: { xs: -2, md: -6 } }} ref={aboutRef}>
         <AboutAndServices />
       </Box>
 
-      {/* Contact */}
-      <Box sx={{ mt: 0, mx: { xs: -5, md: -10 } }} ref={contactRef}>
+      <Box sx={{ mt: { xs: 2, md: 4 }, mx: { xs: -2, md: -6 } }} ref={contactRef}>
         <ContactSection />
       </Box>
 
-      {/* Footer */}
       <Box
-        sx={{
-          mt: 0,
-          mb: 0,
-          pb: 0,
-          mx: { xs: -5, md: -10 },
-        }}
+        sx={{ mt: { xs: 2, md: 4 }, mb: 0, pb: 0, mx: { xs: -2, md: -6 } }}
         ref={footerRef}
       >
         <Footer />
       </Box>
 
-      {/* Floating WhatsApp button (bottom-right) */}
       <Fab
         color="success"
         aria-label="whatsapp"
@@ -214,7 +252,3 @@ useEffect(() => {
     </Box>
   );
 }
-
-/** If you still see a tiny gap at page bottom, ensure global CSS contains:
-html, body { margin: 0; padding: 0; }
-Or include <CssBaseline /> from MUI once at app root. */

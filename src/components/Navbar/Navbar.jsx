@@ -97,7 +97,7 @@ export default function Navbar() {
         color="primary"
         elevation={0}
         sx={{
-          bgcolor: "#0f2555",
+          bgcolor: "#0B2A5A",
           zIndex: (t) => t.zIndex.drawer + 1,
           width: "100%", // avoid 100vw overflow on mobile
           left: 0,
