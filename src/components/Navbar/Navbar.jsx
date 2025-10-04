@@ -241,32 +241,32 @@ export default function Navbar() {
                   {activeService === "Registration" && (
                     <Grid container spacing={8}>
                       {/* LEFT HALF - Start your New Business */}
-                     <Grid
-  item
-  xs={12}
-  md={6}
-  sx={{
-    pr: { xs: 0, md: 4 },
-    position: "relative",
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      top: 12,
-      bottom: 12,
-      right: { md: -10 },               // slightly more to the right
-      width: "2px",
-      backgroundImage: "radial-gradient(#ffffff 2px, rgba(255,255,255,0) 2.6px)",
-      backgroundSize: "2px 12px",       // dot size & spacing
-      backgroundRepeat: "repeat-y",
-      backgroundPosition: "center",
-      filter: "drop-shadow(0 0 4px rgba(255,255,255,0.35))",
-      WebkitMaskImage:
-        "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
-      maskImage:
-        "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
-    },
-  }}
->
+                      <Grid
+                        item
+                        xs={12}
+                        md={6}
+                        sx={{
+                          pr: { xs: 0, md: 4 },
+                          position: "relative",
+                          "&::after": {
+                            content: '""',
+                            position: "absolute",
+                            top: 12,
+                            bottom: 12,
+                            right: { md: -10 },               // slightly more to the right
+                            width: "2px",
+                            backgroundImage: "radial-gradient(#ffffff 2px, rgba(255,255,255,0) 2.6px)",
+                            backgroundSize: "2px 12px",       // dot size & spacing
+                            backgroundRepeat: "repeat-y",
+                            backgroundPosition: "center",
+                            filter: "drop-shadow(0 0 4px rgba(255,255,255,0.35))",
+                            WebkitMaskImage:
+                              "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
+                            maskImage:
+                              "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
+                          },
+                        }}
+                      >
 
                         <Typography
                           sx={{

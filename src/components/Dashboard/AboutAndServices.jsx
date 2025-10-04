@@ -262,7 +262,8 @@ export default function AboutAndServices() {
           container
           spacing={6}
           alignItems="stretch"
-          wrap="nowrap"          // keep three columns on one line at md+
+          wrap="nowrap"   
+           sx={{ mt: 6 }}       // keep three columns on one line at md+
         >
           {/* 1️⃣ Registration */}
           <Grid item xs={12} md={4} zeroMinWidth sx={{ minWidth: 0 }}>

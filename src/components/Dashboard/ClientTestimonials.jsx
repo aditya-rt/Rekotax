@@ -52,7 +52,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
   const t = TESTIMONIALS[idx];
 
   return (
-
+    
     <Box
       sx={{
         // spacing: kill top/side padding when fullBleed
@@ -60,7 +60,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
         pb: { xs: 6, sm: 8, md: 12 },
         px: fullBleed ? 0 : { xs: 2, sm: 3, md: 4, lg: 6 },
 
-
+        bgcolor: "#fff",
 
         // full-bleed breakout so section spans the viewport edges
         ...(fullBleed
@@ -85,7 +85,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
           letterSpacing: 0.4,
           lineHeight: 1.1,
           mb: 2,
-          pt: { xs: 8, sm: 10, md: 6 },
+         pt: { xs: 8, sm: 10, md: 6 },
 
 
           fontSize: { xs: "clamp(26px, 8vw, 36px)", md: "clamp(40px, 5vw, 56px)" },
