@@ -15,7 +15,9 @@ import SoleProprietorship from "./components/Registration/StartNewBusiness/SoleP
 import PublicCompany from "./components/Registration/StartNewBusiness/PublicCompany/PublicCompany";
 import NidhiCompany from "./components/Registration/StartNewBusiness/NidhiCompany/NidhiCompany";
 import ProducerCompany from "./components/Registration/StartNewBusiness/ProducerCompany/ProducerCompany";
-
+import ClientTestimonials from "./components/Dashboard/ClientTestimonials";
+import PrincipleAndApproach from "./components/Dashboard/PrincipleAndApproach";
+import WhyRekotax from "./components/Dashboard/WhyRekotax";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -81,6 +83,9 @@ export default function App() {
         <Route path = "/public-company" element={<PublicCompany />} />
         <Route path = "/nidhi-company" element={<NidhiCompany />} />
         <Route path = "/producer-company" element={<ProducerCompany />} />
+        <Route path ="/client-testimonials" element = {<ClientTestimonials/>}/>
+        <Route path="/principles-and-approach" element={<PrincipleAndApproach />} />
+        <Route path="/why-rekotax" element={<WhyRekotax />} />
       </Routes>
     </Router>
   );

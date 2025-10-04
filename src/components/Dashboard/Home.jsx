@@ -7,6 +7,20 @@ import Footer from "./Footer";
 import { Box, Grid, Typography, Button, Fab } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import ClientTestimonials from "./ClientTestimonials";
+import PrincipleAndApproach from "./PrincipleAndApproach";
+import {
+  Gavel,
+  Group,
+  WorkspacePremium,
+  Security,
+  AccountBalance,
+  AccessTime,
+  Handshake,
+  HeadsetMic,
+  CurrencyRupee,
+} from "@mui/icons-material";
+import WhyRekotax from "./WhyRekotax";
 
 export default function Home() {
   const [activeSection] = useState("");
@@ -34,9 +48,10 @@ export default function Home() {
         backgroundRepeat: "no-repeat",
 
         // page gutters & top offset for fixed AppBar
-        maxWidth: 1400,
+        maxWidth: "100%",       // use full width
         mx: "auto",
-        px: { xs: 2, sm: 3, md: 6 },
+        px: { xs: 1, sm: 2, md: 3 }, // smaller gutters on all screens
+
         pt: { xs: "calc(56px + 20px)", md: "calc(64px + 32px)" }, // navbar height + breathing room
         pb: { xs: 6, md: 10 },
       }}
@@ -73,8 +88,9 @@ export default function Home() {
         sx={{
           flexWrap: { xs: "wrap", md: "nowrap" }, // stack on small, row on md+
         }}
-        columnSpacing={{ xs: 0, sm: 6, md: 10 }}
+        columnSpacing={{ xs: 2, sm: 4, md: 15 }}  
         rowSpacing={{ xs: 4, sm: 5, md: 0 }}
+        marginTop={{ xs: -10, md: -10 }}
       >
         {/* LEFT: text */}
         <Grid item xs={12} md={5} zeroMinWidth sx={{ minWidth: 0 }}>
@@ -185,7 +201,7 @@ export default function Home() {
           <Box
             sx={{
               width: "100%",
-              maxWidth: { xs: 320, sm: 480, md: 660 },
+             maxWidth: { xs: 360, sm: 520, md: 760 },
               height: { xs: 240, sm: 360, md: 520 },
               position: "relative",
               overflow: "visible",
@@ -222,6 +238,19 @@ export default function Home() {
       <Box sx={{ mt: { xs: 2, md: 4 }, mx: { xs: -2, md: -6 } }} ref={aboutRef}>
         <AboutAndServices />
       </Box>
+     <Box sx={{ mt: 0, mx: 0 }} ref={aboutRef}>
+  <ClientTestimonials fullBleed />
+</Box>
+
+<Box sx={{ mt: 0, p: 0, mx: 0, overflow: "visible" }} ref={aboutRef}>
+  <PrincipleAndApproach fullBleed />
+</Box>
+
+      
+<Box sx={{ mt: 0, p: 0, mx: 0, overflow: "visible" }} ref={aboutRef}>
+  <WhyRekotax fullBleed />
+</Box>
+      
 
       <Box sx={{ mt: { xs: 2, md: 4 }, mx: { xs: -2, md: -6 } }} ref={contactRef}>
         <ContactSection />

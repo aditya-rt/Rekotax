@@ -26,9 +26,15 @@ export default function Navbar() {
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
 
+
+
+  // Toolbar heights to position the mega menu just below the AppBar
+  const APPBAR_H_DESKTOP = 64; // default MUI toolbar height at md+
+  const APPBAR_H_MOBILE = 56;  // default MUI toolbar height on mobile
+
   // desktop mega menu
   const [anchors, setAnchors] = useState({
-    services: null,
+    services: false,
     industries: null,
     insights: null,
     about: null,
@@ -38,9 +44,8 @@ export default function Navbar() {
   // mobile drawer
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const openMenu = (key, e) =>
-    setAnchors((a) => ({ ...a, [key]: e.currentTarget }));
-  const closeMenu = (key) => setAnchors((a) => ({ ...a, [key]: null }));
+  const openMenu = (key) => setAnchors((a) => ({ ...a, [key]: true }));
+  const closeMenu = (key) => setAnchors((a) => ({ ...a, [key]: false }));
   const isOpen = (key) => Boolean(anchors[key]);
 
   const startBusinessItems = [
@@ -69,15 +74,18 @@ export default function Navbar() {
     "Other Registrations",
   ];
 
+  const midIdx = Math.ceil(otherRegItems.length / 2);
+  const otherRegColA = otherRegItems.slice(0, midIdx);
+  const otherRegColB = otherRegItems.slice(midIdx);
   const handleRoute = (text) => {
     // close menus/drawer first
     closeMenu("services");
     setMobileOpen(false);
 
-    // routes you already wired
     if (text === "One Person Company (OPC)") return navigate("/opc-registration");
     if (text === "Private Limited Company") return navigate("/plc-registration");
-    if (text === "Limited Liability Partnership (LLP)") return navigate("/llp-registration");
+    if (text === "Limited Liability Partnership (LLP)")
+      return navigate("/llp-registration");
     if (text === "Section 8 Company") return navigate("/section-and-company");
     if (text === "Partnership Firm") return navigate("/partnership-firm");
     if (text === "Sole Proprietorship") return navigate("/sole-proprietorship");
@@ -87,7 +95,7 @@ export default function Navbar() {
     if (text === "Goods & Service Tax (GST)") return navigate("/gst-registration");
     if (text === "LUT Registration") return navigate("/lut-registration");
     if (text === "Import Export Code") return navigate("/import-export-code");
-    // fallback: do nothing or navigate to a generic page
+    // add more when ready
   };
 
   return (
@@ -131,37 +139,66 @@ export default function Navbar() {
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
             {/* Services mega menu */}
             <Box
-              onMouseEnter={(e) => isDesktop && openMenu("services", e)}
+              onMouseEnter={() => isDesktop && openMenu("services")}
               onMouseLeave={() => isDesktop && closeMenu("services")}
             >
               <Button
                 color="inherit"
                 endIcon={<ArrowDropDownIcon />}
                 sx={{ fontWeight: 600, textTransform: "none" }}
-                onClick={(e) => !isDesktop && openMenu("services", e)}
+                onClick={() => !isDesktop && openMenu("services")}
               >
                 Services
               </Button>
 
+              {/* Full width, left aligned mega menu */}
               <Menu
-                anchorEl={anchors.services}
+                marginThreshold={0}
+                // anchor to viewport so it starts from the left edge
+                anchorReference="anchorPosition"
+                anchorPosition={{
+                  top: isDesktop ? APPBAR_H_DESKTOP : APPBAR_H_MOBILE,
+                  left: 0,
+                }}
                 open={isOpen("services")}
                 onClose={() => closeMenu("services")}
-                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                // origins kept as top-left for consistency
+                anchorOrigin={{ vertical: "top", horizontal: "left" }}
                 transformOrigin={{ vertical: "top", horizontal: "left" }}
-                PaperProps={{
-                  sx: {
-                    mt: 2,
-                    p: 0,
-                    bgcolor: "#1c1c1c",
-                    display: "flex",
-                    minWidth: isDesktop ? 1250 : "100%",
-                    minHeight: 300,
-                    left: 0,
-                    position: isDesktop ? "fixed" : "static",
-                    width: isDesktop ? "auto" : "100%",
+                slotProps={{
+                  paper: {
+                    sx: {
+                      p: 0,
+                      m: 0,
+                      position: "fixed",
+                      top: isDesktop ? APPBAR_H_DESKTOP : APPBAR_H_MOBILE,
+                      left: 0, // 0 margin on left — flush with viewport
+                      right: 0, // enable right positioning
+                      width: "calc(100vw - 15px)", // leave 40px margin on right
+                      // maxWidth: "calc(100vw - 50px)",
+                      //width:"100vw",
+                      maxWidth: "100vw",
+                      borderRadius: 0,
+                      bgcolor: "#1c1c1c",
+                      display: "flex",
+                      minHeight: 300,
+                      zIndex: (t) => t.zIndex.appBar + 1,
+                      marginRight: "40px", // right margin space
+                    },
+                    onMouseLeave: () => isDesktop && closeMenu("services"),
+                  },
+                  list: {
+                    sx: {
+                      display: "flex",
+                      width: "100%",
+                      p: 0,
+                      m: 0,
+                      flexWrap: "nowrap",
+                    },
                   },
                 }}
+
+
                 MenuListProps={{
                   sx: { display: "flex", width: "100%", p: 0, flexWrap: "nowrap" },
                 }}
@@ -169,10 +206,11 @@ export default function Navbar() {
                 {/* Left column (categories) */}
                 <Box
                   sx={{
-                    width: 220,
+                    width: 240,
                     bgcolor: "#2a2a2a",
                     display: { xs: "none", md: "flex" },
                     flexDirection: "column",
+                    flexShrink: 0,
                   }}
                 >
                   {[
@@ -181,7 +219,7 @@ export default function Navbar() {
                     "Taxation",
                     "OutSourcing",
                     "Business Advisory",
-                    "Vitual Office",
+                    "Virtual Office",
                     "Other Services",
                   ].map((item) => (
                     <MenuItem
@@ -199,11 +237,37 @@ export default function Navbar() {
                 </Box>
 
                 {/* Right column (content) */}
-                <Box sx={{ flexGrow: 1, p: 3, color: "#a4e100" }}>
+                <Box sx={{ flex: 1, p: 3, color: "#a4e100", minWidth: 0 }}>
                   {activeService === "Registration" && (
                     <Grid container spacing={8}>
-                      {/* LEFT HALF — Start your New Business */}
-                      <Grid item xs={12} md={6}>
+                      {/* LEFT HALF - Start your New Business */}
+                     <Grid
+  item
+  xs={12}
+  md={6}
+  sx={{
+    pr: { xs: 0, md: 4 },
+    position: "relative",
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      top: 12,
+      bottom: 12,
+      right: { md: -10 },               // slightly more to the right
+      width: "2px",
+      backgroundImage: "radial-gradient(#ffffff 2px, rgba(255,255,255,0) 2.6px)",
+      backgroundSize: "2px 12px",       // dot size & spacing
+      backgroundRepeat: "repeat-y",
+      backgroundPosition: "center",
+      filter: "drop-shadow(0 0 4px rgba(255,255,255,0.35))",
+      WebkitMaskImage:
+        "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
+      maskImage:
+        "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
+    },
+  }}
+>
+
                         <Typography
                           sx={{
                             mb: 2,
@@ -244,7 +308,8 @@ export default function Navbar() {
                         ))}
                       </Grid>
 
-                      {/* RIGHT HALF — Other Regulatory Registrations */}
+                      {/* RIGHT HALF - Other Regulatory Registrations */}
+                      {/* RIGHT HALF - Other Regulatory Registrations */}
                       <Grid item xs={12} md={6} sx={{ pl: { xs: 0, md: 4 } }}>
                         <Typography
                           sx={{
@@ -270,21 +335,32 @@ export default function Navbar() {
                           Other Regulatory Registrations
                         </Typography>
 
-                        {otherRegItems.map((text) => (
-                          <Typography
-                            key={text}
-                            sx={{
-                              mb: 1.5,
-                              color: "#a4e100",
-                              cursor: "pointer",
-                              "&:hover": { textDecoration: "underline" },
-                            }}
-                            onClick={() => handleRoute(text)}
-                          >
-                            {text}
-                          </Typography>
-                        ))}
+                        <Grid container spacing={2} columnSpacing={6}>
+                          <Grid item xs={12} sm={6}>
+                            {otherRegColA.map((text) => (
+                              <Typography
+                                key={text}
+                                sx={{ mb: 1.5, color: "#a4e100", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+                                onClick={() => handleRoute(text)}
+                              >
+                                {text}
+                              </Typography>
+                            ))}
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                            {otherRegColB.map((text) => (
+                              <Typography
+                                key={text}
+                                sx={{ mb: 1.5, color: "#a4e100", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+                                onClick={() => handleRoute(text)}
+                              >
+                                {text}
+                              </Typography>
+                            ))}
+                          </Grid>
+                        </Grid>
                       </Grid>
+
                     </Grid>
                   )}
 
@@ -312,7 +388,7 @@ export default function Navbar() {
                       <Typography>Advisory item 2</Typography>
                     </>
                   )}
-                  {activeService === "Vitual Office" && (
+                  {activeService === "Virtual Office" && (
                     <>
                       <Typography>Virtual Office item 1</Typography>
                       <Typography>Virtual Office item 2</Typography>
@@ -382,7 +458,7 @@ export default function Navbar() {
             <ListItemText primary="Home" primaryTypographyProps={{ sx: { color: "#fff" } }} />
           </ListItemButton>
 
-          {/* Collapsed "Services" as simple lists for mobile */}
+          {/* Collapsed Services for mobile */}
           <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#a4e100" }}>
             Start your New Business
           </Typography>
@@ -413,6 +489,9 @@ export default function Navbar() {
           </ListItemButton>
         </List>
       </Drawer>
+
+      {/* Spacer so page content is not hidden behind fixed AppBar */}
+      <Toolbar />
     </>
   );
 }
