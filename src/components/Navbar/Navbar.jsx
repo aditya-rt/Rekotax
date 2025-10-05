@@ -26,22 +26,20 @@ export default function Navbar() {
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
 
+  // Consistent toolbar heights
+  const APPBAR_H_DESKTOP = 64;
+  const APPBAR_H_MOBILE = 56;
 
-
-  // Toolbar heights to position the mega menu just below the AppBar
-  const APPBAR_H_DESKTOP = 64; // default MUI toolbar height at md+
-  const APPBAR_H_MOBILE = 56;  // default MUI toolbar height on mobile
-
-  // desktop mega menu
+  // Desktop mega menu state
   const [anchors, setAnchors] = useState({
     services: false,
-    industries: null,
-    insights: null,
-    about: null,
+    industries: false,
+    insights: false,
+    about: false,
   });
   const [activeService, setActiveService] = useState("Registration");
 
-  // mobile drawer
+  // Mobile drawer
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const openMenu = (key) => setAnchors((a) => ({ ...a, [key]: true }));
@@ -73,10 +71,10 @@ export default function Navbar() {
     "Trademark",
     "Other Registrations",
   ];
-
   const midIdx = Math.ceil(otherRegItems.length / 2);
   const otherRegColA = otherRegItems.slice(0, midIdx);
   const otherRegColB = otherRegItems.slice(midIdx);
+
   const handleRoute = (text) => {
     // close menus/drawer first
     closeMenu("services");
@@ -84,8 +82,7 @@ export default function Navbar() {
 
     if (text === "One Person Company (OPC)") return navigate("/opc-registration");
     if (text === "Private Limited Company") return navigate("/plc-registration");
-    if (text === "Limited Liability Partnership (LLP)")
-      return navigate("/llp-registration");
+    if (text === "Limited Liability Partnership (LLP)") return navigate("/llp-registration");
     if (text === "Section 8 Company") return navigate("/section-and-company");
     if (text === "Partnership Firm") return navigate("/partnership-firm");
     if (text === "Sole Proprietorship") return navigate("/sole-proprietorship");
@@ -95,7 +92,7 @@ export default function Navbar() {
     if (text === "Goods & Service Tax (GST)") return navigate("/gst-registration");
     if (text === "LUT Registration") return navigate("/lut-registration");
     if (text === "Import Export Code") return navigate("/import-export-code");
-    // add more when ready
+    // add more routes as you build them
   };
 
   return (
@@ -107,13 +104,26 @@ export default function Navbar() {
         sx={{
           bgcolor: "#0B2A5A",
           zIndex: (t) => t.zIndex.drawer + 1,
-          width: "100%", // avoid 100vw overflow on mobile
+          width: "100%",
           left: 0,
+          right: 0,
         }}
       >
-        <Toolbar sx={{ gap: 2, px: { xs: 2, md: 6 } }}>
-          {/* Mobile: hamburger */}
-          <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
+        {/* Center the row content to the same max as your pages */}
+       <Toolbar
+  disableGutters
+  sx={{
+    width: "100%",
+    maxWidth: { md: 1120, lg: 1200 },   // a bit narrower -> more side space
+    mx: "auto",
+    px: { xs: 3, md: 6 },               // larger left/right padding
+    minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP },
+    gap: 2,
+  }}
+>
+
+          {/* Mobile hamburger */}
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               color="inherit"
               edge="start"
@@ -124,20 +134,25 @@ export default function Navbar() {
             </IconButton>
           </Box>
 
-          {/* Logo */}
-          <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
+          {/* Logo (aligned with page content, scales down on mobile) */}
+          <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1, minWidth: 0 }}>
             <Box
               component="img"
               src="/rekotaxlogoNew.svg"
               alt="Rekotax"
-              sx={{ width: 180, height: 60, cursor: "pointer" }}
               onClick={() => navigate("/")}
+              sx={{
+                width: { xs: 140, sm: 160, md: 180 },
+                height: "auto",
+                cursor: "pointer",
+                display: "block",
+              }}
             />
           </Box>
 
-          {/* Desktop Menus */}
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-            {/* Services mega menu */}
+          {/* Desktop nav items (hidden on mobile) */}
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1, alignItems: "center", mr: 2 }}>
+            {/* Services (mega) */}
             <Box
               onMouseEnter={() => isDesktop && openMenu("services")}
               onMouseLeave={() => isDesktop && closeMenu("services")}
@@ -146,265 +161,282 @@ export default function Navbar() {
                 color="inherit"
                 endIcon={<ArrowDropDownIcon />}
                 sx={{ fontWeight: 600, textTransform: "none" }}
-                onClick={() => !isDesktop && openMenu("services")}
+                aria-haspopup="true"
+                aria-expanded={isOpen("services") ? "true" : undefined}
+                aria-controls="services-mega"
               >
                 Services
               </Button>
 
-              {/* Full width, left aligned mega menu */}
-              <Menu
-                marginThreshold={0}
-                // anchor to viewport so it starts from the left edge
-                anchorReference="anchorPosition"
-                anchorPosition={{
-                  top: isDesktop ? APPBAR_H_DESKTOP : APPBAR_H_MOBILE,
-                  left: 0,
-                }}
-                open={isOpen("services")}
-                onClose={() => closeMenu("services")}
-                // origins kept as top-left for consistency
-                anchorOrigin={{ vertical: "top", horizontal: "left" }}
-                transformOrigin={{ vertical: "top", horizontal: "left" }}
-                slotProps={{
-                  paper: {
-                    sx: {
-                      p: 0,
-                      m: 0,
-                      position: "fixed",
-                      top: isDesktop ? APPBAR_H_DESKTOP : APPBAR_H_MOBILE,
-                      left: 0, // 0 margin on left — flush with viewport
-                      right: 0, // enable right positioning
-                      width: "calc(100vw - 15px)", // leave 40px margin on right
-                      // maxWidth: "calc(100vw - 50px)",
-                      //width:"100vw",
-                      maxWidth: "100vw",
-                      borderRadius: 0,
-                      bgcolor: "#1c1c1c",
+              {/* Desktop mega — not rendered on mobile */}
+              {isDesktop && (
+                <Menu
+                  id="services-mega"
+                  marginThreshold={0}
+                  anchorReference="anchorPosition"
+                  anchorPosition={{ top: APPBAR_H_DESKTOP, left: 0 }}
+                  open={isOpen("services")}
+                  onClose={() => closeMenu("services")}
+                  anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                  transformOrigin={{ vertical: "top", horizontal: "left" }}
+                  slotProps={{
+                    paper: {
+                      sx: {
+                        p: 0,
+                        m: 0,
+                        position: "fixed",
+                        top: APPBAR_H_DESKTOP,
+                        left: 0,
+                        right: 0,
+                        width: "100%",
+                        maxWidth: "100%",
+                        borderRadius: 0,
+                        bgcolor: "#1c1c1c",
+                        color: "#fff",
+                        boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
+                        // ensure visible on short screens:
+                        maxHeight: `calc(100vh - ${APPBAR_H_DESKTOP}px)`,
+                        overflowY: "auto",
+                        zIndex: (t) => t.zIndex.appBar + 2,
+                      },
+                      onMouseLeave: () => isDesktop && closeMenu("services"),
+                    },
+                    list: { sx: { p: 0, m: 0 } },
+                  }}
+                  MenuListProps={{ sx: { p: 0, m: 0 } }}
+                >
+                  {/* Inner centered content matches page maxWidth */}
+                  <Box
+                    sx={{
+                      width: "100%",
+                      maxWidth: { md: 1200, lg: 1280 },
+                      mx: "auto",
+                      px: { md: 4, lg: 6 },
+                      py: 3,
                       display: "flex",
                       minHeight: 300,
-                      zIndex: (t) => t.zIndex.appBar + 1,
-                      marginRight: "40px", // right margin space
-                    },
-                    onMouseLeave: () => isDesktop && closeMenu("services"),
-                  },
-                  list: {
-                    sx: {
-                      display: "flex",
-                      width: "100%",
-                      p: 0,
-                      m: 0,
-                      flexWrap: "nowrap",
-                    },
-                  },
-                }}
-
-
-                MenuListProps={{
-                  sx: { display: "flex", width: "100%", p: 0, flexWrap: "nowrap" },
-                }}
-              >
-                {/* Left column (categories) */}
-                <Box
-                  sx={{
-                    width: 240,
-                    bgcolor: "#2a2a2a",
-                    display: { xs: "none", md: "flex" },
-                    flexDirection: "column",
-                    flexShrink: 0,
-                  }}
-                >
-                  {[
-                    "Registration",
-                    "Compilation",
-                    "Taxation",
-                    "OutSourcing",
-                    "Business Advisory",
-                    "Virtual Office",
-                    "Other Services",
-                  ].map((item) => (
-                    <MenuItem
-                      key={item}
-                      onMouseEnter={() => setActiveService(item)}
+                    }}
+                  >
+                    {/* Left rail (categories) */}
+                    <Box
                       sx={{
-                        color: activeService === item ? "#a4e100" : "#fff",
-                        bgcolor: activeService === item ? "#000" : "transparent",
-                        "&:hover": { bgcolor: "#000" },
+                        width: 240,
+                        bgcolor: "#2a2a2a",
+                        display: "flex",
+                        flexDirection: "column",
+                        flexShrink: 0,
+                        borderRadius: 1,
+                        overflow: "hidden",
                       }}
                     >
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Box>
-
-                {/* Right column (content) */}
-                <Box sx={{ flex: 1, p: 3, color: "#a4e100", minWidth: 0 }}>
-                  {activeService === "Registration" && (
-                    <Grid container spacing={8}>
-                      {/* LEFT HALF - Start your New Business */}
-                      <Grid
-                        item
-                        xs={12}
-                        md={6}
-                        sx={{
-                          pr: { xs: 0, md: 4 },
-                          position: "relative",
-                          "&::after": {
-                            content: '""',
-                            position: "absolute",
-                            top: 12,
-                            bottom: 12,
-                            right: { md: -10 },               // slightly more to the right
-                            width: "2px",
-                            backgroundImage: "radial-gradient(#ffffff 2px, rgba(255,255,255,0) 2.6px)",
-                            backgroundSize: "2px 12px",       // dot size & spacing
-                            backgroundRepeat: "repeat-y",
-                            backgroundPosition: "center",
-                            filter: "drop-shadow(0 0 4px rgba(255,255,255,0.35))",
-                            WebkitMaskImage:
-                              "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
-                            maskImage:
-                              "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
-                          },
-                        }}
-                      >
-
-                        <Typography
+                      {[
+                        "Registration",
+                        "Compliance",
+                        "Taxation",
+                        "OutSourcing",
+                        "Business Advisory",
+                        "Virtual Office",
+                        "Other Services",
+                      ].map((item) => (
+                        <MenuItem
+                          key={item}
+                          onMouseEnter={() => setActiveService(item)}
                           sx={{
-                            mb: 2,
-                            fontWeight: 900,
-                            color: "#a4e100",
-                            fontSize: "1.5rem",
-                            position: "relative",
-                            pb: 1,
-                            display: "inline-block",
-                            "&:after": {
-                              content: '""',
-                              position: "absolute",
-                              left: 0,
-                              bottom: 0,
-                              width: { xs: "90%", md: "100%" },
-                              height: "3px",
-                              bgcolor: "#a4e100",
-                              borderRadius: 1,
-                            },
+                            py: 1.25,
+                            color: activeService === item ? "#a4e100" : "#fff",
+                            bgcolor: activeService === item ? "#000" : "transparent",
+                            "&:hover": { bgcolor: "#000" },
                           }}
                         >
-                          Start your New Business
-                        </Typography>
+                          {item}
+                        </MenuItem>
+                      ))}
+                    </Box>
 
-                        {startBusinessItems.map((text) => (
-                          <Typography
-                            key={text}
+                    {/* Right panel (content) */}
+                    <Box sx={{ flex: 1, color: "#a4e100", minWidth: 0, px: { md: 3, lg: 4 } }}>
+                      {activeService === "Registration" && (
+                        <Grid container spacing={6}>
+                          {/* LEFT HALF */}
+                          <Grid
+                            item
+                            xs={12}
+                            md={6}
                             sx={{
-                              mb: 1.5,
-                              color: "#a4e100",
-                              cursor: "pointer",
-                              "&:hover": { textDecoration: "underline" },
+                              pr: { md: 3 },
+                              position: "relative",
+                              "&::after": {
+                                content: '""',
+                                position: "absolute",
+                                top: 12,
+                                bottom: 12,
+                                right: { md: -8 },
+                                width: "2px",
+                                backgroundImage:
+                                  "radial-gradient(#ffffff 2px, rgba(255,255,255,0) 2.6px)",
+                                backgroundSize: "2px 12px",
+                                backgroundRepeat: "repeat-y",
+                                backgroundPosition: "center",
+                                filter: "drop-shadow(0 0 4px rgba(255,255,255,0.35))",
+                                WebkitMaskImage:
+                                  "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
+                                maskImage:
+                                  "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
+                              },
                             }}
-                            onClick={() => handleRoute(text)}
                           >
-                            {text}
-                          </Typography>
-                        ))}
-                      </Grid>
+                            <Typography
+                              sx={{
+                                mb: 2,
+                                fontWeight: 900,
+                                color: "#a4e100",
+                                fontSize: "1.5rem",
+                                position: "relative",
+                                pb: 1,
+                                display: "inline-block",
+                                "&:after": {
+                                  content: '""',
+                                  position: "absolute",
+                                  left: 0,
+                                  bottom: 0,
+                                  width: "100%",
+                                  height: "3px",
+                                  bgcolor: "#a4e100",
+                                  borderRadius: 1,
+                                },
+                              }}
+                            >
+                              Start your New Business
+                            </Typography>
 
-                      {/* RIGHT HALF - Other Regulatory Registrations */}
-                      {/* RIGHT HALF - Other Regulatory Registrations */}
-                      <Grid item xs={12} md={6} sx={{ pl: { xs: 0, md: 4 } }}>
-                        <Typography
-                          sx={{
-                            mb: 2,
-                            fontWeight: 900,
-                            color: "#a4e100",
-                            fontSize: "1.5rem",
-                            position: "relative",
-                            pb: 1,
-                            display: "inline-block",
-                            "&:after": {
-                              content: '""',
-                              position: "absolute",
-                              left: 0,
-                              bottom: 0,
-                              width: { xs: "90%", md: "100%" },
-                              height: "3px",
-                              bgcolor: "#a4e100",
-                              borderRadius: 1,
-                            },
-                          }}
-                        >
-                          Other Regulatory Registrations
-                        </Typography>
-
-                        <Grid container spacing={2} columnSpacing={6}>
-                          <Grid item xs={12} sm={6}>
-                            {otherRegColA.map((text) => (
+                            {startBusinessItems.map((text) => (
                               <Typography
                                 key={text}
-                                sx={{ mb: 1.5, color: "#a4e100", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+                                sx={{
+                                  mb: 1.25,
+                                  color: "#a4e100",
+                                  cursor: "pointer",
+                                  "&:hover": { textDecoration: "underline" },
+                                }}
                                 onClick={() => handleRoute(text)}
                               >
                                 {text}
                               </Typography>
                             ))}
                           </Grid>
-                          <Grid item xs={12} sm={6}>
-                            {otherRegColB.map((text) => (
-                              <Typography
-                                key={text}
-                                sx={{ mb: 1.5, color: "#a4e100", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
-                                onClick={() => handleRoute(text)}
-                              >
-                                {text}
-                              </Typography>
-                            ))}
+
+                          {/* RIGHT HALF */}
+                          <Grid item xs={12} md={6} sx={{ pl: { md: 3 } }}>
+                            <Typography
+                              sx={{
+                                mb: 2,
+                                fontWeight: 900,
+                                color: "#a4e100",
+                                fontSize: "1.5rem",
+                                position: "relative",
+                                pb: 1,
+                                display: "inline-block",
+                                "&:after": {
+                                  content: '""',
+                                  position: "absolute",
+                                  left: 0,
+                                  bottom: 0,
+                                  width: "100%",
+                                  height: "3px",
+                                  bgcolor: "#a4e100",
+                                  borderRadius: 1,
+                                },
+                              }}
+                            >
+                              Other Regulatory Registrations
+                            </Typography>
+
+                            <Grid container spacing={2} columnSpacing={6}>
+                              <Grid item xs={12} sm={6}>
+                                {otherRegColA.map((text) => (
+                                  <Typography
+                                    key={text}
+                                    sx={{
+                                      mb: 1.25,
+                                      color: "#a4e100",
+                                      cursor: "pointer",
+                                      "&:hover": { textDecoration: "underline" },
+                                    }}
+                                    onClick={() => handleRoute(text)}
+                                  >
+                                    {text}
+                                  </Typography>
+                                ))}
+                              </Grid>
+                              <Grid item xs={12} sm={6}>
+                                {otherRegColB.map((text) => (
+                                  <Typography
+                                    key={text}
+                                    sx={{
+                                      mb: 1.25,
+                                      color: "#a4e100",
+                                      cursor: "pointer",
+                                      "&:hover": { textDecoration: "underline" },
+                                    }}
+                                    onClick={() => handleRoute(text)}
+                                  >
+                                    {text}
+                                  </Typography>
+                                ))}
+                              </Grid>
+                            </Grid>
                           </Grid>
                         </Grid>
-                      </Grid>
+                      )}
 
-                    </Grid>
-                  )}
+                      {activeService === "Compliance" && (
+                        <>
+                          <Typography sx={{ mb: 1 }}>Compliance item 1</Typography>
+                          <Typography>Compliance item 2</Typography>
+                        </>
+                      )}
 
-                  {activeService === "Compilation" && (
-                    <>
-                      <Typography>Compilation item 1</Typography>
-                      <Typography>Compilation item 2</Typography>
-                    </>
-                  )}
-                  {activeService === "Taxation" && (
-                    <>
-                      <Typography>Taxation item 1</Typography>
-                      <Typography>Taxation item 2</Typography>
-                    </>
-                  )}
-                  {activeService === "OutSourcing" && (
-                    <>
-                      <Typography>Outsourcing item 1</Typography>
-                      <Typography>Outsourcing item 2</Typography>
-                    </>
-                  )}
-                  {activeService === "Business Advisory" && (
-                    <>
-                      <Typography>Advisory item 1</Typography>
-                      <Typography>Advisory item 2</Typography>
-                    </>
-                  )}
-                  {activeService === "Virtual Office" && (
-                    <>
-                      <Typography>Virtual Office item 1</Typography>
-                      <Typography>Virtual Office item 2</Typography>
-                    </>
-                  )}
-                  {activeService === "Other Services" && (
-                    <>
-                      <Typography>Other service 1</Typography>
-                      <Typography>Other service 2</Typography>
-                    </>
-                  )}
-                </Box>
-              </Menu>
+                      {activeService === "Taxation" && (
+                        <>
+                          <Typography sx={{ mb: 1 }}>Taxation item 1</Typography>
+                          <Typography>Taxation item 2</Typography>
+                        </>
+                      )}
+
+                      {activeService === "OutSourcing" && (
+                        <>
+                          <Typography sx={{ mb: 1 }}>Outsourcing item 1</Typography>
+                          <Typography>Outsourcing item 2</Typography>
+                        </>
+                      )}
+
+                      {activeService === "Business Advisory" && (
+                        <>
+                          <Typography sx={{ mb: 1 }}>Advisory item 1</Typography>
+                          <Typography>Advisory item 2</Typography>
+                        </>
+                      )}
+
+                      {activeService === "Virtual Office" && (
+                        <>
+                          <Typography sx={{ mb: 1 }}>Virtual Office item 1</Typography>
+                          <Typography>Virtual Office item 2</Typography>
+                        </>
+                      )}
+
+                      {activeService === "Other Services" && (
+                        <>
+                          <Typography sx={{ mb: 1 }}>Other service 1</Typography>
+                          <Typography>Other service 2</Typography>
+                        </>
+                      )}
+                    </Box>
+                  </Box>
+                </Menu>
+              )}
             </Box>
 
-            {/* Other desktop buttons */}
+            {/* Other top-level desktop buttons */}
             <Button color="inherit" sx={{ fontWeight: 600, textTransform: "none" }}>
               Industries
             </Button>
@@ -419,16 +451,27 @@ export default function Navbar() {
           {/* CTA (always visible) */}
           <Button
             variant="contained"
+            size="small"
+            disableElevation
             sx={{
               bgcolor: "#808080",
               fontWeight: 800,
-              px: 3,
-              borderRadius: 6,
+              // keep padding tight so color only wraps the text
+              px: { xs: 1.25, sm: 1.5, md: 2.25 },
+              py: { xs: 0.5, sm: 0.6, md: 0.7 },
+              borderRadius: 999,
+              fontSize: { xs: 11, sm: 12, md: 13 },
+              lineHeight: 1.6,
+              whiteSpace: "nowrap",
+              width: "auto",       // don't stretch
+              minWidth: 0,         // override MUI's 64px default
+              flexShrink: 0,       // prevent flex shrinking artifacts
               "&:hover": { bgcolor: "#ffffff", color: "primary.main" },
             }}
           >
             GET CONSULTATION
           </Button>
+
         </Toolbar>
       </AppBar>
 
@@ -437,18 +480,25 @@ export default function Navbar() {
         anchor="left"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-        PaperProps={{ sx: { width: 300, bgcolor: "#0f2555", color: "#a4e100" } }}
+        ModalProps={{ keepMounted: true }}
+        PaperProps={{
+          sx: {
+            width: { xs: "88vw", sm: 320 },
+            bgcolor: "#0f2555",
+            color: "#a4e100",
+          },
+        }}
       >
         <Box sx={{ p: 2 }}>
           <Box
             component="img"
             src="/rekotaxlogoNew.svg"
             alt="Rekotax"
-            sx={{ width: 160, height: 50, cursor: "pointer", mb: 1 }}
             onClick={() => {
               setMobileOpen(false);
               navigate("/");
             }}
+            sx={{ width: 160, height: "auto", cursor: "pointer", mb: 1, display: "block" }}
           />
         </Box>
         <Divider sx={{ borderColor: "rgba(255,255,255,0.15)" }} />
@@ -458,7 +508,7 @@ export default function Navbar() {
             <ListItemText primary="Home" primaryTypographyProps={{ sx: { color: "#fff" } }} />
           </ListItemButton>
 
-          {/* Collapsed Services for mobile */}
+          {/* Collapsed Services (mobile) */}
           <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#a4e100" }}>
             Start your New Business
           </Typography>
@@ -490,8 +540,8 @@ export default function Navbar() {
         </List>
       </Drawer>
 
-      {/* Spacer so page content is not hidden behind fixed AppBar */}
-      <Toolbar />
+      {/* Spacer so content isn't hidden behind the fixed AppBar */}
+      <Toolbar sx={{ minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP } }} />
     </>
   );
 }

@@ -1,5 +1,5 @@
 // ClientTestimonials.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   Box,
   Grid,
@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import FormatQuoteRoundedIcon from "@mui/icons-material/FormatQuoteRounded";
+import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
 const TESTIMONIALS = [
   {
@@ -42,40 +44,46 @@ export default function ClientTestimonials({ fullBleed = false }) {
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  // Auto-rotate every 5s; pause on hover
+  const next = useCallback(
+    () => setIdx((i) => (i + 1) % TESTIMONIALS.length),
+    []
+  );
+  const prev = useCallback(
+    () => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length),
+    []
+  );
+
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(() => setIdx((i) => (i + 1) % TESTIMONIALS.length), 5000);
+    const t = setInterval(next, 5000);
     return () => clearInterval(t);
-  }, [paused]);
+  }, [paused, next]);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [next, prev]);
 
   const t = TESTIMONIALS[idx];
 
   return (
-    
     <Box
       sx={{
-        // spacing: kill top/side padding when fullBleed
         pt: fullBleed ? 0 : { xs: 6, sm: 8, md: 12 },
         pb: { xs: 6, sm: 8, md: 12 },
         px: fullBleed ? 0 : { xs: 2, sm: 3, md: 4, lg: 6 },
-
         bgcolor: "#fff",
-
-        // full-bleed breakout so section spans the viewport edges
         ...(fullBleed
-          ? {
-            width: "100vw",
-            maxWidth: "100vw",
-            mx: "calc(50% - 50vw)",   // breakout from parent container
-          }
-          : {
-            maxWidth: { xs: "100%", lg: 1240, xl: 1440 },
-            mx: "auto",
-          }),
+          ? { width: "100vw", maxWidth: "100vw", mx: "calc(50% - 50vw)" }
+          : { maxWidth: { xs: "100%", md: 1180, lg: 1280 }, mx: "auto" }),
       }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-
       {/* Heading */}
       <Typography
         align="center"
@@ -85,10 +93,8 @@ export default function ClientTestimonials({ fullBleed = false }) {
           letterSpacing: 0.4,
           lineHeight: 1.1,
           mb: 2,
-         pt: { xs: 8, sm: 10, md: 6 },
-
-
-          fontSize: { xs: "clamp(26px, 8vw, 36px)", md: "clamp(40px, 5vw, 56px)" },
+          pt: { xs: 6, sm: 8, md: 6 },
+          fontSize: { xs: "clamp(26px, 8vw, 34px)", md: "clamp(38px, 5vw, 56px)" },
         }}
       >
         Hear What Our Clients Say
@@ -103,7 +109,6 @@ export default function ClientTestimonials({ fullBleed = false }) {
           mx: "auto",
           mb: { xs: 5, sm: 6, md: 8 },
           lineHeight: 1.75,
-          textTransform: "capitalize",
           fontSize: { xs: 14, sm: 15, md: 16 },
         }}
       >
@@ -111,16 +116,17 @@ export default function ClientTestimonials({ fullBleed = false }) {
         Read their testimonials and hear firsthand how we drive success and exceed expectations.
       </Typography>
 
+      {/* Content */}
       <Grid
         container
         justifyContent="center"
         alignItems="center"
         columnSpacing={{ xs: 0, sm: 2, md: 3, lg: 4 }}
         rowSpacing={{ xs: 3, sm: 4, md: 0 }}
-        sx={{ flexWrap: { xs: "wrap", lg: "nowrap" } }}
+        sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}  // side-by-side from md+
       >
-        {/* LEFT — compact video-style card (image/name/rating rotate with idx) */}
-        <Grid item xs={12} lg="auto" sx={{ display: "flex", justifyContent: "center" }}>
+        {/* LEFT — image card */}
+        <Grid item xs={12} md="auto" sx={{ display: "flex", justifyContent: "center" }}>
           <Fade in key={`left-${idx}`} timeout={300}>
             <Box
               sx={{
@@ -128,19 +134,16 @@ export default function ClientTestimonials({ fullBleed = false }) {
                 borderRadius: 2,
                 overflow: "hidden",
                 boxShadow: "0 10px 26px rgba(0,0,0,0.18)",
-                // Responsive sizing
-                width: { xs: "100%", sm: 360, md: 300, lg: 260 },
+                width: { xs: "100%", sm: 360, md: 320, lg: 300 },
                 maxWidth: "100%",
-                // Prefer aspect ratio; fallback height keeps small devices happy
-                aspectRatio: { xs: "16 / 10", sm: "1 / 1" },
+                aspectRatio: { xs: "16 / 10", sm: "4 / 3", md: "1 / 1" },
                 height: { xs: 220, sm: "auto" },
                 backgroundImage: `url('${t.image || "/who1.png"}')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                mx: { xs: "auto", lg: 0 },
+                mx: { xs: "auto", md: 0 },
               }}
             >
-              {/* overlay */}
               <Box
                 sx={{
                   position: "absolute",
@@ -149,7 +152,6 @@ export default function ClientTestimonials({ fullBleed = false }) {
                     "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.55) 100%)",
                 }}
               />
-
               <Typography
                 sx={{
                   position: "absolute",
@@ -157,13 +159,12 @@ export default function ClientTestimonials({ fullBleed = false }) {
                   left: 16,
                   color: "#fff",
                   fontWeight: 800,
-                  fontSize: { xs: 18, md: 20 },
+                  fontSize: { xs: 16, md: 18 },
                   textShadow: "0 2px 6px rgba(0,0,0,0.35)",
                 }}
               >
                 Coming soon…
               </Typography>
-
               <IconButton
                 size="large"
                 sx={{
@@ -180,7 +181,6 @@ export default function ClientTestimonials({ fullBleed = false }) {
               >
                 <PlayArrowRoundedIcon sx={{ fontSize: 32, color: "#0f2555" }} />
               </IconButton>
-
               <Box sx={{ position: "absolute", left: 16, bottom: 12, color: "#fff" }}>
                 <Typography sx={{ fontWeight: 800, mb: 0.5 }}>{t.name}</Typography>
                 <Rating name="read-only" value={t.rating} size="small" readOnly />
@@ -189,12 +189,9 @@ export default function ClientTestimonials({ fullBleed = false }) {
           </Fade>
         </Grid>
 
-        {/* RIGHT — wide & shallow testimonial card (rotating) */}
-        <Grid item xs={12} lg="auto" sx={{ maxWidth: "100%" }}>
-          <Box
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
+        {/* RIGHT — testimonial card */}
+        <Grid item xs={12} md="auto" sx={{ maxWidth: "100%" }}>
+          <Box sx={{ position: "relative", display: "inline-block" }}>
             <Slide
               in
               appear
@@ -206,18 +203,17 @@ export default function ClientTestimonials({ fullBleed = false }) {
                 elevation={0}
                 sx={{
                   position: "relative",
-                  // Fluid width that caps nicely across sizes
                   width: {
                     xs: "100%",
-                    sm: "min(680px, 95vw)",
-                    md: "min(820px, 90vw)",
-                    lg: 860,
-                    xl: 960,
+                    sm: "min(640px, 95vw)",
+                    md: "min(760px, 88vw)",  // slimmer on md to fit next to the image
+                    lg: 820,
+                    xl: 900,
                   },
                   maxWidth: "100%",
-                  height: { xs: "auto", sm: "auto", md: 300, lg: 300 },
+                  minHeight: { md: 260, lg: 280 },  // avoids clipping on longer quotes
                   p: { xs: 2.5, sm: 3, md: 4 },
-                  ml: { lg: 3 }, // small gap from the image card on desktop
+                  ml: { md: 2.5, lg: 3 },
                   borderRadius: 3,
                   border: "1px solid #e8edf6",
                   boxShadow: "0 12px 28px rgba(0,0,0,0.08)",
@@ -228,7 +224,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
                 }}
               >
                 <FormatQuoteRoundedIcon
-                  sx={{ fontSize: 48, color: "#3b82f6", opacity: 0.8, mb: 1 }}
+                  sx={{ fontSize: 44, color: "#3b82f6", opacity: 0.85, mb: 1 }}
                 />
 
                 <Typography
@@ -236,7 +232,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
                     color: "#334155",
                     fontSize: { xs: 14, sm: 15, md: 17 },
                     lineHeight: { xs: 1.7, md: 1.9 },
-                    pr: { md: 2 },
+                    pr: { md: 1 },
                     overflowWrap: "anywhere",
                   }}
                 >
@@ -256,7 +252,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
                     right: 16,
                     bottom: 12,
                     transform: "rotate(180deg)",
-                    fontSize: 40,
+                    fontSize: 38,
                     color: "#3b82f6",
                     opacity: 0.8,
                   }}
@@ -264,22 +260,74 @@ export default function ClientTestimonials({ fullBleed = false }) {
               </Paper>
             </Slide>
 
-            {/* Dots */}
-            <Stack direction="row" spacing={1} justifyContent="center" sx={{ mt: 2 }}>
-              {TESTIMONIALS.map((_, i) => (
-                <Box
-                  key={i}
-                  onClick={() => setIdx(i)}
-                  sx={{
-                    width: i === idx ? 10 : 8,
-                    height: i === idx ? 10 : 8,
-                    borderRadius: "50%",
-                    bgcolor: i === idx ? "#3b82f6" : "#cbd5e1",
-                    cursor: "pointer",
-                    transition: "all .2s ease",
-                  }}
-                />
-              ))}
+            {/* Controls row: arrows on sides of dots */}
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing={1.5}
+              sx={{ mt: 2, width: "100%" }}
+              aria-live="polite"
+            >
+              <IconButton
+                aria-label="Previous testimonial"
+                onClick={prev}
+                onFocus={() => setPaused(true)}
+                onBlur={() => setPaused(false)}
+                size="small"
+                sx={{
+                  bgcolor: "#fff",
+                  border: "1px solid #e8edf6",
+                  boxShadow: "0 6px 14px rgba(0,0,0,0.06)",
+                  "&:hover": { bgcolor: "#f8fafc" },
+                }}
+              >
+                <ArrowBackIosNewRoundedIcon fontSize="small" />
+              </IconButton>
+
+              {/* Dots */}
+              <Stack direction="row" spacing={1} alignItems="center">
+                {TESTIMONIALS.map((_, i) => (
+                  <Box
+                    key={i}
+                    onClick={() => setIdx(i)}
+                    role="button"
+                    aria-label={`Go to testimonial ${i + 1}`}
+                    tabIndex={0}
+                    sx={{
+                      width: i === idx ? 10 : 8,
+                      height: i === idx ? 10 : 8,
+                      borderRadius: "50%",
+                      bgcolor: i === idx ? "#3b82f6" : "#cbd5e1",
+                      cursor: "pointer",
+                      transition: "all .2s ease",
+                      outline: "none",
+                      "&:focus-visible": {
+                        boxShadow: "0 0 0 3px rgba(59,130,246,0.4)",
+                      },
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") setIdx(i);
+                    }}
+                  />
+                ))}
+              </Stack>
+
+              <IconButton
+                aria-label="Next testimonial"
+                onClick={next}
+                onFocus={() => setPaused(true)}
+                onBlur={() => setPaused(false)}
+                size="small"
+                sx={{
+                  bgcolor: "#fff",
+                  border: "1px solid #e8edf6",
+                  boxShadow: "0 6px 14px rgba(0,0,0,0.06)",
+                  "&:hover": { bgcolor: "#f8fafc" },
+                }}
+              >
+                <ArrowForwardIosRoundedIcon fontSize="small" />
+              </IconButton>
             </Stack>
           </Box>
         </Grid>
