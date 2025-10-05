@@ -31,28 +31,28 @@ function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
   const lastY = useRef(0);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY || 0;
-      const goingDown = y > lastY.current;
-      const atTop = y < 10;
+  // useEffect(() => {
+  //   const onScroll = () => {
+  //     const y = window.scrollY || 0;
+  //     const goingDown = y > lastY.current;
+  //     const atTop = y < 10;
 
-      // near bottom?
-      const docH = document.documentElement.scrollHeight;
-      const winH = window.innerHeight;
-      const nearBottom = y + winH > docH - 10;
+  //     // near bottom?
+  //     const docH = document.documentElement.scrollHeight;
+  //     const winH = window.innerHeight;
+  //     const nearBottom = y + winH > docH - 10;
 
-      if (atTop || nearBottom) {
-        setVisible(true);               // always show at very top & at footer
-      } else {
-        setVisible(!goingDown);         // show when scrolling up, hide when down
-      }
+  //     if (atTop || nearBottom) {
+  //       setVisible(true);               // always show at very top & at footer
+  //     } else {
+  //       setVisible(!goingDown);         // show when scrolling up, hide when down
+  //     }
 
-      lastY.current = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  //     lastY.current = y;
+  //   };
+  //   window.addEventListener("scroll", onScroll, { passive: true });
+  //   return () => window.removeEventListener("scroll", onScroll);
+  // }, []);
 
   return (
     <div

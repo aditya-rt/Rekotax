@@ -6,100 +6,124 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        bgcolor: "#000",          // black background
+        bgcolor: "#000",
         color: "#fff",
         pt: { xs: 6, md: 8 },
-        pb: { xs: 3, md: 4 },
-        px: { xs: 3, md: 10 },
+        pb: { xs: 4, md: 8 },
+        px: { xs: 2.5, sm: 3, md: 4 },
       }}
     >
-      <Grid container spacing={6}>
-        {/* Left logo and tagline */}
-        <Grid item xs={12} md={5}>
-          {/* if using Next.js Image */}
-          {/* <Image src="/rekotax-logo.svg" alt="Rekotax logo" width={180} height={40}/> */}
-          <Box
-            component="img"
-            src="/rekotaxlogoNew.svg"   // replace with your actual SVG path
-            alt="Rekotax logo"
-            sx={{ height: 40, mb: 2 }}
-          />
-          <Typography
-            variant="body1"
-            sx={{ opacity: 0.9, mt: 1, fontSize: { xs: 14, md: 16 } }}
-          >
-            Expertise in compliance, taxation, and business services.
-          </Typography>
+      {/* Centered, responsive container */}
+      <Box sx={{ maxWidth: { xs: 1200 }, mx: "auto" }}>
+        <Grid
+          container
+          spacing={{ xs: 4, md: 6 }}
+          alignItems="flex-start"
+          justifyContent="space-between"
+        >
+          {/* Left: logo + tagline */}
+          <Grid item xs={12} sm={6} md={5}>
+            <Box
+              component="img"
+              src="/rekotaxlogoNew.svg"
+              alt="Rekotax logo"
+              sx={{
+                height: { xs: 36, md: 40 },
+                mb: { xs: 1.5, md: 2 },
+              }}
+            />
+            <Typography
+              sx={{
+                opacity: 0.9,
+                mt: 1,
+                fontSize: { xs: 13.5, sm: 14, md: 16 },
+                lineHeight: 1.7,
+              }}
+            >
+              Expertise in compliance, taxation, and business services.
+            </Typography>
+          </Grid>
+
+          {/* Quick Links (auto-wrap into 2–3 columns on larger screens) */}
+          <Grid item xs={12} sm={6} md={7}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 800,
+                letterSpacing: 0.6,
+                mb: { xs: 1.5, md: 2 },
+                fontSize: { xs: 14, md: 16 },
+              }}
+            >
+              QUICK LINKS
+            </Typography>
+
+            <Box
+              sx={{
+                display: "grid",
+                gap: { xs: 1, sm: 1.25 },
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "repeat(2, minmax(0,1fr))",
+                  lg: "repeat(3, minmax(0,1fr))",
+                },
+              }}
+            >
+              {[
+                { href: "/company-registration", label: "Company Registration" },
+                { href: "/llp-registration", label: "LLP Registration" },
+                { href: "/gst-registration", label: "GST Registration" },
+                { href: "/msme-registration", label: "MSME Registration" },
+                { href: "/trademark", label: "Trademark" },
+                { href: "/startup-india", label: "Start-up India" },
+                { href: "/compliances", label: "Compliances" },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  underline="hover"
+                  color="inherit"
+                  sx={{
+                    fontSize: { xs: 13.5, sm: 14, md: 15 },
+                    opacity: 0.95,
+                    "&:hover": { opacity: 1 },
+                    lineHeight: 1.9,
+                  }}
+                >
+                  {label}
+                </Link>
+              ))}
+            </Box>
+          </Grid>
         </Grid>
 
-        {/* Quick Links */}
-        <Grid item xs={12} md={4}>
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 700, letterSpacing: 0.5, mb: 2 }}
-          >
-            QUICK LINKS
-          </Typography>
-          <Stack spacing={1.2}>
-            <Link href="/company-registration" underline="hover" color="inherit">
-              Company Registration
-            </Link>
-            <Link href="/llp-registration" underline="hover" color="inherit">
-              LLP Registration
-            </Link>
-            <Link href="/gst-registration" underline="hover" color="inherit">
-              GST Registration
-            </Link>
-            <Link href="/msme-registration" underline="hover" color="inherit">
-              MSME Registration
-            </Link>
-            <Link href="/trademark" underline="hover" color="inherit">
-              Trademark
-            </Link>
-            <Link href="/startup-india" underline="hover" color="inherit">
-              Start-up India
-            </Link>
-            <Link href="/compliances" underline="hover" color="inherit">
-              Compliances
-            </Link>
-          </Stack>
-        </Grid>
-      </Grid>
+        {/* Divider */}
+        <Divider sx={{ borderColor: "rgba(255,255,255,0.12)", my: { xs: 3.5, md: 5 } }} />
 
-      {/* Bottom line */}
-      <Divider sx={{ borderColor: "rgba(255,255,255,0.1)", my: 4 }} />
-
-      <Grid
-        container
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{ textAlign: { xs: "center", md: "left" } }}
-      >
-        <Grid item xs={12} md="auto">
-          <Typography sx={{ fontSize: 14, opacity: 0.8 }}>
+        {/* Bottom bar */}
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 2, md: 0 }}
+          alignItems={{ xs: "center", md: "center" }}
+          justifyContent="space-between"
+        >
+          <Typography sx={{ fontSize: { xs: 12.5, sm: 13, md: 14 }, opacity: 0.8, textAlign: { xs: "center", md: "left" } }}>
             © 2025 - VAMSAG CONSULTING PRIVATE LIMITED. ALL RIGHTS RESERVED
           </Typography>
-        </Grid>
 
-        <Grid item xs={12} md="auto">
-          <Stack
-            direction="row"
-            spacing={4}
-            justifyContent={{ xs: "center", md: "flex-end" }}
-            sx={{ mt: { xs: 2, md: 0 } }}
-          >
-            <Link href="/terms-and-conditions" underline="hover" color="inherit">
+          <Stack direction="row" spacing={{ xs: 2, sm: 3, md: 4 }} flexWrap="wrap" justifyContent="center">
+            <Link href="/terms-and-conditions" underline="hover" color="inherit" sx={{ fontSize: { xs: 12.5, sm: 13, md: 14 }, opacity: 0.95 }}>
               Terms & Conditions
             </Link>
-            <Link href="/privacy-policy" underline="hover" color="inherit">
+            <Link href="/privacy-policy" underline="hover" color="inherit" sx={{ fontSize: { xs: 12.5, sm: 13, md: 14 }, opacity: 0.95 }}>
               Privacy Policy
             </Link>
-            <Link href="/refund-policy" underline="hover" color="inherit">
+            <Link href="/refund-policy" underline="hover" color="inherit" sx={{ fontSize: { xs: 12.5, sm: 13, md: 14 }, opacity: 0.95 }}>
               Refund Policy
             </Link>
           </Stack>
-        </Grid>
-      </Grid>
+        </Stack>
+      </Box>
     </Box>
   );
 }

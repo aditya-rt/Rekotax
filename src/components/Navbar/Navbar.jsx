@@ -26,11 +26,9 @@ export default function Navbar() {
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
 
-  // Consistent toolbar heights
   const APPBAR_H_DESKTOP = 64;
   const APPBAR_H_MOBILE = 56;
 
-  // Desktop mega menu state
   const [anchors, setAnchors] = useState({
     services: false,
     industries: false,
@@ -38,13 +36,12 @@ export default function Navbar() {
     about: false,
   });
   const [activeService, setActiveService] = useState("Registration");
-
-  // Mobile drawer
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const openMenu = (key) => setAnchors((a) => ({ ...a, [key]: true }));
-  const closeMenu = (key) => setAnchors((a) => ({ ...a, [key]: false }));
-  const isOpen = (key) => Boolean(anchors[key]);
+  const openMenu = (k) => setAnchors((a) => ({ ...a, [k]: true }));
+  const closeMenu = (k) => setAnchors((a) => ({ ...a, [k]: false }));
+  const toggleMenu = (k) => setAnchors((a) => ({ ...a, [k]: !a[k] }));
+  const isOpen = (k) => Boolean(anchors[k]);
 
   const startBusinessItems = [
     "Private Limited Company",
@@ -76,10 +73,8 @@ export default function Navbar() {
   const otherRegColB = otherRegItems.slice(midIdx);
 
   const handleRoute = (text) => {
-    // close menus/drawer first
     closeMenu("services");
     setMobileOpen(false);
-
     if (text === "One Person Company (OPC)") return navigate("/opc-registration");
     if (text === "Private Limited Company") return navigate("/plc-registration");
     if (text === "Limited Liability Partnership (LLP)") return navigate("/llp-registration");
@@ -92,36 +87,39 @@ export default function Navbar() {
     if (text === "Goods & Service Tax (GST)") return navigate("/gst-registration");
     if (text === "LUT Registration") return navigate("/lut-registration");
     if (text === "Import Export Code") return navigate("/import-export-code");
-    // add more routes as you build them
   };
 
   return (
     <>
       <AppBar
         position="fixed"
-        color="primary"
         elevation={0}
         sx={{
-          bgcolor: "#0B2A5A",
-          zIndex: (t) => t.zIndex.drawer + 1,
+          // brand glass in #0f2555
+          bgcolor: "rgba(15, 37, 85, 0.52)",                    // correct tint
+          backgroundImage: "linear-gradient(180deg, rgba(15,37,85,0.28), rgba(15,37,85,0.12))", // no white wash
+          backdropFilter: "blur(16px) saturate(170%)",
+          WebkitBackdropFilter: "blur(16px) saturate(170%)",
+          // borderBottom: "1px solid rgba(255,255,255,0.16)",
+          color: "#fff",
+          zIndex: (t) => t.zIndex.modal + 1,
           width: "100%",
           left: 0,
           right: 0,
         }}
-      >
-        {/* Center the row content to the same max as your pages */}
-       <Toolbar
-  disableGutters
-  sx={{
-    width: "100%",
-    maxWidth: { md: 1120, lg: 1200 },   // a bit narrower -> more side space
-    mx: "auto",
-    px: { xs: 3, md: 6 },               // larger left/right padding
-    minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP },
-    gap: 2,
-  }}
->
 
+      >
+        <Toolbar
+          disableGutters
+          sx={{
+            width: "100%",
+            maxWidth: { md: 1120, lg: 1200 },
+            mx: "auto",
+            px: { xs: 3, md: 6 },
+            minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP },
+            gap: 2,
+          }}
+        >
           {/* Mobile hamburger */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -129,12 +127,18 @@ export default function Navbar() {
               edge="start"
               onClick={() => setMobileOpen(true)}
               aria-label="open navigation"
+              sx={{
+                bgcolor: "rgba(255,255,255,0.10)",
+                border: "1px solid rgba(255,255,255,0.18)",
+                backdropFilter: "blur(10px)",
+                "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
+              }}
             >
               <MenuIcon />
             </IconButton>
           </Box>
 
-          {/* Logo (aligned with page content, scales down on mobile) */}
+          {/* Logo */}
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1, minWidth: 0 }}>
             <Box
               component="img"
@@ -146,29 +150,36 @@ export default function Navbar() {
                 height: "auto",
                 cursor: "pointer",
                 display: "block",
+                filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
               }}
             />
           </Box>
 
-          {/* Desktop nav items (hidden on mobile) */}
+          {/* Desktop nav items */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1, alignItems: "center", mr: 2 }}>
-            {/* Services (mega) */}
-            <Box
-              onMouseEnter={() => isDesktop && openMenu("services")}
-              onMouseLeave={() => isDesktop && closeMenu("services")}
-            >
+            {/* Services — CLICK to open */}
+            <Box>
               <Button
                 color="inherit"
                 endIcon={<ArrowDropDownIcon />}
-                sx={{ fontWeight: 600, textTransform: "none" }}
-                aria-haspopup="true"
+                sx={{
+                  fontWeight: 700,
+                  textTransform: "none",
+                  borderRadius: 999,
+                  px: 1.25,
+                  "&:hover": {
+                    bgcolor: "rgba(255,255,255,0.10)",
+                    border: "1px solid rgba(255,255,255,0.18)",
+                  },
+                }}
+                aria-haspopup="menu"
+                aria-controls={isOpen("services") ? "services-mega" : undefined}
                 aria-expanded={isOpen("services") ? "true" : undefined}
-                aria-controls="services-mega"
+                onClick={() => toggleMenu("services")}
               >
                 Services
               </Button>
 
-              {/* Desktop mega — not rendered on mobile */}
               {isDesktop && (
                 <Menu
                   id="services-mega"
@@ -182,6 +193,7 @@ export default function Navbar() {
                   slotProps={{
                     paper: {
                       sx: {
+                        // —— BRAND GLASS SHEET ——
                         p: 0,
                         m: 0,
                         position: "fixed",
@@ -191,21 +203,25 @@ export default function Navbar() {
                         width: "100%",
                         maxWidth: "100%",
                         borderRadius: 0,
-                        bgcolor: "#1c1c1c",
+                        bgcolor: "rgba(15, 37, 85, 0.55)",
+                        backgroundImage:
+                          "linear-gradient(180deg, rgba(15,37,85,0.18), rgba(15,37,85,0.06))",
+                        backdropFilter: "saturate(180%) blur(20px)",
+                        WebkitBackdropFilter: "saturate(180%) blur(20px)",
+                        borderTop: "1px solid rgba(255,255,255,0.10)",
+                        borderBottom: "1px solid rgba(255,255,255,0.14)",
                         color: "#fff",
-                        boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
-                        // ensure visible on short screens:
+                        boxShadow: "0 12px 40px rgba(0,0,0,0.45)",
                         maxHeight: `calc(100vh - ${APPBAR_H_DESKTOP}px)`,
                         overflowY: "auto",
                         zIndex: (t) => t.zIndex.appBar + 2,
                       },
-                      onMouseLeave: () => isDesktop && closeMenu("services"),
+                      onMouseLeave: () => closeMenu("services"),
                     },
                     list: { sx: { p: 0, m: 0 } },
                   }}
                   MenuListProps={{ sx: { p: 0, m: 0 } }}
                 >
-                  {/* Inner centered content matches page maxWidth */}
                   <Box
                     sx={{
                       width: "100%",
@@ -217,16 +233,18 @@ export default function Navbar() {
                       minHeight: 300,
                     }}
                   >
-                    {/* Left rail (categories) */}
+                    {/* Left rail */}
                     <Box
                       sx={{
                         width: 240,
-                        bgcolor: "#2a2a2a",
                         display: "flex",
                         flexDirection: "column",
                         flexShrink: 0,
-                        borderRadius: 1,
+                        borderRadius: 1.5,
                         overflow: "hidden",
+                        border: "1px solid rgba(255,255,255,0.14)",
+                        bgcolor: "rgba(255,255,255,0.06)",
+                        backdropFilter: "blur(10px)",
                       }}
                     >
                       {[
@@ -240,12 +258,16 @@ export default function Navbar() {
                       ].map((item) => (
                         <MenuItem
                           key={item}
-                          onMouseEnter={() => setActiveService(item)}
+                          onClick={() => setActiveService(item)}
                           sx={{
-                            py: 1.25,
-                            color: activeService === item ? "#a4e100" : "#fff",
-                            bgcolor: activeService === item ? "#000" : "transparent",
-                            "&:hover": { bgcolor: "#000" },
+                            py: 1.2,
+                            color: activeService === item ? "#e5f2ff" : "rgba(255,255,255,0.92)",
+                            bgcolor:
+                              activeService === item
+                                ? "rgba(255,255,255,0.14)"
+                                : "transparent",
+                            "&:hover": { bgcolor: "rgba(255,255,255,0.12)" },
+                            transition: "background-color 120ms ease",
                           }}
                         >
                           {item}
@@ -253,11 +275,11 @@ export default function Navbar() {
                       ))}
                     </Box>
 
-                    {/* Right panel (content) */}
-                    <Box sx={{ flex: 1, color: "#a4e100", minWidth: 0, px: { md: 3, lg: 4 } }}>
+                    {/* Right panel */}
+                    <Box sx={{ flex: 1, color: "#e6efff", minWidth: 0, px: { md: 3, lg: 4 } }}>
+                      {/* — Example: Registration content — */}
                       {activeService === "Registration" && (
                         <Grid container spacing={6}>
-                          {/* LEFT HALF */}
                           <Grid
                             item
                             xs={12}
@@ -271,17 +293,8 @@ export default function Navbar() {
                                 top: 12,
                                 bottom: 12,
                                 right: { md: -8 },
-                                width: "2px",
-                                backgroundImage:
-                                  "radial-gradient(#ffffff 2px, rgba(255,255,255,0) 2.6px)",
-                                backgroundSize: "2px 12px",
-                                backgroundRepeat: "repeat-y",
-                                backgroundPosition: "center",
-                                filter: "drop-shadow(0 0 4px rgba(255,255,255,0.35))",
-                                WebkitMaskImage:
-                                  "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
-                                maskImage:
-                                  "linear-gradient(to bottom, transparent, black 12px, black calc(100% - 12px), transparent)",
+                                width: "1px",
+                                backgroundColor: "rgba(255,255,255,0.22)",
                               },
                             }}
                           >
@@ -289,8 +302,8 @@ export default function Navbar() {
                               sx={{
                                 mb: 2,
                                 fontWeight: 900,
-                                color: "#a4e100",
-                                fontSize: "1.5rem",
+                                color: "#f0f6ff",
+                                fontSize: "1.35rem",
                                 position: "relative",
                                 pb: 1,
                                 display: "inline-block",
@@ -300,8 +313,8 @@ export default function Navbar() {
                                   left: 0,
                                   bottom: 0,
                                   width: "100%",
-                                  height: "3px",
-                                  bgcolor: "#a4e100",
+                                  height: "2px",
+                                  bgcolor: "rgba(255,255,255,0.35)",
                                   borderRadius: 1,
                                 },
                               }}
@@ -309,12 +322,22 @@ export default function Navbar() {
                               Start your New Business
                             </Typography>
 
-                            {startBusinessItems.map((text) => (
+                            {[
+                              "Private Limited Company",
+                              "One Person Company (OPC)",
+                              "Limited Liability Partnership (LLP)",
+                              "Partnership Firm",
+                              "Sole Proprietorship",
+                              "Section 8 Company",
+                              "Public Limited Company",
+                              "Nidhi Company",
+                              "Producer Company",
+                            ].map((text) => (
                               <Typography
                                 key={text}
                                 sx={{
-                                  mb: 1.25,
-                                  color: "#a4e100",
+                                  mb: 1.1,
+                                  color: "rgba(255,255,255,0.95)",
                                   cursor: "pointer",
                                   "&:hover": { textDecoration: "underline" },
                                 }}
@@ -325,14 +348,13 @@ export default function Navbar() {
                             ))}
                           </Grid>
 
-                          {/* RIGHT HALF */}
                           <Grid item xs={12} md={6} sx={{ pl: { md: 3 } }}>
                             <Typography
                               sx={{
                                 mb: 2,
                                 fontWeight: 900,
-                                color: "#a4e100",
-                                fontSize: "1.5rem",
+                                color: "#f0f6ff",
+                                fontSize: "1.35rem",
                                 position: "relative",
                                 pb: 1,
                                 display: "inline-block",
@@ -342,8 +364,8 @@ export default function Navbar() {
                                   left: 0,
                                   bottom: 0,
                                   width: "100%",
-                                  height: "3px",
-                                  bgcolor: "#a4e100",
+                                  height: "2px",
+                                  bgcolor: "rgba(255,255,255,0.35)",
                                   borderRadius: 1,
                                 },
                               }}
@@ -357,8 +379,8 @@ export default function Navbar() {
                                   <Typography
                                     key={text}
                                     sx={{
-                                      mb: 1.25,
-                                      color: "#a4e100",
+                                      mb: 1.1,
+                                      color: "rgba(255,255,255,0.95)",
                                       cursor: "pointer",
                                       "&:hover": { textDecoration: "underline" },
                                     }}
@@ -373,8 +395,8 @@ export default function Navbar() {
                                   <Typography
                                     key={text}
                                     sx={{
-                                      mb: 1.25,
-                                      color: "#a4e100",
+                                      mb: 1.1,
+                                      color: "rgba(255,255,255,0.95)",
                                       cursor: "pointer",
                                       "&:hover": { textDecoration: "underline" },
                                     }}
@@ -395,35 +417,30 @@ export default function Navbar() {
                           <Typography>Compliance item 2</Typography>
                         </>
                       )}
-
                       {activeService === "Taxation" && (
                         <>
                           <Typography sx={{ mb: 1 }}>Taxation item 1</Typography>
                           <Typography>Taxation item 2</Typography>
                         </>
                       )}
-
                       {activeService === "OutSourcing" && (
                         <>
                           <Typography sx={{ mb: 1 }}>Outsourcing item 1</Typography>
                           <Typography>Outsourcing item 2</Typography>
                         </>
                       )}
-
                       {activeService === "Business Advisory" && (
                         <>
                           <Typography sx={{ mb: 1 }}>Advisory item 1</Typography>
                           <Typography>Advisory item 2</Typography>
                         </>
                       )}
-
                       {activeService === "Virtual Office" && (
                         <>
                           <Typography sx={{ mb: 1 }}>Virtual Office item 1</Typography>
                           <Typography>Virtual Office item 2</Typography>
                         </>
                       )}
-
                       {activeService === "Other Services" && (
                         <>
                           <Typography sx={{ mb: 1 }}>Other service 1</Typography>
@@ -436,46 +453,56 @@ export default function Navbar() {
               )}
             </Box>
 
-            {/* Other top-level desktop buttons */}
-            <Button color="inherit" sx={{ fontWeight: 600, textTransform: "none" }}>
-              Industries
-            </Button>
-            <Button color="inherit" sx={{ fontWeight: 600, textTransform: "none" }}>
-              Insights
-            </Button>
-            <Button color="inherit" sx={{ fontWeight: 600, textTransform: "none" }}>
-              About Us
-            </Button>
+            {["Industries", "Insights", "About Us"].map((label) => (
+              <Button
+                key={label}
+                color="inherit"
+                sx={{
+                  fontWeight: 700,
+                  textTransform: "none",
+                  borderRadius: 999,
+                  px: 1.25,
+                  "&:hover": {
+                    bgcolor: "rgba(255,255,255,0.10)",
+                    border: "1px solid rgba(255,255,255,0.18)",
+                  },
+                }}
+              >
+                {label}
+              </Button>
+            ))}
           </Box>
 
-          {/* CTA (always visible) */}
+          {/* CTA */}
           <Button
             variant="contained"
             size="small"
             disableElevation
             sx={{
-              bgcolor: "#808080",
               fontWeight: 800,
-              // keep padding tight so color only wraps the text
-              px: { xs: 1.25, sm: 1.5, md: 2.25 },
-              py: { xs: 0.5, sm: 0.6, md: 0.7 },
+              px: { xs: 1.6, sm: 1.9, md: 2.2 },
+              py: { xs: 0.55, sm: 0.65, md: 0.75 },
               borderRadius: 999,
-              fontSize: { xs: 11, sm: 12, md: 13 },
+              fontSize: { xs: 11.5, sm: 12.5, md: 13 },
               lineHeight: 1.6,
-              whiteSpace: "nowrap",
-              width: "auto",       // don't stretch
-              minWidth: 0,         // override MUI's 64px default
-              flexShrink: 0,       // prevent flex shrinking artifacts
-              "&:hover": { bgcolor: "#ffffff", color: "primary.main" },
+              minWidth: 0,
+              color: "#fff",
+              // glassy brand button
+              bgcolor: "rgba(15,37,85,0.52)",
+              border: "1px solid rgba(255,255,255,0.26)",
+              backdropFilter: "blur(8px)",
+              "&:hover": {
+                bgcolor: "rgba(15,37,85,0.65)",
+                borderColor: "rgba(255,255,255,0.36)",
+              },
             }}
           >
             GET CONSULTATION
           </Button>
-
         </Toolbar>
       </AppBar>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer — brand glass */}
       <Drawer
         anchor="left"
         open={mobileOpen}
@@ -484,8 +511,13 @@ export default function Navbar() {
         PaperProps={{
           sx: {
             width: { xs: "88vw", sm: 320 },
-            bgcolor: "#0f2555",
-            color: "#a4e100",
+            bgcolor: "rgba(15, 37, 85, 0.58)",
+            backgroundImage:
+              "linear-gradient(180deg, rgba(15,37,85,0.18), rgba(15,37,85,0.06))",
+            color: "#e5f2ff",
+            backdropFilter: "saturate(180%) blur(16px)",
+            WebkitBackdropFilter: "saturate(180%) blur(16px)",
+            borderRight: "1px solid rgba(255,255,255,0.16)",
           },
         }}
       >
@@ -508,8 +540,7 @@ export default function Navbar() {
             <ListItemText primary="Home" primaryTypographyProps={{ sx: { color: "#fff" } }} />
           </ListItemButton>
 
-          {/* Collapsed Services (mobile) */}
-          <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#a4e100" }}>
+          <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#e5f2ff" }}>
             Start your New Business
           </Typography>
           {startBusinessItems.map((text) => (
@@ -518,7 +549,7 @@ export default function Navbar() {
             </ListItemButton>
           ))}
 
-          <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#a4e100" }}>
+          <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#e5f2ff" }}>
             Other Regulatory Registrations
           </Typography>
           {otherRegItems.map((text) => (
@@ -528,19 +559,15 @@ export default function Navbar() {
           ))}
 
           <Divider sx={{ my: 1, borderColor: "rgba(255,255,255,0.15)" }} />
-          <ListItemButton onClick={() => setMobileOpen(false)}>
-            <ListItemText primary="Industries" primaryTypographyProps={{ sx: { color: "#fff" } }} />
-          </ListItemButton>
-          <ListItemButton onClick={() => setMobileOpen(false)}>
-            <ListItemText primary="Insights" primaryTypographyProps={{ sx: { color: "#fff" } }} />
-          </ListItemButton>
-          <ListItemButton onClick={() => setMobileOpen(false)}>
-            <ListItemText primary="About Us" primaryTypographyProps={{ sx: { color: "#fff" } }} />
-          </ListItemButton>
+          {["Industries", "Insights", "About Us"].map((label) => (
+            <ListItemButton key={label} onClick={() => setMobileOpen(false)}>
+              <ListItemText primary={label} primaryTypographyProps={{ sx: { color: "#fff" } }} />
+            </ListItemButton>
+          ))}
         </List>
       </Drawer>
 
-      {/* Spacer so content isn't hidden behind the fixed AppBar */}
+      {/* Spacer so content isn’t hidden behind the fixed AppBar */}
       <Toolbar sx={{ minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP } }} />
     </>
   );
