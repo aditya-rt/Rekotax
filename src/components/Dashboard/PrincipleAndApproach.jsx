@@ -56,7 +56,7 @@ function PrincipleRow({ title, points, img, reverse = false }) {
         <Typography
           variant="h6"
           sx={{
-            fontWeight: 900,
+            fontWeight: 600,
             color: "#0f2555",
             mb: { xs: 1.5, sm: 2 },
             fontSize: { xs: 18, sm: 20, md: 22 },
@@ -143,7 +143,7 @@ export default function CompanyPrinciples() {
         <Typography
           align="center"
           sx={{
-            fontWeight: 900,
+            fontWeight: 600,
             color: "#0f2555",
             letterSpacing: 0.4,
             lineHeight: 1.1,
@@ -151,7 +151,7 @@ export default function CompanyPrinciples() {
             fontSize: { xs: "clamp(26px, 7vw, 34px)", md: "clamp(38px, 4.5vw, 54px)" },
           }}
         >
-          Principles Of Our Company
+          Our Principles 
         </Typography>
 
         <Typography

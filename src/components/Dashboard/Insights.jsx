@@ -86,7 +86,7 @@ export default function InsightsCarousel({
         fontFamily: "'Open Sans', sans-serif",
         // (optional hard-force)
         "& *": { fontFamily: "'Open Sans', sans-serif" },
-        bgcolor: "#f3f5f7",
+        bgcolor: "#fff",
         py: { xs: 5, sm: 6.5, md: 8 },
         px: { xs: 1.5, sm: 2.5, md: 3 },
         position: "relative",

@@ -29,7 +29,7 @@ export default function WhyRekotax({ fullBleed = false }) {
   return (
     <Box
       sx={{
-        bgcolor: "#f4f6f8",
+        bgcolor: "#eef3ff",
         py: { xs: 6, md: 8 },
         px: fullBleed ? 0 : { xs: 2, md: 4 },
         ...(fullBleed
@@ -42,9 +42,10 @@ export default function WhyRekotax({ fullBleed = false }) {
           variant="h2"
           align="center"
           sx={{
-            fontWeight: 700,
+            fontWeight: 600,
             color: "#4a5d82",
-            fontSize: { xs: "clamp(28px, 6vw, 36px)", md: "clamp(32px, 3.5vw, 44px)" },
+            fontSize: { xs: 26, sm: 30, md: 36, lg: 40 },
+            //fontSize: { xs: "clamp(28px, 6vw, 36px)", md: "clamp(32px, 3.5vw, 44px)" },
             mb: { xs: 4, md: 6 },
           }}
         >
@@ -96,7 +97,7 @@ export default function WhyRekotax({ fullBleed = false }) {
                 <Typography
                   sx={{
                     fontSize: { xs: 14, md: 15.5 },
-                    fontWeight: 700,
+                    fontWeight: 500,
                     lineHeight: 1.35,
                   }}
                 >

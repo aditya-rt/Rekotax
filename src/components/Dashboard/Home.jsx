@@ -249,11 +249,7 @@ export default function Home() {
           <GlassBarsSection />
         </Box>
 
-        {/* Insights Section */}
-        <Box sx={{ mx: { xs: -2, md: -6 } }} ref={aboutRef}>
-          <Insights />
-        </Box>
-
+       
 
 
         {/* About & Services */}
@@ -271,6 +267,12 @@ export default function Home() {
         <Box sx={{ mt: 0, p: 0, mx: 0, overflow: "visible" }} ref={aboutRef}>
           <WhyRekotax fullBleed />
         </Box>
+        
+         {/* Insights Section */}
+        <Box sx={{ mx: { xs: -2, md: -6 } }} ref={aboutRef}>
+          <Insights />
+        </Box>
+
 
         <Box sx={{ mt: 0, mx: 0 }} ref={aboutRef}>
           <ClientTestimonials fullBleed />

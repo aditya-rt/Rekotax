@@ -19,11 +19,13 @@ import {
 import { useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import PhoneInTalkRoundedIcon from "@mui/icons-material/PhoneInTalkRounded";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
 
   const APPBAR_H_DESKTOP = 64;
@@ -95,19 +97,17 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={{
-          // brand glass in #0f2555
-          bgcolor: "rgba(15, 37, 85, 0.52)",                    // correct tint
-          backgroundImage: "linear-gradient(180deg, rgba(15,37,85,0.28), rgba(15,37,85,0.12))", // no white wash
+          bgcolor: "rgba(15, 37, 85, 0.52)",
+          backgroundImage:
+            "linear-gradient(180deg, rgba(15,37,85,0.28), rgba(15,37,85,0.12))",
           backdropFilter: "blur(16px) saturate(170%)",
           WebkitBackdropFilter: "blur(16px) saturate(170%)",
-          // borderBottom: "1px solid rgba(255,255,255,0.16)",
           color: "#fff",
           zIndex: (t) => t.zIndex.modal + 1,
           width: "100%",
           left: 0,
           right: 0,
         }}
-
       >
         <Toolbar
           disableGutters
@@ -115,9 +115,9 @@ export default function Navbar() {
             width: "100%",
             maxWidth: { md: 1120, lg: 1200 },
             mx: "auto",
-            px: { xs: 3, md: 6 },
+            px: { xs: 1.5, sm: 2.5, md: 6 }, // tighter on xs
             minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP },
-            gap: 2,
+            gap: { xs: 1, md: 2 }, // tighter gaps on xs
           }}
         >
           {/* Mobile hamburger */}
@@ -132,6 +132,7 @@ export default function Navbar() {
                 border: "1px solid rgba(255,255,255,0.18)",
                 backdropFilter: "blur(10px)",
                 "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
+                p: 0.75, // slightly smaller touch target on xs
               }}
             >
               <MenuIcon />
@@ -146,7 +147,8 @@ export default function Navbar() {
               alt="Rekotax"
               onClick={() => navigate("/")}
               sx={{
-                width: { xs: 140, sm: 160, md: 180 },
+                width: { xs: 110, sm: 150, md: 180 }, // smaller on xs
+                maxWidth: "45vw", // never exceed 45 percent of row
                 height: "auto",
                 cursor: "pointer",
                 display: "block",
@@ -157,7 +159,7 @@ export default function Navbar() {
 
           {/* Desktop nav items */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1, alignItems: "center", mr: 2 }}>
-            {/* Services — CLICK to open */}
+            {/* Services */}
             <Box>
               <Button
                 color="inherit"
@@ -193,7 +195,6 @@ export default function Navbar() {
                   slotProps={{
                     paper: {
                       sx: {
-                        // —— BRAND GLASS SHEET ——
                         p: 0,
                         m: 0,
                         position: "fixed",
@@ -277,7 +278,6 @@ export default function Navbar() {
 
                     {/* Right panel */}
                     <Box sx={{ flex: 1, color: "#e6efff", minWidth: 0, px: { md: 3, lg: 4 } }}>
-                      {/* — Example: Registration content — */}
                       {activeService === "Registration" && (
                         <Grid container spacing={6}>
                           <Grid
@@ -322,17 +322,7 @@ export default function Navbar() {
                               Start your New Business
                             </Typography>
 
-                            {[
-                              "Private Limited Company",
-                              "One Person Company (OPC)",
-                              "Limited Liability Partnership (LLP)",
-                              "Partnership Firm",
-                              "Sole Proprietorship",
-                              "Section 8 Company",
-                              "Public Limited Company",
-                              "Nidhi Company",
-                              "Producer Company",
-                            ].map((text) => (
+                            {startBusinessItems.map((text) => (
                               <Typography
                                 key={text}
                                 sx={{
@@ -479,15 +469,15 @@ export default function Navbar() {
             size="small"
             disableElevation
             sx={{
+              display: { xs: "none", sm: "inline-flex" }, // hide on xs
               fontWeight: 800,
-              px: { xs: 1.6, sm: 1.9, md: 2.2 },
-              py: { xs: 0.55, sm: 0.65, md: 0.75 },
+              px: { sm: 1.8, md: 2.2 },
+              py: { sm: 0.65, md: 0.75 },
               borderRadius: 999,
-              fontSize: { xs: 11.5, sm: 12.5, md: 13 },
+              fontSize: { sm: 12.5, md: 13 },
               lineHeight: 1.6,
               minWidth: 0,
               color: "#fff",
-              // glassy brand button
               bgcolor: "rgba(15,37,85,0.52)",
               border: "1px solid rgba(255,255,255,0.26)",
               backdropFilter: "blur(8px)",
@@ -496,13 +486,28 @@ export default function Navbar() {
                 borderColor: "rgba(255,255,255,0.36)",
               },
             }}
+            onClick={() => navigate("/contact")}
           >
             GET CONSULTATION
           </Button>
+          <IconButton
+            aria-label="Get consultation"
+            onClick={() => navigate("/contact")}
+            sx={{
+              display: { xs: "inline-flex", sm: "none" }, // show only on xs
+              bgcolor: "rgba(255,255,255,0.10)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              backdropFilter: "blur(8px)",
+              "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
+              ml: 0.5,
+            }}
+          >
+            <PhoneInTalkRoundedIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
 
-      {/* Mobile Drawer — brand glass */}
+      {/* Mobile Drawer */}
       <Drawer
         anchor="left"
         open={mobileOpen}
@@ -567,7 +572,7 @@ export default function Navbar() {
         </List>
       </Drawer>
 
-      {/* Spacer so content isn’t hidden behind the fixed AppBar */}
+      {/* Spacer so content is not hidden behind the fixed AppBar */}
       <Toolbar sx={{ minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP } }} />
     </>
   );

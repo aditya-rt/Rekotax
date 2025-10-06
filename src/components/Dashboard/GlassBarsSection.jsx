@@ -54,7 +54,15 @@ export default function GlassBarsSection() {
   }, []);
 
   return (
-    <Box component="section" className="rk-section" sx={{ background: "transparent", py: { xs: 6, md: 10 }, px: { xs: 2, md: 0 } }}>
+    <Box component="section" className="rk-section" sx={{
+      fontFamily: "'Open Sans', sans-serif",
+      // (optional hard-force)
+      "& *": { fontFamily: "'Open Sans', sans-serif" },
+      bgcolor: "#eef3ff",
+      py: { xs: 5, sm: 6.5, md: 8 },
+      px: { xs: 1.5, sm: 2.5, md: 3 },
+      position: "relative",
+    }}>
       {/* Keep this font link in index.html for best practice; here for portability */}
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
       <Box component="style">{`
@@ -81,37 +89,34 @@ export default function GlassBarsSection() {
           <Box className="rk-grid" />
           <Box id="rkBars" className="rk-bars">
             <Box className="rk-bar" data-target="8">
-               <Typography component="h2" sx={{ position: "absolute", top: -60, left: 0, right: 0, textAlign: "center", fontSize: 24, fontWeight: 800, color: "#0f3d7c" }}>
-                 Our Services </Typography>
+              <Typography component="h2" sx={{ position: "absolute", top: -60, left: 0, right: 0, textAlign: "center", fontSize: 24, fontWeight: 800, color: "#0f3d7c" }}>
+                Our Services </Typography>
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Registration</Typography>
+                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Launch</Typography>
                 <Typography sx={{ fontSize: 14, color: "#475569" }}>
-                  End to end new business registration and core licenses (GST, Shops and Establishment, MSME, IEC). Fast filings, name approvals, and clear documentation checklists.
+                  We help founders turn ideas into registered, compliant, and investor-ready businesses. From incorporation to essential registrations, your foundation is built for credibility and growth.
                 </Typography>
               </Box>
             </Box>
             <Box className="rk-bar" data-target="10">
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Compliance</Typography>
+                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Build</Typography>
                 <Typography sx={{ fontSize: 14, color: "#475569" }}>
-                  Always-on guidance across MCA, GST, Income tax, PF/ESI, Professional Tax, and RBI/FEMA where applicable. Calendar-driven reminders with zero last minute rush.
-                </Typography>
+                  As operations begin, we bring financial structure, accounting systems, and legal discipline that strengthen decision-making and ensure smooth day-to-day functioning.                </Typography>
               </Box>
             </Box>
             <Box className="rk-bar" data-target="14">
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Taxation</Typography>
+                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Growth</Typography>
                 <Typography sx={{ fontSize: 14, color: "#475569" }}>
-                  Proactive tax planning with accurate returns - GST, TDS, Advance tax, and ITR. We track notices and assessments so you stay penalty free and stress free.
-                </Typography>
+                  When your business starts scaling, we provide strategic advisory, Virtual CFO insights, and compliance automation—helping you expand without losing control or clarity.                </Typography>
               </Box>
             </Box>
             <Box className="rk-bar" data-target="18">
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Outsourcing</Typography>
+                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Scale-Up & Beyond</Typography>
                 <Typography sx={{ fontSize: 14, color: "#475569" }}>
-                  Virtual CFO, accounting, payroll, and MIS. Structured dashboards and monthly finance reviews so you focus on product and customers while we manage the numbers.
-                </Typography>
+                  For mature and fast-growing companies, we enable corporate governance, global expansion, and investor reporting standards—so your business is always future-ready and globally compliant.                </Typography>
               </Box>
             </Box>
           </Box>

@@ -76,7 +76,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
         pt: fullBleed ? 0 : { xs: 6, sm: 8, md: 12 },
         pb: { xs: 6, sm: 8, md: 12 },
         px: fullBleed ? 0 : { xs: 2, sm: 3, md: 4, lg: 6 },
-        bgcolor: "#fff",
+        bgcolor: "#eef3ff",
         ...(fullBleed
           ? { width: "100vw", maxWidth: "100vw", mx: "calc(50% - 50vw)" }
           : { maxWidth: { xs: "100%", md: 1180, lg: 1280 }, mx: "auto" }),
@@ -88,7 +88,7 @@ export default function ClientTestimonials({ fullBleed = false }) {
       <Typography
         align="center"
         sx={{
-          fontWeight: 900,
+          fontWeight: 600,
           color: "#0f2555",
           letterSpacing: 0.4,
           lineHeight: 1.1,
