@@ -34,8 +34,9 @@ function PrincipleRow({ title, points, img, reverse = false }) {
     <Grid
       container
       alignItems="center"
-      columnSpacing={{ xs: 2, sm: 3, md: 4 }}
-      rowSpacing={{ xs: 3, md: 0 }}
+      // 1) Avoid horizontal squeeze on phones
+      columnSpacing={{ xs: 0, sm: 3, md: 4 }}
+      rowSpacing={{ xs: 3, sm: 4, md: 5 }}
       wrap="wrap"
       sx={{
         ["@media (min-width:900px)"]: { flexWrap: "nowrap" }, // 2 columns only on md+
@@ -103,7 +104,11 @@ function PrincipleRow({ title, points, img, reverse = false }) {
           sx={{
             position: "relative",
             width: "100%",
-            height: { xs: 220, sm: 260, md: 320, lg: 360 },
+            // 2) Use aspectRatio on small screens to guarantee visible space
+            aspectRatio: { xs: "16 / 10", sm: "16 / 9", md: "auto" },
+            // 3) Keep fixed height only for md+ (where we have two columns)
+            height: { md: 320, lg: 360 },
+            minHeight: { xs: 200, sm: 220, md: 0 },
             borderRadius: 2,
             overflow: "hidden",
             boxShadow: "0 16px 36px rgba(0,0,0,0.12)",
@@ -120,6 +125,7 @@ function PrincipleRow({ title, points, img, reverse = false }) {
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition: "center",
               display: "block",
             }}
           />
@@ -151,7 +157,7 @@ export default function CompanyPrinciples() {
             fontSize: { xs: "clamp(26px, 7vw, 34px)", md: "clamp(38px, 4.5vw, 54px)" },
           }}
         >
-          Our Principles 
+          Our Principles
         </Typography>
 
         <Typography
@@ -165,8 +171,7 @@ export default function CompanyPrinciples() {
             lineHeight: 1.7,
           }}
         >
-          Our company adheres to unwavering success principles guided by integrity and
-          excellence.
+          Our company adheres to unwavering success principles guided by integrity and excellence.
         </Typography>
 
         {/* Rows */}

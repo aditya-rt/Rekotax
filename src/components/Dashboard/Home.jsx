@@ -56,8 +56,8 @@ export default function Home() {
           mx: "auto",
           px: { xs: 1, sm: 2, md: 3 }, // smaller gutters on all screens
 
-          pt: { xs: "56px", md: "64px" }, // remove the extra +20/+32
-          mt: { xs: -2, md: -10 },  // navbar height + breathing room
+          pt: { xs: "88px", md: "94px" }, // remove the extra +20/+32
+          mt: { xs: -12, md: -15 },  // navbar height + breathing room
           // pb: { xs: 6, md: 10 },
         }}
       >
@@ -99,7 +99,7 @@ export default function Home() {
             mx: "auto",
             px: { xs: 2, sm: 3, md: 6 },
             flexWrap: { xs: "wrap", md: "nowrap" },
-            mt: { xs: -10, md: 2 },
+            mt: { xs: 2, md: 2 },
           }}
         >
           {/* LEFT: text */}

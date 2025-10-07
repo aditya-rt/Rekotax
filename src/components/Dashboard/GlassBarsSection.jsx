@@ -104,7 +104,27 @@ export default function GlassBarsSection() {
 
         .rk-rail{position:relative;width:100%;height:clamp(360px, 50vw, 520px)}
         @media(max-width:900px){.rk-rail{height:clamp(340px, 60vh, 480px)}}
-        @media(max-width:600px){.rk-rail{height:clamp(420px, 76vh, 560px)}}
+/* Mobile: make bars horizontally slidable */
+@media (max-width: 600px) {
+  .rk-bars{
+    position: absolute;
+    left: 16px; right: 16px; bottom: 16px; top: 52px;
+    display: flex;                /* switch from grid to flex row */
+    align-items: flex-end;
+    gap: 12px;
+    overflow-x: auto;             /* horizontal scroll */
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;/* snap to each card */
+    scrollbar-width: none;        /* Firefox hide */
+  }
+  .rk-bars::-webkit-scrollbar{ display: none; } /* WebKit hide */
+
+  .rk-bar{
+    flex: 0 0 84%;               /* each card width on mobile */
+    scroll-snap-align: center;   /* nice centered snap */
+  }
+}
 
         /* Title sits above bars so it never overlaps on small screens */
         .rk-heading{
@@ -123,9 +143,28 @@ export default function GlassBarsSection() {
         @media(max-width:900px){
           .rk-bars{grid-template-columns:repeat(2,1fr);gap:16px;top:56px}
         }
-        @media(max-width:600px){
-          .rk-bars{grid-template-columns:1fr;gap:12px;top:52px}
-        }
+      /* Mobile: make bars horizontally slidable */
+@media (max-width: 600px) {
+  .rk-bars{
+    position: absolute;
+    left: 16px; right: 16px; bottom: 16px; top: 52px;
+    display: flex;                /* switch from grid to flex row */
+    align-items: flex-end;
+    gap: 12px;
+    overflow-x: auto;             /* horizontal scroll */
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;/* snap to each card */
+    scrollbar-width: none;        /* Firefox hide */
+  }
+  .rk-bars::-webkit-scrollbar{ display: none; } /* WebKit hide */
+
+  .rk-bar{
+    flex: 0 0 84%;               /* each card width on mobile */
+    scroll-snap-align: center;   /* nice centered snap */
+  }
+}
+
 
         .rk-bar{
           position:relative;border-radius:20px;
