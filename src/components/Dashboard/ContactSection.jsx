@@ -15,6 +15,10 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { BrandingWatermark } from "@mui/icons-material";
 import { Select, MenuItem } from "@mui/material";
 import { InputAdornment } from "@mui/material";
+import PhoneInTalkRoundedIcon from "@mui/icons-material/PhoneInTalkRounded";
+import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+import PlaceRoundedIcon from "@mui/icons-material/PlaceRounded";
+
 
 
 
@@ -97,20 +101,32 @@ export default function ContactSection() {
       <Box sx={{ maxWidth: { md: 1200, lg: 1280 }, mx: "auto" }}>
         <Grid
           container
-          // remove wrap="nowrap" to avoid overflow on small screens
-          columnSpacing={{ xs: 0, md: 8 }}  // horizontal gap between columns
-          rowSpacing={{ xs: 5, md: 0 }}     // vertical gap when stacked
+          columnSpacing={{ xs: 0, sm: 4, md: 8 }}
+          rowSpacing={{ xs: 6, sm: 6, md: 0 }}
           alignItems="flex-start"
-          sx={{ flexWrap: "nowrap" }}
+          sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}   // wrap on mobile, nowrap on desktop
         >
           {/* LEFT: text */}
-          <Grid item xs={5} md={5} zeroMinWidth sx={{ minWidth: 0, pr: { md: 1 } }}>
+          <Grid
+            item
+            xs={12}
+            md={5}
+            zeroMinWidth
+            sx={{
+              minWidth: 0,
+              pr: { md: 1 },
+              textAlign: { xs: "center", md: "left" },
+              display: "flex",
+              flexDirection: "column",
+              alignItems: { xs: "center", md: "flex-start" },
+            }}
+          >
             <Typography
               variant="h2"
               sx={{
                 fontWeight: 500,
                 letterSpacing: 0.3,
-                fontSize: { xs: 34, md: 56 },
+                fontSize: { xs: 30, sm: 38, md: 45 },
                 lineHeight: 1.1,
                 mb: 3,
               }}
@@ -120,10 +136,11 @@ export default function ContactSection() {
 
             <Typography
               sx={{
-                fontSize: { xs: 16, md: 18 },
+                fontSize: { xs: 15, sm: 16, md: 18 },
                 lineHeight: 1.8,
                 opacity: 0.95,
                 mb: 5,
+                maxWidth: { xs: 600, md: "none" },
               }}
             >
               Schedule your free consultation and discover how we can help your <br />
@@ -131,20 +148,44 @@ export default function ContactSection() {
               solutions designed to support your long-term success.
             </Typography>
 
-            <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
+            <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
               Contacts
             </Typography>
 
-            <Stack spacing={1.2} sx={{ mb: 4 }}>
-              <Typography sx={{ fontSize: { xs: 18, md: 20 } }}>+91-9220580062</Typography>
-              <Typography sx={{ fontSize: { xs: 18, md: 20 } }}>business@rekotax.com</Typography>
-            </Stack>
+            {/* Contact - glass cards (one row) */}
+        <Stack
+  direction="row"
+  spacing={2}                                   // gap = 16px each (default theme)
+  sx={{ mb: 4, width: "100%", flexWrap: "nowrap", overflowX: "hidden" }}
+>
+  <ContactGlassCard
+    kind="phone"
+    icon={<PhoneInTalkRoundedIcon />}
+    values={["+91-7303074762", "+91-7303075763", "+91-9220580064"]}
+    sx={{ flex: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }, minWidth: 0 }}
+  />
+  <ContactGlassCard
+    kind="email"
+    icon={<EmailRoundedIcon />}
+    values={["business@rekotax.com", "grievance@rekotax.com", "enquiry@rekotax.com"]}
+    sx={{ flex: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }, minWidth: 0 }}
+  />
+  <ContactGlassCard
+    kind="address"
+    icon={<PlaceRoundedIcon />}
+    value="108, Udyog Vihar Phase 1, Sector 20, Gurugram, Haryana 122016"
+    sx={{ flex: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }, minWidth: 0 }}
+  />
+</Stack>
+
+
+
 
             <Typography sx={{ fontWeight: 800, letterSpacing: 0.6, mb: 1.5 }}>
               FOLLOW US ON
             </Typography>
 
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
               <IconButton sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}>
                 <FacebookRoundedIcon fontSize="large" />
               </IconButton>
@@ -160,26 +201,25 @@ export default function ContactSection() {
             </Stack>
           </Grid>
 
-          {/* RIGHT: form (pushed to the right edge on md+) */}
+          {/* RIGHT: form */}
           <Grid
             item
-            xs={7} md={7}                          // <— stays side-by-side on all breakpoints
+            xs={12}
+            md={7}
             zeroMinWidth
             sx={{
               minWidth: 0,
               pl: { md: 1 },
               display: "flex",
-              justifyContent: { xs: "flex-end", md: "flex-end" },
+              justifyContent: { xs: "center", md: "flex-end" },
             }}
           >
-            <Box sx={{ width: "100%", maxWidth: 520 }}>
-              {/* Card like the reference image */}
+            <Box sx={{ width: "100%", maxWidth: { xs: "100%", sm: 560 } }}>
               <Box
                 sx={{
-                  background:
-                    "linear-gradient(180deg, #3a64ab 0%, #284a88 100%)",     // blue panel
+                  background: "linear-gradient(180deg, #3a64ab 0%, #284a88 100%)",
                   color: "#e9f0ff",
-                  borderRadius: { xs: 4, md: 3 },                            // large rounded corners
+                  borderRadius: { xs: 4, md: 3 },
                   p: { xs: 2, sm: 3 },
                   boxShadow: "0 16px 44px rgba(0,0,0,0.35)",
                   border: "1px solid rgba(255,255,255,0.08)",
@@ -197,7 +237,6 @@ export default function ContactSection() {
                 </Typography>
 
                 <Box component="form" onSubmit={handleSubmit}>
-                  {/* Name (keep as-is) */}
                   <GlassField
                     required
                     placeholder="Name*"
@@ -206,59 +245,61 @@ export default function ContactSection() {
                     onChange={handleChange}
                   />
 
-                  {/* Country code + Phone number (PUT THIS HERE) */}
-                  <Box sx={{ display: "flex", gap: 1.25 }}>
-                    <TextField
-                      select
-                      name="countryCode"
-                      value={form.countryCode}
-                      onChange={handleChange}
-                      SelectProps={{
-                        MenuProps: {
-                          PaperProps: { sx: { minWidth: 200 } },   // wider dropdown list
-                        },
-                      }}
-                      sx={{
-                        width: 200,                                  // wider closed select so “+91 IN” fits
-                        mb: 2,
-                        "& .MuiOutlinedInput-root": {
-                          borderRadius: 3,
-                          bgcolor: "rgba(255,255,255,0.14)",
-                          color: "#e9f0ff",
-                          "& fieldset": { borderColor: "rgba(255,255,255,0.18)" },
-                          "&:hover fieldset": { borderColor: "rgba(255,255,255,0.30)" },
-                          "&.Mui-focused fieldset": { borderColor: "rgba(255,255,255,0.45)" },
-                        },
-                        "& .MuiSelect-select": {
-                          py: 1.25, px: 1.5,
-                          whiteSpace: "nowrap",
-                          textOverflow: "clip",                      // avoid “…” truncation
-                        },
-                      }}
-                    >
-                      <MenuItem value="+91">+91 (IN)</MenuItem>
-                      <MenuItem value="+971">+971 (AE)</MenuItem>
-                      <MenuItem value="+61">+61 (AU)</MenuItem>
-                      <MenuItem value="+49">+49 (DE)</MenuItem>
-                      <MenuItem value="+1">+1 (US)</MenuItem>
-                      <MenuItem value="+86">+86 (CN)</MenuItem>
-                    </TextField>
+                {/* Country code + Phone: stack on mobile, row on sm+ */}
+<Stack direction={{ xs: "column", sm: "row" }} spacing={1.25} sx={{ mb: 2 }}>
+  <TextField
+    select
+    name="countryCode"
+    value={form.countryCode}
+    onChange={handleChange}
+    SelectProps={{
+      // dropdown menu can still be wide; only the closed control is narrow
+      MenuProps: { PaperProps: { sx: { minWidth: 220 } } },
+    }}
+    sx={{
+      // ⬇️ narrower on sm+; full width when stacked on xs
+      width: { xs: "100%", sm: 120 },
+      flex: { xs: "1 1 auto", sm: "0 0 auto" },
+      minWidth: 0,
 
+      /* keep your original look */
+      "& .MuiOutlinedInput-root": {
+        borderRadius: 3,
+        bgcolor: "rgba(255,255,255,0.14)",
+        color: "#e9f0ff",
+        "& fieldset": { borderColor: "rgba(255,255,255,0.18)" },
+        "&:hover fieldset": { borderColor: "rgba(255,255,255,0.30)" },
+        "&.Mui-focused fieldset": { borderColor: "rgba(255,255,255,0.45)" },
+      },
+      "& .MuiSelect-select": { py: 1.25, px: 1.5, whiteSpace: "nowrap" },
+    }}
+  >
+    <MenuItem value="+91">+91 (IN)</MenuItem>
+    <MenuItem value="+971">+971 (AE)</MenuItem>
+    <MenuItem value="+61">+61 (AU)</MenuItem>
+    <MenuItem value="+49">+49 (DE)</MenuItem>
+    <MenuItem value="+1">+1 (US)</MenuItem>
+    <MenuItem value="+86">+86 (CN)</MenuItem>
+  </TextField>
 
-                    <GlassField
-                      required
-                      placeholder="Mobile No.*"
-                      name="phone"
-                      inputMode="tel"
-                      value={form.phone}
-                      onChange={(e) => {
-                        const digits = e.target.value.replace(/\D/g, "");
-                        setForm((f) => ({ ...f, phone: digits }));
-                      }}
-                    />
-                  </Box>
+  <GlassField
+    required
+    placeholder="Mobile No.*"
+    inputMode="tel"
+    value={form.phone}
+    onChange={(e) => {
+      const digits = e.target.value.replace(/\D/g, "");
+      setForm((f) => ({ ...f, phone: digits }));
+    }}
+    sx={{
+      mb: 0,
+      flex: { xs: "1 1 auto", sm: 1 }, // ⬅️ take the remaining width
+      minWidth: 0,
+      // (no visual changes to your GlassField)
+    }}
+  />
+</Stack>
 
-                  {/* Email (keep as-is) */}
                   <GlassField
                     required
                     placeholder="Your email*"
@@ -276,28 +317,27 @@ export default function ContactSection() {
                     value={form.subject}
                     onChange={handleChange}
                   />
+
                   <GlassField
                     placeholder="Message"
                     name="message"
                     multiline
-                    minRows={2}
+                    minRows={3}
                     value={form.message}
                     onChange={handleChange}
                   />
 
-                  {/* center the submit button */}
                   <Box sx={{ mt: 0, display: "flex", justifyContent: "center" }}>
                     <DarkPillButton type="submit" sx={{ width: { xs: "100%", sm: "auto" } }}>
                       SUBMIT
                     </DarkPillButton>
                   </Box>
-
                 </Box>
               </Box>
             </Box>
           </Grid>
-
         </Grid>
+
       </Box>
     </Box>
   );
@@ -305,6 +345,124 @@ export default function ContactSection() {
 
 /* --- helper for big rounded text fields --- */
 // --- Helpers: drop these in the same file (outside your component) ---
+function ContactGlassCard({ icon, label, value, values, kind = "text", href,sx = {} }) {
+  // normalize to an array based on kind
+  let list = [];
+  if (Array.isArray(values)) {
+    list = values;
+  } else if (typeof value === "string") {
+    if (kind === "phone") list = value.split(",");                     // keep numbers intact
+    else if (kind === "email") list = value.split(/[,\s]+/);           // allow comma or space separated emails
+    else list = [value];                                               // address or generic
+  }
+
+  list = list.map(s => s.trim()).filter(Boolean);
+
+  // link builder
+  const linkFor = (v) => {
+    if (kind === "phone") {
+      const tel = v.replace(/[^\d+]/g, "");            // keep + and digits
+      return `tel:${tel}`;
+    }
+    if (kind === "email") return `mailto:${v}`;
+    if (kind === "address") {
+      return href || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v)}`;
+    }
+    return href;
+  };
+
+  return (
+    <Box
+      component="div"
+      sx={{
+        flex: "1 1 0",
+        minHeight: 120,
+                minWidth: { xs: 0, sm: 200 },
+        textDecoration: "none",
+        color: "inherit",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 1,
+        p: { xs: 1.5, sm: 2 },
+        borderRadius: 3,
+        bgcolor: "rgba(255,255,255,0.12)",
+        border: "1px solid rgba(255,255,255,0.22)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        ...sx, 
+      }}
+    >
+      {/* Icon on top */}
+      <Box
+        sx={{
+          width: 40,
+          height: 40,
+          display: "grid",
+          placeItems: "center",
+          borderRadius: "50%",
+          bgcolor: "rgba(255,255,255,0.18)",
+          border: "1px solid rgba(255,255,255,0.28)",
+          boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+          "& svg": { fontSize: 28, color: "#fff" },
+          mb: 0.5,
+        }}
+        aria-hidden
+      >
+        {icon}
+      </Box>
+
+      {/* Optional small label */}
+      {label && (
+        <Typography
+          sx={{ fontSize: 10, letterSpacing: 0.6, textTransform: "uppercase", opacity: 0.8, mb: 0.25, textAlign: "center" }}
+        >
+          {label}
+        </Typography>
+      )}
+
+      {/* Items stacked one above another */}
+      <Stack
+        spacing={0.5}
+        sx={{
+          width: "100%",
+          alignItems: "flex-start",   // 👈 left-edge alignment for all rows
+        }}
+      >
+        {list.map((v, i) => {
+          const hrefItem = linkFor(v);
+          const isLink = !!hrefItem;
+          return (
+            <Typography
+              key={i}
+              component={isLink ? "a" : "span"}
+              href={isLink ? hrefItem : undefined}
+              target={isLink && hrefItem.startsWith("http") ? "_blank" : undefined}
+              rel={isLink && hrefItem.startsWith("http") ? "noopener noreferrer" : undefined}
+              sx={{
+                display: "block",
+                width: "100%",               // ensures same starting column
+                textAlign: "left",           // 👈 left align text
+                fontWeight: 500,
+                color: "#fff",
+                fontSize: { xs: 12.5, sm: 14 },
+                lineHeight: 1.35,
+                whiteSpace: (kind === "phone" || kind === "email") ? "nowrap" : "normal",
+                textDecoration: "none",
+                "&:hover": { textDecoration: isLink ? "underline" : "none" },
+              }}
+              title={v}
+            >
+              {v}
+            </Typography>
+          );
+        })}
+      </Stack>
+
+    </Box>
+  );
+}
 
 function GlassField(props) {
   const { sx, multiline, ...rest } = props;

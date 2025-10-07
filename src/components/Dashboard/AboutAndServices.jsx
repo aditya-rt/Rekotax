@@ -208,9 +208,98 @@ export default function AboutAndServices() {
 
 
       {/* ============ WHAT WE DO ============ */}
-      <Box sx={{ bgcolor: "#eef3ff", py: { xs: 6, sm: 8, md: 10 } }}>
+          <Box sx={{ bgcolor: "#eef3ff", py: { xs: 6, sm: 8, md: 10 } }}>
         <Container maxWidth="lg">
-          {/* ... your existing WHAT WE DO content ... */}
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{
+              fontWeight: 600,
+              color: "#0f2555",
+              mb: 1.5,
+              fontSize: { xs: 26, sm: 30, md: 36, lg: 40 },
+              lineHeight: 1.2,
+            }}
+          >
+            What we do?
+          </Typography>
+
+          <Typography
+            align="center"
+            sx={{
+              color: "#334155",
+              maxWidth: 760,
+              mx: "auto",
+              mb: { xs: 5, sm: 6, md: 7 },
+              fontSize: { xs: 14, sm: 15, md: 16 },
+              lineHeight: 1.7,
+            }}
+          >
+            We provide comprehensive services in company registration, compliance, taxation, and business consultancy tailored for you.
+          </Typography>
+
+          {/* One Grid with two rows of three cards */}
+          <Grid
+            container
+            columnSpacing={{ xs: 2, sm: 3, md: 4 }}
+            rowSpacing={{ xs: 3, sm: 5, md: 7 }}   // a bit more space between rows
+            alignItems="stretch"
+            wrap="wrap"
+          >
+            {[
+              // Row 1
+              {
+                img: "/Registration.png",
+                title: "Registration",
+                body:
+                  "We assist you with complete Registration services - from new business incorporation to obtaining all mandatory registrations and licenses, ensuring full compliance right from the start.",
+              },
+              {
+                img: "/compliance.png",
+                title: "Compliance",
+                body:
+                  "Our team ensures adherence to compliance requirements under MCA, RBI, SEBI and other authorities, providing complete peace of mind for your business.",
+              },
+              {
+                img: "/Taxation.png",
+                title: "Taxation",
+                body:
+                  "We provide specialized taxation services covering GST, income tax and corporate tax to keep your business fully aligned with regulations.",
+              },
+              // Row 2
+              {
+                img: "/BusinessAdv.jpg",
+                title: "Business Advisory",
+                body:
+                  "We empower businesses with strategic insights and actionable guidance at every stage of growth. Our experts help refine business models, optimize operations, and navigate challenges with clarity - turning vision into measurable success.",
+              },
+              {
+                img: "/VirtualCfo.jpg",
+                title: "Virtual CFO",
+                body:
+                  "Virtual CFO brings board-level financial intelligence without full-time cost. From cash-flow, budgeting, and controls to forecasting and investor reporting, we ensure decisions drive sustainable growth and profitability.",
+              },
+              {
+                img: "/Outsourcing.jpg",
+                title: "Other Outsourcing",
+                body:
+                  "Delegate non-core operations to our trusted team and focus on what truly matters - growing your business. We handle accounting, payroll, reporting, and compliance back-office functions with precision and confidentiality.",
+              },
+            ].map((card, i) => (
+              <Grid
+                key={i}
+                item
+                xs={12}
+                sm={4}
+                md={4}
+                lg={4}
+                sx={{ display: "flex", minWidth: 0 }} // lets the card stretch to equal height
+              >
+                <ServiceCard {...card} />
+              </Grid>
+            ))}
+          </Grid>
+
         </Container>
       </Box>
     </Box>

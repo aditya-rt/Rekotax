@@ -121,23 +121,27 @@ export default function Navbar() {
           }}
         >
           {/* Mobile hamburger */}
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              color="inherit"
-              edge="start"
-              onClick={() => setMobileOpen(true)}
-              aria-label="open navigation"
-              sx={{
-                bgcolor: "rgba(255,255,255,0.10)",
-                border: "1px solid rgba(255,255,255,0.18)",
-                backdropFilter: "blur(10px)",
-                "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
-                p: 0.75, // slightly smaller touch target on xs
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Box>
+        {/* Mobile hamburger */}
+<Box sx={{ display: { xs: "flex", md: "none" } }}>
+  <IconButton
+    color="inherit"
+    edge="start"
+    aria-label={mobileOpen ? "close navigation" : "open navigation"}
+    aria-expanded={mobileOpen ? "true" : "false"}
+    onClick={() => setMobileOpen((prev) => !prev)}   // ← toggle on every click
+    sx={{
+      bgcolor: "rgba(255,255,255,0.10)",
+      border: "1px solid rgba(255,255,255,0.18)",
+      backdropFilter: "blur(10px)",
+      "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
+      p: 0.75,
+      ...(mobileOpen && { bgcolor: "rgba(255,255,255,0.16)" }), // small visual hint when open
+    }}
+  >
+    <MenuIcon />
+  </IconButton>
+</Box>
+
 
           {/* Logo */}
           <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1, minWidth: 0 }}>
@@ -541,9 +545,9 @@ export default function Navbar() {
         <Divider sx={{ borderColor: "rgba(255,255,255,0.15)" }} />
 
         <List dense>
-          <ListItemButton onClick={() => setMobileOpen(false)}>
+          {/* <ListItemButton onClick={() => setMobileOpen(false)}>
             <ListItemText primary="Home" primaryTypographyProps={{ sx: { color: "#fff" } }} />
-          </ListItemButton>
+          </ListItemButton> */}
 
           <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#e5f2ff" }}>
             Start your New Business
