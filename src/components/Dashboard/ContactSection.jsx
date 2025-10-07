@@ -124,23 +124,23 @@ export default function ContactSection() {
             <Typography
               variant="h2"
               sx={{
-                fontWeight: 500,
+                fontWeight: 450,
                 letterSpacing: 0.3,
                 fontSize: { xs: 30, sm: 38, md: 45 },
                 lineHeight: 1.1,
                 mb: 3,
               }}
             >
-              Schedule a Consultation
+              Let's Connect
             </Typography>
 
             <Typography
               sx={{
-                fontSize: { xs: 15, sm: 16, md: 18 },
+                fontSize:15,
                 lineHeight: 1.8,
                 opacity: 0.95,
                 mb: 5,
-                maxWidth: { xs: 600, md: "none" },
+                maxWidth: { xs: 400, md: "none" },
               }}
             >
               Schedule your free consultation and discover how we can help your <br />
@@ -148,9 +148,9 @@ export default function ContactSection() {
               solutions designed to support your long-term success.
             </Typography>
 
-            <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
+            {/* <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
               Contacts
-            </Typography>
+            </Typography> */}
 
             {/* Contact - glass cards (one row) */}
         <Stack
@@ -185,20 +185,56 @@ export default function ContactSection() {
               FOLLOW US ON
             </Typography>
 
-            <Stack direction="row" spacing={2} sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
-              <IconButton sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}>
-                <FacebookRoundedIcon fontSize="large" />
-              </IconButton>
-              <IconButton sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}>
-                <InstagramIcon fontSize="large" />
-              </IconButton>
-              <IconButton sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}>
-                <TwitterIcon fontSize="large" />
-              </IconButton>
-              <IconButton sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}>
-                <LinkedInIcon fontSize="large" />
-              </IconButton>
-            </Stack>
+        <Stack
+  direction="row"
+  spacing={2}
+  sx={{ justifyContent: { xs: "center", md: "flex-start" } }}
+>
+  <IconButton
+    component="a"
+    href="https://www.facebook.com/rekotax.official"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
+  >
+    <FacebookRoundedIcon fontSize="large" />
+  </IconButton>
+
+  <IconButton
+    component="a"
+    href="https://www.instagram.com/rekotax_"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
+  >
+    <InstagramIcon fontSize="large" />
+  </IconButton>
+
+  <IconButton
+    component="a"
+    href="https://x.com/rekotax_"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="X (Twitter)"
+    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
+  >
+    <TwitterIcon fontSize="large" />
+  </IconButton>
+
+  <IconButton
+    component="a"
+    href="https://www.linkedin.com/company/rekotax/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
+  >
+    <LinkedInIcon fontSize="large" />
+  </IconButton>
+</Stack>
+
           </Grid>
 
           {/* RIGHT: form */}

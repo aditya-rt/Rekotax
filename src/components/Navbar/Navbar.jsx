@@ -504,6 +504,8 @@ export default function Navbar() {
               backdropFilter: "blur(8px)",
               "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
               ml: 0.5,
+              color: "#fff",
+
             }}
           >
             <PhoneInTalkRoundedIcon />
