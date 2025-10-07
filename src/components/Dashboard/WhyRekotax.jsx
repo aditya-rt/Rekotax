@@ -64,23 +64,32 @@ export default function WhyRekotax({ fullBleed = false }) {
               <Box
                 sx={{
                   width: "100%",
-                  minHeight: { xs: 46, md: 54 },           // compact height like your 2nd image
-                  bgcolor: "#0f2555",
+                  minHeight: { xs: 46, md: 54 },
+                  // glassy brand panel using your #0f2555 tone
+                  bgcolor: "rgba(227, 233, 245, 0.58)",
+                  backgroundImage:
+                    "linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  backdropFilter: "blur(14px) saturate(160%)",
+                  WebkitBackdropFilter: "blur(14px) saturate(160%)",
                   color: "#fff",
-                  borderRadius: 3,                          // small rounded corners
-                  px: { xs: 2.5, md: 3 },                   // tight padding
+                  borderRadius: 3,
+                  px: { xs: 2.5, md: 3 },
                   py: { xs: 1.25, md: 1.5 },
                   display: "flex",
                   alignItems: "center",
-                  boxShadow: "0 6px 16px rgba(0,0,0,0.15)",
-                  transition: "transform .25s ease",
-                  "&:hover": { transform: "translateY(-3px)" },
+                  gap: { xs: 1.5, md: 2 },
+                  boxShadow: "0 10px 28px rgba(0,0,0,0.22)",
+                  transition: "transform .25s ease, box-shadow .25s ease",
+                  "&:hover": { transform: "translateY(-3px)", boxShadow: "0 14px 40px rgba(0,0,0,0.28)" },
                 }}
+
               >
                 {/* rounded-rect icon badge (not a circle) */}
                 <Box
                   sx={{
-                    bgcolor: "#b5b7bb",
+                    bgcolor: "rgba(198, 203, 213, 0.35)", // your #b5b7bb with glass alpha
+                    border: "1px solid rgba(181, 183, 187, 0.55)",
                     width: { xs: 40, md: 44 },
                     height: { xs: 40, md: 44 },
                     borderRadius: 1.5,
@@ -90,6 +99,7 @@ export default function WhyRekotax({ fullBleed = false }) {
                     mr: { xs: 1.75, md: 2 },
                     flexShrink: 0,
                   }}
+
                 >
                   {item.icon}
                 </Box>
@@ -97,8 +107,9 @@ export default function WhyRekotax({ fullBleed = false }) {
                 <Typography
                   sx={{
                     fontSize: { xs: 14, md: 15.5 },
-                    fontWeight: 500,
+                    fontWeight: 600,
                     lineHeight: 1.35,
+                    color: "#000000",
                   }}
                 >
                   {item.text}

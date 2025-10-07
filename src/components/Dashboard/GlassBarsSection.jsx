@@ -9,14 +9,18 @@ export default function GlassBarsSection() {
     if (!rail) return;
 
     const bars = Array.from(rail.querySelectorAll(".rk-bar"));
-    const yMax = 20, yMin = 0;
-    const finalValues = bars.map(b => parseFloat(b.dataset.target));
+    const barsWrap = rail.querySelector(".rk-bars");
+
+    // scale 0..20 → container height
+    const yMax = 20;
+    const finalValues = bars.map(b => parseFloat(b.dataset.target) || 0);
     const currentValues = bars.map(() => 0);
     const durations = 900, gaps = 260;
 
     function renderBars() {
-      const maxVal = yMax - yMin;
-      const h = rail.clientHeight;
+      if (!barsWrap) return;
+      const h = barsWrap.clientHeight || 0;
+      const maxVal = yMax;
       bars.forEach((bar, i) => {
         const v = currentValues[i];
         const px = (v / maxVal) * h;
@@ -43,80 +47,155 @@ export default function GlassBarsSection() {
       step();
     }
 
-    function setup() { renderBars(); animate(); }
+    const setup = () => { renderBars(); animate(); };
 
+    // Start when visible
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { io.disconnect(); setup(); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          io.disconnect();
+          setup();
+        }
+      });
     }, { threshold: 0.2 });
 
     io.observe(rail);
-    return () => io.disconnect();
+
+    // Recompute on resize
+    const ro = new ResizeObserver(renderBars);
+    if (barsWrap) ro.observe(barsWrap);
+    window.addEventListener("resize", renderBars);
+
+    return () => {
+      io.disconnect();
+      ro.disconnect();
+      window.removeEventListener("resize", renderBars);
+    };
   }, []);
 
   return (
     <Box component="section" className="rk-section" sx={{
       fontFamily: "'Open Sans', sans-serif",
-      // (optional hard-force)
       "& *": { fontFamily: "'Open Sans', sans-serif" },
       bgcolor: "#eef3ff",
       py: { xs: 5, sm: 6.5, md: 8 },
       px: { xs: 1.5, sm: 2.5, md: 3 },
       position: "relative",
     }}>
-      {/* Keep this font link in index.html for best practice; here for portability */}
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
       <Box component="style">{`
-        :root{--rk-primary:#0f3d7c;--rk-text:#334155;--glass-bg:rgba(255,255,255,0.22);--glass-border:rgba(255,255,255,0.6)}
+        :root{
+          --rk-primary:#0f3d7c;
+          --rk-text:#334155;
+          --glass-bg:rgba(255,255,255,0.22);
+          --glass-border:rgba(255,255,255,0.6)
+        }
         .rk-section, .rk-bar, .rk-bar-inner, .rk-bar h3, .rk-bar p { font-family:'Open Sans', sans-serif; }
-        .rk-stage{position:relative;max-width:1200px;margin:0 auto;background:#f8fafc;border-radius:22px;box-shadow:0 12px 40px rgba(15,61,124,.12);padding:18px}
-        .rk-rail{position:relative;width:100%;height:448px}
-        @media(max-width:991.98px){.rk-rail{height:400px}}
-        .rk-bars{position:absolute;left:16px;right:16px;bottom:16px;height:336px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end;z-index:1}
-        @media(max-width:576px){.rk-bars{gap:12px}}
-        .rk-bar{position:relative;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,0.58),rgba(255,255,255,0.3));border:1px solid var(--glass-border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 18px 40px rgba(15,61,124,.12), inset 0 1px 0 rgba(255,255,255,0.7);overflow:hidden;height:0;transition:height .9s cubic-bezier(.2,.8,.2,1), transform .5s ease, box-shadow .5s ease;display:flex;flex-direction:column;justify-content:flex-end}
+
+        .rk-stage{
+          position:relative;
+          max-width:1200px;
+          margin:0 auto;
+          background:#f8fafc;
+          border-radius:22px;
+          box-shadow:0 12px 40px rgba(15,61,124,.12);
+          padding:18px
+        }
+
+        .rk-rail{position:relative;width:100%;height:clamp(360px, 50vw, 520px)}
+        @media(max-width:900px){.rk-rail{height:clamp(340px, 60vh, 480px)}}
+        @media(max-width:600px){.rk-rail{height:clamp(420px, 76vh, 560px)}}
+
+        /* Title sits above bars so it never overlaps on small screens */
+        .rk-heading{
+          position:absolute;left:16px;right:16px;top:10px;z-index:2;
+          text-align:center;font-weight:800;color:var(--rk-primary);
+          font-size:clamp(18px, 2.6vw, 24px); letter-spacing:.2px;
+          pointer-events:none
+        }
+
+        /* Bars container fills between top and bottom, responsive columns */
+        .rk-bars{
+          position:absolute;left:16px;right:16px;bottom:16px;top:62px;
+          display:grid;align-items:end;gap:18px;z-index:1;
+          grid-template-columns:repeat(4,1fr)
+        }
+        @media(max-width:900px){
+          .rk-bars{grid-template-columns:repeat(2,1fr);gap:16px;top:56px}
+        }
+        @media(max-width:600px){
+          .rk-bars{grid-template-columns:1fr;gap:12px;top:52px}
+        }
+
+        .rk-bar{
+          position:relative;border-radius:20px;
+          background:linear-gradient(180deg,rgba(255,255,255,0.58),rgba(255,255,255,0.30));
+          border:1px solid var(--glass-border);
+          backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+          box-shadow:0 18px 40px rgba(15,61,124,.12), inset 0 1px 0 rgba(255,255,255,0.7);
+          overflow:hidden;height:0;
+          transition:height .9s cubic-bezier(.2,.8,.2,1), transform .5s ease, box-shadow .5s ease;
+          display:flex;flex-direction:column;justify-content:flex-end
+        }
         .rk-bar-inner{padding:16px 14px 14px 14px;display:flex;flex-direction:column;justify-content:flex-start;height:100%;box-sizing:border-box;transition:transform .4s ease}
-        .rk-bar h3{margin:0 0 8px 0;font-size:18px;color:#0f3d7c;font-weight:800;letter-spacing:.3px;transition:color .3s ease}
+        .rk-bar h3{margin:0 0 8px 0;font-size:18px;color:var(--rk-primary);font-weight:800;letter-spacing:.3px;transition:color .3s ease}
         .rk-bar p{margin:0;color:#475569;line-height:1.6;font-size:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease, color .3s ease}
         .rk-bar.ready p{opacity:1;transform:translateY(0)}
-        .rk-bar:hover{transform:translateY(-12px) scale(1.03);box-shadow:0 25px 60px rgba(15,61,124,.25), inset 0 1px 0 rgba(255,255,255,0.9)}
+        .rk-bar:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 25px 60px rgba(15,61,124,.25), inset 0 1px 0 rgba(255,255,255,0.9)}
         .rk-bar:hover h3{color:#023691}
         .rk-bar:hover p{color:#1e293b}
         .rk-bar:hover .rk-bar-inner{transform:translateY(-4px)}
+
+        /* subtle grid backdrop */
         .rk-grid{position:absolute;inset:14px;border-radius:16px;background-image:linear-gradient(#dfe9ff 1px,transparent 1px),linear-gradient(90deg,#dfe9ff 1px,transparent 1px);background-size:28px 28px;opacity:.75;pointer-events:none}
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .rk-bar, .rk-bar p, .rk-bar-inner { transition: none !important; }
+        }
       `}</Box>
+
       <Box className="rk-stage">
         <Box className="rk-rail" ref={railRef}>
+          <Typography className="rk-heading" component="h2">
+            A Catalyst to India's Business Ecosystem
+          </Typography>
+
           <Box className="rk-grid" />
           <Box id="rkBars" className="rk-bars">
             <Box className="rk-bar" data-target="8">
-              <Typography component="h2" sx={{ position: "absolute", top: -60, left: 0, right: 0, textAlign: "center", fontSize: 24, fontWeight: 800, color: "#0f3d7c" }}>
-                Our Services </Typography>
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Launch</Typography>
-                <Typography sx={{ fontSize: 14, color: "#475569" }}>
+                <Typography component="h3">Launch</Typography>
+                <Typography>
                   We help founders turn ideas into registered, compliant, and investor-ready businesses. From incorporation to essential registrations, your foundation is built for credibility and growth.
                 </Typography>
               </Box>
             </Box>
+
             <Box className="rk-bar" data-target="10">
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Build</Typography>
-                <Typography sx={{ fontSize: 14, color: "#475569" }}>
-                  As operations begin, we bring financial structure, accounting systems, and legal discipline that strengthen decision-making and ensure smooth day-to-day functioning.                </Typography>
+                <Typography component="h3">Build</Typography>
+                <Typography>
+                  As operations begin, we bring financial structure, accounting systems, and legal discipline that strengthen decision-making and ensure smooth day-to-day functioning.
+                </Typography>
               </Box>
             </Box>
+
             <Box className="rk-bar" data-target="14">
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Growth</Typography>
-                <Typography sx={{ fontSize: 14, color: "#475569" }}>
-                  When your business starts scaling, we provide strategic advisory, Virtual CFO insights, and compliance automation—helping you expand without losing control or clarity.                </Typography>
+                <Typography component="h3">Growth</Typography>
+                <Typography>
+                  When your business starts scaling, we provide strategic advisory, Virtual CFO insights, and compliance automation—helping you expand without losing control or clarity.
+                </Typography>
               </Box>
             </Box>
+
             <Box className="rk-bar" data-target="18">
               <Box className="rk-bar-inner">
-                <Typography component="h3" sx={{ fontSize: 18, fontWeight: 800, color: "#0f3d7c", mb: 1 }}>Scale-Up & Beyond</Typography>
-                <Typography sx={{ fontSize: 14, color: "#475569" }}>
-                  For mature and fast-growing companies, we enable corporate governance, global expansion, and investor reporting standards—so your business is always future-ready and globally compliant.                </Typography>
+                <Typography component="h3">Scale-Up & Beyond</Typography>
+                <Typography>
+                  For mature and fast-growing companies, we enable corporate governance, global expansion, and investor reporting standards—so your business is always future-ready and globally compliant.
+                </Typography>
               </Box>
             </Box>
           </Box>
