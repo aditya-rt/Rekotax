@@ -282,9 +282,10 @@ export default function Home() {
           <ContactSection />
         </Box>
 
-        <Box sx={{ mx: { xs: -2, md: -6 } }} ref={footerRef}>
-          <Footer />
-        </Box>
+       <Box sx={{ mt: 0, mx: 0 }} ref={footerRef}>
+  <Footer />
+</Box>
+
 
         <Fab
           color="success"

@@ -27,6 +27,8 @@ export default function Navbar() {
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
+  const CONTENT_MAX_W = 1300;
+  const H_PADDING   = { xs: 1.5, sm: 2, md: 3 };
 
   const APPBAR_H_DESKTOP = 64;
   const APPBAR_H_MOBILE = 56;
@@ -113,7 +115,7 @@ export default function Navbar() {
           disableGutters
           sx={{
             width: "100%",
-            maxWidth: { md: 1120, lg: 1200 },
+            maxWidth:CONTENT_MAX_W,
             mx: "auto",
             px: { xs: 1.5, sm: 2.5, md: 6 }, // tighter on xs
             minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP },
@@ -121,26 +123,26 @@ export default function Navbar() {
           }}
         >
           {/* Mobile hamburger */}
-        {/* Mobile hamburger */}
-<Box sx={{ display: { xs: "flex", md: "none" } }}>
-  <IconButton
-    color="inherit"
-    edge="start"
-    aria-label={mobileOpen ? "close navigation" : "open navigation"}
-    aria-expanded={mobileOpen ? "true" : "false"}
-    onClick={() => setMobileOpen((prev) => !prev)}   // ← toggle on every click
-    sx={{
-      bgcolor: "rgba(255,255,255,0.10)",
-      border: "1px solid rgba(255,255,255,0.18)",
-      backdropFilter: "blur(10px)",
-      "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
-      p: 0.75,
-      ...(mobileOpen && { bgcolor: "rgba(255,255,255,0.16)" }), // small visual hint when open
-    }}
-  >
-    <MenuIcon />
-  </IconButton>
-</Box>
+          {/* Mobile hamburger */}
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              color="inherit"
+              edge="start"
+              aria-label={mobileOpen ? "close navigation" : "open navigation"}
+              aria-expanded={mobileOpen ? "true" : "false"}
+              onClick={() => setMobileOpen((prev) => !prev)}   // ← toggle on every click
+              sx={{
+                bgcolor: "rgba(255,255,255,0.10)",
+                border: "1px solid rgba(255,255,255,0.18)",
+                backdropFilter: "blur(10px)",
+                "&:hover": { bgcolor: "rgba(255,255,255,0.16)" },
+                p: 0.75,
+                ...(mobileOpen && { bgcolor: "rgba(255,255,255,0.16)" }), // small visual hint when open
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
 
 
           {/* Logo */}

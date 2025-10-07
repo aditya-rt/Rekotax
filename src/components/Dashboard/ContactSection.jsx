@@ -1,13 +1,5 @@
 import * as React from "react";
-import {
-  Box,
-  Grid,
-  Typography,
-  TextField,
-  Button,
-  Stack,
-  IconButton,
-} from "@mui/material";
+
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -18,8 +10,10 @@ import { InputAdornment } from "@mui/material";
 import PhoneInTalkRoundedIcon from "@mui/icons-material/PhoneInTalkRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import PlaceRoundedIcon from "@mui/icons-material/PlaceRounded";
+import { useTheme } from "@mui/material/styles";
 
-
+import { Box, Grid, Typography, TextField, Button, Stack, IconButton, Divider } from "@mui/material";
+import {  useMediaQuery } from "@mui/material";
 
 
 export default function ContactSection() {
@@ -32,6 +26,8 @@ export default function ContactSection() {
     message: "",
     countryCode: "+91",   // <-- add this
   });
+
+
 
   const [errors, setErrors] = React.useState({});
 
@@ -98,7 +94,7 @@ export default function ContactSection() {
       }}
     >
       {/* Centered inner container so spacing matches the rest of the site */}
-      <Box sx={{ maxWidth: { md: 1200, lg: 1280 }, mx: "auto" }}>
+      <Box sx={{ maxWidth: { md: 1200, lg: 1200 }, mx: "auto" }}>
         <Grid
           container
           columnSpacing={{ xs: 0, sm: 4, md: 8 }}
@@ -118,7 +114,7 @@ export default function ContactSection() {
               textAlign: { xs: "center", md: "left" },
               display: "flex",
               flexDirection: "column",
-              alignItems: { xs: "center", md: "flex-start" },
+              alignItems: { xs: "center" },
             }}
           >
             <Typography
@@ -128,113 +124,82 @@ export default function ContactSection() {
                 letterSpacing: 0.3,
                 fontSize: { xs: 30, sm: 38, md: 45 },
                 lineHeight: 1.1,
+                justifyContent: "center",
+                textAlign: "center",
                 mb: 3,
               }}
             >
               Let's Connect
             </Typography>
 
-            <Typography
+
+
+            <Stack
+              direction={{ xs: "column", sm: "row" }}           // stack on mobile
+              spacing={2}
               sx={{
-                fontSize:15,
-                lineHeight: 1.8,
-                opacity: 0.95,
-                mb: 5,
-                maxWidth: { xs: 400, md: "none" },
+                mb: 2,
+                width: "100%",
+                overflowX: "hidden",
+                justifyContent: { xs: "flex-start", sm: "center" },
+                maxWidth: { sm: "80%", md: "60%" },             // match address box width
+                mx: { xs: 0, sm: "auto" },
               }}
             >
-              Schedule your free consultation and discover how we can help your <br />
-              business grow with tailored compliance, taxation, and financial <br />
-              solutions designed to support your long-term success.
-            </Typography>
+              <ContactGlassCard
+                kind="phone"
+                icon={<PhoneInTalkRoundedIcon />}
+                values={["+91-7303074762", "+91-7303075763", "+91-9220580064"]}
+                sx={{
+                  flex: { xs: "1 1 auto", sm: "0 0 calc(50% - 8px)" },
+                  maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
+                  minWidth: 0,
+                  // wrap long strings on mobile so they don't overlap
+                  "& a, & span": {
+                    whiteSpace: { xs: "normal", sm: "nowrap" },
+                    wordBreak: { xs: "break-word" },
+                  },
+                }}
+              />
 
-            {/* <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
-              Contacts
-            </Typography> */}
-
-            {/* Contact - glass cards (one row) */}
-        <Stack
-  direction="row"
-  spacing={2}                                   // gap = 16px each (default theme)
-  sx={{ mb: 4, width: "100%", flexWrap: "nowrap", overflowX: "hidden" }}
->
-  <ContactGlassCard
-    kind="phone"
-    icon={<PhoneInTalkRoundedIcon />}
-    values={["+91-7303074762", "+91-7303075763", "+91-9220580064"]}
-    sx={{ flex: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }, minWidth: 0 }}
-  />
-  <ContactGlassCard
-    kind="email"
-    icon={<EmailRoundedIcon />}
-    values={["business@rekotax.com", "grievance@rekotax.com", "enquiry@rekotax.com"]}
-    sx={{ flex: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }, minWidth: 0 }}
-  />
-  <ContactGlassCard
-    kind="address"
-    icon={<PlaceRoundedIcon />}
-    value="108, Udyog Vihar Phase 1, Sector 20, Gurugram, Haryana 122016"
-    sx={{ flex: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }, minWidth: 0 }}
-  />
-</Stack>
+              <ContactGlassCard
+                kind="email"
+                icon={<EmailRoundedIcon />}
+                values={["business@rekotax.com", "grievance@rekotax.com", "enquiry@rekotax.com"]}
+                sx={{
+                  flex: { xs: "1 1 auto", sm: "0 0 calc(50% - 8px)" },
+                  maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
+                  minWidth: 0,
+                  "& a, & span": {
+                    whiteSpace: { xs: "normal", sm: "nowrap" },
+                    wordBreak: { xs: "break-word" },
+                  },
+                }}
+              />
+            </Stack>
 
 
+            <Stack
+              direction="row"
+              spacing={2}
+              justifyContent={{ xs: "flex-start", sm: "center" }}                               // gap = 16px each (default theme)
+              sx={{ mb: 4, width: "100%", flexWrap: "nowrap", overflowX: "hidden" }}
+            >
+              <ContactGlassCard
+                kind="address"
+                icon={<PlaceRoundedIcon />}
+                value="108, Udyog Vihar Phase 1, Sector 20, Gurugram, Haryana 122016"
+                value2="205, 2nd Floor, Tower A, Spaze iTech Park, Sohna Road, Sector 49, Gurugram, Haryana 122018"
+                sx={{
+                  // was: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }
+                  flex: { xs: "1 1 auto", sm: "0 0 80%", md: "0 0 60%" }, // slightly smaller on sm/md
+                  maxWidth: { sm: "80%", md: "60%" },
+                  minWidth: 0,
+                  minHeight: 104,                  // a touch shorter
+                  p: { xs: 1.25, sm: 1.5 }         // slightly tighter padding
+                }} />
 
-
-            <Typography sx={{ fontWeight: 800, letterSpacing: 0.6, mb: 1.5 }}>
-              FOLLOW US ON
-            </Typography>
-
-        <Stack
-  direction="row"
-  spacing={2}
-  sx={{ justifyContent: { xs: "center", md: "flex-start" } }}
->
-  <IconButton
-    component="a"
-    href="https://www.facebook.com/rekotax.official"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Facebook"
-    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
-  >
-    <FacebookRoundedIcon fontSize="large" />
-  </IconButton>
-
-  <IconButton
-    component="a"
-    href="https://www.instagram.com/rekotax_"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Instagram"
-    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
-  >
-    <InstagramIcon fontSize="large" />
-  </IconButton>
-
-  <IconButton
-    component="a"
-    href="https://x.com/rekotax_"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="X (Twitter)"
-    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
-  >
-    <TwitterIcon fontSize="large" />
-  </IconButton>
-
-  <IconButton
-    component="a"
-    href="https://www.linkedin.com/company/rekotax/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LinkedIn"
-    sx={{ color: "#fff", "&:hover": { color: "#ccc" } }}
-  >
-    <LinkedInIcon fontSize="large" />
-  </IconButton>
-</Stack>
-
+            </Stack>
           </Grid>
 
           {/* RIGHT: form */}
@@ -281,60 +246,60 @@ export default function ContactSection() {
                     onChange={handleChange}
                   />
 
-                {/* Country code + Phone: stack on mobile, row on sm+ */}
-<Stack direction={{ xs: "column", sm: "row" }} spacing={1.25} sx={{ mb: 2 }}>
-  <TextField
-    select
-    name="countryCode"
-    value={form.countryCode}
-    onChange={handleChange}
-    SelectProps={{
-      // dropdown menu can still be wide; only the closed control is narrow
-      MenuProps: { PaperProps: { sx: { minWidth: 220 } } },
-    }}
-    sx={{
-      // ⬇️ narrower on sm+; full width when stacked on xs
-      width: { xs: "100%", sm: 120 },
-      flex: { xs: "1 1 auto", sm: "0 0 auto" },
-      minWidth: 0,
+                  {/* Country code + Phone: stack on mobile, row on sm+ */}
+                  <Stack direction={{ xs: "column", sm: "row" }} spacing={1.25} sx={{ mb: 2 }}>
+                    <TextField
+                      select
+                      name="countryCode"
+                      value={form.countryCode}
+                      onChange={handleChange}
+                      SelectProps={{
+                        // dropdown menu can still be wide; only the closed control is narrow
+                        MenuProps: { PaperProps: { sx: { minWidth: 220 } } },
+                      }}
+                      sx={{
+                        // ⬇️ narrower on sm+; full width when stacked on xs
+                        width: { xs: "100%", sm: 120 },
+                        flex: { xs: "1 1 auto", sm: "0 0 auto" },
+                        minWidth: 0,
 
-      /* keep your original look */
-      "& .MuiOutlinedInput-root": {
-        borderRadius: 3,
-        bgcolor: "rgba(255,255,255,0.14)",
-        color: "#e9f0ff",
-        "& fieldset": { borderColor: "rgba(255,255,255,0.18)" },
-        "&:hover fieldset": { borderColor: "rgba(255,255,255,0.30)" },
-        "&.Mui-focused fieldset": { borderColor: "rgba(255,255,255,0.45)" },
-      },
-      "& .MuiSelect-select": { py: 1.25, px: 1.5, whiteSpace: "nowrap" },
-    }}
-  >
-    <MenuItem value="+91">+91 (IN)</MenuItem>
-    <MenuItem value="+971">+971 (AE)</MenuItem>
-    <MenuItem value="+61">+61 (AU)</MenuItem>
-    <MenuItem value="+49">+49 (DE)</MenuItem>
-    <MenuItem value="+1">+1 (US)</MenuItem>
-    <MenuItem value="+86">+86 (CN)</MenuItem>
-  </TextField>
+                        /* keep your original look */
+                        "& .MuiOutlinedInput-root": {
+                          borderRadius: 3,
+                          bgcolor: "rgba(255,255,255,0.14)",
+                          color: "#e9f0ff",
+                          "& fieldset": { borderColor: "rgba(255,255,255,0.18)" },
+                          "&:hover fieldset": { borderColor: "rgba(255,255,255,0.30)" },
+                          "&.Mui-focused fieldset": { borderColor: "rgba(255,255,255,0.45)" },
+                        },
+                        "& .MuiSelect-select": { py: 1.25, px: 1.5, whiteSpace: "nowrap" },
+                      }}
+                    >
+                      <MenuItem value="+91">+91 (IN)</MenuItem>
+                      <MenuItem value="+971">+971 (AE)</MenuItem>
+                      <MenuItem value="+61">+61 (AU)</MenuItem>
+                      <MenuItem value="+49">+49 (DE)</MenuItem>
+                      <MenuItem value="+1">+1 (US)</MenuItem>
+                      <MenuItem value="+86">+86 (CN)</MenuItem>
+                    </TextField>
 
-  <GlassField
-    required
-    placeholder="Mobile No.*"
-    inputMode="tel"
-    value={form.phone}
-    onChange={(e) => {
-      const digits = e.target.value.replace(/\D/g, "");
-      setForm((f) => ({ ...f, phone: digits }));
-    }}
-    sx={{
-      mb: 0,
-      flex: { xs: "1 1 auto", sm: 1 }, // ⬅️ take the remaining width
-      minWidth: 0,
-      // (no visual changes to your GlassField)
-    }}
-  />
-</Stack>
+                    <GlassField
+                      required
+                      placeholder="Mobile No.*"
+                      inputMode="tel"
+                      value={form.phone}
+                      onChange={(e) => {
+                        const digits = e.target.value.replace(/\D/g, "");
+                        setForm((f) => ({ ...f, phone: digits }));
+                      }}
+                      sx={{
+                        mb: 0,
+                        flex: { xs: "1 1 auto", sm: 1 }, // ⬅️ take the remaining width
+                        minWidth: 0,
+                        // (no visual changes to your GlassField)
+                      }}
+                    />
+                  </Stack>
 
                   <GlassField
                     required
@@ -381,23 +346,34 @@ export default function ContactSection() {
 
 /* --- helper for big rounded text fields --- */
 // --- Helpers: drop these in the same file (outside your component) ---
-function ContactGlassCard({ icon, label, value, values, kind = "text", href,sx = {} }) {
-  // normalize to an array based on kind
+function ContactGlassCard({
+  icon,
+  label,
+  value,
+  value2,                 // ← NEW: second address
+  values,
+  kind = "text",
+  href,
+  sx = {},
+}) {
+    const theme = useTheme();
+const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
+  // build list for non-address kinds
   let list = [];
   if (Array.isArray(values)) {
     list = values;
   } else if (typeof value === "string") {
-    if (kind === "phone") list = value.split(",");                     // keep numbers intact
-    else if (kind === "email") list = value.split(/[,\s]+/);           // allow comma or space separated emails
-    else list = [value];                                               // address or generic
+    if (kind === "phone") list = value.split(",");
+    else if (kind === "email") list = value.split(/[,\s]+/);
+    else list = [value];
   }
+  list = list.map((s) => s.trim()).filter(Boolean);
 
-  list = list.map(s => s.trim()).filter(Boolean);
-
-  // link builder
+  // link builder for each item
   const linkFor = (v) => {
+    if (!v) return undefined;
     if (kind === "phone") {
-      const tel = v.replace(/[^\d+]/g, "");            // keep + and digits
+      const tel = v.replace(/[^\d+]/g, "");
       return `tel:${tel}`;
     }
     if (kind === "email") return `mailto:${v}`;
@@ -407,14 +383,28 @@ function ContactGlassCard({ icon, label, value, values, kind = "text", href,sx =
     return href;
   };
 
+  const textSx = {
+    display: "block",
+    width: "100%",
+    textAlign: "left",
+    fontWeight: 500,
+    color: "#fff",
+    fontSize: { xs: 12.5, sm: 14 },
+    lineHeight: 1.35,
+    textDecoration: "none",
+    whiteSpace: kind === "phone" || kind === "email" ? "nowrap" : "normal",
+    "&:hover": { textDecoration: "underline" },
+  };
+
+  const hasTwoAddresses = kind === "address" && !!value2;
+
   return (
     <Box
       component="div"
       sx={{
         flex: "1 1 0",
         minHeight: 120,
-                minWidth: { xs: 0, sm: 200 },
-        textDecoration: "none",
+        minWidth: { xs: 0, sm: 200 },
         color: "inherit",
         display: "flex",
         flexDirection: "column",
@@ -427,10 +417,10 @@ function ContactGlassCard({ icon, label, value, values, kind = "text", href,sx =
         border: "1px solid rgba(255,255,255,0.22)",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
-        ...sx, 
+        ...sx,
       }}
     >
-      {/* Icon on top */}
+      {/* Icon */}
       <Box
         sx={{
           width: 40,
@@ -449,53 +439,71 @@ function ContactGlassCard({ icon, label, value, values, kind = "text", href,sx =
         {icon}
       </Box>
 
-      {/* Optional small label */}
       {label && (
-        <Typography
-          sx={{ fontSize: 10, letterSpacing: 0.6, textTransform: "uppercase", opacity: 0.8, mb: 0.25, textAlign: "center" }}
-        >
+        <Typography sx={{ fontSize: 10, letterSpacing: 0.6, textTransform: "uppercase", opacity: 0.8, mb: 0.25, textAlign: "center" }}>
           {label}
         </Typography>
       )}
 
-      {/* Items stacked one above another */}
-      <Stack
-        spacing={0.5}
-        sx={{
-          width: "100%",
-          alignItems: "flex-start",   // 👈 left-edge alignment for all rows
-        }}
-      >
-        {list.map((v, i) => {
-          const hrefItem = linkFor(v);
-          const isLink = !!hrefItem;
-          return (
-            <Typography
-              key={i}
-              component={isLink ? "a" : "span"}
-              href={isLink ? hrefItem : undefined}
-              target={isLink && hrefItem.startsWith("http") ? "_blank" : undefined}
-              rel={isLink && hrefItem.startsWith("http") ? "noopener noreferrer" : undefined}
-              sx={{
-                display: "block",
-                width: "100%",               // ensures same starting column
-                textAlign: "left",           // 👈 left align text
-                fontWeight: 500,
-                color: "#fff",
-                fontSize: { xs: 12.5, sm: 14 },
-                lineHeight: 1.35,
-                whiteSpace: (kind === "phone" || kind === "email") ? "nowrap" : "normal",
-                textDecoration: "none",
-                "&:hover": { textDecoration: isLink ? "underline" : "none" },
-              }}
-              title={v}
-            >
-              {v}
-            </Typography>
-          );
-        })}
-      </Stack>
+      {/* CONTENT */}
+      {hasTwoAddresses ? (
+        // two halves inside ONE card
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={2}
+          sx={{ mt: 1.25, width: "100%" }}
+         divider={
+    isSmUp ? (
+      <Divider orientation="vertical" flexItem sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
+    ) : (
+      <Divider sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
+    )
+  }
+        >
+          <Typography
+            component="a"
+            href={linkFor(value)}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ ...textSx, flex: 1, minWidth: 0 }}
+            title={value}
+          >
+            {value}
+          </Typography>
 
+          <Typography
+            component="a"
+            href={linkFor(value2)}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ ...textSx, flex: 1, minWidth: 0 }}
+            title={value2}
+          >
+            {value2}
+          </Typography>
+        </Stack>
+      ) : (
+        // default list rendering
+        <Stack spacing={0.5} sx={{ width: "100%", alignItems: "flex-start", mt: 1 }}>
+          {list.map((v, i) => {
+            const hrefItem = linkFor(v);
+            const isLink = !!hrefItem;
+            return (
+              <Typography
+                key={i}
+                component={isLink ? "a" : "span"}
+                href={isLink ? hrefItem : undefined}
+                target={isLink && hrefItem.startsWith("http") ? "_blank" : undefined}
+                rel={isLink && hrefItem.startsWith("http") ? "noopener noreferrer" : undefined}
+                sx={textSx}
+                title={v}
+              >
+                {v}
+              </Typography>
+            );
+          })}
+        </Stack>
+      )}
     </Box>
   );
 }
