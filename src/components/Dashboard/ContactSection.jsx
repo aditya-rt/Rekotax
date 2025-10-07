@@ -13,7 +13,7 @@ import PlaceRoundedIcon from "@mui/icons-material/PlaceRounded";
 import { useTheme } from "@mui/material/styles";
 
 import { Box, Grid, Typography, TextField, Button, Stack, IconButton, Divider } from "@mui/material";
-import {  useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 
 
 export default function ContactSection() {
@@ -179,6 +179,7 @@ export default function ContactSection() {
             </Stack>
 
 
+
             <Stack
               direction="row"
               spacing={2}
@@ -200,6 +201,80 @@ export default function ContactSection() {
                 }} />
 
             </Stack>
+
+            {/* Social icons */}
+            <Stack direction="row" spacing={1.25} sx={{ mt: 2 }}>
+              <IconButton
+                component="a"
+                href="https://facebook.com/yourhandle"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                sx={{
+                  width: 44, height: 44, borderRadius: "50%",
+                  bgcolor: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "#fff",
+                  "&:hover": { bgcolor: "rgba(255,255,255,0.20)" },
+                }}
+              >
+                <FacebookRoundedIcon />
+              </IconButton>
+
+              <IconButton
+                component="a"
+                href="https://instagram.com/yourhandle"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                sx={{
+                  width: 44, height: 44, borderRadius: "50%",
+                  bgcolor: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "#fff",
+                  "&:hover": { bgcolor: "rgba(255,255,255,0.20)" },
+                }}
+              >
+                <InstagramIcon />
+              </IconButton>
+
+              {/* X (Twitter) – use TwitterIcon or the custom XIcon below */}
+              <IconButton
+                component="a"
+                href="https://x.com/yourhandle"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+                sx={{
+                  width: 44, height: 44, borderRadius: "50%",
+                  bgcolor: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "#fff",
+                  "&:hover": { bgcolor: "rgba(255,255,255,0.20)" },
+                }}
+              >
+                {/* If you prefer the Twitter bird: <TwitterIcon /> */}
+                <TwitterIcon />
+              </IconButton>
+
+              <IconButton
+                component="a"
+                href="https://linkedin.com/company/yourhandle"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                sx={{
+                  width: 44, height: 44, borderRadius: "50%",
+                  bgcolor: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "#fff",
+                  "&:hover": { bgcolor: "rgba(255,255,255,0.20)" },
+                }}
+              >
+                <LinkedInIcon />
+              </IconButton>
+            </Stack>
+
           </Grid>
 
           {/* RIGHT: form */}
@@ -356,8 +431,8 @@ function ContactGlassCard({
   href,
   sx = {},
 }) {
-    const theme = useTheme();
-const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
+  const theme = useTheme();
+  const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
   // build list for non-address kinds
   let list = [];
   if (Array.isArray(values)) {
@@ -452,13 +527,13 @@ const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
           direction={{ xs: "column", sm: "row" }}
           spacing={2}
           sx={{ mt: 1.25, width: "100%" }}
-         divider={
-    isSmUp ? (
-      <Divider orientation="vertical" flexItem sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
-    ) : (
-      <Divider sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
-    )
-  }
+          divider={
+            isSmUp ? (
+              <Divider orientation="vertical" flexItem sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
+            ) : (
+              <Divider sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
+            )
+          }
         >
           <Typography
             component="a"
