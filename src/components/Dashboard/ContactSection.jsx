@@ -11,6 +11,8 @@ import PhoneInTalkRoundedIcon from "@mui/icons-material/PhoneInTalkRounded";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import PlaceRoundedIcon from "@mui/icons-material/PlaceRounded";
 import { useTheme } from "@mui/material/styles";
+import { Snackbar, Alert, CircularProgress } from "@mui/material";
+
 
 import { Box, Grid, Typography, TextField, Button, Stack, IconButton, Divider } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
@@ -18,17 +20,8 @@ import { useMediaQuery } from "@mui/material";
 
 export default function ContactSection() {
   // ADD: include subject in form + an errors map
-  const [form, setForm] = React.useState({
-    name: "",
-    phone: "",
-    email: "",
-    subject: "",
-    message: "",
-    countryCode: "+91",   // <-- add this
-  });
 
-
-
+const [form, setForm] = React.useState({ name: "", phone: "", email: "", subject: "", message: "", countryCode: "+91" });
   const [errors, setErrors] = React.useState({});
 
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -78,10 +71,70 @@ export default function ContactSection() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", form);
-  };
+  // Inside your component (before the return)
+  const WEB_APP_URL = process.env.REACT_APP_APPSCRIPT_URL || "https://script.google.com/macros/s/AKfycbyl91p6yvHwzHv_h36eZ_yN-NU1IWrL8oHAlwUgzsIc68XbTTWj_QxLClIOlp8Cza7l_g/exec";
+  const [submitting, setSubmitting] = React.useState(false);
+
+const initialForm = {
+  name: "",
+  phone: "",
+  email: "",
+  subject: "",
+  message: "",
+  countryCode: "+91",
+};
+
+const [snack, setSnack] = React.useState({
+  open: false,
+  severity: "success",
+  msg: "",
+});
+
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  if (submitting) return;
+  setSubmitting(true);
+
+  try {
+    const data = new URLSearchParams({
+      name: form.name.trim(),
+      countryCode: form.countryCode,
+      phone: form.phone,
+      email: form.email,
+      subject: form.subject,
+      message: form.message,
+    });
+
+    const res = await fetch(WEB_APP_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: data.toString(),
+    });
+
+    const json = await res.json();
+
+    if (json?.ok) {
+      // success: show toast + clear
+      setSnack({ open: true, severity: "success", msg: "Thank you for submitting. We’ll reach out soon." });
+      setForm({ ...initialForm });
+      setErrors({});
+    } else {
+      setSnack({
+        open: true,
+        severity: "error",
+        msg: json?.error || "Could not submit. Please try again.",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    setSnack({ open: true, severity: "error", msg: "Network error. Please try again." });
+  } finally {
+    setSubmitting(false);
+  }
+}
+
+
 
   return (
     <Box
@@ -404,9 +457,32 @@ export default function ContactSection() {
                   />
 
                   <Box sx={{ mt: 0, display: "flex", justifyContent: "center" }}>
-                    <DarkPillButton type="submit" sx={{ width: { xs: "100%", sm: "auto" } }}>
-                      SUBMIT
+                    <DarkPillButton type="submit" disabled={submitting} sx={{ width: { xs: "100%", sm: "auto" } }}>
+                      {submitting ? (
+                        <Stack direction="row" alignItems="center" spacing={1}>
+                          <CircularProgress size={18} />
+                          <span>Submitting…</span>
+                        </Stack>
+                      ) : (
+                        "SUBMIT"
+                      )}
                     </DarkPillButton>
+                    <Snackbar
+  open={snack.open}
+  autoHideDuration={3500}  // ← auto-hide after 3.5s
+  onClose={() => setSnack(s => ({ ...s, open: false }))}
+  anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+>
+  <Alert
+    onClose={() => setSnack(s => ({ ...s, open: false }))}
+    severity={snack.severity}
+    variant="filled"
+    sx={{ width: "100%" }}
+  >
+    {snack.msg}
+  </Alert>
+</Snackbar>
+
                   </Box>
                 </Box>
               </Box>
