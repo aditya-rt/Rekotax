@@ -1,1280 +1,1930 @@
 import React from "react";
+import { useRef } from "react";
+import Footer from "../../../Dashboard/Footer";
+import WhyRekotax from "../../../Dashboard/WhyRekotax";
 import {
-  Box,
+  ThemeProvider,
+  createTheme,
+  CssBaseline,
+  Container,
   Grid,
   Typography,
+  Box,
   TextField,
   Button,
-  Collapse,
+  Card,
+  CardContent,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Snackbar,
+  Alert,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
-import { useState, useRef } from "react";
-import Footer from "../../../Dashboard/Footer";
+import { Stack, MenuItem } from "@mui/material";
+
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import ContactSection from "../../../Dashboard/ContactSection";
+const theme = createTheme({
+  typography: {
+    fontFamily:
+      'Open Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    h6: { fontWeight: 700 },
+  },
+  palette: {
+    primary: { main: "#0f2555" },
+    background: { default: "transparent" },
+  },
+  shape: { borderRadius: 12 },
+});
 
-const BrandColor = "#0f2555";
+const cardData = [
+  {
+    title: "Company-Related Documents",
+    items: [
+      "3–4 proposed company name options",
+      "Description of business activities and objectives",
+      "Details of authorized and paid-up capital",
+      "Shareholding pattern",
+      "Draft Memorandum of Association (MOA)",
+      "Draft Articles of Association (AOA)",
+      "Board resolution for appointment of first directors",
+    ],
+  },
+  {
+    title: "For Directors & Shareholders",
+    items: [
+      "PAN Card & Aadhaar Card (for Indian nationals)",
+      "Passport (for foreign nationals/NRIs)",
+      "Passport-sized photograph",
+      "Residential proof (utility bill not older than 2 months)",
+      "Personal bank statement (not older than 2 months)",
+      "Voter ID or Driving License",
+      "Mobile number linked with Aadhaar",
+      "Email ID",
+      "Specimen signature",
+      "For foreign nationals: notarized and apostilled documents",
+    ],
+  },
+  {
+    title: "For Registered Office",
+    items: [
+      "Recent utility bill or property tax receipt (not older than 2 months)",
+      "No Objection Certificate (NOC) from the owner (if rented)",
+      "Copy of rent/lease agreement (if applicable)",
+      "Proof of ownership or occupancy",
+    ],
+  },
+];
 
-export default function OPCRegistrationHero() {
-  const BrandColor = "#0f2555";
-  const faqs = [
-    {
-      q: "Can I register a Private Limited Company as a solo founder in India?",
-      a: "A Private Limited Company requires at least 2 directors. Solo founders can opt for a One Person Company (OPC) structure.",
-    },
-    {
-      q: "Is there any minimum capital needed to start a Private Limited Company?",
-      a: "No minimum capital is mandated. You can incorporate with as little as ₹1 as your authorized capital.",
-    },
-    {
-      q: "How long does the Private Limited Company registration process take?",
-      a: "Registration typically takes 7–10 business days, depending on documentation and MCA processing.",
-    },
-    {
-      q: "What documents do I need for Private Limited Company registration?",
-      a: "You need PAN, Aadhaar, address proof, utility bill, passport photo, and NOC for registered office.",
-    },
-    {
-      q: "How is a Private Limited Company different from an LLP?",
-      a: "A Pvt Ltd offers more funding options and stricter compliance, while LLP is more flexible and cost-effective.",
-    },
-    {
-      q: "Can I choose a company name similar to an existing one?",
-      a: "No, the name must be unique and distinguishable. MCA will reject names that are deceptively similar.",
-    },
-    {
-      q: "Is GST registration required after forming a Private Limited Company?",
-      a: "GST is mandatory if your turnover exceeds ₹20/40 lakh or if you deal in interstate sales or e-commerce.",
-    },
-    {
-      q: "What if my company doesn’t start business after registration?",
-      a: "You’ll still need to comply with annual filings or apply for strike-off to avoid penalties from MCA.",
-    },
-    {
-      q: "Can I convert my Private Limited Company into a Public Company later?",
-      a: "Yes, you can convert to a Public Company by following the MCA compliance process and increasing shareholders.",
-    },
-    {
-      q: "What are the yearly compliance requirements for a Private Limited Company?",
-      a: "Annual filings with ROC, income tax returns, board meetings, and financial statements are required every year.",
-    },
-    {
-      q: "Is a company seal necessary after registration?",
-      a: "No, it’s optional. But some banks or clients may still request a seal for verification.",
-    },
-    {
-      q: "Are there tax benefits of Private Limited over other business types?",
-      a: "Yes. Private Limited Companies enjoy lower tax rates and deductions unavailable to proprietorships or partnerships.",
-    },
-    {
-      q: "Can a Private Limited Company register a trademark?",
-      a: "Yes, companies can apply for trademark protection for their brand, logo, or business name.",
-    },
-    {
-      q: "Is Udyam (Udyog Aadhaar) registration required for Pvt Ltd Companies?",
-      a: "It’s optional but beneficial for MSME-related benefits like subsidies and bank loans.",
-    },
-    {
-      q: "Can I register a Private Limited Company myself online?",
-      a: "Yes, but it’s advisable to take professional help to avoid errors and ensure legal compliance.",
-    },
-    {
-      q: "How can I check my Private Limited Company registration status?",
-      a: "You can track your company status on the MCA portal using your CIN (Company Identification Number).",
-    },
-    {
-      q: "Who is eligible to start a Private Limited Company in India?",
-      a: "Any Indian citizen or NRI/foreign national with valid ID and address proof can register a Private Limited Company.",
-    },
-    {
-      q: "How many directors are needed to start a Private Limited Company?",
-      a: "A minimum of 2 directors and 2 shareholders are required to incorporate a Private Limited Company.",
-    },
-    {
-      q: "Can I convert a Private Limited Company into another business type?",
-      a: "Yes, you can convert it into an LLP, Public Company, or other entity with legal compliance steps.",
-    },
-    {
-      q: "What is the total cost for Private Limited Company registration?",
-      a: "Registration can cost ₹6,000–₹15,000 depending on professional fees, state, and services included.",
-    },
-    {
-      q: "What are MoA & AoA in company registration?",
-      a: "Memorandum of Association (MoA) and Articles of Association (AoA) define your company’s scope and rules.",
-    },
-    {
-      q: "What is the SPICe+ form used for company registration?",
-      a: "SPICe+ is a government form for online company registration, combining PAN, TAN, GST, and more in one go.",
-    },
-    {
-      q: "Are there any legal restrictions on Private Limited Companies?",
-      a: "Yes, such companies can’t publicly trade shares or raise deposits from the public. Rules apply under Companies Act.",
-    },
-    {
-      q: "Can NRIs or Foreign Nationals register a Private Limited Company in India?",
-      a: "Yes, with at least one Indian director. Foreign ownership is allowed under FDI norms for most sectors.",
-    },
-  ];
+export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
+
+  const BRAND_PRIMARY = "#0f3d7c";   // solid brand color
+  const BRAND_SECONDARY = "#023691";
+  const BRAND_GRADIENT = "linear-gradient(11deg, #0f2555 0%, #023691 100%)";
+  // const aboutRef = useRef(null);
+  // helper to check required fields (Message is optional)
+
+
   const footerRef = useRef(null);
+  const WEB_APP_URL =
+    webAppUrl ||
+    "https://script.google.com/macros/s/AKfycbyl91p6yvHwzHv_h36eZ_yN-NU1IWrL8oHAlwUgzsIc68XbTTWj_QxLClIOlp8Cza7l_g/exec";
 
-  const [openIndex, setOpenIndex] = useState(0);
-
-  const handleToggle = (idx) => {
-    setOpenIndex(openIndex === idx ? -1 : idx);
+  const initialForm = {
+    name: "",
+    countryCode: "+91",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+  };
+  // Controls single-open accordion behavior
+  const [expanded, setExpanded] = React.useState(0); // 0 opens the first; use null for all closed
+  const handleAccordionToggle = (idx) => {
+    setExpanded((prev) => (prev === idx ? null : idx));
   };
 
-  const cardData = [
-    {
-      icon: <PersonIcon sx={{ fontSize: 50, color: BrandColor }} />,
-      title: "For sole Member/Director",
-      items: [
-        "PAN Card & Aadhaar Card",
-        "Government-issued ID (Passport, Voter ID, or Driving License)",
-        "Latest passport-sized photograph",
-        "Address proof (Bank statement, electricity/water bill – not older than 2 months)",
-        "Digital Signature Certificate (DSC) – Required for e-signing incorporation forms",
-      ],
-    },
-    {
-      icon: <PersonOutlineIcon sx={{ fontSize: 50, color: BrandColor }} />,
-      title: "For the Nominee",
-      items: [
-        "PAN Card & Aadhaar Card",
-        "Government-issued ID & Address Proof",
-        "Recent passport-sized photograph",
-        "Signed Consent Letter to act as the nominee",
-      ],
-    },
-    {
-      icon: <LocationCityIcon sx={{ fontSize: 50, color: BrandColor }} />,
-      title: "For the Registered Office",
-      items: [
-        "Ownership proof (if owned) OR Rent Agreement (if rented)",
-        "No Objection Certificate (NOC) from the property owner (for rented spaces)",
-        "Recent utility bill (electricity, water, gas) as address proof",
-      ],
-    },
-  ];
+  const [form, setForm] = React.useState(initialForm);
+  const [errors, setErrors] = React.useState({});
+  const [submitting, setSubmitting] = React.useState(false);
+  const [snack, setSnack] = React.useState({
+    open: false,
+    severity: "success",
+    msg: "",
+  });
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+  const requiredOk = (f) => {
+    const digits = (f.phone || "").replace(/\D/g, "");
+    return (
+      !!f.name?.trim() &&
+      !!f.countryCode?.trim() &&
+      !!f.email?.trim() && emailRe.test(f.email.trim()) &&
+      !!f.subject?.trim() &&
+      digits.length >= 10
+    );
+  };
+
+  const [showReqWarn, setShowReqWarn] = React.useState(false);
+  const isFormValid = requiredOk(form);
+  const nameRe = /^[A-Za-z][A-Za-z\s'.-]{1,}$/;
+
+  const validateField = (name, value) => {
+    const v = (value ?? "").trim();
+    switch (name) {
+      case "name":
+        if (!v) return "Name is required";
+        if (!nameRe.test(v)) return "Enter a valid name";
+        return "";
+      case "phone": {
+        const digits = v.replace(/\D/g, "");
+        if (!digits) return "Phone is required";
+        if (digits.length < 10 || digits.length > 15) return "Enter a valid phone";
+        return "";
+      }
+      case "email":
+        if (!v) return "Email is required";
+        if (!emailRe.test(v)) return "Enter a valid email";
+        return "";
+      case "subject":
+        if (!v) return "Subject is required";
+        return "";
+      case "message":
+        if (!v) return "Message is required";
+        if (v.length < 5) return "Message is too short";
+        return "";
+      default:
+        return "";
+    }
+  };
+  // put this inside your component (top-level)
+  const fieldSx = {
+    // input / single-line
+    "& .MuiInputBase-input": { color: "#fff" },
+    // textarea / multiline
+    "& .MuiInputBase-inputMultiline, & textarea": { color: "#fff" },
+    // label color (default + focused)
+    "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#fff" },
+    // (optional) underline colors for filled variant
+    "& .MuiFilledInput-underline:before": { borderBottomColor: "rgba(255,255,255,0.3)" },
+    "& .MuiFilledInput-underline:hover:before": { borderBottomColor: "rgba(255,255,255,0.5)" },
+    "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
+  };
+
+  const validateForm = (data) => {
+    const fields = ["name", "phone", "email", "subject", "message"];
+    const out = {};
+    fields.forEach((f) => {
+      const msg = validateField(f, data[f]);
+      if (msg) out[f] = msg;
+    });
+    return out;
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const next = { ...form, [name]: value };
+    setForm(next);
+    if (showReqWarn && requiredOk(next)) setShowReqWarn(false);
+  };
+
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (submitting) return;
+    if (!requiredOk(form)) {
+      setShowReqWarn(true);
+      return;
+    }
+    setSubmitting(true);
+
+    try {
+      const data = new URLSearchParams({
+        name: form.name.trim(),
+        countryCode: form.countryCode,
+        phone: form.phone,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
+      });
+
+      const res = await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString(),
+      });
+
+      const json = await res.json();
+
+      if (json?.ok) {
+        setShowReqWarn(false);
+        // success: show toast + clear
+        setSnack({ open: true, severity: "success", msg: "Thank you for submitting. We’ll reach out soon." });
+        setForm({ ...initialForm });
+        setErrors({});
+      } else {
+        setSnack({
+          open: true,
+          severity: "error",
+          msg: json?.error || "Could not submit. Please try again.",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      setSnack({ open: true, severity: "error", msg: "Network error. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+
   return (
     <Box
       sx={{
-        backgroundColor: BrandColor,
+        // brand gradient background
         color: "#fff",
-        py: { xs: 6, md: 10 },
-        px: { xs: 2, md: 8 },
+        position: "relative",
+        overflow: "hidden",
+        minHeight: "100vh",
+        bgcolor: "transparent",
+        backgroundImage: `
+      /* subtle brand-tinted glows (optional, kept) */
+      radial-gradient(1000px 600px at 76% 60%, rgba(2,54,145,0.20), rgba(2,54,145,0) 60%),
+      radial-gradient(800px 420px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%),
+      /* main brand gradient */
+      linear-gradient(118deg, #0f2555 0%, #023691 100%)
+    `,
+        backgroundBlendMode: "screen, normal, normal",
+        backgroundRepeat: "no-repeat",
+
+        // page gutters & top offset for fixed AppBar
+        maxWidth: "100%",
+        mx: "auto",
+        px: { xs: 1, sm: 2, md: 3 },
+
+        pt: { xs: "88px", md: "94px" },
+        mt: { xs: -12, md: -15 },
       }}
     >
-      <Grid
-        container
-        spacing={3}
-        alignItems="flex-start"
-        justifyContent="space-between"
-        wrap="nowrap" // keep both columns on one row (md+)
-      >
-        {/* LEFT: text (narrower, like your reference) */}
-        <Grid item xs={12} md={3} zeroMinWidth sx={{ minWidth: 0 }}>
-          <Typography
-            variant="h4"
-            sx={{ fontWeight: 700, mb: 3, lineHeight: 1.2 }}
-          >
-            One Person Company (OPC) Registration
-          </Typography>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
 
-          <Typography sx={{ mb: 3, fontSize: "1.1rem" }}>
-            Register your Private Limited Company with Rekotax — experience fast
-            setup, full legal <br /> compliance, expert documentation, and
-            dedicated support to launch your <br /> business effortlessly.
-          </Typography>
-
-          <ul style={{ paddingLeft: "1rem", marginBottom: "1.5rem" }}>
-            <li>
-              Company Registered in Just <strong>7–10 Days</strong>
-            </li>
-            <li>
-              <strong>End-to-End Documentation:</strong> Name Approval, MOA &
-              AOA
-            </li>
-            <li>
-              <strong>Complete Incorporation Kit:</strong> COI, DIN, DSC, PAN &
-              TAN
-            </li>
-            <li>
-              <strong>Trusted</strong> by Entrepreneurs, Backed by Industry
-              Experts
-            </li>
-            <li>
-              Handled by <strong>MCA-Registered Professionals</strong>
-            </li>
-          </ul>
-
-          <Box
-            sx={{
-              background: "rgba(255,255,255,0.1)",
-              borderRadius: 2,
-              p: 2,
-              maxWidth: 320,
-              boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-            }}
-          >
-            <Typography variant="body1" sx={{ fontSize: "0.95rem" }}>
-              <strong>Fastest Company Registration in India</strong>
-              <br />
-              MCA filing in 7 days or full refund guaranteed.
+        {/* Hero compo */}
+        <Grid
+          container
+          alignItems="center"
+          justifyContent={{ xs: "center", md: "space-between" }}
+          columnSpacing={{ xs: 2, sm: 4, md: 10 }}
+          rowSpacing={{ xs: 4, sm: 5, md: 0 }}
+          sx={{
+            // center the whole hero section and add responsive gutters
+            maxWidth: { xs: "100%", md: 1200, lg: 1280 },
+            mx: "auto",
+            px: { xs: 2, sm: 3, md: 6 },
+            flexWrap: { xs: "wrap", md: "nowrap" },
+            mt: { xs: 2, md: 6 },
+          }}
+        >
+          {/* LEFT: text (narrower, like your reference) */}
+          <Grid item xs={12} md={3} zeroMinWidth sx={{ minWidth: 0 }}>
+            <Typography
+              variant="h4"
+              sx={{ fontWeight: 700, mb: 2, lineHeight: 1 }}
+            >
+              Private Limited Company Registration
             </Typography>
-          </Box>
+
+            <Typography sx={{ mb: 2, fontSize: "1rem" }}>
+              Register your Private Limited Company with Rekotax — experience
+              fast setup,
+              <br />
+              full legal compliance, expert documentation, and dedicated support
+              to launch <br />
+              your business effortlessly.
+            </Typography>
+            <ul
+              style={{
+                paddingLeft: "1rem",
+                marginBottom: "1rem",
+                fontSize: "1rem",      // ✅ same as the Typography above
+                lineHeight: 1.6,       // (optional) match the paragraph’s line-height
+              }}
+            >
+              <li>Company Registered in Just <strong>7–10 Days</strong></li>
+              <li><strong>End-to-End Documentation:</strong> Name Approval, MOA & AOA</li>
+              <li><strong>Complete Incorporation Kit:</strong> COI, DIN, DSC, PAN & TAN</li>
+              <li><strong>Trusted</strong> by Entrepreneurs, Backed by Industry Experts</li>
+              <li>Handled by <strong>MCA-Registered Professionals</strong></li>
+            </ul>
+
+
+            <Box
+              sx={{
+                background: "rgba(255,255,255,0.1)",
+                borderRadius: 2,
+                p: 2,
+                maxWidth: 320,
+                boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+              }}
+            >
+              <Typography variant="body1" sx={{ fontSize: "0.95rem" }}>
+                <strong>Fastest Company Registration in India</strong>
+                <br />
+                MCA filing in 7 days or full refund guaranteed.
+              </Typography>
+            </Box>
+          </Grid>
+
+          {/* RIGHT: form (wider, like your reference) */}
+          <Grid item xs={12} md={9} zeroMinWidth sx={{ minWidth: 0 }}>
+            <Box
+              sx={{
+                ml: { md: 2 }, // small gutter on desktop
+                backgroundColor: "rgba(255,255,255,0.1)",
+                borderRadius: 3,
+                p: 3,                 // ↓ was 4
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,               // ↓ was 3
+                boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
+                maxWidth: 720,        // keep a nice readable width
+                // Optional hard cap (uncomment if you want a strict max height):
+                // maxHeight: 520,
+                // overflowY: "auto",
+              }}
+            >
+              <Typography
+                variant="h5"
+                sx={{ fontWeight: 600, color: "#d1d5db", textAlign: "center" }}
+              >
+                Get Expert Consultation
+              </Typography>
+
+              <TextField
+                size="small"
+                variant="filled"
+                fullWidth
+                label="Name*"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                error={Boolean(errors.name)}
+                helperText={errors.name || ""}
+                sx={fieldSx}
+                InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+              />
+
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={1.25}>
+                {/* Country code */}
+                <TextField
+                  select
+                  size="small"
+                  variant="filled"
+                  name="countryCode"
+                  label="Code"
+                  value={form.countryCode}
+                  onChange={handleChange}
+                  sx={{
+                    ...fieldSx,
+                    width: { xs: "100%", sm: 120 },
+                    flex: { xs: "1 1 auto", sm: "0 0 auto" },
+                  }}
+                  InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+                  SelectProps={{
+                    MenuProps: { PaperProps: { sx: { minWidth: 220 } } },
+                  }}
+                >
+                  <MenuItem value="+91">+91 (IN)</MenuItem>
+                  <MenuItem value="+971">+971 (AE)</MenuItem>
+                  <MenuItem value="+61">+61 (AU)</MenuItem>
+                  <MenuItem value="+49">+49 (DE)</MenuItem>
+                  <MenuItem value="+1">+1 (US)</MenuItem>
+                  <MenuItem value="+86">+86 (CN)</MenuItem>
+                </TextField>
+
+                {/* Phone number */}
+                <TextField
+                  size="small"
+                  variant="filled"
+                  fullWidth
+                  label="Mobile No.*"
+                  name="phone"
+                  value={form.phone}
+                  onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, "");
+                    handleChange({ target: { name: "phone", value: digits } });
+                  }}
+                  error={Boolean(errors.phone)}
+                  helperText={errors.phone || ""}
+                  sx={{ ...fieldSx, mb: 0, flex: 1, minWidth: 0 }}
+                  InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+                />
+              </Stack>
+
+              <TextField
+                size="small"
+                variant="filled"
+                fullWidth
+                label="Your email*"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                error={Boolean(errors.email)}
+                helperText={errors.email || ""}
+                sx={fieldSx}
+                InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+              />
+
+              <TextField
+                size="small"
+                variant="filled"
+                fullWidth
+                label="Subject*"
+                name="subject"
+                value={form.subject}
+                onChange={handleChange}
+                error={Boolean(errors.subject)}
+                helperText={errors.subject || ""}
+                sx={fieldSx}
+                InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+              />
+
+              <TextField
+                size="small"
+                variant="filled"
+                fullWidth
+                label="Message"
+                multiline
+                minRows={2}
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                error={Boolean(errors.message)}
+                helperText={errors.message || ""}
+                sx={fieldSx}
+                InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+              />
+
+
+
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{ mt: 1.5, backgroundColor: "#000", borderRadius: 10, px: 5, py: 0.8, alignSelf: "center", ":hover": { backgroundColor: "#222" } }}
+              >
+                SUBMIT
+              </Button>
+
+
+              <Snackbar
+                open={snack.open}
+                autoHideDuration={1200}
+                onClose={() => setSnack((s) => ({ ...s, open: false }))}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setSnack((s) => ({ ...s, open: false }))}
+                  severity={snack.severity}
+                  variant="filled"
+                  sx={{ width: "100%" }}
+                >
+                  {snack.msg}
+                </Alert>
+              </Snackbar>
+            </Box>
+          </Grid>
+
         </Grid>
 
-        {/* RIGHT: form (wider, like your reference) */}
-        <Grid item xs={12} md={9} zeroMinWidth sx={{ minWidth: 0 }}>
+        {/* Cards grid */}
+        <Box
+          sx={{
+            // py: { xs: -11, md: -21 },
+            //px: { xs: 2, md: 5 },
+            mx: { xs: -1, sm: -2, md: -3 },
+            mt: 5,
+            mb: 4,
+            px: 0,
+            py: 1,
+            backgroundColor: "#f5f7fb",
+          }}
+        >
+          <Typography
+            variant="h3" // bigger headline like the screenshot
+            sx={{
+              fontWeight: 500,
+              color: "#4A5A7D", // headline color
+              mt: { xs: 6, md: 10 },
+              mb: 2,
+              textAlign: "center",
+            }}
+          >
+            Documents Required
+          </Typography>
+          <Typography
+            variant="h6" // smaller subtitle like the screenshot
+            sx={{
+              color: "#0f2555",
+              fontWeight: 300,
+              maxWidth: 700,
+              mx: "auto",
+              lineHeight: 1.6,
+            }}
+          >
+            To register your Private Limited seamlessly, you’ll need to submit
+            basic identity, address, and office-related documents.
+          </Typography>
+          <Container maxWidth="lg" sx={{ mt: 6 }}>
+            <Grid
+              container
+              spacing={3}
+              justifyContent="center"
+              wrap="nowrap"
+              sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
+            >
+              {cardData.map((card) => (
+                <Grid
+                  item
+                  key={card.title}
+                  xs={12}
+                  md={4}
+                  sx={{
+                    flex: { xs: "0.5 0.5 100%", md: "0.5 0.5 33.33%" },
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      background: "#fff",
+                      borderRadius: 3,
+                      p: 4,
+                      width: "100%",
+                      maxWidth: 360,
+                      boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      "&:hover": {
+                        transform: "translateY(-5px)",
+                        boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
+                      },
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 600,
+                        color: "#0f2555",
+                        mb: 2,
+                        textAlign: "left",
+                      }}
+                    >
+                      {card.title}
+                    </Typography>
+                    <ul
+                      style={{
+                        textAlign: "left",
+                        paddingLeft: "1.2rem",
+                        color: "#333",
+                        lineHeight: 1.2,
+                        margin: 0,
+                      }}
+                    >
+                      {card.items.map((item, idx) => (
+                        <li key={idx} style={{ marginBottom: "8px" }}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+
+
           <Box
             sx={{
-              ml: { md: 2 }, // small gutter on desktop
-              backgroundColor: "rgba(255,255,255,0.1)",
-              borderRadius: 3,
-              p: 4,
-              display: "flex",
-              flexDirection: "column",
-              gap: 3,
-              boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
-              maxWidth: 720, // keep a nice readable width
+              textAlign: "center",
+              mt: { xs: 8, md: 10 }, // top spacing to clear navbar or previous section
+              mb: { xs: 6, md: 8 }, // space below before next content
+              px: { xs: 2, md: 0 }, // side padding on small screens
             }}
           >
             <Typography
-              variant="h5"
-              sx={{ fontWeight: 600, color: "#d1d5db", textAlign: "center" }}
+              variant="h3"
+              sx={{
+                fontWeight: 500,
+                color: "#4A5A7D", // main heading color
+                mb: 2,
+                lineHeight: 1.2,
+              }}
             >
-              Get Expert Consultation
+              Simplified Process to Register Your <br /> Private Limited in
+              India
             </Typography>
 
-            <TextField
-              variant="filled"
-              fullWidth
-              label="Name*"
-              InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
-            />
-            <TextField
-              variant="filled"
-              fullWidth
-              label="Mobile No.*"
-              InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
-            />
-            <TextField
-              variant="filled"
-              fullWidth
-              label="Your email*"
-              InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
-            />
-            <TextField
-              variant="filled"
-              fullWidth
-              label="Message"
-              multiline
-              minRows={3}
-              InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
-            />
-
-            <Button
-              variant="contained"
+            <Typography
+              variant="h6"
               sx={{
-                mt: 2,
-                backgroundColor: "#000",
-                borderRadius: 10,
-                px: 6,
-                alignSelf: "center",
-                ":hover": { backgroundColor: "#222" },
+                color: "#0f2555", // subtitle color
+                fontWeight: 300,
+                maxWidth: 800,
+                mx: "auto",
+                lineHeight: 1.6,
               }}
             >
-              SUBMIT
-            </Button>
+              Setting up your Private Limited is simpler than you think —
+              especially with Rekotax guiding every step. Here’s a streamlined
+              breakdown of the entire process:
+            </Typography>
           </Box>
-        </Grid>
-      </Grid>
+          <Box
+            sx={{
+              backgroundColor: "#f4f6f8",
+              py: { xs: 0, md: 0 },
+              px: { xs: 2, md: 4 },
+            }}
+          >
+            <Container maxWidth="lg">
+              <Grid container spacing={4} justifyContent="center">
+                {[
+                  {
+                    num: 1,
+                    title: "Reserve Company Name",
+                    desc: "Choose 3–6 unique name options that reflect your business. We’ll help you check availability and ensure it ends with “(OPC) Private Limited”.",
+                  },
+                  {
+                    num: 2,
+                    title: "Get DSC & DIN",
+                    desc: "Apply for Digital Signature Certificate and Director Identification Number to sign and file incorporation forms online.",
+                  },
+                  {
+                    num: 3,
+                    title: "Submit Incorporation Docs",
+                    desc: "Prepare and submit MOA, AOA, INC-3 (Nominee consent), INC-9 (Director declaration) using the SPICe+ form on the MCA portal.",
+                  },
+                  {
+                    num: 4,
+                    title: "Pay Government Fees",
+                    desc: "Pay applicable government and stamp duties based on the state and authorized capital - we’ll calculate and manage this for you.",
+                  },
+                  {
+                    num: 5,
+                    title: "Get Certificate of Incorporation",
+                    desc: "Registrar verifies your application and issues the Certificate of Incorporation (COI) with your unique CIN - you’re now legally registered!",
+                  },
+                  {
+                    num: 6,
+                    title: "Post-Incorporation Compliance",
+                    desc: "Open a current account, apply for PAN, TAN & GST, and set up accounting and compliance systems. We’ll guide you through everything.",
+                  },
+                ].map((step) => (
+                  <Grid
+                    key={step.num}
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4} // 3 per row on md+
+                    sx={{ display: "flex", justifyContent: "center" }}
+                  >
+                    <Card
+                      elevation={0}
+                      sx={{
+                        borderRadius: 3,
+                        width: "100%",
+                        maxWidth: 360,
+                        boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-5px)",
+                          boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ p: 4, textAlign: "center" }}>
+                        <Box
+                          sx={{
+                            width: 56,
+                            height: 56,
+                            borderRadius: "50%",
+                            backgroundColor: "#0f2555",
+                            color: "#fff",
+                            fontWeight: "bold",
+                            fontSize: "1.2em",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            mx: "auto",
+                            mb: 2,
+                            boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+                          }}
+                        >
+                          {step.num}
+                        </Box>
 
-      <Box
-        sx={{
-          py: { xs: 5, md: 10 },
-          px: { xs: -2, md: 8 },
-          backgroundColor: "#f5f7fb",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            color: BrandColor,
-            fontWeight: 700,
-            textAlign: "center",
-            mb: 2,
-          }}
-        >
-          Documents Required
-        </Typography>
-        <Typography
-          sx={{
-            mb: 6,
-            maxWidth: 800,
-            mx: "auto",
-            color: "#555",
-            fontSize: "1.05rem",
-            textAlign: "center",
-          }}
-        >
-          To register your OPC seamlessly, you’ll need to submit basic identity,
-          address, and office-related documents.
-        </Typography>
+                        <Typography
+                          variant="h6"
+                          sx={{ fontWeight: 700, color: "#0f2555", mb: 1.5 }}
+                        >
+                          {step.title}
+                        </Typography>
 
-        {/* Force all three cards into one row */}
-        <Grid
-          container
-          spacing={4}
-          justifyContent="center"
-          wrap="nowrap"
-          sx={{
-            flexWrap: { xs: "wrap", md: "nowrap" }, // wrap on small screens but not on md+
-          }}
-        >
-          {cardData.map((card) => (
-            <Grid
-              item
-              key={card.title}
-              xs={12}
-              md={4}
-              sx={{
-                flex: { xs: "1 1 100%", md: "1 1 33.33%" },
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            fontSize: "0.95em",
+                            lineHeight: 1.6,
+                            textAlign: "left",
+                            color: "#333",
+                          }}
+                        >
+                          {step.desc}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </Box>
+
+          <Typography
+            variant="h3" // bigger headline like the screenshot
+            sx={{
+              fontWeight: 500,
+              color: "#4A5A7D", // headline color
+              mt: { xs: 6, md: 10 },
+              mb: 2,
+              textAlign: "center",
+            }}
+          >
+            Our Approach
+          </Typography>
+          <Box
+            sx={{
+              backgroundColor: "transparent",
+              py: { xs: 6, md: 8 },
+              px: { xs: 2, md: 4 },
+            }}
+          >
+            <Container maxWidth="lg">
+              <Grid container spacing={4} justifyContent="center">
+                {[
+                  {
+                    num: 1,
+                    text: "Fill our Registration Form & Make the Payment",
+                  },
+                  {
+                    num: 2,
+                    text: "Expert Will Call You & Receive All Necessary Documents",
+                  },
+                  {
+                    num: 3,
+                    text: "Will Create DSC & the DIN Number of Director",
+                  },
+                  {
+                    num: 4,
+                    text: "MOA and AOA Drafting & Submit",
+                  },
+                  {
+                    num: 5,
+                    text: "Your Documents will be Filed & Submitted to the ROC",
+                  },
+                  {
+                    num: 6,
+                    text: "Congratulations! You've registered your company. Certificates will be sent by post. 👍",
+                  },
+                ].map((step) => (
+                  <Grid
+                    key={step.num}
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4} // 3 cards per row on md+ screens
+                    sx={{ display: "flex", justifyContent: "center" }}
+                  >
+                    <Box
+                      sx={{
+                        backgroundColor: "#0f2555",
+                        color: "#fff",
+                        borderRadius: 2,
+                        width: 280,
+                        height: 200,
+                        p: 3,
+                        position: "relative",
+                        boxShadow: "0 8px 16px rgba(0,0,0,0.15)",
+                        transition: "transform 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-5px)",
+                        },
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: 16,
+                          fontWeight: 500,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {step.text}
+                      </Typography>
+
+                      {/* Arrow except for the last card */}
+                      {step.num !== 6 && (
+                        <Typography
+                          sx={{
+                            mt: 2,
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            display: "inline-block",
+                          }}
+                        >
+                          →
+                        </Typography>
+                      )}
+
+                      <Typography
+                        sx={{
+                          position: "absolute",
+                          bottom: 10,
+                          right: 20,
+                          fontSize: 100,
+                          fontWeight: "bold",
+                          color: "#b5b7bb",
+                          opacity: 0.2,
+                          pointerEvents: "none",
+                        }}
+                      >
+                        {step.num}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </Box>
+
+
+          <WhyRekotax />
+
+          <Typography
+            variant="h3" // bigger headline like the screenshot
+            sx={{
+              fontWeight: 500,
+              color: "#4A5A7D", // headline color
+              mt: { xs: 6, md: 10 },
+              mb: 2,
+              textAlign: "center",
+            }}
+          >
+            Private Limited Registration: A Complete Guide
+          </Typography>
+          <Box
+            sx={{
+              backgroundColor: "#f4f6f8",
+              py: { xs: 6, md: 8 },
+              px: { xs: 2, md: 4 },
+            }}
+          >
+            <Container maxWidth="md">
+              {/* Section 1 */}
               <Box
                 sx={{
-                  background: "#fff",
-                  borderRadius: 3,
+                  backgroundColor: "#fff",
                   p: 4,
-                  width: "100%",
-                  maxWidth: 360,
-                  boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-5px)",
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
-                  },
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
                 }}
               >
-                <Box sx={{ mb: 2, textAlign: "center" }}>{card.icon}</Box>
+                <Typography
+                  variant="h4"
+                  sx={{ color: "#0f2555", mb: 2, fontWeight: 500 }}
+                >
+                  Private Limited Company Registration in India
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  Private Limited Company (Pvt Ltd) is one of the most credible,
+                  scalable, and legally structured business entities in India.
+                  It is governed by the Companies Act, 2013 and offers
+                  entrepreneurs limited liability, a separate legal identity,
+                  and better access to funding. It is ideal for startups,
+                  growing businesses, and ventures seeking equity investments.
+                </Typography>
+              </Box>
+
+              {/* Section 2 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Why Choose a Private Limited Company?
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>
+                      Offers limited liability protection to its shareholders
+                    </li>
+                    <li>
+                      Enhances business credibility and trust with clients and
+                      investors
+                    </li>
+                    <li>Facilitates easy equity fundraising</li>
+                    <li>Ensures perpetual succession and stability</li>
+                    <li>Enables smooth transfer of ownership</li>
+                  </ul>
+                </Typography>
+              </Box>
+
+              {/* Section 3 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px  #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Types of Private Limited Companies
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>
+                      <strong>Company Limited by Shares:</strong> Shareholders’
+                      liability is limited to the amount unpaid on their shares.
+                    </li>
+                    <li>
+                      <strong>Company Limited by Guarantee:</strong> Members
+                      guarantee a pre-decided amount in case of winding up.
+                    </li>
+                    <li>
+                      <strong>Unlimited Company:</strong> No limit on liability,
+                      though rarely chosen.
+                    </li>
+                  </ul>
+                </Typography>
+              </Box>
+
+              {/* Section 4 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Eligibility Criteria
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>
+                      Minimum two directors (at least one Indian resident)
+                    </li>
+                    <li>Minimum two shareholders (can be same as directors)</li>
+                    <li>Maximum 200 shareholders and 15 directors</li>
+                    <li>Registered office address in India</li>
+                    <li>Valid DIN and DSC for directors</li>
+                  </ul>
+                </Typography>
+              </Box>
+
+              {/* Section 5 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Benefits of Private Limited Company Registration
+                </Typography>
+
                 <Typography
                   variant="h6"
                   sx={{
-                    fontWeight: 700,
-                    color: BrandColor,
-                    mb: 2,
-                    textAlign: "center",
-                  }}
-                >
-                  {card.title}
-                </Typography>
-                <ul
-                  style={{
-                    textAlign: "left",
-                    paddingLeft: "1.2rem",
-                    color: "#333",
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
                     lineHeight: 1.8,
-                    margin: 0,
+                    mb: 2,
                   }}
                 >
-                  {card.items.map((item, idx) => (
-                    <li key={idx} style={{ marginBottom: "8px" }}>
-                      {item}
+                  Separate Legal Identity
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>The company exists independently from its owners</li>
+                    <li>Can own assets, enter contracts, sue or be sued</li>
+                  </ul>
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  Limited Liability
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>
+                      Shareholders’ personal assets are protected from business
+                      losses
                     </li>
-                  ))}
-                </ul>
+                    <li>Risk is confined to the amount invested</li>
+                  </ul>
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  Ease of Fundraising
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>Preferred structure for angel investors and VCs</li>
+                    <li>
+                      Can issue equity shares, preference shares, and debentures
+                    </li>
+                  </ul>
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  Business Continuity
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>
+                      Uninterrupted existence regardless of changes in ownership
+                    </li>
+                  </ul>
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  Transferability of Shares
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  <ul>
+                    <li>
+                      Shares can be transferred with minimal legal formalities
+                    </li>
+                  </ul>
+                </Typography>
               </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-
-      <Box
-        sx={{
-          py: { xs: 6, md: 10 },
-          px: { xs: 2, md: 8 },
-          backgroundColor: "#f5f7fb", // light grey background
-          textAlign: "center",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            color: "#6b7280", // soft grey tone like in the screenshot
-            fontWeight: 700,
-            mb: 2,
-            fontSize: { xs: "2rem", md: "2.8rem" }, // responsive font size
-            lineHeight: 1.3,
-          }}
-        >
-          Simplified Process to Register Your <br /> OPC in India
-        </Typography>
-
-        <Typography
-          sx={{
-            color: "#4b5563",
-            fontSize: { xs: "1rem", md: "1.15rem" },
-            maxWidth: 800,
-            mx: "auto",
-          }}
-        >
-          Setting up your OPC is simpler than you think — especially with
-          Rekotax guiding every step. <br />
-          Here’s a streamlined breakdown of the entire process:
-        </Typography>
-      </Box>
-
-      <Box
-        sx={{
-          py: { xs: 6, md: 10 },
-          px: { xs: 1, md: 2 },
-          backgroundColor: "#f4f6f8",
-        }}
-      >
-        <Grid container spacing={4} justifyContent="center">
-          {[
-            {
-              num: "1",
-              title: "Reserve Company Name",
-              desc: "Choose 3–6 unique name options that reflect your business. We’ll help you check availability and ensure it ends with “(OPC) Private Limited”.",
-            },
-            {
-              num: "2",
-              title: "Get DSC & DIN",
-              desc: "Apply for Digital Signature Certificate and Director Identification Number to sign and file incorporation forms online.",
-            },
-            {
-              num: "3",
-              title: "Submit Incorporation Docs",
-              desc: "Prepare and submit MOA, AOA, INC-3 (Nominee consent), INC-9 (Director declaration) using the SPICe+ form on the MCA portal.",
-            },
-            {
-              num: "4",
-              title: "Pay Government Fees",
-              desc: "Pay applicable government and stamp duties based on the state and authorized capital — we’ll calculate and manage this for you.",
-            },
-            {
-              num: "5",
-              title: "Get Certificate of Incorporation",
-              desc: "Registrar verifies your application and issues the Certificate of Incorporation (COI) with your unique CIN — you’re now legally registered!",
-            },
-            {
-              num: "6",
-              title: "Post-Incorporation Compliance",
-              desc: "Open a current account, apply for PAN, TAN & GST, and set up accounting and compliance systems. We’ll guide you through everything.",
-            },
-          ].map((step, index) => (
-            <Grid
-              item
-              xs={12}
-              md={4} // force exactly 3 per row on md+
-              key={index}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
+              {/* Section 6 */}
               <Box
                 sx={{
-                  backgroundColor: "#ffffff",
-                  borderRadius: 3,
+                  backgroundColor: "#fff",
                   p: 4,
-                  width: "100%",
-                  maxWidth: 320,
-                  textAlign: "center",
-                  boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-5px)",
-                    boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
-                  },
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
                 }}
               >
-                <Box
+                <Typography
+                  variant="h5"
                   sx={{
-                    width: 56,
-                    height: 56,
-                    borderRadius: "50%",
-                    backgroundColor: "#0f3d7c",
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Documents Required
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}
+                >
+                  1. Directors & Shareholders
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <ul>
+                    <li>PAN and Aadhaar Card</li>
+                    <li>Address proof (Bank Statement/Utility Bill)</li>
+                    <li>Passport-size photographs</li>
+                    <li>Email ID and Mobile number</li>
+                  </ul>
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                    mt: 2,
+                    mb: 2,
+                  }}
+                >
+                  2. Company Address Proof
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <ul>
+                    <li>Electricity Bill/Property Tax Receipt</li>
+                    <li>Rent Agreement/NOC from property owner</li>
+                  </ul>
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                    mt: 2,
+                    mb: 2,
+                  }}
+                >
+                  3. Company Details
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <ul>
+                    <li>Name options (2–3 preferences)</li>
+                    <li>Nature of business</li>
+                    <li>Share capital structure</li>
+                  </ul>
+                </Typography>
+              </Box>
+
+              {/* Section 7 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Private Limited Company Registration Process
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <ol>
+                    <li>Apply for DSC (Digital Signature Certificate)</li>
+                    <li>Obtain DIN (Director Identification Number)</li>
+                    <li>Name approval via RUN or SPICe+</li>
+                    <li>Prepare MOA, AOA and other incorporation documents</li>
+                    <li>File SPICe+ form with MCA</li>
+                    <li>
+                      Receive Certificate of Incorporation (COI) with PAN & TAN
+                    </li>
+                  </ol>
+                </Typography>
+              </Box>
+
+              {/* Section 8 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Post-Incorporation Compliances
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <ul>
+                    <li>Open company bank account</li>
+                    <li>Conduct first board meeting within 30 days</li>
+                    <li>Appointment of auditor</li>
+                    <li>
+                      Issue share certificates and maintain statutory registers
+                    </li>
+                    <li>File annual returns and financials (AOC-4, MGT-7)</li>
+                  </ul>
+                </Typography>
+              </Box>
+
+              {/* Section 9 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Cost of Registration
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  The cost of registering a Private Limited Company in India
+                  typically ranges between ₹8,000 to ₹25,000 depending on state,
+                  professional services, and share capital.
+                </Typography>
+              </Box>
+
+              {/* Section 10 */}
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  p: 4,
+                  mb: 4,
+                  borderRadius: 2,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#0f2555",
+                    mb: 2,
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
+                    pb: 1,
+                  }}
+                >
+                  Certificate of Incorporation (COI)
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                    mt: 2,
+                    mb: 2,
+                  }}
+                >
+                  The COI includes:
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <ul>
+                    <li>Company Identification Number (CIN)</li>
+                    <li>Date of Incorporation</li>
+                    <li>Company name and status</li>
+                  </ul>
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                    mt: 2,
+                    mb: 2,
+                  }}
+                >
+                  It is required to:
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#333",
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  <ul>
+                    <li>Open a business bank account</li>
+                    <li>Apply for government registrations and licenses</li>
+                    <li>Enter into legal agreements</li>
+                  </ul>
+                </Typography>
+              </Box>
+            </Container>
+          </Box>
+          <Box sx={{ width: "100%", overflowX: "auto", my: 4 }}>
+            <Typography
+              variant="h4"
+              sx={{
+                color: "#6b7280", // soft grey tone
+                fontWeight: 500,
+                mb: 4,
+                fontSize: { xs: "2rem", md: "2.8rem" },
+                lineHeight: 1.3,
+                bgcolor: "#fff",
+                textAlign: "center", // ✅ center the text
+              }}
+            >
+              Comparisons
+            </Typography>
+            <Box sx={{ px: { xs: 2, md: 6 }, my: 4 }}>
+              <Box
+                component="table"
+                sx={{
+                  px: { xs: 2, md: 4 },
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  fontFamily: "'Open Sans', sans-serif",
+                  fontSize: { xs: "13px", sm: "15px" },
+                  tableLayout: "fixed",
+                  bgcolor: "#fff",
+                  minWidth: { xs: 800, md: "100%" },
+                  "& th, & td": {
+                    border: "1px solid #ddd",
+                    p: "12px 15px",
+                    textAlign: "center",
+                    wordWrap: "break-word",
+                    color: "#333", // dark body text
+                    fontWeight: 400,
+                    fontSize: "1.05rem",
+                    lineHeight: 1.8,
+                  },
+                  "& thead th": {
+                    backgroundColor: "#0f2555",
                     color: "#fff",
                     fontWeight: "bold",
-                    fontSize: "1.2em",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    mx: "auto",
-                    mb: 2,
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-                  }}
-                >
-                  {step.num}
-                </Box>
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: 700, color: "#0f3d7c", mb: 1 }}
-                >
-                  {step.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontSize: "0.95em",
-                    color: "#444",
+                  },
+                  "& tbody tr:nth-of-type(even)": {
+                    backgroundColor: "#f9f9f9",
+                  },
+                  "& tbody tr:nth-of-type(odd)": {
+                    backgroundColor: "#ffffff",
+                  },
+                  "& tbody td:first-of-type": {
                     textAlign: "left",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {step.desc}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-
-      <Box
-        sx={{
-          py: { xs: 6, md: 10 },
-          backgroundColor: "#ffffff",
-          maxWidth: 1200,
-          mx: "auto",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            color: "#6b7280", // soft grey tone
-            fontWeight: 700,
-            mb: 2,
-            fontSize: { xs: "2rem", md: "2.8rem" },
-            lineHeight: 1.3,
-            textAlign: "center", // ✅ center the text
-          }}
-        >
-          Why Rekotax?
-        </Typography>
-
-        <Grid container spacing={3} justifyContent="center">
-          {[
-            {
-              number: "1",
-              text: "Fill our Registration Form & Make the Payment",
-              arrow: true,
-            },
-            {
-              number: "2",
-              text: "Expert Will Call You & Receive All Necessary Documents",
-              arrow: true,
-            },
-            {
-              number: "3",
-              text: "Will Create DSC & the DIN Number of Director",
-              arrow: true,
-            },
-            {
-              number: "4",
-              text: "MOA and AOA Drafting & Submit",
-              arrow: true,
-            },
-            {
-              number: "5",
-              text: "Your Documents will be Filed & Submitted to the ROC",
-              arrow: true,
-            },
-            {
-              number: "6",
-              text: "Congratulations! You've registered your company. Certificates will be sent by post. 👍",
-              arrow: false,
-            },
-          ].map((step, idx) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4} // ensures exactly 3 per row on md+
-              key={idx}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                  backgroundColor: "#0f2555",
-                  color: "#fff",
-                  borderRadius: 4,
-                  p: 3,
-                  width: "100%",
-                  maxWidth: 280,
-                  height: 200,
-                  boxShadow: "0 8px 16px rgba(0,0,0,0.15)",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-5px)",
+                    fontWeight: 600,
+                    backgroundColor: "#f3f3f3",
+                  },
+                  "& tbody td:nth-of-type(3)": {
+                    backgroundColor: "rgba(15,61,124,0.10)", // highlight Private Limited column
+                    color: "#000",
                   },
                 }}
               >
-                <Typography
-                  sx={{ fontSize: 16, lineHeight: 1.4, fontWeight: 500 }}
-                >
-                  {step.text}
-                </Typography>
-
-                {step.arrow && (
-                  <Typography
-                    sx={{
-                      mt: 2,
-                      fontSize: 20,
-                      fontWeight: "bold",
-                      display: "inline-block",
-                    }}
-                  >
-                    →
-                  </Typography>
-                )}
-
-                <Typography
-                  sx={{
-                    position: "absolute",
-                    bottom: 10,
-                    right: 20,
-                    fontSize: 100,
-                    fontWeight: "bold",
-                    color: "#b5b7bb",
-                    opacity: 0.2,
-                    pointerEvents: "none",
-                  }}
-                >
-                  {step.number}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-
-      <Box
-        sx={{
-          fontFamily: "'Open Sans', sans-serif",
-          lineHeight: 1.7,
-          maxWidth: 1400,
-          mx: "auto",
-          p: { xs: 2, md: 4 },
-          backgroundColor: "#f4f6f8",
-          color: "#333",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            color: "#6b7280", // soft grey tone
-            fontWeight: 700,
-            mb: 2,
-            fontSize: { xs: "2rem", md: "2.8rem" },
-            lineHeight: 1.3,
-            textAlign: "center", // ✅ center the text
-          }}
-        >
-          OPC Regstration: A Complete Guide
-        </Typography>
-        {/* Section 1 */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            p: 3,
-            mb: 4,
-            borderRadius: 2,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Typography variant="h4" sx={{ color: "#0f3d7c", mb: 2 }}>
-            What is One Person Company (OPC) Registration?
-          </Typography>
-          <Typography>
-            One Person Company (OPC) is a unique business structure introduced
-            under the Companies Act, 2013 that empowers a solo entrepreneur to
-            incorporate a private limited company with limited liability. OPC
-            blends the simplicity of sole proprietorship with the advantages of
-            a corporate entity, including a distinct legal identity and reduced
-            personal financial risk.
-          </Typography>
-        </Box>
-
-        {/* Section 2 */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            p: 3,
-            mb: 4,
-            borderRadius: 2,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "#0f3d7c",
-              mb: 2,
-              borderBottom: "2px solid #0f3d7c",
-              pb: 1,
-            }}
-          >
-            Why Choose OPC?
-          </Typography>
-          <ul>
-            <li>Operate as a single founder with full control</li>
-            <li>Enjoy legal recognition and limited liability</li>
-            <li>Gain higher credibility with clients, investors, and banks</li>
-            <li>Easily scale into a Private Limited Company when required</li>
-          </ul>
-        </Box>
-
-        {/* Section 3 */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            p: 3,
-            mb: 4,
-            borderRadius: 2,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "#0f3d7c",
-              mb: 2,
-              borderBottom: "2px solid #0f3d7c",
-              pb: 1,
-            }}
-          >
-            Types of OPC in India
-          </Typography>
-          <ul>
-            <li>
-              <strong>OPC Limited by Shares:</strong> Liability limited to the
-              unpaid amount on shares held.
-            </li>
-            <li>
-              <strong>OPC Limited by Guarantee with Share Capital:</strong>{" "}
-              Liability includes unpaid share capital and a pre-decided
-              guarantee amount.
-            </li>
-            <li>
-              <strong>OPC Limited by Guarantee without Share Capital:</strong>{" "}
-              Operates without share capital; liability limited to guarantee
-              only.
-            </li>
-            <li>
-              <strong>Unlimited OPC with Share Capital:</strong> Offers share
-              capital but does not limit personal liability; higher risk.
-            </li>
-            <li>
-              <strong>Unlimited OPC without Share Capital:</strong> High-risk
-              model with unlimited personal liability and no share issuance.
-            </li>
-          </ul>
-        </Box>
-
-        {/* Section 4 */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            p: 3,
-            mb: 4,
-            borderRadius: 2,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "#0f3d7c",
-              mb: 2,
-              borderBottom: "2px solid #0f3d7c",
-              pb: 1,
-            }}
-          >
-            Key Characteristics of an OPC
-          </Typography>
-          <ul>
-            <li>
-              <strong>Sole Ownership, Full Control:</strong> One person holds
-              100% ownership and makes all decisions.
-            </li>
-            <li>
-              <strong>Nominee Appointment is Mandatory:</strong> Ensures
-              business continuity.
-            </li>
-            <li>
-              <strong>Limited Liability:</strong> Personal assets are protected.
-            </li>
-            <li>
-              <strong>Separate Legal Entity:</strong> Company is legally
-              distinct from the owner.
-            </li>
-            <li>
-              <strong>Professional Image:</strong> Adds credibility with "(OPC)
-              Private Limited" tag.
-            </li>
-            <li>
-              <strong>Swift Decision-Making:</strong> No board needed for
-              decisions.
-            </li>
-            <li>
-              <strong>Basic Compliance:</strong> Requires 2 board meetings
-              annually, 90 days apart.
-            </li>
-            <li>
-              <strong>Bank Loan Friendly:</strong> Easier access to funding and
-              credit.
-            </li>
-            <li>
-              <strong>Scalable:</strong> Can convert to Private Limited Company.
-            </li>
-            <li>
-              <strong>Tax Smart:</strong> Enjoy deductions and corporate tax
-              benefits.
-            </li>
-            <li>
-              <strong>Leadership with Expertise:</strong> Appoint up to 15
-              directors.
-            </li>
-            <li>
-              <strong>Exclusive Ownership Rule:</strong> One OPC per person;
-              nominee in others allowed.
-            </li>
-          </ul>
-        </Box>
-
-        {/* Section 5 */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            p: 3,
-            mb: 4,
-            borderRadius: 2,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "#0f3d7c",
-              mb: 2,
-              borderBottom: "2px solid #0f3d7c",
-              pb: 1,
-            }}
-          >
-            Benefits of OPC Registration
-          </Typography>
-          <Typography variant="h6" sx={{ mt: 2 }}>
-            Limited Liability Protection
-          </Typography>
-          <ul>
-            <li>Personal savings and assets are safe from company debts.</li>
-            <li>Encourages entrepreneurship with lower financial risks.</li>
-          </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>
-            Enhanced Business Credibility
-          </Typography>
-          <ul>
-            <li>Improves trust with clients, suppliers, and investors.</li>
-            <li>Legally structured and professionally managed.</li>
-          </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>
-            Complete Operational Control
-          </Typography>
-          <ul>
-            <li>Make fast decisions independently.</li>
-            <li>Quickly adapt to market changes.</li>
-          </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>
-            Tax & Financial Benefits
-          </Typography>
-          <ul>
-            <li>Corporate tax rates and deductions available.</li>
-            <li>Depreciation benefits lower taxable income.</li>
-          </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>
-            Easy Access to Credit & Capital
-          </Typography>
-          <ul>
-            <li>Easier to open accounts and secure loans.</li>
-            <li>Ready for funding and conversion to Pvt Ltd.</li>
-          </ul>
-          <Typography variant="h6" sx={{ mt: 2 }}>
-            Business Continuity & Legacy Planning
-          </Typography>
-          <ul>
-            <li>Nominee ensures continuity in the founder's absence.</li>
-            <li>Supports long-term growth and succession.</li>
-          </ul>
-        </Box>
-
-        {/* Section 6 */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            p: 3,
-            mb: 4,
-            borderRadius: 2,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "#0f3d7c",
-              mb: 2,
-              borderBottom: "2px solid #0f3d7c",
-              pb: 1,
-            }}
-          >
-            Post-Registration Compliance
-          </Typography>
-          <ul>
-            <li>
-              <strong>Annual Filing:</strong> File returns and financials with
-              MCA.
-            </li>
-            <li>
-              <strong>Board Meetings:</strong> At least two per financial year.
-            </li>
-            <li>
-              <strong>Accounting Standards:</strong> Maintain proper books and
-              registers.
-            </li>
-            <li>
-              <strong>Tax Filing:</strong> Annual income tax return and
-              applicable TDS.
-            </li>
-            <li>
-              <strong>GST Filing:</strong> Monthly or quarterly returns (if
-              registered).
-            </li>
-          </ul>
-        </Box>
-
-        {/* Section 7 */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            p: 3,
-            mb: 4,
-            borderRadius: 2,
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "#0f3d7c",
-              mb: 2,
-              borderBottom: "2px solid #0f3d7c",
-              pb: 1,
-            }}
-          >
-            Certificate of Incorporation: Your Legal Identity
-          </Typography>
-          <Typography>
-            The Certificate of Incorporation (COI) from MCA includes:
-          </Typography>
-          <ul>
-            <li>Company Identification Number (CIN)</li>
-            <li>Date of Incorporation</li>
-            <li>Company name and registration details</li>
-          </ul>
-          <Typography>You’ll need the COI to:</Typography>
-          <ul>
-            <li>Open a current bank account</li>
-            <li>Apply for government licenses</li>
-            <li>Enter into contracts</li>
-            <li>Build brand trust and legitimacy</li>
-          </ul>
-        </Box>
-      </Box>
-
-      <Box sx={{ width: "100%", overflowX: "auto", my: 4 }}>
-        <Typography
-          variant="h4"
-          sx={{
-            color: "#6b7280", // soft grey tone
-            fontWeight: 700,
-            mb: 2,
-            fontSize: { xs: "2rem", md: "2.8rem" },
-            lineHeight: 1.3,
-            bgcolor: "#fff",
-            textAlign: "center", // ✅ center the text
-          }}
-        >
-          Comparisons
-        </Typography>
-        <Box
-          component="table"
-          sx={{
-            width: "100%",
-            borderCollapse: "collapse",
-            fontFamily: "'Open Sans', sans-serif",
-            fontSize: { xs: "13px", sm: "15px" },
-            tableLayout: "fixed",
-            bgcolor: "#fff", // table background
-            minWidth: { xs: 800, md: "100%" },
-            "& th, & td": {
-              border: "1px solid #ddd",
-              p: "12px 15px",
-              textAlign: "center",
-              wordWrap: "break-word",
-            },
-            "& thead th": {
-              backgroundColor: "#0f3d7c",
-              color: "#fff", // white text for header
-              fontWeight: "bold",
-            },
-            "& tbody td": {
-              color: "#000", // force dark visible text
-            },
-            "& tbody tr:nth-of-type(even)": {
-              backgroundColor: "#f9f9f9",
-            },
-            "& tbody tr:nth-of-type(odd)": {
-              backgroundColor: "#ffffff",
-            },
-            "& tbody td:first-of-type": {
-              textAlign: "left",
-              fontWeight: 600,
-              backgroundColor: "#f3f3f3",
-              color: "#000", // dark text for first column
-            },
-            "& tbody td:nth-of-type(3)": {
-              backgroundColor: "rgba(15,61,124,0.10)", // highlight OPC column
-              color: "#000", // keep text visible
-            },
-          }}
-        >
-          <Box component="thead">
-            <Box component="tr">
-              <Box component="th"> </Box>
-              <Box component="th">Private Limited Company</Box>
-              <Box component="th">One Person Company</Box>
-              <Box component="th">Limited Liability Partnership</Box>
-              <Box component="th">Partnership Firm</Box>
-              <Box component="th">Proprietorship Firm</Box>
-            </Box>
-          </Box>
-
-          <Box component="tbody">
-            <Box component="tr">
-              <Box component="td">Act</Box>
-              <Box component="td">Companies Act, 2013</Box>
-              <Box component="td">Companies Act, 2013</Box>
-              <Box component="td">Limited Liability Partnership Act, 2008</Box>
-              <Box component="td">Indian Partnership Act, 1932</Box>
-              <Box component="td">No specified Act</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Registration Requirement</Box>
-              <Box component="td">Mandatory</Box>
-              <Box component="td">Mandatory</Box>
-              <Box component="td">Mandatory</Box>
-              <Box component="td">Optional</Box>
-              <Box component="td">No</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Number of members</Box>
-              <Box component="td">2 – 200</Box>
-              <Box component="td">Only 1</Box>
-              <Box component="td">2 – Unlimited</Box>
-              <Box component="td">2 – 50</Box>
-              <Box component="td">Only 1</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Separate Legal Entity</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">No</Box>
-              <Box component="td">No</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Liability Protection</Box>
-              <Box component="td">Limited</Box>
-              <Box component="td">Limited</Box>
-              <Box component="td">Limited</Box>
-              <Box component="td">Unlimited</Box>
-              <Box component="td">Unlimited</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Statutory Audit</Box>
-              <Box component="td">Mandatory</Box>
-              <Box component="td">Mandatory</Box>
-              <Box component="td">Dependent</Box>
-              <Box component="td">Not mandatory</Box>
-              <Box component="td">Not mandatory</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Ownership Transferability</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">No</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">No</Box>
-              <Box component="td">No</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Uninterrupted Existence</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">Yes</Box>
-              <Box component="td">No</Box>
-              <Box component="td">No</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Foreign Participation</Box>
-              <Box component="td">Allowed</Box>
-              <Box component="td">Not Allowed</Box>
-              <Box component="td">Allowed</Box>
-              <Box component="td">Not Allowed</Box>
-              <Box component="td">Not Allowed</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Tax Rates</Box>
-              <Box component="td">Moderate</Box>
-              <Box component="td">Moderate</Box>
-              <Box component="td">High</Box>
-              <Box component="td">High</Box>
-              <Box component="td">Low</Box>
-            </Box>
-
-            <Box component="tr">
-              <Box component="td">Statutory Compliance</Box>
-              <Box component="td">High</Box>
-              <Box component="td">Moderate</Box>
-              <Box component="td">Moderate</Box>
-              <Box component="td">Less</Box>
-              <Box component="td">Less</Box>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-
-      {/* FAQ Section */}
-      <Box
-        sx={{ bgcolor: "#eef2f7", py: { xs: 4, md: 6 }, px: { xs: 2, md: 0 } }}
-      >
-        <Box
-          sx={{
-            maxWidth: 900,
-            mx: "auto",
-            bgcolor: "#ffffff",
-            borderRadius: 2,
-            boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-            p: { xs: 2, md: 3 },
-            fontFamily: "'Open Sans', sans-serif",
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{
-              color: "#0f2555",
-              fontWeight: 700,
-              textAlign: "center",
-              mb: 2,
-            }}
-          >
-            Frequently Asked Questions (FAQs)
-          </Typography>
-
-          {faqs.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <Box
-                key={idx}
-                sx={{
-                  borderBottom: "1px solid #e6e9ef",
-                  py: 2,
-                }}
-              >
-                <Box
-                  onClick={() => setOpenIndex(isOpen ? -1 : idx)}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    cursor: "pointer",
-                  }}
-                >
-                  <Typography
-                    sx={{ fontSize: "1rem", fontWeight: 600, color: "#0f2555" }}
-                  >
-                    {faq.q}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: "1.4rem",
-                      fontWeight: 700,
-                      color: "#0f2555",
-                      width: 24,
-                      textAlign: "center",
-                      lineHeight: 1,
-                      userSelect: "none",
-                    }}
-                  >
-                    {isOpen ? "−" : "+"}
-                  </Typography>
+                <Box component="thead">
+                  <Box component="tr">
+                    <Box component="th"> </Box>
+                    <Box component="th">One Person Company</Box>
+                    <Box component="th">Private Limited Company</Box>
+                    <Box component="th">Public Company</Box>
+                    <Box component="th">Limited Liability Partnership</Box>
+                    <Box component="th">Partnership Firm</Box>
+                  </Box>
                 </Box>
 
-                <Collapse in={isOpen} timeout="auto" unmountOnExit={false}>
-                  <Box
+                <Box component="tbody">
+                  <Box component="tr">
+                    <Box component="td">Act</Box>
+                    <Box component="td">Companies Act, 2013</Box>
+                    <Box component="td">Companies Act, 2013</Box>
+                    <Box component="td">Companies Act, 2013</Box>
+                    <Box component="td">
+                      Limited Liability Partnership Act, 2008
+                    </Box>
+                    <Box component="td">Indian Partnership Act, 1932</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Registration Requirement</Box>
+                    <Box component="td">Mandatory</Box>
+                    <Box component="td">Mandatory</Box>
+                    <Box component="td">Mandatory</Box>
+                    <Box component="td">Mandatory</Box>
+                    <Box component="td">Optional</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Number of members</Box>
+                    <Box component="td">Only 1</Box>
+                    <Box component="td">2 – 200</Box>
+                    <Box component="td">7 – Unlimited</Box>
+                    <Box component="td">2 – Unlimited</Box>
+                    <Box component="td">2 – 50</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Separate Legal Entity</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">No</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Liability Protection</Box>
+                    <Box component="td">Limited</Box>
+                    <Box component="td">Limited</Box>
+                    <Box component="td">Limited</Box>
+                    <Box component="td">Limited</Box>
+                    <Box component="td">Unlimited</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Statutory Audit</Box>
+                    <Box component="td">Mandatory</Box>
+                    <Box component="td">Mandatory</Box>
+                    <Box component="td">Mandatory</Box>
+                    <Box component="td">Dependent</Box>
+                    <Box component="td">Not mandatory</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Ownership Transferability</Box>
+                    <Box component="td">No</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">No</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Uninterrupted Existence</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">Yes</Box>
+                    <Box component="td">No</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Foreign Participation</Box>
+                    <Box component="td">Not Allowed</Box>
+                    <Box component="td">Allowed</Box>
+                    <Box component="td">Allowed (with sectoral conditions)</Box>
+                    <Box component="td">Allowed</Box>
+                    <Box component="td">Not Allowed</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Tax Rates</Box>
+                    <Box component="td">Moderate</Box>
+                    <Box component="td">Moderate</Box>
+                    <Box component="td">High</Box>
+                    <Box component="td">High</Box>
+                    <Box component="td">Low</Box>
+                  </Box>
+
+                  <Box component="tr">
+                    <Box component="td">Statutory Compliance</Box>
+                    <Box component="td">Moderate</Box>
+                    <Box component="td">High</Box>
+                    <Box component="td">Very High</Box>
+                    <Box component="td">Moderate</Box>
+                    <Box component="td">Less</Box>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+          {/* 
+          <Typography
+            variant="h3" // bigger headline like the screenshot
+            sx={{
+              fontWeight: 500,
+              color: "#4A5A7D", // headline color
+              mt: { xs: 6, md: 10 },
+              mb: 2,
+              textAlign: "center",
+            }}
+          >
+            Get Expert Consultation
+          </Typography> */}
+          <Box
+            sx={{
+              py: { xs: 6, md: 8 },
+              px: { xs: 2, md: 4 },
+              bgcolor: "transparent",
+            }}
+          >
+            <Container maxWidth="md">
+              <Typography
+                variant="h5"
+                sx={{
+                  textAlign: "center",
+                  color: "#0f2555",
+                  fontWeight: 600,
+                  mb: { xs: 6, md: 5 },
+                  fontFamily: "'Open Sans', sans-serif",
+                }}
+              >
+                Frequently Asked Questions (FAQs)
+              </Typography>
+
+              {[
+                {
+                  q: "Is there a minimum capital requirement for Private Limited Company registration?",
+                  a: "No, there is no minimum paid-up capital requirement. You can start with any amount suitable for your business.",
+                },
+                {
+                  q: "How long does it take to complete Private Limited Company registration in India?",
+                  a: "Typically, registration takes 7–10 working days, subject to government approvals and timely document submission.",
+                },
+                {
+                  q: "What documents are required for Private Limited Company registration?",
+                  a: "PAN, Aadhaar, address proof of directors, business address proof, photographs, and proposed company details are required.",
+                },
+                {
+                  q: "What are the major differences between Private Limited Company registration and LLP registration?",
+                  a: "A Pvt Ltd company has higher compliance but better investor preference and structured ownership. LLPs are more flexible.",
+                },
+                {
+                  q: "Can I register a private limited company with a similar name to an existing business?",
+                  a: "No, the proposed name must be unique and not identical or deceptively similar to any existing company or trademark.",
+                },
+                {
+                  q: "Is GST registration mandatory after private limited company registration?",
+                  a: "GST is mandatory if turnover exceeds ₹40 lakhs (₹20 lakhs for services) or for interstate trade and online selling.",
+                },
+                {
+                  q: "What happens if my company doesn’t commence business after registration?",
+                  a: "If your company fails to commence business within 180 days, ROC may strike it off. Compliance filings are still necessary.",
+                },
+                {
+                  q: "Can my private limited company convert to a public company later?",
+                  a: "Yes, a private company can be converted to a public limited company by following due legal procedures and compliances.",
+                },
+                {
+                  q: "What are the annual compliance requirements after private limited company registration?",
+                  a: "You must hold board meetings, file AOC-4 & MGT-7, maintain records, and file income tax returns yearly.",
+                },
+                {
+                  q: "Is a company seal mandatory after a private limited company registration?",
+                  a: "No, a company seal is not mandatory by law, but it may be used for formal documentation.",
+                },
+                {
+                  q: "What are the tax benefits of private limited company registration compared to other structures?",
+                  a: "Pvt Ltd companies enjoy corporate tax rates, depreciation, and deductions not available to sole proprietors or partnerships.",
+                },
+                {
+                  q: "Can a private limited company apply for trademark registration?",
+                  a: "Yes, a registered company can file for trademark protection for its brand, logo, or product name.",
+                },
+                {
+                  q: "Is Udyog Aadhaar (Udyam) registration required for a private limited company?",
+                  a: "It's optional but recommended to avail MSME benefits like subsidies, loans, and protection under delayed payment laws.",
+                },
+                {
+                  q: "Can I register a Private Limited company by myself?",
+                  a: "Yes, it can be done online on the MCA portal. However, professional help ensures accuracy and timely approvals.",
+                },
+                {
+                  q: "How to check Pvt Limited Company registration?",
+                  a: "You can verify company status on the MCA portal by entering the CIN or company name.",
+                },
+                {
+                  q: "Who can register a Private Limited Company in India?",
+                  a: "Any two or more individuals (at least one Indian resident) aged 18 or above can register a Pvt Ltd company.",
+                },
+                {
+                  q: "How many directors are required to start a Private Limited Company?",
+                  a: "A minimum of 2 and a maximum of 15 directors can be appointed. At least one must be an Indian resident.",
+                },
+                {
+                  q: "Can a Private Limited Company be converted to another business type?",
+                  a: "Yes, it can be converted to an LLP or Public Limited Company with necessary approvals and filings.",
+                },
+                {
+                  q: "What is the Cost of Private Limited Company Registration?",
+                  a: "It usually ranges between ₹8,000 to ₹25,000, depending on state, share capital, and professional services.",
+                },
+                {
+                  q: "What are MoA & AoA?",
+                  a: "MoA defines your company's purpose and scope. AoA outlines the rules and management structure of the company.",
+                },
+                {
+                  q: "What is the SPICe+ Form?",
+                  a: "SPICe+ is an integrated MCA form for name reservation, incorporation, PAN, TAN, GST, EPFO, ESIC and more.",
+                },
+                {
+                  q: "What are the restrictions on a Private Limited Company?",
+                  a: "It cannot publicly raise capital, limits shareholders to 200, and restricts share transfers under Companies Act, 2013.",
+                },
+                {
+                  q: "Can NRIs and foreign nationals register a Private Limited Company in India?",
+                  a: "Yes, they can invest and become directors, provided one Indian resident director is appointed and all FEMA rules are followed.",
+                },
+              ].map(({ q, a }, idx) => {
+                const isOpen = expanded === idx;
+                return (
+                  <Accordion
+                    key={idx}
+                    elevation={0}
+                    disableGutters
+                    square
+                    expanded={expanded === idx}
+                    onChange={() => handleAccordionToggle(idx)}
                     sx={{
-                      mt: 1.5,
-                      bgcolor: "#fafbff",
-                      border: "1px solid #e9ecf5",
-                      borderRadius: 1,
-                      p: 2,
+                      mb: 1.5,
+                      borderRadius: 2,
+                      overflow: "hidden",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                      transition: "box-shadow .3s ease, transform .2s ease",
+                      "&:hover": { boxShadow: "0 4px 12px rgba(0,0,0,0.10)" },
+                      "&:before": { display: "none" }, // remove default divider
                     }}
                   >
-                    <Typography sx={{ fontSize: "0.95rem", color: "#111" }}>
-                      {faq.a}
-                    </Typography>
-                  </Box>
-                </Collapse>
-              </Box>
-            );
-          })}
-        </Box>
-      </Box>
+                    <AccordionSummary
+                      sx={{
+                        px: 2.5,
+                        py: 1.75,
+                        bgcolor: "#fff",
+                        transition: "background .3s ease",
+                        "&:hover": { bgcolor: "#f7f9fc" },
+                        "& .MuiAccordionSummary-content": { m: 0 },
+                      }}
+                      expandIcon={
+                        <Box sx={{ display: "grid", placeItems: "center" }}>
+                          {isOpen ? (
+                            <RemoveIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
+                          ) : (
+                            <AddIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
+                          )}
+                        </Box>
+                      }
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: { xs: 15, md: 16 },
+                          fontWeight: 600,
+                          color: "#0f2555",
+                          lineHeight: 1.5,
+                          pr: 2,
+                          fontFamily: "'Open Sans', sans-serif",
+                        }}
+                      >
+                        {idx + 1}. {q}
+                      </Typography>
+                    </AccordionSummary>
 
-      <Box
-        sx={{
-          mt: 0,
-          mb: 0,
-          pb: 0,
-          mx: { xs: 2, md: -4 },
-        }}
-        ref={footerRef}
-      >
+                    <AccordionDetails
+                      sx={{
+                        px: 2.5,
+                        py: 1.75,
+                        bgcolor: "#fafbfc",
+                        color: "#444",
+                        fontSize: "0.95rem",
+                        lineHeight: 1.6,
+                        fontFamily: "'Open Sans', sans-serif",
+                      }}
+                    >
+                      {a}
+                    </AccordionDetails>
+                  </Accordion>
+                );
+              })}
+            </Container>
+          </Box>
+
+
+        </Box>
+      </ThemeProvider>
+      <Box sx={{ mt: -6, mx: -6 }} ref={footerRef}>
         <ContactSection />
       </Box>
 
-      <Box
-        sx={{
-          mt: 0,
-          mb: 0,
-          pb: 0,
-          mx: { xs: 2, md: -4 },
-        }}
-        ref={footerRef}
-      >
+      <Box sx={{ mt: 0, mx: 0 }} ref={footerRef}>
         <Footer />
       </Box>
     </Box>
   );
 }
+
+/*
+USAGE:
+- Save as src/components/PrivateLimitedCompanyDocs.jsx
+- Add Open Sans font link to public/index.html.
+- Import and render: <PrivateLimitedCompanyDocs />
+*/

@@ -37,30 +37,32 @@ export default function Home() {
 
       <Box
         sx={{
-          // keep the gradient background
+          // brand gradient background
           color: "#fff",
           position: "relative",
           overflow: "hidden",
           minHeight: "100vh",
           bgcolor: "transparent",
           backgroundImage: `
-          radial-gradient(1000px 600px at 76% 60%, rgba(77,147,255,0.20), rgba(77,147,255,0) 60%),
-          radial-gradient(800px 420px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%),
-          linear-gradient(180deg, #0B2A5A 0%, #0A244B 100%)
-        `,
+      /* subtle brand-tinted glows (optional, kept) */
+      radial-gradient(1000px 600px at 76% 60%, rgba(2,54,145,0.20), rgba(2,54,145,0) 60%),
+      radial-gradient(800px 420px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%),
+      /* main brand gradient */
+      linear-gradient(118deg, #0f2555 0%, #023691 100%)
+    `,
           backgroundBlendMode: "screen, normal, normal",
           backgroundRepeat: "no-repeat",
 
           // page gutters & top offset for fixed AppBar
-          maxWidth: "100%",       // use full width
+          maxWidth: "100%",
           mx: "auto",
-          px: { xs: 1, sm: 2, md: 3 }, // smaller gutters on all screens
+          px: { xs: 1, sm: 2, md: 3 },
 
-          pt: { xs: "88px", md: "94px" }, // remove the extra +20/+32
-          mt: { xs: -12, md: -15 },  // navbar height + breathing room
-          // pb: { xs: 6, md: 10 },
+          pt: { xs: "88px", md: "94px" },
+          mt: { xs: -12, md: -15 },
         }}
       >
+
         {/* Floating section banner (unchanged) */}
         <Box
           sx={{
@@ -249,7 +251,7 @@ export default function Home() {
           <GlassBarsSection />
         </Box>
 
-       
+
 
 
         {/* About & Services */}
@@ -267,8 +269,8 @@ export default function Home() {
         <Box sx={{ mt: 0, p: 0, mx: 0, overflow: "visible" }} ref={aboutRef}>
           <WhyRekotax fullBleed />
         </Box>
-        
-         {/* Insights Section */}
+
+        {/* Insights Section */}
         <Box sx={{ mx: { xs: -2, md: -6 } }} ref={aboutRef}>
           <Insights />
         </Box>
@@ -278,13 +280,13 @@ export default function Home() {
           <ClientTestimonials fullBleed />
         </Box>
 
-        <Box sx={{ mt: 0, mx: 0 }} ref={aboutRef}>
+        <Box sx={{ mt: 0, mx: -6 }} ref={aboutRef}>
           <ContactSection />
         </Box>
 
-       <Box sx={{ mt: 0, mx: 0 }} ref={footerRef}>
-  <Footer />
-</Box>
+        <Box sx={{ mt: 0, mx: 0 }} ref={footerRef}>
+          <Footer />
+        </Box>
 
 
         <Fab

@@ -21,7 +21,7 @@ import { useMediaQuery } from "@mui/material";
 export default function ContactSection() {
   // ADD: include subject in form + an errors map
 
-const [form, setForm] = React.useState({ name: "", phone: "", email: "", subject: "", message: "", countryCode: "+91" });
+  const [form, setForm] = React.useState({ name: "", phone: "", email: "", subject: "", message: "", countryCode: "+91" });
   const [errors, setErrors] = React.useState({});
 
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -75,64 +75,64 @@ const [form, setForm] = React.useState({ name: "", phone: "", email: "", subject
   const WEB_APP_URL = process.env.REACT_APP_APPSCRIPT_URL || "https://script.google.com/macros/s/AKfycbyl91p6yvHwzHv_h36eZ_yN-NU1IWrL8oHAlwUgzsIc68XbTTWj_QxLClIOlp8Cza7l_g/exec";
   const [submitting, setSubmitting] = React.useState(false);
 
-const initialForm = {
-  name: "",
-  phone: "",
-  email: "",
-  subject: "",
-  message: "",
-  countryCode: "+91",
-};
+  const initialForm = {
+    name: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+    countryCode: "+91",
+  };
 
-const [snack, setSnack] = React.useState({
-  open: false,
-  severity: "success",
-  msg: "",
-});
+  const [snack, setSnack] = React.useState({
+    open: false,
+    severity: "success",
+    msg: "",
+  });
 
 
-async function handleSubmit(e) {
-  e.preventDefault();
-  if (submitting) return;
-  setSubmitting(true);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
 
-  try {
-    const data = new URLSearchParams({
-      name: form.name.trim(),
-      countryCode: form.countryCode,
-      phone: form.phone,
-      email: form.email,
-      subject: form.subject,
-      message: form.message,
-    });
-
-    const res = await fetch(WEB_APP_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: data.toString(),
-    });
-
-    const json = await res.json();
-
-    if (json?.ok) {
-      // success: show toast + clear
-      setSnack({ open: true, severity: "success", msg: "Thank you for submitting. We’ll reach out soon." });
-      setForm({ ...initialForm });
-      setErrors({});
-    } else {
-      setSnack({
-        open: true,
-        severity: "error",
-        msg: json?.error || "Could not submit. Please try again.",
+    try {
+      const data = new URLSearchParams({
+        name: form.name.trim(),
+        countryCode: form.countryCode,
+        phone: form.phone,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
       });
+
+      const res = await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString(),
+      });
+
+      const json = await res.json();
+
+      if (json?.ok) {
+        // success: show toast + clear
+        setSnack({ open: true, severity: "success", msg: "Thank you for submitting. We’ll reach out soon." });
+        setForm({ ...initialForm });
+        setErrors({});
+      } else {
+        setSnack({
+          open: true,
+          severity: "error",
+          msg: json?.error || "Could not submit. Please try again.",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      setSnack({ open: true, severity: "error", msg: "Network error. Please try again." });
+    } finally {
+      setSubmitting(false);
     }
-  } catch (err) {
-    console.error(err);
-    setSnack({ open: true, severity: "error", msg: "Network error. Please try again." });
-  } finally {
-    setSubmitting(false);
   }
-}
 
 
 
@@ -143,7 +143,7 @@ async function handleSubmit(e) {
         bgcolor: "#0f2555",
         color: "#fff",
         py: { xs: 8, md: 12 },
-        px: { xs: 2, md: 4 }, // outer page gutters
+        px: { xs: 4, md: 4 }, // outer page gutters
       }}
     >
       {/* Centered inner container so spacing matches the rest of the site */}
@@ -204,16 +204,30 @@ async function handleSubmit(e) {
                 icon={<PhoneInTalkRoundedIcon />}
                 values={["+91-7303074762", "+91-7303075763", "+91-9220580064"]}
                 sx={{
-                  flex: { xs: "1 1 auto", sm: "0 0 calc(50% - 8px)" },
-                  maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
-                  minWidth: 0,
-                  // wrap long strings on mobile so they don't overlap
+                  // make icon left, numbers right
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+
+                  // size/spacing for the icon
+                  "& .MuiSvgIcon-root": { flexShrink: 0, mr: 1.5 },
+
+                  // numbers block aligned to the right
                   "& a, & span": {
+                    marginLeft: "auto",
+                    display: "block",
+                    textAlign: "right",
                     whiteSpace: { xs: "normal", sm: "nowrap" },
                     wordBreak: { xs: "break-word" },
                   },
+
+                  // keep your responsive sizing
+                  flex: { xs: "1 1 auto", sm: "0 0 calc(50% - 8px)" },
+                  maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
+                  minWidth: 0,
                 }}
               />
+
 
               <ContactGlassCard
                 kind="email"
@@ -468,20 +482,20 @@ async function handleSubmit(e) {
                       )}
                     </DarkPillButton>
                     <Snackbar
-  open={snack.open}
-  autoHideDuration={3500}  // ← auto-hide after 3.5s
-  onClose={() => setSnack(s => ({ ...s, open: false }))}
-  anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
->
-  <Alert
-    onClose={() => setSnack(s => ({ ...s, open: false }))}
-    severity={snack.severity}
-    variant="filled"
-    sx={{ width: "100%" }}
-  >
-    {snack.msg}
-  </Alert>
-</Snackbar>
+                      open={snack.open}
+                      autoHideDuration={3500}  // ← auto-hide after 3.5s
+                      onClose={() => setSnack(s => ({ ...s, open: false }))}
+                      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                    >
+                      <Alert
+                        onClose={() => setSnack(s => ({ ...s, open: false }))}
+                        severity={snack.severity}
+                        variant="filled"
+                        sx={{ width: "100%" }}
+                      >
+                        {snack.msg}
+                      </Alert>
+                    </Snackbar>
 
                   </Box>
                 </Box>
@@ -554,14 +568,14 @@ function ContactGlassCard({
       component="div"
       sx={{
         flex: "1 1 0",
-        minHeight: 120,
-        minWidth: { xs: 0, sm: 200 },
+        minHeight: 100,
+        minWidth: { xs: 0, sm: 220 },
         color: "inherit",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",           // ⬅️ row: icon left, content right
         alignItems: "center",
-        justifyContent: "center",
-        gap: 1,
+        justifyContent: "flex-start",
+        gap: 1.5,
         p: { xs: 1.5, sm: 2 },
         borderRadius: 3,
         bgcolor: "rgba(255,255,255,0.12)",
@@ -571,92 +585,102 @@ function ContactGlassCard({
         ...sx,
       }}
     >
-      {/* Icon */}
+      {/* Icon (left) */}
       <Box
         sx={{
-          width: 40,
-          height: 40,
+
           display: "grid",
           placeItems: "center",
-          borderRadius: "50%",
-          bgcolor: "rgba(255,255,255,0.18)",
-          border: "1px solid rgba(255,255,255,0.28)",
+          // borderRadius: "50%",
+          // bgcolor: "rgba(255,255,255,0.18)",
+          // border: "1px solid rgba(255,255,255,0.28)",
           boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-          "& svg": { fontSize: 28, color: "#fff" },
-          mb: 0.5,
+          "& svg": { fontSize: 18, color: "#fff" },
+          mb: 0,                       // ⬅️ no bottom margin in row layout
+          flexShrink: 0,               // ⬅️ keep icon from shrinking
         }}
         aria-hidden
       >
         {icon}
       </Box>
 
-      {label && (
-        <Typography sx={{ fontSize: 10, letterSpacing: 0.6, textTransform: "uppercase", opacity: 0.8, mb: 0.25, textAlign: "center" }}>
-          {label}
-        </Typography>
-      )}
-
-      {/* CONTENT */}
-      {hasTwoAddresses ? (
-        // two halves inside ONE card
-        <Stack
-          direction={{ xs: "column", sm: "row" }}
-          spacing={2}
-          sx={{ mt: 1.25, width: "100%" }}
-          divider={
-            isSmUp ? (
-              <Divider orientation="vertical" flexItem sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
-            ) : (
-              <Divider sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
-            )
-          }
-        >
+      {/* Content (right) */}
+      <Box sx={{ flex: 1, minWidth: 0 }}>
+        {label && (
           <Typography
-            component="a"
-            href={linkFor(value)}
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{ ...textSx, flex: 1, minWidth: 0 }}
-            title={value}
+            sx={{
+              fontSize: 10,
+              letterSpacing: 0.6,
+              textTransform: "uppercase",
+              opacity: 0.8,
+              mb: 0.5,
+              textAlign: "left",
+            }}
           >
-            {value}
+            {label}
           </Typography>
+        )}
 
-          <Typography
-            component="a"
-            href={linkFor(value2)}
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{ ...textSx, flex: 1, minWidth: 0 }}
-            title={value2}
+        {hasTwoAddresses ? (
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            sx={{ width: "100%" }}
+            divider={
+              isSmUp ? (
+                <Divider orientation="vertical" flexItem sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
+              ) : (
+                <Divider sx={{ borderColor: "rgba(255,255,255,0.18)" }} />
+              )
+            }
           >
-            {value2}
-          </Typography>
-        </Stack>
-      ) : (
-        // default list rendering
-        <Stack spacing={0.5} sx={{ width: "100%", alignItems: "flex-start", mt: 1 }}>
-          {list.map((v, i) => {
-            const hrefItem = linkFor(v);
-            const isLink = !!hrefItem;
-            return (
-              <Typography
-                key={i}
-                component={isLink ? "a" : "span"}
-                href={isLink ? hrefItem : undefined}
-                target={isLink && hrefItem.startsWith("http") ? "_blank" : undefined}
-                rel={isLink && hrefItem.startsWith("http") ? "noopener noreferrer" : undefined}
-                sx={textSx}
-                title={v}
-              >
-                {v}
-              </Typography>
-            );
-          })}
-        </Stack>
-      )}
+            <Typography
+              component="a"
+              href={linkFor(value)}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ ...textSx, flex: 1, minWidth: 0, textAlign: "left" }}
+              title={value}
+            >
+              {value}
+            </Typography>
+
+            <Typography
+              component="a"
+              href={linkFor(value2)}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ ...textSx, flex: 1, minWidth: 0, textAlign: "left" }}
+              title={value2}
+            >
+              {value2}
+            </Typography>
+          </Stack>
+        ) : (
+          <Stack spacing={0.5} sx={{ width: "100%", alignItems: "flex-start" }}>
+            {list.map((v, i) => {
+              const hrefItem = linkFor(v);
+              const isLink = !!hrefItem;
+              return (
+                <Typography
+                  key={i}
+                  component={isLink ? "a" : "span"}
+                  href={isLink ? hrefItem : undefined}
+                  target={isLink && hrefItem.startsWith("http") ? "_blank" : undefined}
+                  rel={isLink && hrefItem.startsWith("http") ? "noopener noreferrer" : undefined}
+                  sx={{ ...textSx, textAlign: "left" }}
+                  title={v}
+                >
+                  {v}
+                </Typography>
+              );
+            })}
+          </Stack>
+        )}
+      </Box>
     </Box>
   );
+
 }
 
 function GlassField(props) {

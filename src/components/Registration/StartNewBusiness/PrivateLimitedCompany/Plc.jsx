@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import Footer from "../../../Dashboard/Footer";
+import WhyRekotax from "../../../Dashboard/WhyRekotax";
 import {
   ThemeProvider,
   createTheme,
@@ -16,7 +17,11 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Snackbar,
+  Alert,
 } from "@mui/material";
+import { Stack, MenuItem } from "@mui/material";
+
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ContactSection from "../../../Dashboard/ContactSection";
@@ -27,7 +32,7 @@ const theme = createTheme({
     h6: { fontWeight: 700 },
   },
   palette: {
-    primary: { main: "#0f3d7c" },
+    primary: { main: "#0f2555" },
     background: { default: "transparent" },
   },
   shape: { borderRadius: 12 },
@@ -72,17 +77,194 @@ const cardData = [
   },
 ];
 
-export default function PrivateLimitedCompanyDocs() {
-  const BrandColor = "#0f3d7c";
+export default function PrivateLimitedCompanyDocs({ webAppUrl, onSubmitted }) {
+
+  const BRAND_PRIMARY = "#0f3d7c";   // solid brand color
+  const BRAND_SECONDARY = "#023691";
+  const BRAND_GRADIENT = "linear-gradient(11deg, #0f2555 0%, #023691 100%)";
+  // const aboutRef = useRef(null);
+  // helper to check required fields (Message is optional)
+
+
   const footerRef = useRef(null);
+  const WEB_APP_URL =
+    webAppUrl ||
+    "https://script.google.com/macros/s/AKfycbyl91p6yvHwzHv_h36eZ_yN-NU1IWrL8oHAlwUgzsIc68XbTTWj_QxLClIOlp8Cza7l_g/exec";
+
+  const initialForm = {
+    name: "",
+    countryCode: "+91",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+  };
+  // Controls single-open accordion behavior
+  const [expanded, setExpanded] = React.useState(0); // 0 opens the first; use null for all closed
+  const handleAccordionToggle = (idx) => {
+    setExpanded((prev) => (prev === idx ? null : idx));
+  };
+
+  const [form, setForm] = React.useState(initialForm);
+  const [errors, setErrors] = React.useState({});
+  const [submitting, setSubmitting] = React.useState(false);
+  const [snack, setSnack] = React.useState({
+    open: false,
+    severity: "success",
+    msg: "",
+  });
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+  const requiredOk = (f) => {
+    const digits = (f.phone || "").replace(/\D/g, "");
+    return (
+      !!f.name?.trim() &&
+      !!f.countryCode?.trim() &&
+      !!f.email?.trim() && emailRe.test(f.email.trim()) &&
+      !!f.subject?.trim() &&
+      digits.length >= 10
+    );
+  };
+
+  const [showReqWarn, setShowReqWarn] = React.useState(false);
+  const isFormValid = requiredOk(form);
+  const nameRe = /^[A-Za-z][A-Za-z\s'.-]{1,}$/;
+
+  const validateField = (name, value) => {
+    const v = (value ?? "").trim();
+    switch (name) {
+      case "name":
+        if (!v) return "Name is required";
+        if (!nameRe.test(v)) return "Enter a valid name";
+        return "";
+      case "phone": {
+        const digits = v.replace(/\D/g, "");
+        if (!digits) return "Phone is required";
+        if (digits.length < 10 || digits.length > 15) return "Enter a valid phone";
+        return "";
+      }
+      case "email":
+        if (!v) return "Email is required";
+        if (!emailRe.test(v)) return "Enter a valid email";
+        return "";
+      case "subject":
+        if (!v) return "Subject is required";
+        return "";
+      case "message":
+        if (!v) return "Message is required";
+        if (v.length < 5) return "Message is too short";
+        return "";
+      default:
+        return "";
+    }
+  };
+  // put this inside your component (top-level)
+  const fieldSx = {
+    // input / single-line
+    "& .MuiInputBase-input": { color: "#fff" },
+    // textarea / multiline
+    "& .MuiInputBase-inputMultiline, & textarea": { color: "#fff" },
+    // label color (default + focused)
+    "& .MuiInputLabel-root": { color: "rgba(255,255,255,0.7)" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#fff" },
+    // (optional) underline colors for filled variant
+    "& .MuiFilledInput-underline:before": { borderBottomColor: "rgba(255,255,255,0.3)" },
+    "& .MuiFilledInput-underline:hover:before": { borderBottomColor: "rgba(255,255,255,0.5)" },
+    "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
+  };
+
+  const validateForm = (data) => {
+    const fields = ["name", "phone", "email", "subject", "message"];
+    const out = {};
+    fields.forEach((f) => {
+      const msg = validateField(f, data[f]);
+      if (msg) out[f] = msg;
+    });
+    return out;
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const next = { ...form, [name]: value };
+    setForm(next);
+    if (showReqWarn && requiredOk(next)) setShowReqWarn(false);
+  };
+
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (submitting) return;
+    if (!requiredOk(form)) {
+      setShowReqWarn(true);
+      return;
+    }
+    setSubmitting(true);
+
+    try {
+      const data = new URLSearchParams({
+        name: form.name.trim(),
+        countryCode: form.countryCode,
+        phone: form.phone,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
+      });
+
+      const res = await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data.toString(),
+      });
+
+      const json = await res.json();
+
+      if (json?.ok) {
+        setShowReqWarn(false);
+        // success: show toast + clear
+        setSnack({ open: true, severity: "success", msg: "Thank you for submitting. We’ll reach out soon." });
+        setForm({ ...initialForm });
+        setErrors({});
+      } else {
+        setSnack({
+          open: true,
+          severity: "error",
+          msg: json?.error || "Could not submit. Please try again.",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      setSnack({ open: true, severity: "error", msg: "Network error. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
 
   return (
     <Box
       sx={{
-        backgroundColor: BrandColor,
+        // brand gradient background
         color: "#fff",
-        py: { xs: 6, md: 10 },
-        //  px: { xs: 2, md: 1 },
+        position: "relative",
+        overflow: "hidden",
+        minHeight: "100vh",
+        bgcolor: "transparent",
+        backgroundImage: `
+      /* subtle brand-tinted glows (optional, kept) */
+      radial-gradient(1000px 600px at 76% 60%, rgba(2,54,145,0.20), rgba(2,54,145,0) 60%),
+      radial-gradient(800px 420px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%),
+      /* main brand gradient */
+      linear-gradient(118deg, #0f2555 0%, #023691 100%)
+    `,
+        backgroundBlendMode: "screen, normal, normal",
+        backgroundRepeat: "no-repeat",
+
+        // page gutters & top offset for fixed AppBar
+        maxWidth: "100%",
+        mx: "auto",
+        px: { xs: 1, sm: 2, md: 3 },
+
+        pt: { xs: "88px", md: "94px" },
+        mt: { xs: -12, md: -15 },
       }}
     >
       <ThemeProvider theme={theme}>
@@ -91,21 +273,29 @@ export default function PrivateLimitedCompanyDocs() {
         {/* Hero compo */}
         <Grid
           container
-          spacing={6}
-          alignItems="flex-start"
-          justifyContent="space-between"
-          wrap="nowrap" // keep both columns on one row (md+)
+          alignItems="center"
+          justifyContent={{ xs: "center", md: "space-between" }}
+          columnSpacing={{ xs: 2, sm: 4, md: 10 }}
+          rowSpacing={{ xs: 4, sm: 5, md: 0 }}
+          sx={{
+            // center the whole hero section and add responsive gutters
+            maxWidth: { xs: "100%", md: 1200, lg: 1280 },
+            mx: "auto",
+            px: { xs: 2, sm: 3, md: 6 },
+            flexWrap: { xs: "wrap", md: "nowrap" },
+            mt: { xs: 2, md: 6 },
+          }}
         >
           {/* LEFT: text (narrower, like your reference) */}
           <Grid item xs={12} md={3} zeroMinWidth sx={{ minWidth: 0 }}>
             <Typography
               variant="h4"
-              sx={{ fontWeight: 700, mb: 8, lineHeight: 1.2 }}
+              sx={{ fontWeight: 700, mb: 2, lineHeight: 1 }}
             >
               Private Limited Company Registration
             </Typography>
 
-            <Typography sx={{ mb: 3, fontSize: "1.1rem" }}>
+            <Typography sx={{ mb: 2, fontSize: "1rem" }}>
               Register your Private Limited Company with Rekotax — experience
               fast setup,
               <br />
@@ -113,43 +303,96 @@ export default function PrivateLimitedCompanyDocs() {
               to launch <br />
               your business effortlessly.
             </Typography>
-
-            <ul style={{ paddingLeft: "1rem", marginBottom: "1.5rem" }}>
-              <li>
-                Company Registered in Just <strong>7–10 Days</strong>
-              </li>
-              <li>
-                <strong>End-to-End Documentation:</strong> Name Approval, MOA &
-                AOA
-              </li>
-              <li>
-                <strong>Complete Incorporation Kit:</strong> COI, DIN, DSC, PAN
-                & TAN
-              </li>
-              <li>
-                <strong>Trusted</strong> by Entrepreneurs, Backed by Industry
-                Experts
-              </li>
-              <li>
-                Handled by <strong>MCA-Registered Professionals</strong>
-              </li>
-            </ul>
-
-            <Box
-              sx={{
-                background: "rgba(255,255,255,0.1)",
-                borderRadius: 2,
-                p: 2,
-                maxWidth: 320,
-                boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+            <ul
+              style={{
+                paddingLeft: "1rem",
+                marginBottom: "1rem",
+                fontSize: "1rem",      // ✅ same as the Typography above
+                lineHeight: 1.6,       // (optional) match the paragraph’s line-height
               }}
             >
-              <Typography variant="body1" sx={{ fontSize: "0.95rem" }}>
-                <strong>Fastest Company Registration in India</strong>
-                <br />
-                MCA filing in 7 days or full refund guaranteed.
-              </Typography>
-            </Box>
+              <li>Company Registered in Just <strong>7–10 Days</strong></li>
+              <li><strong>End-to-End Documentation:</strong> Name Approval, MOA & AOA</li>
+              <li><strong>Complete Incorporation Kit:</strong> COI, DIN, DSC, PAN & TAN</li>
+              <li><strong>Trusted</strong> by Entrepreneurs, Backed by Industry Experts</li>
+              <li>Handled by <strong>MCA-Registered Professionals</strong></li>
+            </ul>
+
+
+       <Box
+  sx={{
+    position: "relative",
+    borderRadius: 9999,
+    maxWidth: 420,
+    px: 3,
+    py: 2.5,
+    pl: 9, // room for the icon
+    color: "#fff",
+    background:
+      "linear-gradient(160deg, #1a3b7a 0%, #0f2555 55%, #0a1b3c 100%)",
+    boxShadow:
+      "0 18px 30px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
+    border: "1px solid rgba(255,255,255,0.08)",
+    overflow: "hidden",
+  }}
+>
+  {/* soft corner glow */}
+  <Box
+    sx={{
+      content: '""',
+      position: "absolute",
+      inset: 0,
+      pointerEvents: "none",
+      background:
+        "radial-gradient(160px 80px at 85% 20%, rgba(255,255,255,0.08), transparent 60%)",
+    }}
+  />
+
+  {/* icon badge */}
+  <Box
+    sx={{
+      position: "absolute",
+      left: 10,
+      top: "50%",
+      transform: "translateY(-50%)",
+      width: 56,
+      height: 56,
+      borderRadius: "50%",
+      display: "grid",
+      placeItems: "center",
+      background:
+        "linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+      boxShadow:
+        "inset 0 0 0 1px rgba(255,255,255,0.25), 0 10px 18px rgba(0,0,0,0.28)",
+    }}
+  >
+    {/* simple line icon (inline SVG) */}
+    <Box
+      component="svg"
+      viewBox="0 0 24 24"
+      sx={{ width: 30, height: 30, stroke: "#fff", opacity: 0.9 }}
+      fill="none"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7 15v4a2 2 0 0 0 2 2h2" />
+      <path d="M17 9V5a2 2 0 0 0-2-2h-2" />
+      <path d="M3 12h8" />
+      <path d="M13 12h8" />
+      <path d="M5 12l2-2m0 4-2-2" />
+      <path d="M19 12l-2-2m0 4 2-2" />
+    </Box>
+  </Box>
+
+  <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+    Fastest Company Registration in India
+  </Typography>
+  <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.25 }}>
+    MCA filing in 7 days or full refund guaranteed.
+  </Typography>
+</Box>
+
           </Grid>
 
           {/* RIGHT: form (wider, like your reference) */}
@@ -159,12 +402,15 @@ export default function PrivateLimitedCompanyDocs() {
                 ml: { md: 2 }, // small gutter on desktop
                 backgroundColor: "rgba(255,255,255,0.1)",
                 borderRadius: 3,
-                p: 4,
+                p: 3,                 // ↓ was 4
                 display: "flex",
                 flexDirection: "column",
-                gap: 3,
+                gap: 2,               // ↓ was 3
                 boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
-                maxWidth: 720, // keep a nice readable width
+                maxWidth: 720,        // keep a nice readable width
+                // Optional hard cap (uncomment if you want a strict max height):
+                // maxHeight: 520,
+                // overflowY: "auto",
               }}
             >
               <Typography
@@ -175,61 +421,159 @@ export default function PrivateLimitedCompanyDocs() {
               </Typography>
 
               <TextField
+                size="small"
                 variant="filled"
                 fullWidth
                 label="Name*"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                error={Boolean(errors.name)}
+                helperText={errors.name || ""}
+                sx={fieldSx}
                 InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
               />
+
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={1.25}>
+                {/* Country code */}
+                <TextField
+                  select
+                  size="small"
+                  variant="filled"
+                  name="countryCode"
+                  label="Code"
+                  value={form.countryCode}
+                  onChange={handleChange}
+                  sx={{
+                    ...fieldSx,
+                    width: { xs: "100%", sm: 120 },
+                    flex: { xs: "1 1 auto", sm: "0 0 auto" },
+                  }}
+                  InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+                  SelectProps={{
+                    MenuProps: { PaperProps: { sx: { minWidth: 220 } } },
+                  }}
+                >
+                  <MenuItem value="+91">+91 (IN)</MenuItem>
+                  <MenuItem value="+971">+971 (AE)</MenuItem>
+                  <MenuItem value="+61">+61 (AU)</MenuItem>
+                  <MenuItem value="+49">+49 (DE)</MenuItem>
+                  <MenuItem value="+1">+1 (US)</MenuItem>
+                  <MenuItem value="+86">+86 (CN)</MenuItem>
+                </TextField>
+
+                {/* Phone number */}
+                <TextField
+                  size="small"
+                  variant="filled"
+                  fullWidth
+                  label="Mobile No.*"
+                  name="phone"
+                  value={form.phone}
+                  onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, "");
+                    handleChange({ target: { name: "phone", value: digits } });
+                  }}
+                  error={Boolean(errors.phone)}
+                  helperText={errors.phone || ""}
+                  sx={{ ...fieldSx, mb: 0, flex: 1, minWidth: 0 }}
+                  InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+                />
+              </Stack>
+
               <TextField
-                variant="filled"
-                fullWidth
-                label="Mobile No.*"
-                InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
-              />
-              <TextField
+                size="small"
                 variant="filled"
                 fullWidth
                 label="Your email*"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                error={Boolean(errors.email)}
+                helperText={errors.email || ""}
+                sx={fieldSx}
                 InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
               />
+
               <TextField
+                size="small"
+                variant="filled"
+                fullWidth
+                label="Subject*"
+                name="subject"
+                value={form.subject}
+                onChange={handleChange}
+                error={Boolean(errors.subject)}
+                helperText={errors.subject || ""}
+                sx={fieldSx}
+                InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
+              />
+
+              <TextField
+                size="small"
                 variant="filled"
                 fullWidth
                 label="Message"
                 multiline
-                minRows={3}
+                minRows={2}
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                error={Boolean(errors.message)}
+                helperText={errors.message || ""}
+                sx={fieldSx}
                 InputProps={{ style: { background: "rgba(255,255,255,0.1)" } }}
               />
 
+
+
               <Button
                 variant="contained"
-                sx={{
-                  mt: 2,
-                  backgroundColor: "#000",
-                  borderRadius: 10,
-                  px: 6,
-                  alignSelf: "center",
-                  ":hover": { backgroundColor: "#222" },
-                }}
+                onClick={handleSubmit}
+                sx={{ mt: 1.5, backgroundColor: "#000", borderRadius: 10, px: 5, py: 0.8, alignSelf: "center", ":hover": { backgroundColor: "#222" } }}
               >
                 SUBMIT
               </Button>
+
+
+              <Snackbar
+                open={snack.open}
+                autoHideDuration={1200}
+                onClose={() => setSnack((s) => ({ ...s, open: false }))}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setSnack((s) => ({ ...s, open: false }))}
+                  severity={snack.severity}
+                  variant="filled"
+                  sx={{ width: "100%" }}
+                >
+                  {snack.msg}
+                </Alert>
+              </Snackbar>
             </Box>
           </Grid>
+
         </Grid>
 
         {/* Cards grid */}
         <Box
           sx={{
-            // py: { xs: 5, md: 10 },
-            // px: { xs: -10, md: 8 },
+            // py: { xs: -11, md: -21 },
+            //px: { xs: 2, md: 5 },
+            mx: { xs: -1, sm: -2, md: -3 },
+            mt: 5,
+            mb: 4,
+            px: 0,
+            py: 1,
             backgroundColor: "#f5f7fb",
           }}
         >
           <Typography
             variant="h3" // bigger headline like the screenshot
             sx={{
-              fontWeight: 700,
+              fontWeight: 500,
               color: "#4A5A7D", // headline color
               mt: { xs: 6, md: 10 },
               mb: 2,
@@ -241,8 +585,8 @@ export default function PrivateLimitedCompanyDocs() {
           <Typography
             variant="h6" // smaller subtitle like the screenshot
             sx={{
-              color: "#0f3d7c",
-              fontWeight: 400,
+              color: "#0f2555",
+              fontWeight: 300,
               maxWidth: 700,
               mx: "auto",
               lineHeight: 1.6,
@@ -254,7 +598,7 @@ export default function PrivateLimitedCompanyDocs() {
           <Container maxWidth="lg" sx={{ mt: 6 }}>
             <Grid
               container
-              spacing={4}
+              spacing={3}
               justifyContent="center"
               wrap="nowrap"
               sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
@@ -266,7 +610,7 @@ export default function PrivateLimitedCompanyDocs() {
                   xs={12}
                   md={4}
                   sx={{
-                    flex: { xs: "1 1 100%", md: "1 1 33.33%" },
+                    flex: { xs: "0.5 0.5 100%", md: "0.5 0.5 33.33%" },
                     display: "flex",
                     justifyContent: "center",
                   }}
@@ -278,7 +622,7 @@ export default function PrivateLimitedCompanyDocs() {
                       p: 4,
                       width: "100%",
                       maxWidth: 360,
-                      boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                      boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
                       transition: "transform 0.3s ease, box-shadow 0.3s ease",
                       "&:hover": {
                         transform: "translateY(-5px)",
@@ -289,10 +633,10 @@ export default function PrivateLimitedCompanyDocs() {
                     <Typography
                       variant="h6"
                       sx={{
-                        fontWeight: 700,
-                        color: BrandColor,
+                        fontWeight: 600,
+                        color: "#0f2555",
                         mb: 2,
-                        textAlign: "center",
+                        textAlign: "left",
                       }}
                     >
                       {card.title}
@@ -302,7 +646,7 @@ export default function PrivateLimitedCompanyDocs() {
                         textAlign: "left",
                         paddingLeft: "1.2rem",
                         color: "#333",
-                        lineHeight: 1.8,
+                        lineHeight: 1.2,
                         margin: 0,
                       }}
                     >
@@ -318,6 +662,7 @@ export default function PrivateLimitedCompanyDocs() {
             </Grid>
           </Container>
 
+
           <Box
             sx={{
               textAlign: "center",
@@ -327,9 +672,9 @@ export default function PrivateLimitedCompanyDocs() {
             }}
           >
             <Typography
-              variant="h2"
+              variant="h3"
               sx={{
-                fontWeight: 700,
+                fontWeight: 500,
                 color: "#4A5A7D", // main heading color
                 mb: 2,
                 lineHeight: 1.2,
@@ -342,8 +687,8 @@ export default function PrivateLimitedCompanyDocs() {
             <Typography
               variant="h6"
               sx={{
-                color: "#0f3d7c", // subtitle color
-                fontWeight: 400,
+                color: "#0f2555", // subtitle color
+                fontWeight: 300,
                 maxWidth: 800,
                 mx: "auto",
                 lineHeight: 1.6,
@@ -357,7 +702,7 @@ export default function PrivateLimitedCompanyDocs() {
           <Box
             sx={{
               backgroundColor: "#f4f6f8",
-              py: { xs: 6, md: 8 },
+              py: { xs: 0, md: 0 },
               px: { xs: 2, md: 4 },
             }}
           >
@@ -423,7 +768,7 @@ export default function PrivateLimitedCompanyDocs() {
                             width: 56,
                             height: 56,
                             borderRadius: "50%",
-                            backgroundColor: "#0f3d7c",
+                            backgroundColor: "#0f2555",
                             color: "#fff",
                             fontWeight: "bold",
                             fontSize: "1.2em",
@@ -440,7 +785,7 @@ export default function PrivateLimitedCompanyDocs() {
 
                         <Typography
                           variant="h6"
-                          sx={{ fontWeight: 700, color: "#0f3d7c", mb: 1.5 }}
+                          sx={{ fontWeight: 700, color: "#0f2555", mb: 1.5 }}
                         >
                           {step.title}
                         </Typography>
@@ -467,7 +812,7 @@ export default function PrivateLimitedCompanyDocs() {
           <Typography
             variant="h3" // bigger headline like the screenshot
             sx={{
-              fontWeight: 700,
+              fontWeight: 500,
               color: "#4A5A7D", // headline color
               mt: { xs: 6, md: 10 },
               mb: 2,
@@ -523,7 +868,7 @@ export default function PrivateLimitedCompanyDocs() {
                       sx={{
                         backgroundColor: "#0f2555",
                         color: "#fff",
-                        borderRadius: 4,
+                        borderRadius: 2,
                         width: 280,
                         height: 200,
                         p: 3,
@@ -580,126 +925,13 @@ export default function PrivateLimitedCompanyDocs() {
             </Container>
           </Box>
 
-          <Typography
-            variant="h3" // bigger headline like the screenshot
-            sx={{
-              fontWeight: 700,
-              color: "#4A5A7D", // headline color
-              mt: { xs: 6, md: 10 },
-              mb: 2,
-              textAlign: "center",
-            }}
-          >
-            Why Rekotax ?
-          </Typography>
-          <Box
-            sx={{
-              backgroundColor: "#f4f6f8",
-              py: { xs: 6, md: 8 },
-              px: { xs: 2, md: 4 },
-            }}
-          >
-            <Container maxWidth="lg">
-              <Grid container spacing={3} justifyContent="center">
-                {[
-                  {
-                    icon: "fa-certificate",
-                    text: "Govt. of India Authorized & Trusted",
-                  },
-                  {
-                    icon: "fa-users",
-                    text: "Trusted by 1,000+ Founders Nationwide",
-                  },
-                  {
-                    icon: "fa-award",
-                    text: "ISO-Certified for Quality Excellence",
-                  },
-                  {
-                    icon: "fa-shield-alt",
-                    text: "Bank-Level Data Security You Can Rely On",
-                  },
-                  {
-                    icon: "fa-user-tie",
-                    text: "Guided by Experienced Legal & Tax Experts",
-                  },
-                  { icon: "fa-clock", text: "Always On-Time. Every Time." },
-                  {
-                    icon: "fa-hands-helping",
-                    text: "One-on-One Support from a Dedicated Expert",
-                  },
-                  {
-                    icon: "fa-headset",
-                    text: "Fast, Friendly & Always Available Support",
-                  },
-                  {
-                    icon: "fa-rupee-sign",
-                    text: "Premium Service at Startup-Friendly Prices",
-                  },
-                ].map((item, index) => (
-                  <Grid
-                    key={index}
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4} // 3 per row on md+
-                    sx={{ display: "flex", justifyContent: "center" }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        width: 340,
-                        backgroundColor: "#0f2555",
-                        color: "white",
-                        borderRadius: 2,
-                        p: 2.5,
-                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-                        transition: "transform 0.3s ease",
-                        "&:hover": {
-                          transform: "translateY(-5px)",
-                        },
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          backgroundColor: "#b5b7bb",
-                          width: 48,
-                          height: 48,
-                          borderRadius: 2,
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          mr: 2,
-                          flexShrink: 0,
-                        }}
-                      >
-                        <i
-                          className={`fas ${item.icon}`}
-                          style={{ color: "#0f2555", fontSize: 20 }}
-                        />
-                      </Box>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          fontSize: 15,
-                          fontWeight: 600,
-                          lineHeight: 1.4,
-                          flex: 1,
-                        }}
-                      >
-                        {item.text}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </Container>
-          </Box>
+
+          <WhyRekotax />
 
           <Typography
             variant="h3" // bigger headline like the screenshot
             sx={{
-              fontWeight: 700,
+              fontWeight: 500,
               color: "#4A5A7D", // headline color
               mt: { xs: 6, md: 10 },
               mb: 2,
@@ -728,7 +960,7 @@ export default function PrivateLimitedCompanyDocs() {
               >
                 <Typography
                   variant="h4"
-                  sx={{ color: "#0f3d7c", mb: 2, fontWeight: 700 }}
+                  sx={{ color: "#0f2555", mb: 2, fontWeight: 500 }}
                 >
                   Private Limited Company Registration in India
                 </Typography>
@@ -763,10 +995,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -774,11 +1006,11 @@ export default function PrivateLimitedCompanyDocs() {
                 </Typography>
                 <Typography
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
-                    pb: 1,
                   }}
                 >
                   <ul>
@@ -809,10 +1041,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px  #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px  #0f2555",
                     pb: 1,
                   }}
                 >
@@ -820,11 +1052,11 @@ export default function PrivateLimitedCompanyDocs() {
                 </Typography>
                 <Typography
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px  #0f3d7c",
-                    pb: 1,
                   }}
                 >
                   <ul>
@@ -857,10 +1089,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -900,10 +1132,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -1065,10 +1297,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -1172,10 +1404,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -1215,10 +1447,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -1257,10 +1489,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -1293,10 +1525,10 @@ export default function PrivateLimitedCompanyDocs() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#0f3d7c",
+                    color: "#0f2555",
                     mb: 2,
-                    fontWeight: 700,
-                    borderBottom: "2px solid #0f3d7c",
+                    fontWeight: 500,
+                    borderBottom: "2px solid #0f2555",
                     pb: 1,
                   }}
                 >
@@ -1366,8 +1598,8 @@ export default function PrivateLimitedCompanyDocs() {
               variant="h4"
               sx={{
                 color: "#6b7280", // soft grey tone
-                fontWeight: 700,
-                mb: 2,
+                fontWeight: 500,
+                mb: 4,
                 fontSize: { xs: "2rem", md: "2.8rem" },
                 lineHeight: 1.3,
                 bgcolor: "#fff",
@@ -1399,7 +1631,7 @@ export default function PrivateLimitedCompanyDocs() {
                     lineHeight: 1.8,
                   },
                   "& thead th": {
-                    backgroundColor: "#0f3d7c",
+                    backgroundColor: "#0f2555",
                     color: "#fff",
                     fontWeight: "bold",
                   },
@@ -1536,19 +1768,19 @@ export default function PrivateLimitedCompanyDocs() {
               </Box>
             </Box>
           </Box>
-
+          {/* 
           <Typography
             variant="h3" // bigger headline like the screenshot
             sx={{
-              fontWeight: 700,
+              fontWeight: 500,
               color: "#4A5A7D", // headline color
               mt: { xs: 6, md: 10 },
               mb: 2,
               textAlign: "center",
             }}
           >
-           Get Expert Consultation
-          </Typography>
+            Get Expert Consultation
+          </Typography> */}
           <Box
             sx={{
               py: { xs: 6, md: 8 },
@@ -1562,8 +1794,8 @@ export default function PrivateLimitedCompanyDocs() {
                 sx={{
                   textAlign: "center",
                   color: "#0f2555",
-                  fontWeight: 700,
-                  mb: { xs: 8, md: 4 },
+                  fontWeight: 600,
+                  mb: { xs: 6, md: 5 },
                   fontFamily: "'Open Sans', sans-serif",
                 }}
               >
@@ -1574,7 +1806,6 @@ export default function PrivateLimitedCompanyDocs() {
                 {
                   q: "Is there a minimum capital requirement for Private Limited Company registration?",
                   a: "No, there is no minimum paid-up capital requirement. You can start with any amount suitable for your business.",
-                  defaultExpanded: true,
                 },
                 {
                   q: "How long does it take to complete Private Limited Company registration in India?",
@@ -1664,85 +1895,88 @@ export default function PrivateLimitedCompanyDocs() {
                   q: "Can NRIs and foreign nationals register a Private Limited Company in India?",
                   a: "Yes, they can invest and become directors, provided one Indian resident director is appointed and all FEMA rules are followed.",
                 },
-              ].map(({ q, a, defaultExpanded }, idx) => (
-                <Accordion
-                  key={idx}
-                  defaultExpanded={Boolean(defaultExpanded)}
-                  sx={{
-                    borderBottom: "1px solid #ddd",
-                    boxShadow: "none",
-                    "&:before": { display: "none" }, // remove default divider
-                    fontFamily: "'Open Sans', sans-serif",
-                  }}
-                >
-                  <AccordionSummary
-                    expandIcon={
-                      <Box
-                        sx={{
-                          display: "grid",
-                          placeItems: "center",
-                          width: 24,
-                          height: 24,
-                        }}
-                      >
-                        {/* Show + when collapsed, − when expanded via CSS trick */}
-                        <AddIcon
-                          sx={{
-                            color: "#0f2555",
-                            ".Mui-expanded &": { display: "none" },
-                          }}
-                        />
-                        <RemoveIcon
-                          sx={{
-                            color: "#0f2555",
-                            display: "none",
-                            ".Mui-expanded &": { display: "inline-block" },
-                          }}
-                        />
-                      </Box>
-                    }
+              ].map(({ q, a }, idx) => {
+                const isOpen = expanded === idx;
+                return (
+                  <Accordion
+                    key={idx}
+                    elevation={0}
+                    disableGutters
+                    square
+                    expanded={expanded === idx}
+                    onChange={() => handleAccordionToggle(idx)}
                     sx={{
-                      px: 0,
-                      "& .MuiAccordionSummary-content": {
-                        m: 0,
-                      },
+                      mb: 1.5,
+                      borderRadius: 2,
+                      overflow: "hidden",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                      transition: "box-shadow .3s ease, transform .2s ease",
+                      "&:hover": { boxShadow: "0 4px 12px rgba(0,0,0,0.10)" },
+                      "&:before": { display: "none" }, // remove default divider
                     }}
                   >
-                    <Typography
+                    <AccordionSummary
                       sx={{
-                        fontSize: { xs: 15, md: 16 },
-                        fontWeight: 600,
-                        color: "#0f2555",
-                        lineHeight: 1.5,
-                        pr: 2,
-                        fontFamily: "'Open Sans', sans-serif",
+                        px: 2.5,
+                        py: 1.75,
+                        bgcolor: "#fff",
+                        transition: "background .3s ease",
+                        "&:hover": { bgcolor: "#f7f9fc" },
+                        "& .MuiAccordionSummary-content": { m: 0 },
                       }}
+                      expandIcon={
+                        <Box sx={{ display: "grid", placeItems: "center" }}>
+                          {isOpen ? (
+                            <RemoveIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
+                          ) : (
+                            <AddIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
+                          )}
+                        </Box>
+                      }
                     >
-                      {q}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails sx={{ px: 0, pt: 1.5 }}>
-                    <Typography
+                      <Typography
+                        sx={{
+                          fontSize: { xs: 15, md: 16 },
+                          fontWeight: 600,
+                          color: "#0f2555",
+                          lineHeight: 1.5,
+                          pr: 2,
+                          fontFamily: "'Open Sans', sans-serif",
+                        }}
+                      >
+                        {idx + 1}. {q}
+                      </Typography>
+                    </AccordionSummary>
+
+                    <AccordionDetails
                       sx={{
-                        fontSize: { xs: 14, md: 15 },
+                        px: 2.5,
+                        py: 1.75,
+                        bgcolor: "#fafbfc",
                         color: "#444",
-                        lineHeight: 1.7,
-                        fontWeight: 400,
+                        fontSize: "0.95rem",
+                        lineHeight: 1.6,
                         fontFamily: "'Open Sans', sans-serif",
                       }}
                     >
                       {a}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              ))}
+                    </AccordionDetails>
+                  </Accordion>
+                );
+              })}
             </Container>
           </Box>
-          
-          <ContactSection/>
-          <Footer/>
+
+
         </Box>
       </ThemeProvider>
+      <Box sx={{ mt: -6, mx: -6 }} ref={footerRef}>
+        <ContactSection />
+      </Box>
+
+      <Box sx={{ mt: 0, mx: 0 }} ref={footerRef}>
+        <Footer />
+      </Box>
     </Box>
   );
 }
