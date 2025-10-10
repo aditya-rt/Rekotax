@@ -284,7 +284,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
               Sole Proprietorship Registration          </Typography>
 
             <Typography sx={{ mb: 2, fontSize: "1rem" }}>
-              Register your Private Limited Company with Rekotax — experience
+              Register your Sole Proprietorship  Company with Rekotax — experience
               fast setup,
               <br />
               full legal compliance, expert documentation, and dedicated support
@@ -581,7 +581,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
               lineHeight: 1.6,
             }}
           >
-            To register your Private Limited seamlessly, you’ll need to submit
+            To register your Business seamlessly, you’ll need to submit
             basic identity, address, and office-related documents.
           </Typography>
 
@@ -672,7 +672,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 lineHeight: 1.2,
               }}
             >
-              Simplified Process to Register Your <br /> Private Limited in
+              Simplified Process to Register Your <br /> Business in
               India
             </Typography>
 
@@ -686,7 +686,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 lineHeight: 1.6,
               }}
             >
-              Setting up your Private Limited is simpler than you think —
+              Setting up your Sole Proprietorship  is simpler than you think —
               especially with Rekotax guiding every step. Here’s a streamlined
               breakdown of the entire process:
             </Typography>
@@ -947,7 +947,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h4" sx={{ color: "#0f2555", mb: 2, fontWeight: 500 }}>
                   What is a Sole Proprietorship?
                 </Typography>
-                <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   A sole proprietorship is a business owned and operated by one individual. It is the simplest business structure available in India, offering full control to the owner with minimal compliance requirements. This model is ideal for freelancers, local traders, professionals, and home-based entrepreneurs looking to start small and scale with time.                </Typography>
               </Box>
 
@@ -956,7 +962,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Who Should Choose This Structure?
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Freelancers and independent service providers</li>
                     <li>Retailers, resellers, and small shop owners</li>
@@ -973,7 +985,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Why Register a Sole Proprietorship?
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div" sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Establishes legal recognition and credibility</li>
                     <li>Allows opening of a business bank account</li>
@@ -991,7 +1009,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                   Step-by-Step Registration Process
 
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Choose a Business Name</strong> - ensure it's unique and reflects your activity.</li>
                     <li><strong>Get Basic Documents</strong> - PAN, Aadhaar, and proof of business address.</li>
@@ -1009,7 +1033,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
 
 
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                  <ul>
   <li><strong>Single Owner</strong> - one person is fully responsible and controls the business.</li>
   <li><strong>No Legal Separation</strong> - the business and owner are treated as one legal entity.</li>
@@ -1032,40 +1062,88 @@ export default function Llp({ webAppUrl, onSubmitted }) {
     Benefits of Going Legal
   </Typography>
 
-  <Typography variant="h6" sx={{ color: "#333", fontWeight: 400, mb: 1 }}>
+  <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     Professional Image
   </Typography>
-  <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.95rem", lineHeight: 1.8 }}>
+  <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     <ul>
       <li>Gain trust with suppliers and customers</li>
       <li>Boost brand perception</li>
     </ul>
   </Typography>
 
-  <Typography variant="h6" sx={{ color: "#333", fontWeight: 400, mb: 1 }}>
+  <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     Banking &amp; Finance Access
   </Typography>
-  <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.95rem", lineHeight: 1.8 }}>
+  <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     <ul>
       <li>Get business loans and credit cards</li>
       <li>Apply for digital payment gateways</li>
     </ul>
   </Typography>
 
-  <Typography variant="h6" sx={{ color: "#333", fontWeight: 400, mb: 1 }}>
+  <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     Compliance Ready
   </Typography>
-  <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.95rem", lineHeight: 1.8 }}>
+  <Typography component="div" s sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     <ul>
       <li>File GST and ITR returns with proper documentation</li>
       <li>Participate in tenders and secure licenses</li>
     </ul>
   </Typography>
 
-  <Typography variant="h6" sx={{ color: "#333", fontWeight: 400, mb: 1 }}>
+  <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     Future Growth
   </Typography>
-  <Typography component="div" sx={{ color: "#333", fontSize: "0.95rem", lineHeight: 1.8 }}>
+  <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     <ul>
       <li>Easy to upgrade to a company or LLP later</li>
       <li>Build a track record for investors and banks</li>
@@ -1078,7 +1156,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
   <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 400, borderBottom: "2px solid #0f2555", pb: 1 }}>
     Documents Required
   </Typography>
-  <Typography component="div" sx={{ color: "#333", fontSize: "0.95rem", lineHeight: 1.8 }}>
+  <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
     <ul>
       <li>PAN and Aadhaar Card</li>
       <li>Proof of Business Address (Rent Agreement or Utility Bill)</li>
@@ -1152,7 +1236,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                     backgroundColor: "#f3f3f3",
                   },
                   // Highlight the "Private Limited Company" column (now the 2nd column in tbody rows)
-                  "& tbody td:nth-of-type(2)": {
+                  "& tbody td:nth-of-type(6)": {
                     backgroundColor: "rgba(15,61,124,0.10)",
                     color: "#000",
                   },
@@ -1165,7 +1249,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                     <Box component="th">One Person Company</Box>
                     <Box component="th">Limited Liability Partnership</Box>
                     <Box component="th">Partnership Firm</Box>
-                    <Box component="th">Proprietorship Firm</Box>
+                    <Box component="th">Proprietorship</Box>
                   </Box>
                 </Box>
 

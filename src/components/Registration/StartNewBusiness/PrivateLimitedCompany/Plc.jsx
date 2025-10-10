@@ -1659,7 +1659,7 @@ export default function PrivateLimitedCompanyDocs({ webAppUrl, onSubmitted }) {
                     <Box component="th">Private Limited Company</Box>
                     <Box component="th">Public Company</Box>
                     <Box component="th">Limited Liability Partnership</Box>
-                    <Box component="th">Partnership Firm</Box>
+                    <Box component="th">Partnership </Box>
                   </Box>
                 </Box>
 

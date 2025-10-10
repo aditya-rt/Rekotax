@@ -957,7 +957,7 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
           <Typography
             variant="h3" // bigger headline like the screenshot
             sx={{
-              fontWeight: 500,
+            fontWeight: 500,
               color: "#4A5A7D", // headline color
               mt: { xs: 6, md: 10 },
               mb: 2,
@@ -978,7 +978,13 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                 <Typography variant="h4" sx={{ color: "#0f2555", mb: 2, fontWeight: 500 }}>
                   What is One Person Company (OPC) Registration?
                 </Typography>
-                <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   One Person Company (OPC) is a unique business structure introduced under the Companies Act, 2013 that empowers a solo entrepreneur to incorporate a private limited company with limited liability. OPC blends the simplicity of sole proprietorship with the advantages of a corporate entity, including a distinct legal identity and reduced personal financial risk.
                 </Typography>
               </Box>
@@ -988,7 +994,13 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Why Choose OPC?
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Operate as a single founder with full control</li>
                     <li>Enjoy legal recognition and limited liability</li>
@@ -1003,7 +1015,13 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Types of OPC in India
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>OPC Limited by Shares</strong> - liability limited to the unpaid amount on shares held.</li>
                     <li><strong>OPC Limited by Guarantee with Share Capital</strong> - liability includes unpaid share capital plus a pre-decided guarantee amount.</li>
@@ -1020,7 +1038,13 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Key Characteristics of an OPC
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Sole Ownership, Full Control</strong> - one person holds 100% ownership and makes all decisions.</li>
                     <li><strong>Nominee Appointment is Mandatory</strong> - ensures business continuity through a designated nominee.</li>
@@ -1045,60 +1069,132 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                   Benefits of OPC Registration
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Limited Liability Protection
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Personal savings and assets are safe from company debts.</li>
                     <li>Encourages entrepreneurship with lower financial risks.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6" sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Enhanced Business Credibility
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Improves trust with clients, suppliers, and investors.</li>
                     <li>Legally structured and professionally managed.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Complete Operational Control
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Make fast decisions independently.</li>
                     <li>Quickly adapt to market changes.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Tax & Financial Benefits
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Corporate tax rates and deductions available.</li>
                     <li>Depreciation benefits lower taxable income.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Easy Access to Credit & Capital
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Easier to open accounts and secure loans.</li>
                     <li>Ready for funding and conversion to Pvt Ltd.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Business Continuity & Legacy Planning
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Nominee ensures continuity in the founder’s absence.</li>
                     <li>Supports long-term growth and succession.</li>
@@ -1209,10 +1305,10 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                     backgroundColor: "#f3f3f3",
                   },
                   // Highlight the "Private Limited Company" column (now the 2nd column in tbody rows)
-                  "& tbody td:nth-of-type(2)": {
-                    backgroundColor: "rgba(15,61,124,0.10)",
-                    color: "#000",
-                  },
+                 "& tbody td:nth-of-type(3)": {
+  backgroundColor: "rgba(15,61,124,0.10)",
+  color: "#000",
+},
                 }}
               >
                 <Box component="thead">
@@ -1222,7 +1318,7 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                     <Box component="th">One Person Company</Box>
                     <Box component="th">Limited Liability Partnership</Box>
                     <Box component="th">Partnership Firm</Box>
-                    <Box component="th">Proprietorship Firm</Box>
+                    <Box component="th">Proprietorship </Box>
                   </Box>
                 </Box>
 

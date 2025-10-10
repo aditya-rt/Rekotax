@@ -963,7 +963,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h4" sx={{ color: "#0f2555", mb: 2, fontWeight: 500 }}>
                   What is LLP (Limited Liability Partnership) Registration?
                 </Typography>
-                <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Limited Liability Partnership (LLP) is a hybrid business structure that offers the benefits of a traditional partnership with the limited liability feature of a private company. Regulated under the LLP Act, 2008, an LLP is a separate legal entity that allows partners to manage the business flexibly while protecting their personal assets from business debts.                </Typography>
               </Box>
 
@@ -972,7 +978,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Why Choose LLP?
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Ideal for service-based or small businesses with low initial investment</li>
                     <li>
@@ -1000,7 +1012,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Types of LLP Registrations
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Professional LLP</strong> - formed by professionals like CAs, CS, Architects, etc., for delivering services under a regulated body.</li>
                     <li><strong>Business LLP</strong> - for commercial ventures in manufacturing, trading, or consulting.</li>
@@ -1016,7 +1034,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Key Characteristics of an LLP
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Minimum Two Partners</strong> - No upper limit on number of partners</li>
                     <li><strong>Limited Liability</strong> - Each partner’s liability is limited to their contribution</li>
@@ -1038,10 +1062,16 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                   Benefits of LLP Registration
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
                   Separate Legal Identity
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Can own property, open bank accounts, and file legal cases</li>
                     <li>Builds credibility among clients and stakeholders</li>
@@ -1051,7 +1081,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
                   Limited Liability Protection
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Partners are not personally responsible for business losses</li>
                     <li>Protects individual assets against firm liabilities</li>
@@ -1061,7 +1097,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
                   No Minimum Capital Requirement
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>LLP can be formed with any amount of capital</li>
                     <li>Capital contribution can be in cash, assets, or even services</li>
@@ -1071,7 +1113,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
                   Taxation Benefits
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>No Dividend Distribution Tax (DDT)</li>
                     <li>Lower effective tax rates compared to companies</li>
@@ -1081,7 +1129,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
                   Ease of Formation and Flexibility
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Simple and online incorporation process</li>
                     <li>Flexible internal structure as per LLP Agreement</li>
@@ -1098,7 +1152,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h4" sx={{ color: "#0f2555", mb: 2, fontWeight: 400, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Post-Registration Compliance for LLPs
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Form LLP Agreement:</strong> Must be filed in Form 3 within 30 days of incorporation</li>
                     <li><strong>Maintain Books of Accounts:</strong> Even if audit not mandatory</li>
@@ -1114,7 +1174,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h4" sx={{ color: "#0f2555", mb: 2, fontWeight: 400, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Certificate of Incorporation: Legal Proof of LLP
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   The Certificate of Incorporation (COI) issued by the Registrar of Companies includes:
                   <ul>
                     <li>LLP Identification Number (LLPIN)</li>
@@ -1191,7 +1257,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                     backgroundColor: "#f3f3f3",
                   },
                   // Highlight the "Private Limited Company" column (now the 2nd column in tbody rows)
-                  "& tbody td:nth-of-type(2)": {
+                  "& tbody td:nth-of-type(4)": {
                     backgroundColor: "rgba(15,61,124,0.10)",
                     color: "#000",
                   },
@@ -1204,7 +1270,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                     <Box component="th">One Person Company</Box>
                     <Box component="th">Limited Liability Partnership</Box>
                     <Box component="th">Partnership Firm</Box>
-                    <Box component="th">Proprietorship Firm</Box>
+                    <Box component="th">Proprietorship </Box>
                   </Box>
                 </Box>
 

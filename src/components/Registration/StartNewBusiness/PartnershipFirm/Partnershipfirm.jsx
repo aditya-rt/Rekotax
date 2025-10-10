@@ -955,7 +955,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h4" sx={{ color: "#0f2555", mb: 2, fontWeight: 500 }}>
                   What is Partnership Firm Registration?
                 </Typography>
-                <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   A partnership firm is a popular form of business in India where two or more individuals join hands to carry out a business with a view to earn profit. Governed by the Indian Partnership Act, 1932, this structure allows partners to combine their resources, expertise, and efforts under a mutually agreed partnership deed.
                 </Typography>
               </Box>
@@ -965,7 +971,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Why Choose Partnership Firm?
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Simple and cost-effective to set up
                     </li>
@@ -993,10 +1005,16 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Types of Partnership Firms
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Registered Partnership Firm</strong> - Registered with the Registrar of Firms for legal recognition and protection.</li>
-                    <li><strong>BUnregistered Partnership Firm</strong> - Not registered but still a valid business form; however, it lacks certain legal rights.</li>
+                    <li><strong>Unregistered Partnership Firm</strong> - Not registered but still a valid business form; however, it lacks certain legal rights.</li>
 
 
                   </ul>
@@ -1008,7 +1026,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Key Features of a Partnership Firm
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "0.8rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Minimum 2 Partners</strong> - Can have up to 50 partners.</li>
                     <li><strong>Mutual Agency</strong> - Each partner acts as both agent and principal.</li>
@@ -1026,50 +1050,110 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                   Advantages of Partnership Firm Registration
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6" sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Ease of Formation
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div" sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Can be started with just a partnership deed.</li>
                     <li>Optional registration process with Registrar of Firms.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Better Resource Pooling
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Combines diverse skills, experience, and capital of all partners.</li>
                     <li>Helps in effective decision-making and operational strength.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Operational Flexibility
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Partners enjoy complete freedom to define terms in the deed.</li>
                     <li>Suitable for dynamic business environments.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Lower Compliance Burden
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", mb: 2, fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>No requirement to audit books if turnover is below threshold.</li>
                     <li>Lesser legal formalities compared to companies and LLPs.</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6" sx={{ color: "#333", fontWeight: 300, mb: 1.25 }}>
+                <Typography variant="h6"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   Quick Decision Making
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Direct involvement of partners in daily operations enables faster execution.</li>
                     <li>No need to wait for board resolutions or shareholder meetings.</li>
@@ -1082,7 +1166,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Essential Documents for Registration
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Partnership Deed:</strong> A written agreement defining roles, duties, and profit-sharing.</li>
                     <li><strong>PAN Cards of Partners:</strong> Self-attested PAN copies of all partners.</li>
@@ -1098,7 +1188,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Additional Documents (If Applicable)
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Rent Agreement:</strong> If the office space is rented.</li>
                     <li><strong>NOC from Landlord:</strong> For using the rented premises as office.</li>
@@ -1113,7 +1209,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   What Should the Partnership Deed Include?
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li>Full names and addresses of all partners</li>
                     <li>Business name and nature of operations</li>
@@ -1134,7 +1236,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Post-Registration Compliance
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   <ul>
                     <li><strong>Income Tax Filing:</strong> File income tax returns annually in the firm's name.</li>
                     <li><strong>TDS Compliance:</strong> If applicable, deduct and file TDS returns.</li>
@@ -1150,7 +1258,13 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Registration Certificate: Your Business Identity
                 </Typography>
-                <Typography component="div" sx={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                <Typography component="div"  sx={{
+                    color: "#333", // or theme.palette.text.primary
+                    fontWeight: 400, // normal weight, not 200
+                    fontSize: "1.05rem", // adjust size for comfortable reading
+                    lineHeight: 1.8,
+                    mb: 2,
+                  }}>
                   If you register your partnership firm with the Registrar of Firms, you’ll receive a Certificate of Registration which acts as legal proof
                   of your firm’s existence. This document is useful when:
                   <ul>
@@ -1223,7 +1337,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                     backgroundColor: "#f3f3f3",
                   },
                   // Highlight the "Private Limited Company" column (now the 2nd column in tbody rows)
-                  "& tbody td:nth-of-type(2)": {
+                  "& tbody td:nth-of-type(5)": {
                     backgroundColor: "rgba(15,61,124,0.10)",
                     color: "#000",
                   },
@@ -1236,7 +1350,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                     <Box component="th">One Person Company</Box>
                     <Box component="th">Limited Liability Partnership</Box>
                     <Box component="th">Partnership Firm</Box>
-                    <Box component="th">Proprietorship Firm</Box>
+                    <Box component="th">Proprietorship </Box>
                   </Box>
                 </Box>
 
