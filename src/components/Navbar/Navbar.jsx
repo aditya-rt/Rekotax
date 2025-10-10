@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
+import { useLocation } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -29,6 +30,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const CONTENT_MAX_W = 1300;
   const H_PADDING   = { xs: 1.5, sm: 2, md: 3 };
+  const { pathname } = useLocation();
 
   const APPBAR_H_DESKTOP = 64;
   const APPBAR_H_MOBILE = 56;
@@ -39,6 +41,7 @@ export default function Navbar() {
     insights: false,
     about: false,
   });
+  
   const [activeService, setActiveService] = useState("Registration");
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -46,6 +49,10 @@ export default function Navbar() {
   const closeMenu = (k) => setAnchors((a) => ({ ...a, [k]: false }));
   const toggleMenu = (k) => setAnchors((a) => ({ ...a, [k]: !a[k] }));
   const isOpen = (k) => Boolean(anchors[k]);
+
+   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" }); // use "smooth" if you prefer
+  }, [pathname]);
 
   const startBusinessItems = [
     "Private Limited Company",
@@ -171,7 +178,7 @@ export default function Navbar() {
                 color="inherit"
                 endIcon={<ArrowDropDownIcon />}
                 sx={{
-                  fontWeight: 700,
+                  fontWeight: 500,
                   textTransform: "none",
                   borderRadius: 999,
                   px: 1.25,
@@ -307,9 +314,10 @@ export default function Navbar() {
                             <Typography
                               sx={{
                                 mb: 2,
-                                fontWeight: 900,
+                                fontWeight: 600,
                                 color: "#f0f6ff",
-                                fontSize: "1.35rem",
+                                 fontSize: { xs: 12, md: 14 },
+
                                 position: "relative",
                                 pb: 1,
                                 display: "inline-block",
@@ -332,7 +340,9 @@ export default function Navbar() {
                               <Typography
                                 key={text}
                                 sx={{
-                                  mb: 1.1,
+                                  mb: 0.8,
+                                    fontSize: { xs: 12, sm: 12, md: 14 },
+
                                   color: "rgba(255,255,255,0.95)",
                                   cursor: "pointer",
                                   "&:hover": { textDecoration: "underline" },
@@ -348,9 +358,10 @@ export default function Navbar() {
                             <Typography
                               sx={{
                                 mb: 2,
-                                fontWeight: 900,
+                                fontWeight: 600,
                                 color: "#f0f6ff",
-                                fontSize: "1.35rem",
+                                 fontSize: { xs: 12, md: 14 },
+
                                 position: "relative",
                                 pb: 1,
                                 display: "inline-block",
@@ -376,6 +387,8 @@ export default function Navbar() {
                                     key={text}
                                     sx={{
                                       mb: 1.1,
+                                        fontSize: { xs: 12, sm: 12, md: 14 },
+
                                       color: "rgba(255,255,255,0.95)",
                                       cursor: "pointer",
                                       "&:hover": { textDecoration: "underline" },
@@ -392,6 +405,8 @@ export default function Navbar() {
                                     key={text}
                                     sx={{
                                       mb: 1.1,
+                                        fontSize: { xs: 12, sm: 12, md: 14 },
+
                                       color: "rgba(255,255,255,0.95)",
                                       cursor: "pointer",
                                       "&:hover": { textDecoration: "underline" },
@@ -454,7 +469,7 @@ export default function Navbar() {
                 key={label}
                 color="inherit"
                 sx={{
-                  fontWeight: 700,
+                  fontWeight: 500,
                   textTransform: "none",
                   borderRadius: 999,
                   px: 1.25,
@@ -476,7 +491,7 @@ export default function Navbar() {
             disableElevation
             sx={{
               display: { xs: "none", sm: "inline-flex" }, // hide on xs
-              fontWeight: 800,
+              fontWeight: 550,
               px: { sm: 1.8, md: 2.2 },
               py: { sm: 0.65, md: 0.75 },
               borderRadius: 999,

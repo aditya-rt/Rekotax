@@ -599,72 +599,73 @@ Registration        </Typography>
 
           </Typography>
 
-          <Container maxWidth="lg" sx={{ mt: 6 }}>
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              justifyContent="center"
-              sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
-            >
-              {cardData.map((card) => (
-                <Grid
-                  item
-                  key={card.title}
-                  xs={12}
-                  md={3} // 4 cards per row on desktop
-                  sx={{ display: "flex", justifyContent: "center" }}
-                >
-                  <Box
-                    sx={{
-                      width: "100%",
-                      maxWidth: 360,
-                      bgcolor: "#ffffff",
-                      borderRadius: 4,                            // softer rounded corners
-                      p: 3,
-                      minHeight: 320,                             // keeps heights consistent like screenshot
-                      boxShadow:
-                        "0 10px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6)", // soft outer + slight inner highlight
-                      border: "1px solid rgba(0,0,0,0.06)",
-                      transition: "transform .25s ease, box-shadow .25s ease",
-                      "&:hover": {
-                        transform: "translateY(-4px)",
-                        boxShadow:
-                          "0 16px 36px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.7)",
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 500,
-                        color: "#0f2555",
-                        mb: 1.5,
-                        textAlign: "left",
-                      }}
-                    >
-                      {card.title}
-                    </Typography>
-
-                    <Box
-                      component="ul"
-                      sx={{
-                        m: 0,
-                        pl: 2.2,
-                        color: "#3b4453",
-                        lineHeight: 1.7,
-                        fontSize: { xs: 10, sm: 11, md: 11.5 },
-                        "& li": { mb: 1 },
-                      }}
-                    >
-                      {card.items.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </Box>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
+     
+               <Container maxWidth="lg" sx={{ mt: 6 }}>
+                 <Grid
+                   container
+                   spacing={3}
+                   justifyContent="center"
+                   wrap="nowrap"
+                   sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
+                 >
+                   {cardData.map((card) => (
+                     <Grid
+                       item
+                       key={card.title}
+                       xs={12}
+                       md={4}
+                       sx={{
+                         flex: { xs: "0.5 0.5 100%", md: "0.5 0.5 33.33%" },
+                         display: "flex",
+                         justifyContent: "center",
+                       }}
+                     >
+                       <Box
+                         sx={{
+                           background: "#fff",
+                           borderRadius: 3,
+                           p: 4,
+                           width: "100%",
+                           maxWidth: 360,
+                           boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                           transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                           "&:hover": {
+                             transform: "translateY(-5px)",
+                             boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
+                           },
+                         }}
+                       >
+                         <Typography
+                           variant="h6"
+                           sx={{
+                             fontWeight: 600,
+                             color: "#0f2555",
+                             mb: 2,
+                             textAlign: "left",
+                           }}
+                         >
+                           {card.title}
+                         </Typography>
+                         <ul
+                           style={{
+                             textAlign: "left",
+                             paddingLeft: "1.2rem",
+                             color: "#333",
+                             lineHeight: 1.2,
+                             margin: 0,
+                           }}
+                         >
+                           {card.items.map((item, idx) => (
+                             <li key={idx} style={{ marginBottom: "8px" }}>
+                               {item}
+                             </li>
+                           ))}
+                         </ul>
+                       </Box>
+                     </Grid>
+                   ))}
+                 </Grid>
+               </Container>
 
 
 
@@ -752,72 +753,72 @@ Here’s a streamlined breakdown of the entire process:
 ]
 
         
-                          .map((step) => (
-                            <Grid
-                              key={step.num}
-                              item
-                              xs={12}
-                              sm={6}
-                              md={4} // 3 per row on md+
-                              sx={{ display: "flex", justifyContent: "center" }}
-                            >
-                              <Card
-                                elevation={0}
-                                sx={{
-                                  borderRadius: 3,
-                                  width: "100%",
-                                  maxWidth: 300,
-                                  boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
-                                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                                  "&:hover": {
-                                    transform: "translateY(-5px)",
-                                    boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
-                                  },
-                                }}
-                              >
-                                <CardContent sx={{ p: 4, textAlign: "center" }}>
-                                  <Box
-                                    sx={{
-                                      width: 44,
-                                      height: 44,
-                                      borderRadius: "50%",
-                                      backgroundColor: "#0f2555",
-                                      color: "#fff",
-                                      fontWeight: "bold",
-                                      fontSize: "1.2em",
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "center",
-                                      mx: "auto",
-                                      mb: 2,
-                                      boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-                                    }}
-                                  >
-                                    {step.num}
-                                  </Box>
-        
-                                  <Typography
-                                    variant="h6"
-                                    sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}
-                                  >
-                                    {step.title}
-                                  </Typography>
-        
-                                  <Typography
-                                    variant="body1"
-                                    sx={{
-                                      fontSize: "0.8em",
-                                      lineHeight: 1.5,
-                                      textAlign: "left",
-                                      color: "#333",
-                                    }}
-                                  >
-                                    {step.desc}
-                                  </Typography>
-                                </CardContent>
-                              </Card>
-                            </Grid>
-                          ))}
+                      .map((step) => (
+                                        <Grid
+                                          key={step.num}
+                                          item
+                                          xs={12}
+                                          sm={6}
+                                          md={4} // 3 per row on md+
+                                          sx={{ display: "flex", justifyContent: "center" }}
+                                        >
+                                          <Card
+                                            elevation={0}
+                                            sx={{
+                                              borderRadius: 3,
+                                              width: "100%",
+                                              maxWidth: 360,
+                                              boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
+                                              transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                              "&:hover": {
+                                                transform: "translateY(-5px)",
+                                                boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
+                                              },
+                                            }}
+                                          >
+                                            <CardContent sx={{ p: 4, textAlign: "center" }}>
+                                              <Box
+                                                sx={{
+                                                  width: 56,
+                                                  height: 56,
+                                                  borderRadius: "50%",
+                                                  backgroundColor: "#0f2555",
+                                                  color: "#fff",
+                                                  fontWeight: "bold",
+                                                  fontSize: "1.2em",
+                                                  display: "flex",
+                                                  alignItems: "center",
+                                                  justifyContent: "center",
+                                                  mx: "auto",
+                                                  mb: 2,
+                                                  boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+                                                }}
+                                              >
+                                                {step.num}
+                                              </Box>
+                      
+                                              <Typography
+                                                variant="h6"
+                                                sx={{ fontWeight: 700, color: "#0f2555", mb: 1.5 }}
+                                              >
+                                                {step.title}
+                                              </Typography>
+                      
+                                              <Typography
+                                                variant="body1"
+                                                sx={{
+                                                  fontSize: "0.95em",
+                                                  lineHeight: 1.6,
+                                                  textAlign: "left",
+                                                  color: "#333",
+                                                }}
+                                              >
+                                                {step.desc}
+                                              </Typography>
+                                            </CardContent>
+                                          </Card>
+                                        </Grid>
+                                      ))}
                       </Grid>
                     </Container>
                   </Box>

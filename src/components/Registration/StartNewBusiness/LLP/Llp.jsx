@@ -302,7 +302,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
               LLP Registration            </Typography>
 
             <Typography sx={{ mb: 2, fontSize: "1rem" }}>
-              Register your Private Limited Company with Rekotax — experience
+              Register your LLP with Rekotax — experience
               fast setup,
               <br />
               full legal compliance, expert documentation, and dedicated support
@@ -598,76 +598,77 @@ export default function Llp({ webAppUrl, onSubmitted }) {
               lineHeight: 1.6,
             }}
           >
-            To register your Private Limited seamlessly, you’ll need to submit
+            To register your LLP seamlessly, you’ll need to submit
             basic identity, address, and office-related documents.
           </Typography>
 
-          <Container maxWidth="lg" sx={{ mt: 6 }}>
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              justifyContent="center"
-              sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
-            >
-              {cardData.map((card) => (
-                <Grid
-                  item
-                  key={card.title}
-                  xs={12}
-                  md={3} // 4 cards per row on desktop
-                  sx={{ display: "flex", justifyContent: "center" }}
-                >
-                  <Box
-                    sx={{
-                      width: "100%",
-                      maxWidth: 360,
-                      bgcolor: "#ffffff",
-                      borderRadius: 4,                            // softer rounded corners
-                      p: 3,
-                      minHeight: 320,                             // keeps heights consistent like screenshot
-                      boxShadow:
-                        "0 10px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6)", // soft outer + slight inner highlight
-                      border: "1px solid rgba(0,0,0,0.06)",
-                      transition: "transform .25s ease, box-shadow .25s ease",
-                      "&:hover": {
-                        transform: "translateY(-4px)",
-                        boxShadow:
-                          "0 16px 36px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.7)",
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 500,
-                        color: "#0f2555",
-                        mb: 1.5,
-                        textAlign: "left",
-                      }}
-                    >
-                      {card.title}
-                    </Typography>
-
-                    <Box
-                      component="ul"
-                      sx={{
-                        m: 0,
-                        pl: 2.2,
-                        color: "#3b4453",
-                        lineHeight: 1.7,
-                        fontSize: { xs: 10, sm: 11, md: 11.5 },
-                        "& li": { mb: 1 },
-                      }}
-                    >
-                      {card.items.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </Box>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
+     
+               <Container maxWidth="lg" sx={{ mt: 6 }}>
+                 <Grid
+                   container
+                   spacing={3}
+                   justifyContent="center"
+                   wrap="nowrap"
+                   sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
+                 >
+                   {cardData.map((card) => (
+                     <Grid
+                       item
+                       key={card.title}
+                       xs={12}
+                       md={4}
+                       sx={{
+                         flex: { xs: "0.5 0.5 100%", md: "0.5 0.5 33.33%" },
+                         display: "flex",
+                         justifyContent: "center",
+                       }}
+                     >
+                       <Box
+                         sx={{
+                           background: "#fff",
+                           borderRadius: 3,
+                           p: 4,
+                           width: "100%",
+                           maxWidth: 360,
+                           boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                           transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                           "&:hover": {
+                             transform: "translateY(-5px)",
+                             boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
+                           },
+                         }}
+                       >
+                         <Typography
+                           variant="h6"
+                           sx={{
+                             fontWeight: 600,
+                             color: "#0f2555",
+                             mb: 2,
+                             textAlign: "left",
+                           }}
+                         >
+                           {card.title}
+                         </Typography>
+                         <ul
+                           style={{
+                             textAlign: "left",
+                             paddingLeft: "1.2rem",
+                             color: "#333",
+                             lineHeight: 1.2,
+                             margin: 0,
+                           }}
+                         >
+                           {card.items.map((item, idx) => (
+                             <li key={idx} style={{ marginBottom: "8px" }}>
+                               {item}
+                             </li>
+                           ))}
+                         </ul>
+                       </Box>
+                     </Grid>
+                   ))}
+                 </Grid>
+               </Container>
 
 
 
@@ -689,7 +690,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 lineHeight: 1.2,
               }}
             >
-              Simplified Process to Register Your <br /> Private Limited in
+              Simplified Process to Register Your <br /> LLP in
               India
             </Typography>
 
@@ -703,7 +704,7 @@ export default function Llp({ webAppUrl, onSubmitted }) {
                 lineHeight: 1.6,
               }}
             >
-              Setting up your Private Limited is simpler than you think —
+              Setting up your LLP is simpler than you think —
               especially with Rekotax guiding every step. Here’s a streamlined
               breakdown of the entire process:
             </Typography>

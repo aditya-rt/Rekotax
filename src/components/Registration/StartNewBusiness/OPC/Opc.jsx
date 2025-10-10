@@ -294,7 +294,7 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
               (OPC) Registration            </Typography>
 
             <Typography sx={{ mb: 2, fontSize: "1rem" }}>
-              Register your Private Limited Company with Rekotax — experience
+              Register your One Person Company with Rekotax — experience
               fast setup,
               <br />
               full legal compliance, expert documentation, and dedicated support
@@ -590,103 +590,77 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
               lineHeight: 1.6,
             }}
           >
-            To register your Private Limited seamlessly, you’ll need to submit
+            To register your OPC seamlessly, you’ll need to submit
             basic identity, address, and office-related documents.
           </Typography>
 
-          <Container maxWidth="lg" sx={{ mt: 6 }}>
-            <Grid
-              container
-              spacing={{ xs: 2.5, md: 3 }}
-              justifyContent="center"
-              sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
-            >
-              {cardData.map((card) => (
-                <Grid
-                  item
-                  key={card.title}
-                  xs={12}
-                  md={4}
-                  sx={{ display: "flex", justifyContent: "center" }}
-                >
-                  <Box
-                    sx={{
-                      position: "relative",
-                      width: "100%",
-                      maxWidth: 380,
-                      bgcolor: "#ffffff",
-                      borderRadius: 3,
-                      p: 3,
-                      pt: 6.5, // extra top space for the floating icon
-                      boxShadow:
-                        "0 10px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)",
-                      border: "1px solid rgba(15,37,85,0.08)",
-                      transition: "transform .3s ease, box-shadow .3s ease",
-                      "&:hover": {
-                        transform: "translateY(-6px)",
-                        boxShadow:
-                          "0 16px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08)",
-                      },
-                      backgroundImage:
-                        "radial-gradient(120% 100% at 0% 0%, rgba(15,61,124,0.04), rgba(255,255,255,0))",
-                    }}
-                  >
-                    {/* floating circular icon */}
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: -26,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: 56,
-                        height: 56,
-                        borderRadius: "50%",
-                        display: "grid",
-                        placeItems: "center",
-                        bgcolor: "#ffffff",
-                        boxShadow: "0 10px 20px rgba(0,0,0,0.12)",
-                        border: "1px solid rgba(15,37,85,0.12)",
-                      }}
+        
+                  <Container maxWidth="lg" sx={{ mt: 6 }}>
+                    <Grid
+                      container
+                      spacing={3}
+                      justifyContent="center"
+                      wrap="nowrap"
+                      sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
                     >
-                      <Box sx={{ color: "#0f2555", "& svg": { fontSize: 28 } }}>
-                        {card.icon}
-                      </Box>
-                    </Box>
-
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 700,
-                        color: "#0f2555",
-                        letterSpacing: 0.2,
-                        mb: 2,
-                        textAlign: "left",
-                      }}
-                    >
-                      {card.title}
-                    </Typography>
-
-                    <Box
-                      component="ul"
-                      sx={{
-                        m: 0,
-                        pl: 2.2,
-                        color: "#2f3a4a",
-                        lineHeight: 1.6,
-                        fontSize: { xs: 11, sm: 11.5, md: 12 },
-                        "& li": { mb: 1 },
-                      }}
-                    >
-                      {card.items.map((item, idx) => (
-                        <li key={idx}>{item}</li>
+                      {cardData.map((card) => (
+                        <Grid
+                          item
+                          key={card.title}
+                          xs={12}
+                          md={4}
+                          sx={{
+                            flex: { xs: "0.5 0.5 100%", md: "0.5 0.5 33.33%" },
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              background: "#fff",
+                              borderRadius: 3,
+                              p: 4,
+                              width: "100%",
+                              maxWidth: 360,
+                              boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                              transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                              "&:hover": {
+                                transform: "translateY(-5px)",
+                                boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
+                              },
+                            }}
+                          >
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                fontWeight: 600,
+                                color: "#0f2555",
+                                mb: 2,
+                                textAlign: "left",
+                              }}
+                            >
+                              {card.title}
+                            </Typography>
+                            <ul
+                              style={{
+                                textAlign: "left",
+                                paddingLeft: "1.2rem",
+                                color: "#333",
+                                lineHeight: 1.2,
+                                margin: 0,
+                              }}
+                            >
+                              {card.items.map((item, idx) => (
+                                <li key={idx} style={{ marginBottom: "8px" }}>
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </Box>
+                        </Grid>
                       ))}
-                    </Box>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-
+                    </Grid>
+                  </Container>
 
 
           <Box
@@ -706,7 +680,7 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                 lineHeight: 1.2,
               }}
             >
-              Simplified Process to Register Your <br /> Private Limited in
+              Simplified Process to Register Your <br /> OPC in
               India
             </Typography>
 
@@ -720,7 +694,7 @@ export default function OPCRegistrationHero({ webAppUrl, onSubmitted }) {
                 lineHeight: 1.6,
               }}
             >
-              Setting up your Private Limited is simpler than you think —
+              Setting up your OPC is simpler than you think —
               especially with Rekotax guiding every step. Here’s a streamlined
               breakdown of the entire process:
             </Typography>

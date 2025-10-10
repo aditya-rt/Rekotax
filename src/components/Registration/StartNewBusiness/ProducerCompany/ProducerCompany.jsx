@@ -598,11 +598,13 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
             To register your Producer Company seamlessly, you’ll need to submit basic identity, address, and office-related documents.
           </Typography>
 
+
           <Container maxWidth="lg" sx={{ mt: 6 }}>
             <Grid
               container
-              spacing={{ xs: 2, md: 3 }}
+              spacing={3}
               justifyContent="center"
+              wrap="nowrap"
               sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
             >
               {cardData.map((card) => (
@@ -610,61 +612,59 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                   item
                   key={card.title}
                   xs={12}
-                  md={3} // 4 cards per row on desktop
-                  sx={{ display: "flex", justifyContent: "center" }}
+                  md={4}
+                  sx={{
+                    flex: { xs: "0.5 0.5 100%", md: "0.5 0.5 33.33%" },
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
                 >
                   <Box
                     sx={{
+                      background: "#fff",
+                      borderRadius: 3,
+                      p: 4,
                       width: "100%",
                       maxWidth: 360,
-                      bgcolor: "#ffffff",
-                      borderRadius: 4,                            // softer rounded corners
-                      p: 3,
-                      minHeight: 320,                             // keeps heights consistent like screenshot
-                      boxShadow:
-                        "0 10px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6)", // soft outer + slight inner highlight
-                      border: "1px solid rgba(0,0,0,0.06)",
-                      transition: "transform .25s ease, box-shadow .25s ease",
+                      boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
                       "&:hover": {
-                        transform: "translateY(-4px)",
-                        boxShadow:
-                          "0 16px 36px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.7)",
+                        transform: "translateY(-5px)",
+                        boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
                       },
                     }}
                   >
                     <Typography
                       variant="h6"
                       sx={{
-                        fontWeight: 500,
+                        fontWeight: 600,
                         color: "#0f2555",
-                        mb: 1.5,
+                        mb: 2,
                         textAlign: "left",
                       }}
                     >
                       {card.title}
                     </Typography>
-
-                    <Box
-                      component="ul"
-                      sx={{
-                        m: 0,
-                        pl: 2.2,
-                        color: "#3b4453",
-                        lineHeight: 1.7,
-                        fontSize: { xs: 10, sm: 11, md: 11.5 },
-                        "& li": { mb: 1 },
+                    <ul
+                      style={{
+                        textAlign: "left",
+                        paddingLeft: "1.2rem",
+                        color: "#333",
+                        lineHeight: 1.2,
+                        margin: 0,
                       }}
                     >
                       {card.items.map((item, idx) => (
-                        <li key={idx}>{item}</li>
+                        <li key={idx} style={{ marginBottom: "8px" }}>
+                          {item}
+                        </li>
                       ))}
-                    </Box>
+                    </ul>
                   </Box>
                 </Grid>
               ))}
             </Grid>
           </Container>
-
 
 
 
@@ -765,7 +765,7 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                         sx={{
                           borderRadius: 3,
                           width: "100%",
-                          maxWidth: 300,
+                          maxWidth: 360,
                           boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                           transition: "transform 0.3s ease, box-shadow 0.3s ease",
                           "&:hover": {
@@ -777,8 +777,8 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                         <CardContent sx={{ p: 4, textAlign: "center" }}>
                           <Box
                             sx={{
-                              width: 44,
-                              height: 44,
+                              width: 56,
+                              height: 56,
                               borderRadius: "50%",
                               backgroundColor: "#0f2555",
                               color: "#fff",
@@ -797,7 +797,7 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
 
                           <Typography
                             variant="h6"
-                            sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}
+                            sx={{ fontWeight: 700, color: "#0f2555", mb: 1.5 }}
                           >
                             {step.title}
                           </Typography>
@@ -805,8 +805,8 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                           <Typography
                             variant="body1"
                             sx={{
-                              fontSize: "0.8em",
-                              lineHeight: 1.5,
+                              fontSize: "0.95em",
+                              lineHeight: 1.6,
                               textAlign: "left",
                               color: "#333",
                             }}
@@ -1066,44 +1066,44 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                   Benefits of Producer Company Registration
                 </Typography>
 
-                <Typography variant="h6"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography variant="h6" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   Collective Power for Small Producers
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Members gain better pricing, logistics, and market access</li>
                     <li>Collective input sourcing and bulk selling improve profits</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography variant="h6" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   Government Scheme Eligibility
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Access to grants, subsidies, and low-interest credit</li>
                     <li>Priority under programs by NABARD, SFAC, and other bodies</li>
@@ -1111,87 +1111,87 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                 </Typography>
 
                 <Typography variant="h6" sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   Tax &amp; Financial Advantages
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Tax exemptions under Section 80P for certain activities</li>
                     <li>Eligibility for subsidies, capital assistance, and training funds</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography variant="h6" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   Improved Governance
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Transparent management with regular member meetings</li>
                     <li>Professional Board ensures structured decision-making</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography variant="h6" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   Enhanced Credibility
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Legal status improves trust with banks, buyers, and partners</li>
                     <li>Eligible to apply for tenders, licenses, and contracts</li>
                   </ul>
                 </Typography>
 
-                <Typography variant="h6"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography variant="h6" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   Perpetual Succession &amp; Ownership
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Membership changes don’t affect company continuity</li>
                     <li>Assets and reputation grow under a sustainable model</li>
@@ -1204,13 +1204,13 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Post-Registration Compliance
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li><strong>Annual Filing:</strong> File AOC-4 and MGT-7 with the Registrar of Companies</li>
                     <li><strong>General Meetings:</strong> Hold an Annual General Meeting (AGM) every year</li>
@@ -1226,45 +1226,45 @@ export default function ProducerCompany({ webAppUrl, onSubmitted }) {
                 <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 500, borderBottom: "2px solid #0f2555", pb: 1 }}>
                   Certificate of Incorporation: Your Legal Identity
                 </Typography>
-                <Typography  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   The Certificate of Incorporation (COI) issued by the Registrar of Companies (ROC) confirms that your Producer
                   Company is legally registered.
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Includes the Company Identification Number (CIN)</li>
                     <li>Mentions official date of incorporation and registered name</li>
                     <li>Serves as proof for legal, financial, and operational needs</li>
                   </ul>
                 </Typography>
-                <Typography  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   Uses of COI:
                 </Typography>
-                <Typography component="div"  sx={{
-                    color: "#333", // or theme.palette.text.primary
-                    fontWeight: 400, // normal weight, not 200
-                    fontSize: "1.05rem", // adjust size for comfortable reading
-                    lineHeight: 1.8,
-                    mb: 2,
-                  }}>
+                <Typography component="div" sx={{
+                  color: "#333", // or theme.palette.text.primary
+                  fontWeight: 400, // normal weight, not 200
+                  fontSize: "1.05rem", // adjust size for comfortable reading
+                  lineHeight: 1.8,
+                  mb: 2,
+                }}>
                   <ul>
                     <li>Open a current bank account</li>
                     <li>Apply for PAN, TAN, and statutory licenses</li>

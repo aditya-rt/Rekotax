@@ -319,79 +319,79 @@ export default function PrivateLimitedCompanyDocs({ webAppUrl, onSubmitted }) {
             </ul>
 
 
-       <Box
-  sx={{
-    position: "relative",
-    borderRadius: 9999,
-    maxWidth: 420,
-    px: 3,
-    py: 2.5,
-    pl: 9, // room for the icon
-    color: "#fff",
-    background:
-      "linear-gradient(160deg, #1a3b7a 0%, #0f2555 55%, #0a1b3c 100%)",
-    boxShadow:
-      "0 18px 30px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
-    border: "1px solid rgba(255,255,255,0.08)",
-    overflow: "hidden",
-  }}
->
-  {/* soft corner glow */}
-  <Box
-    sx={{
-      content: '""',
-      position: "absolute",
-      inset: 0,
-      pointerEvents: "none",
-      background:
-        "radial-gradient(160px 80px at 85% 20%, rgba(255,255,255,0.08), transparent 60%)",
-    }}
-  />
+            <Box
+              sx={{
+                position: "relative",
+                borderRadius: 9999,
+                maxWidth: 420,
+                px: 3,
+                py: 2.5,
+                pl: 9, // room for the icon
+                color: "#fff",
+                background:
+                  "linear-gradient(160deg, #1a3b7a 0%, #0f2555 55%, #0a1b3c 100%)",
+                boxShadow:
+                  "0 18px 30px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                overflow: "hidden",
+              }}
+            >
+              {/* soft corner glow */}
+              <Box
+                sx={{
+                  content: '""',
+                  position: "absolute",
+                  inset: 0,
+                  pointerEvents: "none",
+                  background:
+                    "radial-gradient(160px 80px at 85% 20%, rgba(255,255,255,0.08), transparent 60%)",
+                }}
+              />
 
-  {/* icon badge */}
-  <Box
-    sx={{
-      position: "absolute",
-      left: 10,
-      top: "50%",
-      transform: "translateY(-50%)",
-      width: 56,
-      height: 56,
-      borderRadius: "50%",
-      display: "grid",
-      placeItems: "center",
-      background:
-        "linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
-      boxShadow:
-        "inset 0 0 0 1px rgba(255,255,255,0.25), 0 10px 18px rgba(0,0,0,0.28)",
-    }}
-  >
-    {/* simple line icon (inline SVG) */}
-    <Box
-      component="svg"
-      viewBox="0 0 24 24"
-      sx={{ width: 30, height: 30, stroke: "#fff", opacity: 0.9 }}
-      fill="none"
-      strokeWidth={1.6}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M7 15v4a2 2 0 0 0 2 2h2" />
-      <path d="M17 9V5a2 2 0 0 0-2-2h-2" />
-      <path d="M3 12h8" />
-      <path d="M13 12h8" />
-      <path d="M5 12l2-2m0 4-2-2" />
-      <path d="M19 12l-2-2m0 4 2-2" />
-    </Box>
-  </Box>
+              {/* icon badge */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: 10,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: 56,
+                  height: 56,
+                  borderRadius: "50%",
+                  display: "grid",
+                  placeItems: "center",
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04))",
+                  boxShadow:
+                    "inset 0 0 0 1px rgba(255,255,255,0.25), 0 10px 18px rgba(0,0,0,0.28)",
+                }}
+              >
+                {/* simple line icon (inline SVG) */}
+                <Box
+                  component="svg"
+                  viewBox="0 0 24 24"
+                  sx={{ width: 30, height: 30, stroke: "#fff", opacity: 0.9 }}
+                  fill="none"
+                  strokeWidth={1.6}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 15v4a2 2 0 0 0 2 2h2" />
+                  <path d="M17 9V5a2 2 0 0 0-2-2h-2" />
+                  <path d="M3 12h8" />
+                  <path d="M13 12h8" />
+                  <path d="M5 12l2-2m0 4-2-2" />
+                  <path d="M19 12l-2-2m0 4 2-2" />
+                </Box>
+              </Box>
 
-  <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
-    Fastest Company Registration in India
-  </Typography>
-  <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.25 }}>
-    MCA filing in 7 days or full refund guaranteed.
-  </Typography>
-</Box>
+              <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+                Fastest Company Registration in India
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.9, mt: 0.25 }}>
+                MCA filing in 7 days or full refund guaranteed.
+              </Typography>
+            </Box>
 
           </Grid>
 
@@ -595,6 +595,8 @@ export default function PrivateLimitedCompanyDocs({ webAppUrl, onSubmitted }) {
             To register your Private Limited seamlessly, you’ll need to submit
             basic identity, address, and office-related documents.
           </Typography>
+
+
           <Container maxWidth="lg" sx={{ mt: 6 }}>
             <Grid
               container
