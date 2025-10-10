@@ -147,7 +147,7 @@ export default function ContactSection() {
       }}
     >
       {/* Centered inner container so spacing matches the rest of the site */}
-      <Box sx={{ maxWidth: { md: 1200, lg: 1200 }, mx: "auto" }}>
+      <Box sx={{ maxWidth: { md: 1200, lg: 1200 }, mx: "auto", px: { xs: 2, sm: 3 } }}>
         <Grid
           container
           columnSpacing={{ xs: 0, sm: 4, md: 8 }}
@@ -175,7 +175,7 @@ export default function ContactSection() {
               sx={{
                 fontWeight: 450,
                 letterSpacing: 0.3,
-                fontSize: { xs: 30, sm: 38, md: 45 },
+                fontSize: { xs: 26, sm: 34, md: 42 },
                 lineHeight: 1.1,
                 justifyContent: "center",
                 textAlign: "center",
@@ -192,10 +192,10 @@ export default function ContactSection() {
               spacing={2}
               sx={{
                 mb: 2,
-                width: "100%",
+                width: { xs: "100%", sm: "80%", md: "60%" },
                 overflowX: "hidden",
                 justifyContent: { xs: "flex-start", sm: "center" },
-                maxWidth: { sm: "80%", md: "60%" },             // match address box width
+                // maxWidth: { sm: "80%", md: "60%" },             // match address box width
                 mx: { xs: 0, sm: "auto" },
               }}
             >
@@ -204,29 +204,31 @@ export default function ContactSection() {
                 icon={<PhoneInTalkRoundedIcon />}
                 values={["+91-7303074762", "+91-7303075763", "+91-9220580064"]}
                 sx={{
-                  // make icon left, numbers right
+                  // align like the email card (icon left, lines left-aligned)
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between",
+                  justifyContent: "flex-start",        // ← was space-between
+                  gap: 1.25,
 
-                  // size/spacing for the icon
-                  "& .MuiSvgIcon-root": { flexShrink: 0, mr: 1.5 },
+                  // keep the icon tight to the left
+                  "& .MuiSvgIcon-root": { flexShrink: 0, mt: 0.25 },
 
-                  // numbers block aligned to the right
+                  // make the numbers block behave like email (no right alignment)
                   "& a, & span": {
-                    marginLeft: "auto",
+                    marginLeft: 0,                     // ← remove ml:auto
                     display: "block",
-                    textAlign: "right",
+                    textAlign: "left",                 // ← was right
                     whiteSpace: { xs: "normal", sm: "nowrap" },
-                    wordBreak: { xs: "break-word" },
+                    wordBreak: "break-word",
                   },
 
-                  // keep your responsive sizing
+                  // responsive sizing like your email card
                   flex: { xs: "1 1 auto", sm: "0 0 calc(50% - 8px)" },
                   maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
                   minWidth: 0,
                 }}
               />
+
 
 
               <ContactGlassCard
