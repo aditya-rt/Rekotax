@@ -218,37 +218,37 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
     <Box sx={{ fontFamily: "'Open Sans', sans-serif", overflowX: "clip" }}>
       {/* Hero */}
 
-    <Box
-  sx={{
-    // brand gradient background
-    color: "#fff",
-    position: "relative",
-    overflow: "hidden",
-    bgcolor: "transparent",
-    backgroundImage: `
+      <Box
+        sx={{
+          // brand gradient background
+          color: "#fff",
+          position: "relative",
+          overflow: "hidden",
+          bgcolor: "transparent",
+          backgroundImage: `
       radial-gradient(1000px 600px at 76% 60%, rgba(2,54,145,0.20), rgba(2,54,145,0) 60%),
       radial-gradient(800px 420px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%),
       linear-gradient(118deg, #0f2555 0%, #023691 100%)
     `,
-    backgroundBlendMode: "screen, normal, normal",
-    backgroundRepeat: "no-repeat",
+          backgroundBlendMode: "screen, normal, normal",
+          backgroundRepeat: "no-repeat",
 
-    // page gutters & top offset for fixed AppBar
-    maxWidth: "100%",
-    mx: "auto",
+          // page gutters & top offset for fixed AppBar
+          maxWidth: "100%",
+          mx: "auto",
 
-    // remove forced height that creates excess bottom space
-    minHeight: "auto",
+          // remove forced height that creates excess bottom space
+          minHeight: "auto",
 
-    // give just enough vertical rhythm
-    pt: { xs: "88px", md: "94px" },
-    pb: { xs: 4, md: 6 },
+          // give just enough vertical rhythm
+          pt: { xs: "120px", md: "140px" },
+          pb: { xs: 6, md: 8 },
 
-    // if your next section already has big top padding, gently pull it up on desktop
-    mb: { xs: 0, md: -2 },
-    mt: { xs: -3, md: -8 },
-  }}
->
+          // if your next section already has big top padding, gently pull it up on desktop
+          mb: { xs: 0, md: -1 },
+          mt: { xs: -8, md: -14 },
+        }}
+      >
 
 
         {/* HERO */}
@@ -260,7 +260,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
                 display: "inline-block",
                 bgcolor: "rgba(255,255,255,0.12)",
                 px: 2.5,
-                py: 0.8,
+                py: 0.4,
                 borderRadius: 999,
                 fontSize: "0.95rem",
               }}
@@ -271,19 +271,42 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
 
           {/* one-line heading */}
           <Typography
+            component="h1"
             variant="h2"
             sx={{
               fontWeight: 800,
-              fontSize: { xs: "2rem", md: "2.5rem" },
+              lineHeight: 1.12,
+
+              // Fluid sizes that stay compact enough to fit one line on wide screens
+              fontSize: {
+                xs: "clamp(1.6rem, 6vw, 2.2rem)",
+                sm: "clamp(1.8rem, 5vw, 2.6rem)",
+                md: "clamp(2.1rem, 3.4vw, 3.0rem)",
+                lg: "clamp(2.3rem, 2.6vw, 3.4rem)",
+                xl: "clamp(2.5rem, 2vw, 3.8rem)",
+              },
+
               textAlign: "center",
               mb: 2,
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
+
+              // Wrap on small, force single-line on md+
+              whiteSpace: { xs: "normal", md: "nowrap" },
+
+              // Prevent awkward hyphen/word breaks on large screens
+              wordBreak: { xs: "break-word", md: "keep-all" },
+              hyphens: { xs: "auto", md: "manual" },
+
+              // Ensure the headline can use full row width
+              display: "block",
+              maxWidth: "100%",
+              mx: "auto",
+              px: { xs: 2, md: 0 },
             }}
           >
             Fast, Accurate, and Hassle-free GST Registration
           </Typography>
+
+
 
           {/* sub copy */}
           <Typography
@@ -349,14 +372,14 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
               mx: "auto",
               bgcolor: "#fff",
               color: "#0f2555",
-              borderRadius: 999,
-              px: { xs: 1.5, md: 2.5 },         // less horizontal padding
-              py: { xs: 0.6, md: 1 },
+              borderRadius: { xs: 2, md: 999 },
+              px: { xs: 1.5, md: 2.5 },
+              py: { xs: 1, md: 1 },
               boxShadow: "0 10px 28px rgba(0,0,0,0.18)",
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
-              gap: { xs: 1.5, md: 3 },
+              justifyContent: { xs: "initial", sm: "space-between" },
+              gap: { xs: 1, md: 3 },
               flexWrap: { xs: "wrap", sm: "nowrap" },
             }}
           >
@@ -368,13 +391,27 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
               <Typography
                 key={text}
                 sx={{
-                  flex: 1,
+                  // Stack as full-width cards on xs, inline equal columns on sm+
+                  flex: { xs: "0 0 100%", sm: 1 },
+                  width: { xs: "100%", sm: "auto" },
                   textAlign: "center",
                   fontSize: { xs: "0.95rem", md: "1rem" },
                   fontWeight: 700,
-                  px: { xs: 1, md: 2 },
+                  px: { xs: 1.25, md: 2 },
+                  py: { xs: 1, md: 0 },
+
+                  // Card look on small screens
+                  bgcolor: { xs: "#f7f9ff", sm: "transparent" },
+                  border: { xs: "1px solid rgba(15,37,85,0.10)", sm: "none" },
+                  borderRadius: { xs: 2, sm: 0 },
+                  boxShadow: { xs: "0 6px 16px rgba(0,0,0,0.08)", sm: "none" },
+
+                  // Spacing between stacked cards
+                  mb: { xs: 0.5, sm: 0 },
+
                   position: "relative",
-                  // separators on md+
+
+                  // Vertical separators only on sm+
                   ...(i < 2 && {
                     "&::after": {
                       content: '""',
@@ -384,7 +421,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
                       transform: "translateY(-50%)",
                       height: 22,
                       width: 1,
-                      // bgcolor: "rgba(15,37,85,0.18)",
+                      // backgroundColor: "rgba(15,37,85,0.18)",
                       display: { xs: "none", sm: "block" },
                     },
                   }),
@@ -394,6 +431,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
               </Typography>
             ))}
           </Box>
+
 
           <Typography
             sx={{
@@ -417,7 +455,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           align="center"
           sx={{
             color: "#0f2555",
-            fontWeight: 700,
+            fontWeight: 600,
             mb: 4,
             mt: 2,
             fontSize: { xs: "2rem", md: "2.5rem" },
@@ -446,7 +484,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
               variant="h3"
               sx={{
                 color: "#0f2555",
-                fontWeight: 700,
+                fontWeight: 500,
                 mb: 1.5,
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
@@ -467,7 +505,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
               variant="h3"
               sx={{
                 color: "#0f2555",
-                fontWeight: 700,
+                fontWeight: 500,
                 mb: 2,
                 fontSize: { xs: "1.6rem", md: "1.7rem" },
               }}
@@ -640,8 +678,8 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
         {/* Threshold Limits */}
         <Box sx={{ mt: 8 }}>
           <Typography
-            variant="h3"
-            sx={{ color: "#0f2555", fontWeight: 700, mb: 3, textAlign: "left" }}
+            variant="h4"
+            sx={{ color: "#0f2555", fontWeight: 600, mb: 3, textAlign: "left" }}
           >
             Threshold Limits for Registration
           </Typography>
@@ -684,7 +722,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#0f2555", mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 600, color: "#0f2555", mb: 1 }}>
                     {card.title}
                   </Typography>
                   <Typography sx={{ lineHeight: 1.6 }}>{card.desc}</Typography>
@@ -699,8 +737,8 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
         {/* Benefits Section */}
         <Box sx={{ mt: 14 }}>
           <Typography
-            variant="h3"
-            sx={{ color: "#0f2555", fontWeight: 700, mb: 3, mt: 4, textAlign: "left" }}
+            variant="h4"
+            sx={{ color: "#0f2555", fontWeight: 600, mb: 3, mt: 4, textAlign: "left" }}
           >
             Why Consider GST Registration Even If It’s Not Applicable?
           </Typography>
@@ -752,7 +790,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
             align="center"
             sx={{
               fontSize: { xs: "2rem", md: "2.2rem" },
-              fontWeight: 700,
+              fontWeight: 600,
               color: "#0f2555",
               mb: 6,
             }}
@@ -807,16 +845,14 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
                 key={idx}
                 sx={{
                   display: "flex",
-                  flexWrap: "nowrap",
-                  gap: 2, // 16px between cards
-                  overflowX: { xs: "auto", md: "visible" },
-                  px: { xs: 1, md: 0 },
+                  flexDirection: { xs: "column", md: "row" },
+                  flexWrap: { xs: "nowrap", md: "nowrap" },
+                  gap: { xs: 2, md: 2 },            // vertical gap on xs, horizontal on md
+                  overflowX: { xs: "visible", md: "visible" }, // no horizontal scroll on xs
+                  px: { xs: 0, md: 0 },
                   mb: idx === 0 ? 3 : 0,
-                  scrollSnapType: { xs: "x mandatory", md: "none" },
-                  "&::-webkit-scrollbar": { display: "none" },
-                  "-msOverflowStyle": "none",
-                  scrollbarWidth: "none",
-                  justifyContent: { xs: "flex-start", md: "center" },
+                  scrollSnapType: { xs: "none", md: "none" },
+                  justifyContent: { xs: "stretch", md: "center" },
                 }}
               >
                 {row.map((step) => (
@@ -826,11 +862,10 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
                       // Mobile/tablet: fixed card width for swipe
                       // Desktop: exact 1/3 of the row minus the two gaps (2 * 16px = 32px)
                       flex: {
-                        xs: "0 0 88%",
-                        sm: "0 0 360px",
+                        xs: "0 0 100%",
                         md: "0 0 calc((100% - 32px) / 3)",
                       },
-                      scrollSnapAlign: { xs: "start", md: "none" },
+                      maxWidth: { xs: "100%", md: "none" },
                       display: "flex",
                     }}
                   >
@@ -846,7 +881,13 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
                         justifyContent: "flex-start",
                         boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                         transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                        "&:hover": { transform: "translateY(-5px)", boxShadow: "0 12px 28px rgba(0,0,0,0.12)" },
+                        "&:hover": {
+                          transform: { xs: "none", md: "translateY(-5px)" },
+                          boxShadow: {
+                            xs: "0 8px 16px rgba(0,0,0,0.08)",
+                            md: "0 12px 28px rgba(0,0,0,0.12)",
+                          },
+                        },
                       }}
                     >
                       {/* Step number circle */}
@@ -914,7 +955,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
             variant="h1"
             sx={{
               fontSize: { xs: "2rem", md: "2.5rem" },
-              fontWeight: 700,
+              fontWeight: 600,
               textAlign: "center",
               color: "#0f2555",
               mb: 4,
@@ -924,7 +965,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </Typography>
 
           {/* Introduction */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Introduction
           </Typography>
           <Typography sx={{ mb: 2 }}>
@@ -939,7 +980,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </Typography>
 
           {/* What is GST Registration */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             What is GST Registration?
           </Typography>
           <Typography sx={{ mb: 4 }}>
@@ -950,7 +991,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </Typography>
 
           {/* Who Needs GST Registration */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Who Needs GST Registration?
           </Typography>
           <Typography sx={{ mb: 2 }}>
@@ -985,7 +1026,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ul>
 
           {/* Threshold Limits */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             GST Threshold Limits (2025)
           </Typography>
           <Typography sx={{ mb: 2 }}>
@@ -1008,7 +1049,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </Typography>
 
           {/* Different Categories */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Different Categories under GST
           </Typography>
           <Typography sx={{ mb: 2 }}>
@@ -1043,7 +1084,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ul>
 
           {/* GST Slab Rates */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             GST Slab Rates in India
           </Typography>
           <Typography sx={{ mb: 2 }}>
@@ -1082,7 +1123,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </Box>
 
           {/* Benefits */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Benefits of GST Registration
           </Typography>
           <ul>
@@ -1113,7 +1154,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ul>
 
           {/* Why Register Even If Not Mandatory */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Why Register Even If Not Mandatory?
           </Typography>
           <ul>
@@ -1136,7 +1177,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ul>
 
           {/* Documents Required */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Documents Required for GST Registration
           </Typography>
           <ul>
@@ -1167,7 +1208,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ul>
 
           {/* Step-by-Step Process */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Step-by-Step Process of GST Registration
           </Typography>
           <ol>
@@ -1194,7 +1235,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ol>
 
           {/* Penalties */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Penalties for Not Registering Under GST
           </Typography>
           <ul>
@@ -1209,7 +1250,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ul>
 
           {/* How Rekotax Can Help */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             How Rekotax Can Help You
           </Typography>
           <ul>
@@ -1236,7 +1277,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
           </ul>
 
           {/* Conclusion */}
-          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 700, fontSize: '25px', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: '25px', mb: 2, mt: 4 }}>
             Conclusion
           </Typography>
           <Typography sx={{ mb: 2 }}>

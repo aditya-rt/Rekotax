@@ -97,7 +97,7 @@ const InfoCard = ({ title, desc }) => (
   >
     <Typography
       variant="h4"
-      sx={{ color: "#0f2555", fontWeight: 500, mb: 1.5, fontSize: "1.5rem" }}
+      sx={{ color: "#0f2555", fontWeight: 700, mb: 1.5, fontSize: "1.5rem" }}
     >
       {title}
     </Typography>
@@ -157,7 +157,7 @@ const fieldSx = {
   "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
 };
 
-export default function ImportExportCode({ webAppUrl }) {
+export default function OtherRegistration({ webAppUrl }) {
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const [show, setShow] = useState(true);
@@ -336,7 +336,7 @@ export default function ImportExportCode({ webAppUrl }) {
               px: { xs: 2, md: 0 },
             }}
           >
-            Fast, Accurate, and Hassle-free Import-Export <br />Code (IEC) Registration
+            Other Registrations
           </Typography>
 
 
@@ -482,7 +482,7 @@ export default function ImportExportCode({ webAppUrl }) {
           align="center"
           sx={{
             color: "#0f2555",
-            fontWeight: 600,
+            fontWeight: 700,
             mb: 4,
             mt: 2,
             fontSize: { xs: "2rem", md: "2.5rem" },
@@ -511,7 +511,7 @@ export default function ImportExportCode({ webAppUrl }) {
               variant="h3"
               sx={{
                 color: "#0f2555",
-                fontWeight: 500,
+                fontWeight: 700,
                 mb: 1.5,
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
@@ -536,13 +536,17 @@ export default function ImportExportCode({ webAppUrl }) {
             <Box sx={{ mt: 4 }}>
               {/* Heading */}
               <Typography
-                variant="h3"
-              sx={{
-                color: "#0f2555",
-                fontWeight: 500,
-                mb: 1.5,
-                fontSize: { xs: "1.5rem", md: "1.8rem" },
-              }}
+                variant="h4"
+                component="h3"
+                sx={{
+                  fontWeight: 800,
+                  color: "#0f2555",
+                  fontSize: { xs: "1.6rem", md: "2rem" },
+                  textAlign: "center",
+                  mb: 2.5,
+                  lineHeight: 1.2,
+                  textWrap: "balance",
+                }}
               >
                 Key Features of IEC Registration
               </Typography>
@@ -580,7 +584,44 @@ export default function ImportExportCode({ webAppUrl }) {
             </Box>
 
 
-          
+            {/* <Typography
+                            variant="h3"
+                            sx={{
+                                color: "#0f2555",
+                                fontWeight: 700,
+                                mb: 2,
+                                mt:3,
+                                fontSize: { xs: "1.6rem", md: "1.7rem" },
+                            }}
+                        >
+                            GSTIN Structure Explained
+                        </Typography> */}
+
+            {/* <Box
+                            sx={{
+                                display: "inline-block",
+                                bgcolor: "#0f2555",
+                                color: "#fff",
+                                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                                fontWeight: 600,
+                                px: 2,
+                                py: 1,
+                                borderRadius: 2,
+                                letterSpacing: 2,
+                                mb: 2,
+                                boxShadow: 3,
+                            }}
+                        >
+                            22ABCDE1234F1Z5
+                        </Box> */}
+
+            {/* <Grid container spacing={1.5} wrap="wrap">
+                            <GstinBox code="22" label="State Code" />
+                            <GstinBox code="ABCDE1234F" label="PAN Number" />
+                            <GstinBox code="1" label="Entity Code" />
+                            <GstinBox code="Z" label="Default Letter" />
+                            <GstinBox code="5" label="Check Digit" />
+                        </Grid> */}
           </Grid>
 
           {/* RIGHT: Contact form */}
@@ -773,7 +814,7 @@ export default function ImportExportCode({ webAppUrl }) {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#0f2555", mb: 1 }}>
                     {card.title}
                   </Typography>
                   <Typography sx={{ lineHeight: 1.6 }}>{card.desc}</Typography>

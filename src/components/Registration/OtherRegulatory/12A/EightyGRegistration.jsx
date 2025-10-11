@@ -29,6 +29,7 @@ import ExpandMoreIcon from "@mui/icons-material/Add"; // plus icon
 import RemoveIcon from "@mui/icons-material/Remove"; // minus icon
 import AddIcon from "@mui/icons-material/Add";
 import Alert from "@mui/material/Alert";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 
 import Footer from "../../../Dashboard/Footer";
 import ContactSection from "../../../Dashboard/ContactSection";
@@ -97,7 +98,7 @@ const InfoCard = ({ title, desc }) => (
   >
     <Typography
       variant="h4"
-      sx={{ color: "#0f2555", fontWeight: 500, mb: 1.5, fontSize: "1.5rem" }}
+      sx={{ color: "#0f2555", fontWeight: 700, mb: 1.5, fontSize: "1.5rem" }}
     >
       {title}
     </Typography>
@@ -157,7 +158,7 @@ const fieldSx = {
   "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
 };
 
-export default function ImportExportCode({ webAppUrl }) {
+export default function EightyG({ webAppUrl }) {
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const [show, setShow] = useState(true);
@@ -336,7 +337,7 @@ export default function ImportExportCode({ webAppUrl }) {
               px: { xs: 2, md: 0 },
             }}
           >
-            Fast, Accurate, and Hassle-free Import-Export <br />Code (IEC) Registration
+         12A/80G Registration 
           </Typography>
 
 
@@ -352,8 +353,7 @@ export default function ImportExportCode({ webAppUrl }) {
               color: "rgba(255,255,255,0.9)",
             }}
           >
-            An Import-Export Code (IEC) is the essential first step for any business aiming to enter the global marketplace, serving as the primary license for importing and exporting goods. At Rekotax, we manage the entire IEC registration from start to finish, ensuring you can focus on expanding your business internationally while we handle the foundational legal requirements.                    </Typography>
-
+Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.         </Typography>
           {/* CTAs centered */}
           <Box
             sx={{
@@ -482,13 +482,13 @@ export default function ImportExportCode({ webAppUrl }) {
           align="center"
           sx={{
             color: "#0f2555",
-            fontWeight: 600,
+            fontWeight: 700,
             mb: 4,
             mt: 2,
             fontSize: { xs: "2rem", md: "2.5rem" },
           }}
         >
-          Know All About IEC Registration
+Know All About 12A & 80G Registration
         </Typography>
 
         {/* What is GST + GSTIN (left) AND Contact Form (right) */}
@@ -511,40 +511,45 @@ export default function ImportExportCode({ webAppUrl }) {
               variant="h3"
               sx={{
                 color: "#0f2555",
-                fontWeight: 500,
+                fontWeight: 700,
                 mb: 1.5,
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
             >
-              What is an Import-Export Code (IEC)?
+What are 12A and 80G Registrations?
             </Typography>
             {/* Para 1 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, mb: 2, color: "#333" }}>
-              An Import-Export Code (IEC) is a unique 10-digit identification number issued by <br />
-              the Director General of Foreign Trade (DGFT). It is a mandatory prerequisite for any <br />
-              business or individual looking to start an import or export business in India.
+             12A (now 12AB) registration grants income tax exemption to charitable or <br/>
+             religious trusts, societies and Section 8 companies on their eligible income. <br/>
+             80G registration enables donors to claim a deduction for donations made to<br/>
+              your organisation, which improves fundraising and credibility.
             </Typography>
 
             {/* Para 2 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, color: "#333" }}>
-              LUT registration is <strong>mandatory</strong> for any exporter who wishes to export goods or <br />
-              services without paying integrated tax and claiming refunds later. With LUT,<br /> businesses can
-              save time, improve liquidity, and expand globally without tax <br />blockages.
+             Both registrations are applied online through the Income Tax e-filing portal using <br/>
+             the prescribed forms and are subject to verification by the Exemptions wing. Orders <br/>
+              specify the Unique Registration Number, effective date and validity.
             </Typography>
 
             <Divider sx={{ my: 2 }} />
             <Box sx={{ mt: 4 }}>
               {/* Heading */}
               <Typography
-                variant="h3"
-              sx={{
-                color: "#0f2555",
-                fontWeight: 500,
-                mb: 1.5,
-                fontSize: { xs: "1.5rem", md: "1.8rem" },
-              }}
+                variant="h4"
+                component="h3"
+                sx={{
+                  fontWeight: 800,
+                  color: "#0f2555",
+                  fontSize: { xs: "1.6rem", md: "2rem" },
+                  textAlign: "center",
+                  mb: 2.5,
+                  lineHeight: 1.2,
+                  textWrap: "balance",
+                }}
               >
-                Key Features of IEC Registration
+Key Features of 12A & 80G Registration
               </Typography>
 
               {/* Bulleted list */}
@@ -562,25 +567,62 @@ export default function ImportExportCode({ webAppUrl }) {
                 }}
               >
                 <li>
-                  Acts as the primary <strong>license for import and export </strong> activities
+12AB registration for exemption of income applied to charitable purposes
                 </li>
                 <li>
-                  Carries <strong>lifetime validity </strong> and requires no renewal
+80G approval so donors can claim tax deduction on eligible donations
                 </li>
                 <li>
-                  A PAN-based registration, meaning one PAN card can have only one IEC
+Online filing on the Income Tax portal with e-verification and document upload
                 </li>
                 <li>
-                  No need to file any returns or follow complex post-registration compliance
+Approvals issued with validity period and URN for compliance tracking
                 </li>
                 <li>
-                  Essential for <strong> customs clearance</strong> and foreign bank transfers
+Periodic renewal or revalidation as per current rules
                 </li>
               </Box>
             </Box>
 
 
-          
+            {/* <Typography
+                            variant="h3"
+                            sx={{
+                                color: "#0f2555",
+                                fontWeight: 700,
+                                mb: 2,
+                                mt:3,
+                                fontSize: { xs: "1.6rem", md: "1.7rem" },
+                            }}
+                        >
+                            GSTIN Structure Explained
+                        </Typography> */}
+
+            {/* <Box
+                            sx={{
+                                display: "inline-block",
+                                bgcolor: "#0f2555",
+                                color: "#fff",
+                                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                                fontWeight: 600,
+                                px: 2,
+                                py: 1,
+                                borderRadius: 2,
+                                letterSpacing: 2,
+                                mb: 2,
+                                boxShadow: 3,
+                            }}
+                        >
+                            22ABCDE1234F1Z5
+                        </Box> */}
+
+            {/* <Grid container spacing={1.5} wrap="wrap">
+                            <GstinBox code="22" label="State Code" />
+                            <GstinBox code="ABCDE1234F" label="PAN Number" />
+                            <GstinBox code="1" label="Entity Code" />
+                            <GstinBox code="Z" label="Default Letter" />
+                            <GstinBox code="5" label="Check Digit" />
+                        </Grid> */}
           </Grid>
 
           {/* RIGHT: Contact form */}
@@ -724,7 +766,7 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, textAlign: "left" }}
           >
-            Who Needs an IEC?                </Typography>
+            Who is Eligible for 12A & 80G Registration?                </Typography>
 
           <Grid
             container
@@ -737,19 +779,36 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Importers",
-                desc: <>Any business or individual bringing goods <strong>into India</strong> from a foreign country.</>,
-              },
-              {
-                title: "Exporters",
-                desc: <>Businesses or individuals sending goods or services <strong>from India</strong> to other countries.</>,
-              },
-              {
-                title: "Service Providers",
-                desc: <>Service providers who wish to avail benefits under the <strong>Foreign Trade Policy</strong>.</>,
-              },
-            ].map((card) => (
+  {
+    title: "Constitution",
+    desc: (
+      <>
+        <strong>Public charitable or religious trust</strong>, <strong>society</strong>, or
+        <strong> Section 8 company</strong> with valid registration under relevant law.
+      </>
+    ),
+  },
+  {
+    title: "Objects & Activities",
+    desc: (
+      <>
+        Objects must be <strong>charitable</strong> as per law. Activities should be genuine.
+        No private benefit to founders or related parties.
+      </>
+    ),
+  },
+  {
+    title: "Compliance",
+    desc: (
+      <>
+        Maintain <strong>books of account</strong>, apply income for <strong>charitable purposes</strong>,
+        and file returns and statements as required.
+      </>
+    ),
+  },
+]
+
+.map((card) => (
               <Grid
                 item
                 key={card.title}
@@ -773,7 +832,7 @@ export default function ImportExportCode({ webAppUrl }) {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#0f2555", mb: 1 }}>
                     {card.title}
                   </Typography>
                   <Typography sx={{ lineHeight: 1.6 }}>{card.desc}</Typography>
@@ -791,10 +850,13 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, mt: 4, textAlign: "left" }}
           >
-            Benefits of IEC Registration            </Typography>
+Benefits of 12A & 80G
+         </Typography>
 
           <Typography sx={{ mb: 5, color: "#444" }}>
-            Securing an IEC is the first step to unlocking global business opportunities. It is not just a legal requirement but a gateway to international trade, enabling businesses to expand their reach, access new markets, and benefit from government schemes.
+Registrations strengthen credibility, reduce tax outgo and enhance ability to raise funds for programs.
+
+
           </Typography>
 
           <Box
@@ -810,30 +872,33 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Gateway to Global Markets",
-                desc: <>Legally access international markets for <strong>buying and selling</strong> goods and services.</>,
-              },
-              {
-                title: "Lifetime Validity",
-                desc: <>No need for renewals, making it a <strong>one-time, hassle-free</strong> registration.</>,
-              },
-              {
-                title: "Unlocks Trade Benefits",
-                desc: <>Become eligible for various government <strong>export promotion schemes</strong> and subsidies.</>,
-              },
-              {
-                title: "Simplifies Customs Clearance",
-                desc: <>Mandatory for clearing shipments with <strong>customs authorities</strong> smoothly.</>,
-              },
-              {
-                title: "Easy Bank Transactions",
-                desc: <>Required by banks for sending or receiving <strong>foreign currency</strong> for trade.</>,
-              },
-              {
-                title: "No Compliance Burden",
-                desc: <>No need to file any returns or follow complex <strong>post-registration compliance</strong> for IEC.</>,
-              }]
+  {
+    title: "Tax Exemption",
+    desc: <> <strong>12AB</strong> provides exemption on income applied to charitable purposes as per the Act.</>,
+  },
+  {
+    title: "Donor Incentive",
+    desc: <> <strong>80G</strong> allows donors to claim deduction on eligible donations, boosting fundraising.</>,
+  },
+  {
+    title: "Credibility",
+    desc: <>Government approval improves transparency and trust among donors and partners.</>,
+  },
+  {
+    title: "Grant Readiness",
+    desc: <>Better access to CSR partners and institutional grants that require <strong>12A</strong> and <strong>80G</strong>.</>,
+  },
+  {
+    title: "Operational Flexibility",
+    desc: <>Plan programs with tax efficiency and structured donor engagement.</>,
+  },
+  {
+    title: "Compliance Framework",
+    desc: <>Clear validity, reporting, and audit framework helps long-term governance.</>,
+  },
+]
+
+
               .map((card) => (
                 <Box key={card.title} sx={{ display: "flex" }}>
                   {/* If InfoCard already renders a Paper, just keep it; otherwise use a Paper here */}
@@ -858,42 +923,50 @@ export default function ImportExportCode({ webAppUrl }) {
               mb: 6,
             }}
           >
-            Simplified Process for IEC Registration
+Simplified Process for 12A & 80G Registration
           </Typography>
 
           {(() => {
-            const steps = [
-             {
-              number: "1",
-              title: "Prepare Your Documents",
-              desc: "Gather the necessary documents, including the PAN card, Aadhaar card, proof of business address (like a rent agreement or electricity bill), and a cancelled cheque for bank account verification.",
-            },
-            {
-              number: "2",
-              title: "Register on DGFT Portal",
-              desc: "Visit the official Director General of Foreign Trade (DGFT) portal. Register as a new user by providing and verifying your mobile number and email address via OTP.",
-            },
-            {
-              number: "3",
-              title: "Fill the Application Form",
-              desc: "Log in to the portal and fill out the online application form (ANF-2A). You will need to enter details about your business, directors/partners, and bank account information accurately.",
-            },
-              {
-              number: "4",
-              title: "Upload Documents",
-              desc: "Scan and upload the required documents as per the specified format and size. This includes your address proof and the cancelled cheque.",
-            },
-            {
-              number: "5",
-              title: "Pay the Government Fee",
-              desc: "Proceed to pay the prescribed government application fee through the online payment gateway. The fee is non-refundable.",
-            },
-            {
-              number: "6",
-              title: "Receive Your IEC Certificate",
-              desc: "After successful submission and verification, the DGFT will issue your 10-digit IEC. You can download the e-IEC certificate directly from the portal.",
-            },
-            ];
+const steps = [
+  {
+    number: "1",
+    title: "Organise Foundational Documents",
+    desc:
+      "Trust deed or MOA/AOA with registration certificate, PAN, address proof, details of trustees/directors, activity note and financial statements (if available).",
+  },
+  {
+    number: "2",
+    title: "Create e-Filing Access",
+    desc:
+      "Log in to the Income Tax e-filing portal for the NGO. Ensure DSC or Aadhaar OTP is available for the authorised signatory.",
+  },
+  {
+    number: "3",
+    title: "Prepare Online Forms",
+    desc:
+      "Initiate the prescribed application for 12AB and 80G (as applicable). Fill entity, object and activity details and attach supporting documents.",
+  },
+  {
+    number: "4",
+    title: "Submit & Respond",
+    desc:
+      "Submit the application with e-verification. Respond to any queries/notices from the Exemptions authority with clarifications and additional proofs.",
+  },
+  {
+    number: "5",
+    title: "Obtain Orders",
+    desc:
+      "Receive approval orders specifying URN, effective date and validity. Download and store for records and donor communication.",
+  },
+  {
+    number: "6",
+    title: "Comply & Renew",
+    desc:
+      "Maintain books, file returns and statements on time. Apply for renewal or revalidation within the prescribed window to keep approvals active.",
+  },
+];
+
+
 
             const rows = [steps.slice(0, 3), steps.slice(3, 6)];
 
@@ -995,189 +1068,229 @@ export default function ImportExportCode({ webAppUrl }) {
         <Box sx={{ mt: 0, p: 0, mx: 0, overflow: "visible" }} ref={aboutRef}>
           <WhyRekotax fullBleed />
         </Box>
+<Box
+  sx={{
+    maxWidth: 1100,
+    mx: "auto",
+    px: { xs: 2, md: 4 },
+    py: { xs: 4, md: 8 },
+    backgroundColor: "#fff",
+    color: "#333",
+    lineHeight: 1.7,
+  }}
+>
+  <Typography
+    variant="h3"
+    sx={{ textAlign: "center", color: "#0f2555", fontWeight: 600, mb: 4 }}
+  >
+    12A &amp; 80G Registration in India – A Complete Guide
+  </Typography>
 
-      <Box
-            sx={{
-              maxWidth: 1100,
-              mx: "auto",
-              px: { xs: 2, md: 4 },
-              py: { xs: 4, md: 8 },
-              backgroundColor: "#fff",
-              color: "#333",
-              lineHeight: 1.7,
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                textAlign: "center",
-                color: "#0f2555",
-                fontWeight: 700,
-                mb: 4,
-              }}
-            >
-              IEC Registration in India – A Complete Guide for Importers & Exporters
-            </Typography>
-    
-            {/* Introduction */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 4, mb: 2 }}>
-              Introduction to IEC Registration
-            </Typography>
-            <Typography paragraph>
-              For any business aspiring to engage in international trade, the <strong>Import-Export Code (IEC)</strong> is the first and most crucial requirement. Issued by the Director General of Foreign Trade (DGFT), the IEC is a mandatory license that enables businesses to import goods into India and export them to global markets.
-            </Typography>
-            <Typography paragraph>
-              Obtaining an IEC is the foundational step to unlocking your business's global potential. At <strong>Rekotax</strong>, we specialize in providing a seamless and efficient IEC registration service, ensuring you can focus on your international expansion while we handle the essential legal formalities.
-            </Typography>
-    
-            {/* What is IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              What is an Import-Export Code (IEC)?
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is a unique <strong>10-digit identification number</strong> linked to a business's or individual's PAN card. It is a mandatory requirement for clearing customs, processing international payments, and availing benefits under India's Foreign Trade Policy. Without a valid IEC, no entity can legally conduct import or export activities.
-            </Typography>
-    
-            {/* Who Needs an IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Who Needs an IEC Registration?
-            </Typography>
-            <Typography paragraph>
-              IEC registration is mandatory for any person or entity involved in the cross-border trade of goods and services. This includes:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Importers: Any business that needs to clear customs for bringing goods into India.",
-                "Exporters: Any business that sends goods to another country and needs to send shipments.",
-                "Service Providers: Service or technology providers who want to avail benefits under the Foreign Trade Policy for their exports.",
-                "E-commerce Operators: Online sellers and platforms dealing with customers in foreign countries.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-            <Typography paragraph>
-              Essentially, if your business transactions involve foreign remittance or customs, an IEC is indispensable.
-            </Typography>
-    
-            {/* Key Features */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Key Features of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The IEC registration comes with several distinct features that make it business-friendly:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Lifetime Validity: Once an IEC is issued, it is valid for the lifetime of the entity and requires no renewal.",
-                "No Return Filing: Unlike other tax registrations, IEC holders are not required to file any periodic returns.",
-                "PAN-Based: The IEC is linked to the PAN of the business. One PAN can have only one IEC.",
-                "Quick Processing: The application process is entirely online and is generally processed within a few working days.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Benefits */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Benefits of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              Registering for an IEC opens up a world of opportunities and offers tangible benefits:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Global Market Access: It is the primary license that legally allows you to expand your business to international markets.",
-                "Unlocks Export Benefits: An IEC is necessary to avail benefits from the DGFT, Customs, and Export Promotion Councils under various schemes.",
-                "Simplifies Customs Clearance: It is a mandatory document for clearing shipments with customs authorities, ensuring smooth logistics.",
-                "Facilitates International Banking: Banks require an IEC for processing transactions involving foreign currency for import or export purposes.",
-                "Enhances Business Credibility: Having an IEC adds to the credibility of your business when dealing with international clients and partners.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Documents Required */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Documents Required for IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The application process for an IEC is digital and requires the following key documents:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "PAN Card: A digital copy of the PAN card of the individual or the business entity.",
-                "Identity Proof: Aadhaar card, Voter ID, or Passport of the applicant.",
-                "Address Proof: A utility bill (electricity or telephone), rent agreement, or sale deed of the business premises.",
-                "Bank Account Proof: A cancelled cheque or a bank certificate of the business's current account.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Step-by-Step Process */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Step-by-Step Process for IEC Registration
-            </Typography>
-            <Typography paragraph>The IEC application process is handled online through the DGFT portal:</Typography>
-            <List sx={{ listStyleType: "decimal", pl: 4 }}>
-              {[
-                "Portal Registration: Register on the official DGFT website by verifying your mobile number and email.",
-                "Application Filing: Log in and fill out the online application form (ANF-2A) with accurate business, director/partner, and bank details.",
-                "Document Upload: Upload scanned copies of all the required documents in the prescribed format.",
-                "Fee Payment: Pay the requisite government application fee using the online payment options.",
-                "IEC Issuance: Once the application is submitted and verified by the department, the e-IEC certificate is generated and can be downloaded from the portal.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Updating IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Updating Your IEC
-            </Typography>
-            <Typography paragraph>
-              While IEC has lifetime validity, it is mandatory for every IEC holder to update their details on the DGFT portal annually between April and June. Failure to do so can result in the deactivation of the IEC. This ensures that the information in the DGFT database remains current.
-            </Typography>
-    
-            {/* How Rekotax Helps */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              How Rekotax Can Help You
-            </Typography>
-            <Typography paragraph>At Rekotax, we simplify the entire IEC registration process. Our services include:</Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Complete Documentation Support: We assist in preparing and verifying all required documents for a flawless application.",
-                "Error-Free Application Filing: Our experts handle the online submission to ensure accuracy and avoid rejections.",
-                "Fast and Efficient Processing: We manage the entire process to get your IEC issued in the shortest possible time.",
-                "Post-Registration Support: We provide guidance on annual updates and other compliance matters related to foreign trade.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Conclusion */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Conclusion
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is more than just a number; it's your passport to the world of international business. It is the first and most critical step in taking your products and services to a global audience, ensuring compliance and unlocking numerous government benefits.
-            </Typography>
-            <Typography paragraph>
-              Let <strong>Rekotax</strong> be your partner in this journey. Contact us today for a swift and professional IEC registration experience, and take your business across borders.
-            </Typography>
-          </Box>
+  {/* Introduction */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mb: 2 }}>
+    Introduction
+  </Typography>
+  <Typography paragraph>
+    Charitable organisations in India—<strong>public trusts, registered
+    societies, and Section 8 companies</strong>—can obtain tax registrations
+    under the Income Tax Act to strengthen compliance and fundraising.{" "}
+    <strong>12A (now 12AB)</strong> provides income-tax exemption to the NGO
+    on eligible income, while <strong>80G</strong> enables donors to claim
+    deductions for eligible donations.
+  </Typography>
+  <Typography paragraph>
+    With <strong>Rekotax</strong>, you get end-to-end support—from eligibility
+    review and documentation to e-filing, clarifications, and post-approval
+    donor enablement—so your organisation can focus on impact.
+  </Typography>
+
+  {/* What is 12A & 80G */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    What is 12A (12AB) &amp; 80G Registration?
+  </Typography>
+  <Typography paragraph>
+    These are <strong>income-tax exemptions and approvals</strong> granted by
+    the Exemptions wing via the Income Tax e-filing portal. On approval, you
+    receive orders with a <strong>Unique Registration Number (URN)</strong>,
+    effective date, and validity. 12AB covers exemption for the entity; 80G
+    allows donors to claim deductions for donations made to the entity,
+    subject to conditions.
+  </Typography>
+
+  {/* Who can apply */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Who Can Apply?
+  </Typography>
+  <Typography>Eligible applicants include:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Public charitable or religious trusts registered under the relevant state law.",
+      "Registered societies formed for charitable purposes.",
+      "Section 8 companies (Companies Act, 2013) with charitable objects.",
+      "Entities with genuine charitable activities, proper governance, and books of account.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* 12A vs 80G table */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    12A vs 80G – What’s the Difference?
+  </Typography>
+  <Table sx={{ mt: 1 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Particulars
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          12A (12AB)
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          80G
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[
+        ["Purpose", "Exempts NGO’s eligible income applied to charitable purposes", "Allows donors to claim tax deduction on eligible donations"],
+        ["Who benefits", "The organisation", "The donor"],
+        ["Application", "Online on e-filing portal (prescribed forms)", "Online on e-filing portal (can be with/after 12AB)"],
+        ["Validity", "Granted with a specific validity period; renewal/revalidation required", "Granted with validity; periodic renewal/revalidation required"],
+        ["Compliance", "Maintain books, apply income to objects, file returns/statements", "Issue proper donation receipts; report donations in prescribed statements"],
+      ].map(([a, b, c]) => (
+        <TableRow key={a}>
+          <TableCell>{a}</TableCell>
+          <TableCell>{b}</TableCell>
+          <TableCell>{c}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+
+  {/* Key Benefits */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Key Benefits
+  </Typography>
+  <Typography>Approvals build credibility and expand funding options:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Tax efficiency: 12AB shields eligible income; 80G makes donations more attractive.",
+      "Fundraising edge: Improves access to CSR and institutional grants.",
+      "Donor trust: Government approvals and URN improve transparency.",
+      "Governance discipline: Clear reporting and validity cycles reinforce compliance.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Why apply early */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Why Apply Even If You’re New?
+  </Typography>
+  <Typography>Early approvals help you:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Signal credibility to donors and partners from day one.",
+      "Structure finances tax-efficiently as activity scales.",
+      "Unlock CSR and institutional opportunities that mandate 12A/80G.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Documents required */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Documents Required
+  </Typography>
+  <Typography>Keep clear scans and PDFs ready:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Foundational documents: Trust deed / registration certificate; MOA/AOA for Section 8.",
+      "PAN of the entity; IDs and contact details of trustees/directors.",
+      "Registered office proof (electricity bill, rent agreement, NOC as applicable).",
+      "Bank account proof (cancelled cheque/passbook).",
+      "Activity note, programme details, photos/links; website/app (if any).",
+      "Financial statements and audit report (if available for prior years).",
+      "Earlier approval orders if applying for renewal/revalidation.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Process */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Step-by-Step Process
+  </Typography>
+  <Typography>Applications are filed on the Income Tax e-filing portal:</Typography>
+  <List sx={{ listStyleType: "decimal", pl: 4 }}>
+    {[
+      "Account setup: Ensure the NGO’s e-filing account is active; set up DSC/Aadhaar e-verify.",
+      "Select application: Initiate the relevant 12AB and/or 80G application flow.",
+      "Fill details: Entity profile, objects, key persons, bank, activity summary.",
+      "Upload documents: Foundational deeds, financials, programme evidence.",
+      "e-Verification & submit: Verify via DSC or Aadhaar OTP and submit.",
+      "Clarifications: Respond to any notices/queries from Exemptions.",
+      "Orders & URN: Download approval orders; diarise renewal timelines.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Non-compliance notes */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Non-Compliance &amp; Practical Notes
+  </Typography>
+  <Typography paragraph>
+    Late filings, non-genuine activities, or diversion of funds may lead to
+    denial, cancellation, or tax exposure. Maintain books, issue compliant
+    donation receipts, and file the required returns/statements to preserve
+    approvals.
+  </Typography>
+
+  {/* How Rekotax helps */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    How Rekotax Can Help You
+  </Typography>
+  <Typography>We provide a founder-friendly, compliant glidepath:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Eligibility & gap check: Review objects, governance, and documentation.",
+      "Application drafting: Precise activity note and annexures that match requirements.",
+      "Portal filing & follow-ups: Accurate e-filing and responses to queries.",
+      "Donor enablement: 80G receipt formats and reporting checklist.",
+      "Renewal reminders: Track validity and revalidation timelines.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Conclusion */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Conclusion
+  </Typography>
+  <Typography paragraph>
+    12AB and 80G registrations are essential for sustainable fundraising and
+    tax efficiency. Secure approvals correctly, maintain robust governance,
+    and focus on delivering measurable impact.
+  </Typography>
+  <Typography paragraph>
+    <strong>Rekotax</strong> can manage the entire process—clear, quick,
+    and compliant.
+  </Typography>
+</Box>
 
 
 
@@ -1202,47 +1315,88 @@ export default function ImportExportCode({ webAppUrl }) {
              Frequently Asked Questions (FAQs)
             </Typography>
             {[
-              {
-                   q: "What is an Import-Export Code (IEC)?",
-                   a: "An Import-Export Code (IEC) is a unique 10-digit number issued by the DGFT (Director General of Foreign Trade) that is mandatory for any business or individual to start an import-export business in India."
-                 },
-                 {
-                   q: "Who needs to obtain an IEC?",
-                   a: "Any person or entity looking to import goods into India or export goods from India must have an IEC. It is required for customs clearance, international trade payments, and availing benefits under the Foreign Trade Policy."
-                 },
-                 {
-                   q: "What are the main benefits of having an IEC?",
-                   a: "The key benefits include legal access to global markets, eligibility for government export schemes, lifetime validity with no renewal hassles, and simplified customs and banking procedures."
-                 },
-                 {
-                   q: "Is there any renewal required for an IEC?",
-                   a: "No, an IEC has lifetime validity and does not require any renewal. However, it is mandatory to update your IEC details on the DGFT portal annually between April and June to keep it active."
-                 },
-                 {
-                   q: "What documents are needed for IEC registration?",
-                   a: "You will need a digital copy of the PAN card, identity proof (Aadhaar/Voter ID), proof of business address, and a cancelled cheque or bank certificate of the business's current account."
-                 },
-                 {
-                   q: "How long does it take to get an IEC?",
-                   a: "Once the online application is submitted with all the correct documents, the IEC is typically issued by the DGFT within 3-5 working days."
-                 },
-                 {
-                   q: "Can an individual apply for an IEC?",
-                   a: "Yes, both individuals (as proprietors) and business entities like partnership firms, LLPs, and companies can apply for and obtain an IEC."
-                 },
-                 {
-                   q: "Is GST registration mandatory to get an IEC?",
-                   a: "While GST registration is not a mandatory prerequisite to apply for an IEC, it is required for claiming GST refunds on exports. Most businesses involved in regular trade will need both."
-                 },
-                 {
-                   q: "What happens if I don't update my IEC annually?",
-                   a: "Failure to update your IEC details on the DGFT portal between April and June each year will result in the deactivation of your IEC, which will halt all your import and export activities until it is reactivated."
-                 },
-                 {
-                   q: "How can Rekotax help with IEC registration?",
-                   a: "Rekotax offers a complete end-to-end service for IEC registration. We assist with document preparation, ensure an error-free online application, and provide support for annual updates, making the entire process fast and seamless for you."
-                 }
-            ]
+  {
+    q: "What is 12A registration and why is it important for NGOs?",
+    a: "12A registration grants an NGO exemption on eligible income under the Income-tax Act. With 12A, income applied to charitable purposes isn’t taxed, boosting program viability and donor confidence."
+  },
+  {
+    q: "What is 80G registration and how does it help donors?",
+    a: "80G registration allows donors to claim tax deduction on eligible donations made to your NGO, improving fundraising by making contributions tax-efficient for donors."
+  },
+  {
+    q: "Who can apply for 12A/80G?",
+    a: "Trusts, Registered Societies, and Section 8 Companies set up for charitable purposes (education, medical relief, poverty relief, environment, monuments, general public utility, etc.)."
+  },
+  {
+    q: "Is 12A mandatory before applying for 80G?",
+    a: "Yes. Practically, NGOs should hold or apply for 12A before seeking 80G, since donor deductions generally require the NGO itself to be tax-exempt."
+  },
+  {
+    q: "Which forms are used—Form 10A and 10AB?",
+    a: "Fresh/provisional registration is usually via Form 10A, while renewals, conversions, or subsequent approvals use Form 10AB on the e-filing portal."
+  },
+  {
+    q: "What is the validity of 12A and 80G registrations?",
+    a: "Approvals typically have a fixed tenure (often 5 years) and must be renewed before expiry. New NGOs may receive provisional approval that must be converted to regular approval within the prescribed window."
+  },
+  {
+    q: "What documents are required for 12A/80G applications?",
+    a: "Trust deed/MOA & registration certificate, NGO PAN, bylaws, trustee/director KYC (PAN/Aadhaar), financials (if available), activity report, bank details/cancelled cheque, and any relevant registrations (CSR-1/DARPAN)."
+  },
+  {
+    q: "What is the online process to obtain 12A & 80G?",
+    a: "Login on incometax.gov.in → choose Form 10A/10AB → fill details & upload proofs → e-verify via DSC/OTP → respond to clarifications → download approval orders/certificates."
+  },
+  {
+    q: "What ongoing conditions must an NGO meet to retain 12A/80G?",
+    a: "Apply income to charitable objects, avoid benefit to specified persons, maintain books, file ITR-7 and audits (Form 10B/10BB) on time, and comply with other applicable laws."
+  },
+  {
+    q: "What are donor compliance requirements under 80G?",
+    a: "File annual Form 10BD (donation statement) and issue Form 10BE to donors. Donation receipts must carry NGO details, 80G number, donor details, amount, mode, and date."
+  },
+  {
+    q: "Are all donations eligible for 80G deduction?",
+    a: "Only eligible donations to approved institutions qualify, subject to limits, payment modes, and statutory caps for the relevant year. Prefer banking channels over cash."
+  },
+  {
+    q: "Can religious or mixed-purpose organizations get 80G?",
+    a: "Purely charitable objects are preferred. Exclusively religious entities generally don’t qualify. Mixed objects require evaluation of dominant purpose and expenditure patterns."
+  },
+  {
+    q: "What if the NGO runs significant commercial activities?",
+    a: "Any incidental business must be subordinate to charitable objects; profits must fund charity. Excessive commercial focus risks exemption/approvals—maintain separate books as required."
+  },
+  {
+    q: "Do we need FCRA to receive foreign donations?",
+    a: "Yes. Obtain FCRA registration or prior permission and use the designated bank account. FCRA compliance is separate from 12A/80G."
+  },
+  {
+    q: "Is audit compulsory for NGOs with 12A/80G?",
+    a: "Audit depends on thresholds. Where applicable, file Form 10B/10BB with ITR-7 on time. Additional audits (state trust laws/FCRA) may apply based on funding and operations."
+  },
+  {
+    q: "How do we convert provisional approval to regular approval?",
+    a: "Apply within the prescribed window (often via Form 10AB) once conditions like activity commencement/financials are met. Track dates to avoid lapse."
+  },
+  {
+    q: "Common reasons for rejection or queries?",
+    a: "Vague objects, activity-object mismatch, private benefit, weak documentation, inconsistent financials, non-filing of returns/audits, or lack of on-ground evidence."
+  },
+  {
+    q: "Can an NGO lose its 12A/80G status after approval?",
+    a: "Yes—due to non-compliance, diversion of funds, misstatements, or failure to renew/respond to notices. Maintain timely filings and accurate disclosures."
+  },
+  {
+    q: "How should 80G receipts and donor certificates be drafted?",
+    a: "Include NGO name/address/PAN, 80G approval number, donor name/PAN, amount, mode, date, and purpose (if any). File 10BD annually and issue 10BE to donors."
+  },
+  {
+    q: "How does Rekotax help with 12A & 80G registrations?",
+    a: "End-to-end support: eligibility review, document vetting, drafting & filing Forms 10A/10AB, handling queries, and donor compliance (10BD/10BE) after approval."
+  }
+]
+
 
               .map(({ q, a }, idx) => {
                 const isOpen = expanded === idx;

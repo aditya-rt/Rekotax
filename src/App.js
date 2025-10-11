@@ -18,14 +18,20 @@ import ProducerCompany from "./components/Registration/StartNewBusiness/Producer
 import ClientTestimonials from "./components/Dashboard/ClientTestimonials";
 import PrincipleAndApproach from "./components/Dashboard/PrincipleAndApproach";
 import WhyRekotax from "./components/Dashboard/WhyRekotax";
-import insights from "./components/Dashboard/Insights";
 import Insights from "./components/Dashboard/Insights";
-
+import ShopsAndEstablishment from "./components/Registration/OtherRegulatory/ShopsAndEstablishment/ShopsAndEstablishment";
+import StartupIndia from "./components/Registration/OtherRegulatory/StartupIndia/StartUpIndia";
+import Msme from "./components/Registration/OtherRegulatory/MSME/Msme";
+import Trademark from "./components/Registration/OtherRegulatory/TradeMark/Trademark";
 import '@fontsource/open-sans/400.css';
 import '@fontsource/open-sans/600.css';
 import '@fontsource/open-sans/700.css';
 import '@fontsource/open-sans/800.css';
-
+import Fssai from "./components/Registration/OtherRegulatory/FSSAI/Fssai";
+import OtherRegistration from "./components/Registration/OtherRegulatory/OtherRegistrations/OtherRegistration";
+import ProfessionalTax from "./components/Registration/OtherRegulatory/ProfessionalTax/ProfessionalTax";
+import Contact from "./components/Navbar/Contact";
+import EightyG from "./components/Registration/OtherRegulatory/12A/EightyGRegistration";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -95,7 +101,17 @@ export default function App() {
         <Route path="/principles-and-approach" element={<PrincipleAndApproach />} />
         <Route path="/why-rekotax" element={<WhyRekotax />} />
         <Route path="/insights" element={<Insights/>} />
+        <Route path="/shops-and-establishment" element={<ShopsAndEstablishment/>}/>
+        <Route path="/startup-india" element={<StartupIndia/>} />
+        <Route path="/msme" element={<Msme/>}/>
+        <Route path="/fssai" element={<Fssai/>}/>
+        <Route path="/trademark" element={<Trademark/>}/>
+        <Route path="/other-registration" element={<OtherRegistration/>}/>
+        <Route path="/professional-tax" element={<ProfessionalTax/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/eighty-g-registration" element={<EightyG/>}/>
       </Routes>
     </Router>
   );
 }
+  

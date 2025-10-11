@@ -24,6 +24,8 @@ import {
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useTheme } from "@mui/material/styles";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
+
 import { useState, useEffect, useRef } from "react";
 import ExpandMoreIcon from "@mui/icons-material/Add"; // plus icon
 import RemoveIcon from "@mui/icons-material/Remove"; // minus icon
@@ -97,7 +99,7 @@ const InfoCard = ({ title, desc }) => (
   >
     <Typography
       variant="h4"
-      sx={{ color: "#0f2555", fontWeight: 500, mb: 1.5, fontSize: "1.5rem" }}
+      sx={{ color: "#0f2555", fontWeight: 700, mb: 1.5, fontSize: "1.5rem" }}
     >
       {title}
     </Typography>
@@ -157,7 +159,7 @@ const fieldSx = {
   "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
 };
 
-export default function ImportExportCode({ webAppUrl }) {
+export default function Fssai({ webAppUrl }) {
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const [show, setShow] = useState(true);
@@ -298,7 +300,7 @@ export default function ImportExportCode({ webAppUrl }) {
                 fontSize: "0.95rem",
               }}
             >
-              Expert GST Registration Services in India
+              Expert FSSAI Registration Services in India
             </Box>
           </Box>
 
@@ -336,7 +338,7 @@ export default function ImportExportCode({ webAppUrl }) {
               px: { xs: 2, md: 0 },
             }}
           >
-            Fast, Accurate, and Hassle-free Import-Export <br />Code (IEC) Registration
+            FSSAI Registration 
           </Typography>
 
 
@@ -352,8 +354,8 @@ export default function ImportExportCode({ webAppUrl }) {
               color: "rgba(255,255,255,0.9)",
             }}
           >
-            An Import-Export Code (IEC) is the essential first step for any business aiming to enter the global marketplace, serving as the primary license for importing and exporting goods. At Rekotax, we manage the entire IEC registration from start to finish, ensuring you can focus on expanding your business internationally while we handle the foundational legal requirements.                    </Typography>
-
+Register your FSSAI Registration  with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
+         </Typography>
           {/* CTAs centered */}
           <Box
             sx={{
@@ -482,13 +484,13 @@ export default function ImportExportCode({ webAppUrl }) {
           align="center"
           sx={{
             color: "#0f2555",
-            fontWeight: 600,
+            fontWeight: 700,
             mb: 4,
             mt: 2,
             fontSize: { xs: "2rem", md: "2.5rem" },
           }}
         >
-          Know All About IEC Registration
+Know All About FSSAI Registration
         </Typography>
 
         {/* What is GST + GSTIN (left) AND Contact Form (right) */}
@@ -511,40 +513,46 @@ export default function ImportExportCode({ webAppUrl }) {
               variant="h3"
               sx={{
                 color: "#0f2555",
-                fontWeight: 500,
+                fontWeight: 700,
                 mb: 1.5,
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
             >
-              What is an Import-Export Code (IEC)?
+What is FSSAI Registration/Licence?
             </Typography>
             {/* Para 1 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, mb: 2, color: "#333" }}>
-              An Import-Export Code (IEC) is a unique 10-digit identification number issued by <br />
-              the Director General of Foreign Trade (DGFT). It is a mandatory prerequisite for any <br />
-              business or individual looking to start an import or export business in India.
+             FSSAI Registration/Licence is a mandatory approval for every Food Business   <br/>Operator 
+            engaged in manufacture, processing, packaging, storage, transport,<br/> distribution
+              or sale of food in India. It is granted under the Food Safety and <br/>Standards Act 
+              through the FSSAI FOSCOS portal.
             </Typography>
 
             {/* Para 2 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, color: "#333" }}>
-              LUT registration is <strong>mandatory</strong> for any exporter who wishes to export goods or <br />
-              services without paying integrated tax and claiming refunds later. With LUT,<br /> businesses can
-              save time, improve liquidity, and expand globally without tax <br />blockages.
+            Depending on the scale and nature of operations, FBOs must obtain Basic <br/>
+            Registration, State Licence, or Central Licence. The 14-digit FSSAI number <br/>
+             must be displayed at the premises and printed on labels, invoices, menus <br/>
+             and delivery packages where applicable.
             </Typography>
 
             <Divider sx={{ my: 2 }} />
             <Box sx={{ mt: 4 }}>
               {/* Heading */}
               <Typography
-                variant="h3"
-              sx={{
-                color: "#0f2555",
-                fontWeight: 500,
-                mb: 1.5,
-                fontSize: { xs: "1.5rem", md: "1.8rem" },
-              }}
+                variant="h4"
+                component="h3"
+                sx={{
+                  fontWeight: 800,
+                  color: "#0f2555",
+                  fontSize: { xs: "1.6rem", md: "2rem" },
+                  textAlign: "center",
+                  mb: 2.5,
+                  lineHeight: 1.2,
+                  textWrap: "balance",
+                }}
               >
-                Key Features of IEC Registration
+Key Features of FSSAI Registration
               </Typography>
 
               {/* Bulleted list */}
@@ -562,25 +570,61 @@ export default function ImportExportCode({ webAppUrl }) {
                 }}
               >
                 <li>
-                  Acts as the primary <strong>license for import and export </strong> activities
+Mandatory for all food businesses—manufacturers, repackers, processors, wholesalers, retailers, restaurants, caterers, cloud kitchens, transporters and warehouses            </li>
+                <li>
+Three tiers based on turnover/capacity & activity: Basic Registration, State Licence, Central Licence
                 </li>
                 <li>
-                  Carries <strong>lifetime validity </strong> and requires no renewal
+Online filing via FOSCOS with e-payment, document upload and inspections where applicable
                 </li>
                 <li>
-                  A PAN-based registration, meaning one PAN card can have only one IEC
+Requires Food Safety Management System (FSMS) and adherence to hygiene & labelling norms
                 </li>
                 <li>
-                  No need to file any returns or follow complex post-registration compliance
-                </li>
-                <li>
-                  Essential for <strong> customs clearance</strong> and foreign bank transfers
+Licence details must be displayed at the premises and on labels as prescribed
                 </li>
               </Box>
             </Box>
 
 
-          
+            {/* <Typography
+                            variant="h3"
+                            sx={{
+                                color: "#0f2555",
+                                fontWeight: 700,
+                                mb: 2,
+                                mt:3,
+                                fontSize: { xs: "1.6rem", md: "1.7rem" },
+                            }}
+                        >
+                            GSTIN Structure Explained
+                        </Typography> */}
+
+            {/* <Box
+                            sx={{
+                                display: "inline-block",
+                                bgcolor: "#0f2555",
+                                color: "#fff",
+                                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                                fontWeight: 600,
+                                px: 2,
+                                py: 1,
+                                borderRadius: 2,
+                                letterSpacing: 2,
+                                mb: 2,
+                                boxShadow: 3,
+                            }}
+                        >
+                            22ABCDE1234F1Z5
+                        </Box> */}
+
+            {/* <Grid container spacing={1.5} wrap="wrap">
+                            <GstinBox code="22" label="State Code" />
+                            <GstinBox code="ABCDE1234F" label="PAN Number" />
+                            <GstinBox code="1" label="Entity Code" />
+                            <GstinBox code="Z" label="Default Letter" />
+                            <GstinBox code="5" label="Check Digit" />
+                        </Grid> */}
           </Grid>
 
           {/* RIGHT: Contact form */}
@@ -724,7 +768,8 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, textAlign: "left" }}
           >
-            Who Needs an IEC?                </Typography>
+            Who Needs FSSAI Registration/Licence
+?                </Typography>
 
           <Grid
             container
@@ -737,19 +782,35 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Importers",
-                desc: <>Any business or individual bringing goods <strong>into India</strong> from a foreign country.</>,
-              },
-              {
-                title: "Exporters",
-                desc: <>Businesses or individuals sending goods or services <strong>from India</strong> to other countries.</>,
-              },
-              {
-                title: "Service Providers",
-                desc: <>Service providers who wish to avail benefits under the <strong>Foreign Trade Policy</strong>.</>,
-              },
-            ].map((card) => (
+  {
+    title: "Manufacturers & Processors",
+    desc: (
+      <>
+        Food manufacturing units, repackers, relabellers, dairies, bakeries,
+        beverages and edible oil units, flour mills, and similar facilities.
+      </>
+    ),
+  },
+  {
+    title: "Food Service & Retail",
+    desc: (
+      <>
+        Restaurants, hotels, cafes, cloud kitchens, caterers, sweet shops,
+        retailers, wholesalers, and home-based sellers.
+      </>
+    ),
+  },
+  {
+    title: "Transport, Storage & Others",
+    desc: (
+      <>
+        Transporters, cold chains, warehouses, e-commerce FBOs, importers/
+        exporters, and multi-state operators.
+      </>
+    ),
+  },
+]
+.map((card) => (
               <Grid
                 item
                 key={card.title}
@@ -773,7 +834,7 @@ export default function ImportExportCode({ webAppUrl }) {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#0f2555", mb: 1 }}>
                     {card.title}
                   </Typography>
                   <Typography sx={{ lineHeight: 1.6 }}>{card.desc}</Typography>
@@ -791,10 +852,12 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, mt: 4, textAlign: "left" }}
           >
-            Benefits of IEC Registration            </Typography>
+           Benefits of FSSAI Registration
+         </Typography>
 
           <Typography sx={{ mb: 5, color: "#444" }}>
-            Securing an IEC is the first step to unlocking global business opportunities. It is not just a legal requirement but a gateway to international trade, enabling businesses to expand their reach, access new markets, and benefit from government schemes.
+FSSAI compliance builds trust, enables market access and ensures hygienic, safe food operations.
+
           </Typography>
 
           <Box
@@ -810,30 +873,62 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Gateway to Global Markets",
-                desc: <>Legally access international markets for <strong>buying and selling</strong> goods and services.</>,
-              },
-              {
-                title: "Lifetime Validity",
-                desc: <>No need for renewals, making it a <strong>one-time, hassle-free</strong> registration.</>,
-              },
-              {
-                title: "Unlocks Trade Benefits",
-                desc: <>Become eligible for various government <strong>export promotion schemes</strong> and subsidies.</>,
-              },
-              {
-                title: "Simplifies Customs Clearance",
-                desc: <>Mandatory for clearing shipments with <strong>customs authorities</strong> smoothly.</>,
-              },
-              {
-                title: "Easy Bank Transactions",
-                desc: <>Required by banks for sending or receiving <strong>foreign currency</strong> for trade.</>,
-              },
-              {
-                title: "No Compliance Burden",
-                desc: <>No need to file any returns or follow complex <strong>post-registration compliance</strong> for IEC.</>,
-              }]
+  {
+    title: "Legal Recognition",
+    desc: (
+      <>
+        Operate lawfully as a food business with a valid FSSAI number and
+        licence.
+      </>
+    ),
+  },
+  {
+    title: "Market Access",
+    desc: (
+      <>
+        Essential for tie-ups with marketplaces, aggregators, hotels, airlines
+        and modern retail.
+      </>
+    ),
+  },
+  {
+    title: "Consumer Trust",
+    desc: (
+      <>
+        Visible licence details and compliant labels enhance credibility and
+        brand value.
+      </>
+    ),
+  },
+  {
+    title: "Hygiene & Safety",
+    desc: (
+      <>
+        FSMS-based controls reduce contamination risk and improve audit
+        readiness.
+      </>
+    ),
+  },
+  {
+    title: "Traceability",
+    desc: (
+      <>
+        Structured records and labelling support recalls and supply-chain
+        transparency.
+      </>
+    ),
+  },
+  {
+    title: "Simple Online Process",
+    desc: (
+      <>
+        End-to-end online filing on <strong>FOSCOS</strong> with e-payments and
+        digital certificates.
+      </>
+    ),
+  },
+]
+
               .map((card) => (
                 <Box key={card.title} sx={{ display: "flex" }}>
                   {/* If InfoCard already renders a Paper, just keep it; otherwise use a Paper here */}
@@ -858,42 +953,48 @@ export default function ImportExportCode({ webAppUrl }) {
               mb: 6,
             }}
           >
-            Simplified Process for IEC Registration
+Simplified Process for FSSAI Registration/Licence
           </Typography>
 
           {(() => {
-            const steps = [
-             {
-              number: "1",
-              title: "Prepare Your Documents",
-              desc: "Gather the necessary documents, including the PAN card, Aadhaar card, proof of business address (like a rent agreement or electricity bill), and a cancelled cheque for bank account verification.",
-            },
-            {
-              number: "2",
-              title: "Register on DGFT Portal",
-              desc: "Visit the official Director General of Foreign Trade (DGFT) portal. Register as a new user by providing and verifying your mobile number and email address via OTP.",
-            },
-            {
-              number: "3",
-              title: "Fill the Application Form",
-              desc: "Log in to the portal and fill out the online application form (ANF-2A). You will need to enter details about your business, directors/partners, and bank account information accurately.",
-            },
-              {
-              number: "4",
-              title: "Upload Documents",
-              desc: "Scan and upload the required documents as per the specified format and size. This includes your address proof and the cancelled cheque.",
-            },
-            {
-              number: "5",
-              title: "Pay the Government Fee",
-              desc: "Proceed to pay the prescribed government application fee through the online payment gateway. The fee is non-refundable.",
-            },
-            {
-              number: "6",
-              title: "Receive Your IEC Certificate",
-              desc: "After successful submission and verification, the DGFT will issue your 10-digit IEC. You can download the e-IEC certificate directly from the portal.",
-            },
-            ];
+    const steps = [
+  {
+    number: "1",
+    title: "Prepare Your Documents",
+    desc:
+      "Keep entity PAN, incorporation/firm deed, premises proof, rent agreement with owner NOC (if rented), signatory ID & photo, product/activity list, layout/equipment (for manufacturers), FSMS/hygiene plan and water test (if applicable).",
+  },
+  {
+    number: "2",
+    title: "Create FOSCOS Account",
+    desc:
+      "Register on the FSSAI FOSCOS portal. Verify mobile and email via OTP and complete the FBO profile with business category, location and contact details.",
+  },
+  {
+    number: "3",
+    title: "Choose Category & Fill Form",
+    desc:
+      "Select Basic Registration, State Licence or Central Licence based on turnover/capacity and activity. Enter entity details, premises, commodities, and proposed capacity.",
+  },
+  {
+    number: "4",
+    title: "Upload Documents",
+    desc:
+      "Upload KYC, premises proof, layout/equipment list, FSMS plan, product list and activity-specific declarations in the prescribed size and format.",
+  },
+  {
+    number: "5",
+    title: "Pay Fees & Facilitate Inspection",
+    desc:
+      "Pay the applicable fee online. Respond to queries and facilitate inspection if scheduled by the authority. Provide clarifications promptly on the portal.",
+  },
+  {
+    number: "6",
+    title: "Get Licence & Comply",
+    desc:
+      "Download the FSSAI certificate. Display the 14-digit number at the premises and print on labels/menus/bills as applicable. Maintain hygiene records and track renewals/modifications on change of details.",
+  },
+];
 
             const rows = [steps.slice(0, 3), steps.slice(3, 6)];
 
@@ -996,188 +1097,238 @@ export default function ImportExportCode({ webAppUrl }) {
           <WhyRekotax fullBleed />
         </Box>
 
-      <Box
-            sx={{
-              maxWidth: 1100,
-              mx: "auto",
-              px: { xs: 2, md: 4 },
-              py: { xs: 4, md: 8 },
-              backgroundColor: "#fff",
-              color: "#333",
-              lineHeight: 1.7,
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                textAlign: "center",
-                color: "#0f2555",
-                fontWeight: 700,
-                mb: 4,
-              }}
-            >
-              IEC Registration in India – A Complete Guide for Importers & Exporters
-            </Typography>
-    
-            {/* Introduction */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 4, mb: 2 }}>
-              Introduction to IEC Registration
-            </Typography>
-            <Typography paragraph>
-              For any business aspiring to engage in international trade, the <strong>Import-Export Code (IEC)</strong> is the first and most crucial requirement. Issued by the Director General of Foreign Trade (DGFT), the IEC is a mandatory license that enables businesses to import goods into India and export them to global markets.
-            </Typography>
-            <Typography paragraph>
-              Obtaining an IEC is the foundational step to unlocking your business's global potential. At <strong>Rekotax</strong>, we specialize in providing a seamless and efficient IEC registration service, ensuring you can focus on your international expansion while we handle the essential legal formalities.
-            </Typography>
-    
-            {/* What is IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              What is an Import-Export Code (IEC)?
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is a unique <strong>10-digit identification number</strong> linked to a business's or individual's PAN card. It is a mandatory requirement for clearing customs, processing international payments, and availing benefits under India's Foreign Trade Policy. Without a valid IEC, no entity can legally conduct import or export activities.
-            </Typography>
-    
-            {/* Who Needs an IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Who Needs an IEC Registration?
-            </Typography>
-            <Typography paragraph>
-              IEC registration is mandatory for any person or entity involved in the cross-border trade of goods and services. This includes:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Importers: Any business that needs to clear customs for bringing goods into India.",
-                "Exporters: Any business that sends goods to another country and needs to send shipments.",
-                "Service Providers: Service or technology providers who want to avail benefits under the Foreign Trade Policy for their exports.",
-                "E-commerce Operators: Online sellers and platforms dealing with customers in foreign countries.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-            <Typography paragraph>
-              Essentially, if your business transactions involve foreign remittance or customs, an IEC is indispensable.
-            </Typography>
-    
-            {/* Key Features */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Key Features of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The IEC registration comes with several distinct features that make it business-friendly:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Lifetime Validity: Once an IEC is issued, it is valid for the lifetime of the entity and requires no renewal.",
-                "No Return Filing: Unlike other tax registrations, IEC holders are not required to file any periodic returns.",
-                "PAN-Based: The IEC is linked to the PAN of the business. One PAN can have only one IEC.",
-                "Quick Processing: The application process is entirely online and is generally processed within a few working days.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Benefits */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Benefits of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              Registering for an IEC opens up a world of opportunities and offers tangible benefits:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Global Market Access: It is the primary license that legally allows you to expand your business to international markets.",
-                "Unlocks Export Benefits: An IEC is necessary to avail benefits from the DGFT, Customs, and Export Promotion Councils under various schemes.",
-                "Simplifies Customs Clearance: It is a mandatory document for clearing shipments with customs authorities, ensuring smooth logistics.",
-                "Facilitates International Banking: Banks require an IEC for processing transactions involving foreign currency for import or export purposes.",
-                "Enhances Business Credibility: Having an IEC adds to the credibility of your business when dealing with international clients and partners.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Documents Required */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Documents Required for IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The application process for an IEC is digital and requires the following key documents:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "PAN Card: A digital copy of the PAN card of the individual or the business entity.",
-                "Identity Proof: Aadhaar card, Voter ID, or Passport of the applicant.",
-                "Address Proof: A utility bill (electricity or telephone), rent agreement, or sale deed of the business premises.",
-                "Bank Account Proof: A cancelled cheque or a bank certificate of the business's current account.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Step-by-Step Process */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Step-by-Step Process for IEC Registration
-            </Typography>
-            <Typography paragraph>The IEC application process is handled online through the DGFT portal:</Typography>
-            <List sx={{ listStyleType: "decimal", pl: 4 }}>
-              {[
-                "Portal Registration: Register on the official DGFT website by verifying your mobile number and email.",
-                "Application Filing: Log in and fill out the online application form (ANF-2A) with accurate business, director/partner, and bank details.",
-                "Document Upload: Upload scanned copies of all the required documents in the prescribed format.",
-                "Fee Payment: Pay the requisite government application fee using the online payment options.",
-                "IEC Issuance: Once the application is submitted and verified by the department, the e-IEC certificate is generated and can be downloaded from the portal.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Updating IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Updating Your IEC
-            </Typography>
-            <Typography paragraph>
-              While IEC has lifetime validity, it is mandatory for every IEC holder to update their details on the DGFT portal annually between April and June. Failure to do so can result in the deactivation of the IEC. This ensures that the information in the DGFT database remains current.
-            </Typography>
-    
-            {/* How Rekotax Helps */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              How Rekotax Can Help You
-            </Typography>
-            <Typography paragraph>At Rekotax, we simplify the entire IEC registration process. Our services include:</Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Complete Documentation Support: We assist in preparing and verifying all required documents for a flawless application.",
-                "Error-Free Application Filing: Our experts handle the online submission to ensure accuracy and avoid rejections.",
-                "Fast and Efficient Processing: We manage the entire process to get your IEC issued in the shortest possible time.",
-                "Post-Registration Support: We provide guidance on annual updates and other compliance matters related to foreign trade.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Conclusion */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Conclusion
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is more than just a number; it's your passport to the world of international business. It is the first and most critical step in taking your products and services to a global audience, ensuring compliance and unlocking numerous government benefits.
-            </Typography>
-            <Typography paragraph>
-              Let <strong>Rekotax</strong> be your partner in this journey. Contact us today for a swift and professional IEC registration experience, and take your business across borders.
-            </Typography>
-          </Box>
+    <Box
+  sx={{
+    maxWidth: 1100,
+    mx: "auto",
+    px: { xs: 2, md: 4 },
+    py: { xs: 4, md: 8 },
+    backgroundColor: "#fff",
+    color: "#333",
+    lineHeight: 1.7,
+  }}
+>
+  <Typography
+    variant="h3"
+    sx={{ textAlign: "center", color: "#0f2555", fontWeight: 600, mb: 4 }}
+  >
+    FSSAI Registration in India – A Complete Guide
+  </Typography>
+
+  {/* Introduction */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mb: 2 }}>
+    Introduction
+  </Typography>
+  <Typography paragraph>
+    Any business involved in the manufacture, processing, storage, distribution,
+    or sale of food in India must obtain a food licence under the{" "}
+    <strong>Food Safety and Standards Authority of India (FSSAI)</strong>. The
+    licence/registration ensures traceability, hygiene standards, and consumer
+    safety across the food value chain.
+  </Typography>
+  <Typography paragraph>
+    With <strong>Rekotax</strong>, you get end-to-end support—eligibility
+    mapping, documentation, online filing, inspections coordination, and
+    post-licence compliance—so you stay audit-ready and market-ready.
+  </Typography>
+
+  {/* What is FSSAI */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    What is FSSAI Registration/Licence?
+  </Typography>
+  <Typography paragraph>
+    It is a statutory <strong>food business registration/licence</strong> issued
+    by FSSAI (through State/Central authorities) based on business scale and
+    activity. On approval, the FBO receives a <strong>14-digit FSSAI number</strong> to
+    be displayed on premises and printed on product packages/menus as applicable.
+  </Typography>
+
+  {/* Who needs it */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Who Needs FSSAI?
+  </Typography>
+  <Typography>
+    All <strong>Food Business Operators (FBOs)</strong> including manufacturers,
+    repackers, transporters, warehouses, wholesalers, retailers, e-commerce
+    FBOs, hotels, restaurants, cloud kitchens, caterers, home-based sellers, and
+    importers/exporters require the appropriate FSSAI registration/licence.
+  </Typography>
+
+  {/* Categories & Applicability table */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Categories &amp; Applicability
+  </Typography>
+  <Typography>
+    FSSAI has three broad categories depending on turnover/capacity and activity:
+  </Typography>
+
+  <Table sx={{ mt: 2 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Category
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Typical Applicability
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Issued By
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[
+        [
+          "FSSAI Registration (Basic)",
+          "Micro & small FBOs with low turnover (e.g., petty manufacturers, hawkers, small retailers, small storage units)",
+          "State authority",
+        ],
+        [
+          "State Licence",
+          "Medium-sized manufacturers/processors, restaurants, large retailers/warehouses operating within a state",
+          "State authority",
+        ],
+        [
+          "Central Licence",
+          "Large manufacturers, importers/exporters, 100% EOUs, multi-state operations or units exceeding specified capacity/turnover",
+          "Central authority",
+        ],
+      ].map(([cat, app, by]) => (
+        <TableRow key={cat}>
+          <TableCell>
+            <strong>{cat}</strong>
+          </TableCell>
+          <TableCell>{app}</TableCell>
+          <TableCell>{by}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+
+  {/* Key Benefits */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Key Benefits
+  </Typography>
+  <Typography>FSSAI compliance delivers tangible operational and market advantages:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Legal permission: Lawful operation for food activities with a verifiable FSSAI number.",
+      "Market credibility: Builds trust with customers, marketplaces, and aggregators.",
+      "Easier B2B onboarding: Essential for tie-ups with hotels, airlines, modern trade, and e-commerce.",
+      "Recall & traceability: Structured labelling and hygiene systems reduce risk.",
+      "Access to tenders & exports: Often mandatory for institutional and international business.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Why apply small */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Why Apply Even If You’re Small?
+  </Typography>
+  <Typography>Early compliance prevents penalties and speeds growth:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Hygiene assurance: Standardised processes for handling, storage, and transport.",
+      "Brand protection: Legally compliant labels and declarations reduce disputes.",
+      "Scale readiness: Smooth upgrades from Registration → State → Central as you grow.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Documents Required */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Documents Required
+  </Typography>
+  <Typography>Exact list varies by category and activity; commonly required:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Entity KYC: PAN; Incorporation/Partnership/LLP documents; authorised signatory ID & photo.",
+      "Premises proof: Electricity bill/property tax; rent agreement & owner NOC if rented.",
+      "Layout & equipment list for manufacturing/processing units; capacity details.",
+      "Food safety management plan (FSMS) / hygiene & sanitation plan; water test report if applicable.",
+      "Product list with categories (veg/non-veg); shelf life & labelling details where required.",
+      "Import/Export: IEC copy; source/supply chain details.",
+      "Other activity-specific affidavits/undertakings prescribed by the authority.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Process */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Step-by-Step Process
+  </Typography>
+  <Typography>
+    Licensing is online via the FOSCOS portal (FSSAI) with inspections where applicable:
+  </Typography>
+  <List sx={{ listStyleType: "decimal", pl: 4 }}>
+    {[
+      "Determine category: Map turnover/capacity and activity to Registration/State/Central.",
+      "Create portal account: Fill FBO profile with premises and activity details.",
+      "Prepare documents: FSMS plan, layout, water report, product list, KYC, NOC, etc.",
+      "File application & pay fee: Submit form with attachments; choose correct commodity codes.",
+      "Inspection/clarifications: Provide additional info; facilitate site inspection if scheduled.",
+      "Grant of licence: Download certificate; display FSSAI number; print on labels/menus/bills.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Non-Compliance */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Non-Compliance & Practical Notes
+  </Typography>
+  <Typography paragraph>
+    Operating without a valid licence/registration, misbranding, unsafe food, or hygiene violations
+    can attract fines, suspension, or prosecution. Keep <strong>renewals</strong> and{" "}
+    <strong>modifications</strong> (change in label, address, capacity, products) updated, maintain{" "}
+    <strong>records</strong>, and train staff in food safety practices.
+  </Typography>
+
+  {/* How Rekotax can help */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    How Rekotax Can Help You
+  </Typography>
+  <Typography>We provide a compliance-first, business-friendly approach:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Eligibility & activity mapping: Correct category and commodity selection.",
+      "Documentation & FSMS: Checklists, templates, and guidance on hygiene systems.",
+      "Accurate filing: End-to-end portal filing, responses, and inspection support.",
+      "Labelling & declarations: Practical guidance to align with packaging norms.",
+      "Renewals & modifications: Ongoing support as your operations scale.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Conclusion */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Conclusion
+  </Typography>
+  <Typography paragraph>
+    FSSAI registration is foundational for any food business in India—ensuring safety, legality, and
+    market access. Get the right category, keep hygiene systems tight, and stay renewal-ready to grow
+    confidently.
+  </Typography>
+  <Typography paragraph>
+    <strong>Rekotax</strong> can manage the entire process—precise, quick, and fully compliant—so you
+    can focus on building a trusted food brand.
+  </Typography>
+</Box>
+
 
 
 
@@ -1202,47 +1353,88 @@ export default function ImportExportCode({ webAppUrl }) {
              Frequently Asked Questions (FAQs)
             </Typography>
             {[
-              {
-                   q: "What is an Import-Export Code (IEC)?",
-                   a: "An Import-Export Code (IEC) is a unique 10-digit number issued by the DGFT (Director General of Foreign Trade) that is mandatory for any business or individual to start an import-export business in India."
-                 },
-                 {
-                   q: "Who needs to obtain an IEC?",
-                   a: "Any person or entity looking to import goods into India or export goods from India must have an IEC. It is required for customs clearance, international trade payments, and availing benefits under the Foreign Trade Policy."
-                 },
-                 {
-                   q: "What are the main benefits of having an IEC?",
-                   a: "The key benefits include legal access to global markets, eligibility for government export schemes, lifetime validity with no renewal hassles, and simplified customs and banking procedures."
-                 },
-                 {
-                   q: "Is there any renewal required for an IEC?",
-                   a: "No, an IEC has lifetime validity and does not require any renewal. However, it is mandatory to update your IEC details on the DGFT portal annually between April and June to keep it active."
-                 },
-                 {
-                   q: "What documents are needed for IEC registration?",
-                   a: "You will need a digital copy of the PAN card, identity proof (Aadhaar/Voter ID), proof of business address, and a cancelled cheque or bank certificate of the business's current account."
-                 },
-                 {
-                   q: "How long does it take to get an IEC?",
-                   a: "Once the online application is submitted with all the correct documents, the IEC is typically issued by the DGFT within 3-5 working days."
-                 },
-                 {
-                   q: "Can an individual apply for an IEC?",
-                   a: "Yes, both individuals (as proprietors) and business entities like partnership firms, LLPs, and companies can apply for and obtain an IEC."
-                 },
-                 {
-                   q: "Is GST registration mandatory to get an IEC?",
-                   a: "While GST registration is not a mandatory prerequisite to apply for an IEC, it is required for claiming GST refunds on exports. Most businesses involved in regular trade will need both."
-                 },
-                 {
-                   q: "What happens if I don't update my IEC annually?",
-                   a: "Failure to update your IEC details on the DGFT portal between April and June each year will result in the deactivation of your IEC, which will halt all your import and export activities until it is reactivated."
-                 },
-                 {
-                   q: "How can Rekotax help with IEC registration?",
-                   a: "Rekotax offers a complete end-to-end service for IEC registration. We assist with document preparation, ensure an error-free online application, and provide support for annual updates, making the entire process fast and seamless for you."
-                 }
-            ]
+  {
+    q: "What is FSSAI Registration/License and why is it required?",
+    a: "It’s a mandatory authorization from the Food Safety and Standards Authority of India for anyone manufacturing, processing, storing, distributing, importing, or selling food. It enables legal operations, ensures food-safety compliance, and displays a 14-digit FSSAI number on premises/labels to build consumer trust."
+  },
+  {
+    q: "Who must obtain FSSAI registration or license?",
+    a: "All Food Business Operators (FBOs)—manufacturers, repackers, traders/wholesalers/retailers, online sellers/aggregators, cloud & home kitchens, restaurants, caterers, transporters, warehouses/cold storages, and importers—must obtain FSSAI authorization before operating."
+  },
+  {
+    q: "What are the types of FSSAI authorization?",
+    a: "1) FSSAI Registration (Basic) for petty/micro FBOs. 2) State License for medium businesses operating within a state. 3) Central License for large/multi-state operations, importers, 100% EOUs, airports/seaports units, and other specified categories."
+  },
+  {
+    q: "What is FoSCoS and how do I apply?",
+    a: "FoSCoS (Food Safety Compliance System) is FSSAI’s online portal. Create an account, choose activity (manufacturer/trader/food service, etc.), fill Form A (Registration) or Form B (License), upload documents, pay fees, and track status online."
+  },
+  {
+    q: "Which documents are required for FSSAI?",
+    a: "Constitution proof; PAN; ID/address of promoters; premises proof (rent agreement + NOC/ownership/utility bill); unit layout (manufacturers); product list/NIC or food category; machinery & capacity details (manufacturers); FSMS/hygiene plan; water test (if used); IEC for importers; board authorization for companies. Category-specific add-ons may apply."
+  },
+  {
+    q: "How long does approval take?",
+    a: "Timelines vary by state and category. Basic Registration is usually quick; Licenses involve scrutiny and may include inspection. Accurate documentation and compliant layouts speed up approval."
+  },
+  {
+    q: "What is the validity and renewal window?",
+    a: "FSSAI authorization is typically valid 1–5 years (as chosen). Renew on FoSCoS before expiry—ideally at least 30 days in advance. Operating with an expired certificate can attract penalties and closure directions."
+  },
+  {
+    q: "Do I need separate licenses for multiple locations/activities?",
+    a: "Yes. Each food-handling premises needs its own Registration/License. Select all applicable activities (e.g., manufacturing + distribution + retail) or obtain the appropriate combination as per FoSCoS categories."
+  },
+  {
+    q: "Is FSSAI needed for online food delivery or cloud kitchens?",
+    a: "Yes. Cloud/home kitchens and sellers on aggregators must have valid FSSAI authorization. Marketplaces generally require your FSSAI number for onboarding and continued listing."
+  },
+  {
+    q: "What labeling and display rules apply?",
+    a: "Pre-packaged foods must follow FSS (Packaging & Labelling) Regulations—show FSSAI number, FBO details, ingredients, allergens, net quantity, veg/non-veg logo, batch/lot, MRP, dates, and nutritional info where applicable. Food service outlets must display the FSSAI number on premises and bills/online listings."
+  },
+  {
+    q: "Are inspections part of the process?",
+    a: "They may be. Authorities can inspect premises for GHP/GMP, FSMS, pest control, storage, temperature logs, and personal hygiene. Fix non-conformities promptly to avoid penalties or suspension."
+  },
+  {
+    q: "Common reasons for queries or rejection?",
+    a: "Document mismatch, incomplete layout/capacity details, wrong activity selection, missing water/quality reports, poor hygiene/premises non-compliance, and missing authorizations. Ensure complete and consistent documentation and correct category selection."
+  },
+  {
+    q: "Penalties for operating without FSSAI authorization?",
+    a: "Businesses can face fines, product seizure, suspension of operations, and prosecution under the Food Safety and Standards Act. Always obtain/renew authorization on time and maintain compliance."
+  },
+  {
+    q: "How do importers comply with FSSAI norms?",
+    a: "Importers need a Central License and must comply with FSS (Import) regulations—product approvals (where applicable), compliant labeling, shelf-life conditions, and clearances via FICS/authorities. Keep IEC, test reports, and documents ready for port checks."
+  },
+  {
+    q: "Do transporters, warehouses, and cold storages need FSSAI?",
+    a: "Yes. Logistics FBOs handling food require Registration/License based on scale. Maintain temperature logs, sanitation SOPs, and traceability to meet inspections and client requirements."
+  },
+  {
+    q: "Can I add products or change activities later?",
+    a: "Yes—apply for modification on FoSCoS when adding categories, changing capacity, or expanding activities. Significant changes may need approval and possibly a fresh inspection."
+  },
+  {
+    q: "Is a lab/water test report mandatory for manufacturers?",
+    a: "Often yes. Water potability/process-water tests are common; raw material/finished goods testing may be required (NABL labs) depending on product category—e.g., milk, meat, water, nutraceuticals, beverages."
+  },
+  {
+    q: "Do home businesses need FSSAI?",
+    a: "Yes. Home/residence-based sellers (offline or online) are FBOs and must obtain the applicable Registration/License, maintain hygiene, use proper packaging/labels, and issue bills with the FSSAI number."
+  },
+  {
+    q: "How should I display the FSSAI number/logo?",
+    a: "Display the 14-digit number at premises and on invoices/cash memos/online listings. Pre-packs must carry the FSSAI number and required labeling particulars. Use the FSSAI logo + number as prescribed."
+  },
+  {
+    q: "How does Rekotax help with FSSAI?",
+    a: "End-to-end assistance: category selection (Registration/State/Central), documentation, FoSCoS filing, responses to queries, label & FSMS guidance, modifications/renewals, and inspection support to get compliant faster."
+  }
+]
+
 
               .map(({ q, a }, idx) => {
                 const isOpen = expanded === idx;

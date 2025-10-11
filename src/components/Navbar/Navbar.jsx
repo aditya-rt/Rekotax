@@ -22,6 +22,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import PhoneInTalkRoundedIcon from "@mui/icons-material/PhoneInTalkRounded";
 import { useNavigate } from "react-router-dom";
+import  Contact from "./Contact";
 
 export default function Navbar() {
   const theme = useTheme();
@@ -44,6 +45,9 @@ export default function Navbar() {
   
   const [activeService, setActiveService] = useState("Registration");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+const openContact = () => setContactOpen(true);
+ const closeContact = () => setContactOpen(false);
 
   const openMenu = (k) => setAnchors((a) => ({ ...a, [k]: true }));
   const closeMenu = (k) => setAnchors((a) => ({ ...a, [k]: false }));
@@ -77,7 +81,7 @@ export default function Navbar() {
     "12A & 80G Registration",
     "FSSAI",
     "Trademark",
-    "Other Registrations",
+    // "Other Registrations",
   ];
   const midIdx = Math.ceil(otherRegItems.length / 2);
   const otherRegColA = otherRegItems.slice(0, midIdx);
@@ -98,6 +102,14 @@ export default function Navbar() {
     if (text === "Goods & Service Tax (GST)") return navigate("/gst-registration");
     if (text === "LUT Registration") return navigate("/lut-registration");
     if (text === "Import Export Code") return navigate("/import-export-code");
+    if (text === "Shops & Establishment") return navigate("/shops-and-establishment");
+    if (text === "MSME / Udyam") return navigate("/msme");
+    if (text === "Startup India") return navigate("/startup-india");
+    if (text === "FSSAI") return navigate("/fssai");
+    if (text === "Trademark") return navigate("/trademark");
+    if (text === "Other Registrations") return navigate("/other-registration");
+    if (text === "Professional Tax") return navigate("/professional-tax");
+    if (text === "12A & 80G Registration") return navigate("/eighty-g-registration");
   };
 
   return (
@@ -507,13 +519,13 @@ export default function Navbar() {
                 borderColor: "rgba(255,255,255,0.36)",
               },
             }}
-            onClick={() => navigate("/contact")}
+            onClick={openContact}
           >
             GET CONSULTATION
           </Button>
           <IconButton
             aria-label="Get consultation"
-            onClick={() => navigate("/contact")}
+            onClick={openContact}
             sx={{
               display: { xs: "inline-flex", sm: "none" }, // show only on xs
               bgcolor: "rgba(255,255,255,0.10)",
@@ -594,9 +606,11 @@ export default function Navbar() {
           ))}
         </List>
       </Drawer>
-
+      
       {/* Spacer so content is not hidden behind the fixed AppBar */}
       <Toolbar sx={{ minHeight: { xs: APPBAR_H_MOBILE, md: APPBAR_H_DESKTOP } }} />
+      <Contact open={contactOpen} onClose={closeContact} />
+
     </>
   );
 }

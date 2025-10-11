@@ -22,6 +22,8 @@ import {
     Snackbar,
     TextField
 } from "@mui/material";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
+
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useTheme } from "@mui/material/styles";
 import { useState, useEffect, useRef } from "react";
@@ -97,7 +99,7 @@ const InfoCard = ({ title, desc }) => (
     >
         <Typography
             variant="h4"
-            sx={{ color: "#0f2555", fontWeight: 500, mb: 1.5, fontSize: "1.5rem" }}
+            sx={{ color: "#0f2555", fontWeight: 700, mb: 1.5, fontSize: "1.5rem" }}
         >
             {title}
         </Typography>
@@ -157,7 +159,7 @@ const fieldSx = {
     "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
 };
 
-export default function LutRegistration({ webAppUrl }) {
+export default function ShopsAndEstablishment({ webAppUrl }) {
     const theme = useTheme();
     const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
     const [show, setShow] = useState(true);
@@ -336,7 +338,7 @@ export default function LutRegistration({ webAppUrl }) {
                             px: { xs: 2, md: 0 },
                         }}
                     >
-                        Fast, Accurate, and Hassle-free LUT Registration
+                        Shops & Establishment Registration
                     </Typography>
 
 
@@ -352,8 +354,7 @@ export default function LutRegistration({ webAppUrl }) {
                             color: "rgba(255,255,255,0.9)",
                         }}
                     >
-                        LUT Registration allows exporters to supply goods or services without upfront IGST payment, ensuring better cash flow and global competitiveness. At Rekotax, we simplify the entire filing process so you can expand internationally while we handle the compliances.
-                    </Typography>
+                        Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.                    </Typography>
 
                     {/* CTAs centered */}
                     <Box
@@ -414,7 +415,7 @@ export default function LutRegistration({ webAppUrl }) {
                         }}
                     >
                         {[
-                            "Typical approvals: 1-3 days*",
+                            "Typical approvals: 5-7 days*",
                             "CA/CS assisted end-to-end",
                             "Paperless & transparent tracking",
                         ].map((text, i) => (
@@ -483,13 +484,14 @@ export default function LutRegistration({ webAppUrl }) {
                     align="center"
                     sx={{
                         color: "#0f2555",
-                        fontWeight: 600,
+                        fontWeight: 700,
                         mb: 4,
                         mt: 2,
                         fontSize: { xs: "2rem", md: "2.5rem" },
                     }}
                 >
-                    Know All About LUT Registration
+                    Know All About Shops & Establishment Registration
+
                 </Typography>
 
                 {/* What is GST + GSTIN (left) AND Contact Form (right) */}
@@ -512,18 +514,20 @@ export default function LutRegistration({ webAppUrl }) {
                             variant="h3"
                             sx={{
                                 color: "#0f2555",
-                                fontWeight: 500,
+                                fontWeight: 700,
                                 mb: 1.5,
                                 fontSize: { xs: "1.5rem", md: "1.8rem" },
                             }}
                         >
-                            What is LUT Registration?
+                            What is Shops & Establishment Registration?
+
                         </Typography>
                         {/* Para 1 */}
                         <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, mb: 2, color: "#333" }}>
-                            A <strong>Letter of Undertaking (LUT)</strong> is a document that allows exporters to supply <br />
-                            goods or services <strong>without paying IGST upfront</strong>. It is filed with the GST <br />
-                            department to ensure smooth export operations and better <strong>working capital <br /> management</strong>.
+                          Shops and Establishment Registration is a state law requirement for shops, commercial <br/>
+                          establishments, and offices operating within a state. It governs conditions of work <br/>
+                          like working hours, weekly holidays, leave, wages, and employee welfare, and it <br/> 
+                          mandates registration within the prescribed timeline from the date of commencement.
                         </Typography>
 
                         {/* Para 2 */}
@@ -540,16 +544,17 @@ export default function LutRegistration({ webAppUrl }) {
                                 variant="h4"
                                 component="h3"
                                 sx={{
-                                    fontWeight: 500,
+                                    fontWeight: 800,
                                     color: "#0f2555",
-                                    fontSize: { xs: "1.6rem", md: "2rem" },
+                                    fontSize: { xs: "1rem", md: "2rem" },
                                     textAlign: "center",
-                                    mb: 2.5,
+                                    mb: 1.5,
                                     lineHeight: 1.2,
                                     textWrap: "balance",
                                 }}
                             >
-                                Key Features of LUT Registration
+                              Key Features of Shops & Establishment Registration
+
                             </Typography>
 
                             {/* Bulleted list */}
@@ -567,25 +572,61 @@ export default function LutRegistration({ webAppUrl }) {
                                 }}
                             >
                                 <li>
-                                    Valid for <strong>one financial year</strong> and must be renewed annually
+Mandatory for <strong>shops, offices, warehouses, service providers, eateries, and commercial establishments  </strong>                               </li>
+                                <li>
+State-specific registration - administered by the <strong>Labour Department or Municipal authorities</strong>
                                 </li>
                                 <li>
-                                    Can be filed <strong>online via GST portal</strong> with minimal documents
+Captures key details like <strong>employer, manager, number of employees, nature of business, and premises</strong> 
                                 </li>
                                 <li>
-                                    Applicable for <strong>zero-rated supplies</strong> including exports and SEZ sales
-                                </li>
+Prescribes <strong>working hours, weekly off, leave, and notice requirements for employee welfare</strong> 
+                                    </li>
                                 <li>
-                                    Eliminates the need for <strong>tax refund claims</strong> after export
-                                </li>
-                                <li>
-                                    Mandatory for businesses with <strong>clean compliance history</strong>
+Validity may be <strong>lifetime or periodic </strong>with renewals depending on the state
                                 </li>
                             </Box>
                         </Box>
 
 
+                        {/* <Typography
+                            variant="h3"
+                            sx={{
+                                color: "#0f2555",
+                                fontWeight: 700,
+                                mb: 2,
+                                mt:3,
+                                fontSize: { xs: "1.6rem", md: "1.7rem" },
+                            }}
+                        >
+                            GSTIN Structure Explained
+                        </Typography> */}
 
+                        {/* <Box
+                            sx={{
+                                display: "inline-block",
+                                bgcolor: "#0f2555",
+                                color: "#fff",
+                                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                                fontWeight: 600,
+                                px: 2,
+                                py: 1,
+                                borderRadius: 2,
+                                letterSpacing: 2,
+                                mb: 2,
+                                boxShadow: 3,
+                            }}
+                        >
+                            22ABCDE1234F1Z5
+                        </Box> */}
+
+                        {/* <Grid container spacing={1.5} wrap="wrap">
+                            <GstinBox code="22" label="State Code" />
+                            <GstinBox code="ABCDE1234F" label="PAN Number" />
+                            <GstinBox code="1" label="Entity Code" />
+                            <GstinBox code="Z" label="Default Letter" />
+                            <GstinBox code="5" label="Check Digit" />
+                        </Grid> */}
                     </Grid>
 
                     {/* RIGHT: Contact form */}
@@ -729,7 +770,8 @@ export default function LutRegistration({ webAppUrl }) {
                         variant="h4"
                         sx={{ color: "#0f2555", fontWeight: 600, mb: 3, textAlign: "left" }}
                     >
-                        Who Can Apply for LUT?                    </Typography>
+                      Who Needs Shops & Establishment Registration
+              </Typography>
 
                     <Grid
                         container
@@ -742,10 +784,20 @@ export default function LutRegistration({ webAppUrl }) {
                         }}
                     >
                         {[
-                            { title: "Exporters of Goods", desc: "Businesses engaged in exporting goods directly or through third parties." },
-                            { title: "Exporters of Services", desc: "Service providers who supply services outside India under GST law." },
-                            { title: "SEZ Supplies", desc: "Suppliers making zero-rated supplies to Special Economic Zones (SEZs)." },
-                        ].map((card) => (
+  {
+    title: "Shops and Offices",
+    desc: <>Retail outlets, boutiques, showrooms, and offices engaged in trade or service activities at a fixed premises.</>,
+  },
+  {
+    title: "Commercial Establishments",
+    desc: <>Consultancies, IT firms, agencies, warehouses, restaurants, cafes, and other service enterprises.</>,
+  },
+  {
+    title: "Warehouses and Agencies",
+    desc: <>Agencies, warehouses, godowns, and distribution points carrying on trade or support services.</>,
+  },
+]
+.map((card) => (
                             <Grid
                                 item
                                 key={card.title}
@@ -769,7 +821,7 @@ export default function LutRegistration({ webAppUrl }) {
                                         boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                                     }}
                                 >
-                                    <Typography variant="h6" sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}>
+                                    <Typography variant="h6" sx={{ fontWeight: 800, color: "#0f2555", mb: 1 }}>
                                         {card.title}
                                     </Typography>
                                     <Typography sx={{ lineHeight: 1.6 }}>{card.desc}</Typography>
@@ -787,12 +839,11 @@ export default function LutRegistration({ webAppUrl }) {
                         variant="h4"
                         sx={{ color: "#0f2555", fontWeight: 600, mb: 3, mt: 4, textAlign: "left" }}
                     >
-                        Why Should You File LUT?                    </Typography>
+                        Benefits of Shops & Establishment Registration           </Typography>
 
                     <Typography sx={{ mb: 5, color: "#444" }}>
-                        Filing an <strong>LUT</strong> is not just a compliance formality,
-                        it gives exporters a <strong>strategic edge</strong> by freeing up funds and
-                        ensuring global trade runs smoothly. Instead of paying IGST and waiting for refunds, LUT helps you operate with ease and efficiency.
+Registration ensures legal operation, strengthens credibility, and streamlines labor compliance for inspections and audits.
+
                     </Typography>
 
                     <Box
@@ -808,15 +859,35 @@ export default function LutRegistration({ webAppUrl }) {
                         }}
                     >
                         {[
-                            { title: "No Upfront Tax", desc: "Export without paying IGST upfront and save working capital." },
-                            { title: "Improved Liquidity", desc: "Avoid funds getting blocked in refunds and keep cash flow smooth." },
-                            { title: "Faster Operations", desc: "Seamless export process with reduced compliance delays." },
-                            { title: "Global Competitiveness", desc: "Boost your international trade with tax-free export compliance." },
-                            { title: "Annual Validity", desc: "A single LUT is valid for the entire financial year, making compliance easier." },
-                            { title: "Hassle-Free Refunds", desc: "Avoid lengthy refund claims and enjoy direct export benefits." }
-                        ]
+  {
+    title: "Legal Recognition",
+    desc: <>Operate lawfully within the state with a valid registration certificate.</>,
+  },
+  {
+    title: "Smoother Licensing",
+    desc: <>Facilitates <strong>bank account opening</strong>, <strong>other license applications</strong>, and <strong>tenders</strong>.</>,
+  },
+  {
+    title: "Employee Welfare",
+    desc: <>Supports fair <strong>working hours</strong>, <strong>weekly off</strong>, and <strong>leave</strong> as per state norms.</>,
+  },
+  {
+    title: "Inspection Ready",
+    desc: <>Clear documentation and registers make <strong>inspections and audits</strong> easier.</>,
+  },
+  {
+    title: "Credibility",
+    desc: <>Improves trust with stakeholders, landlords, and authorities.</>,
+  },
+  {
+    title: "Simple Online Process",
+    desc: <>Most states offer <strong>online application</strong>, <strong>e-sign</strong>, and <strong>e-payment</strong>.</>,
+  },
+]
+
+
                             .map((card) => (
-                                <Box key={card.title} sx={{ display: "flex", fontWeight: 500 }}>
+                                <Box key={card.title} sx={{ display: "flex" }}>
                                     {/* If InfoCard already renders a Paper, just keep it; otherwise use a Paper here */}
                                     <InfoCard title={card.title} desc={card.desc} />
                                 </Box>
@@ -834,53 +905,55 @@ export default function LutRegistration({ webAppUrl }) {
                         align="center"
                         sx={{
                             fontSize: { xs: "2rem", md: "2.2rem" },
-                            fontWeight: 600,
+                            fontWeight: 700,
                             color: "#0f2555",
                             mb: 6,
                         }}
                     >
-                        Simplified Process for LUT Registration
+Simplified Process for Shops & Establishment Registration
                     </Typography>
 
                     {(() => {
-                        const steps = [
-                            {
-                                number: "1",
-                                title: "Login to GST Portal",
-                                desc:
-                                    "Visit the official GST portal and log in using your valid credentials (username and password) to access your dashboard.",
-                            },
-                            {
-                                number: "2",
-                                title: "Navigate to Services Tab",
-                                desc:
-                                    "On the dashboard, go to the 'Services' tab, select 'User Services,' and then click on 'Furnish Letter of Undertaking (LUT).'",
-                            },
-                            {
-                                number: "3",
-                                title: "Select Financial Year",
-                                desc:
-                                    "Choose the financial year for which you want to file the LUT. If you have a previously filed LUT, you can view it here.",
-                            },
-                            {
-                                number: "4",
-                                title: "Fill Form GST RFD-11",
-                                desc:
-                                    "Fill in the required details in the online form. You will need to provide details of two independent witnesses and self-declare the undertaking.",
-                            },
-                            {
-                                number: "5",
-                                title: "Sign and Submit",
-                                desc:
-                                    "Review the form carefully and submit it using either a Digital Signature Certificate (DSC) or an Electronic Verification Code (EVC).",
-                            },
-                            {
-                                number: "6",
-                                title: "Download Acknowledgment",
-                                desc:
-                                    "Once submitted, an Application Reference Number (ARN) will be generated. You can download the acknowledgment for your records.",
-                            },
-                        ];
+                  const steps = [
+  {
+    number: "1",
+    title: "Prepare Your Documents",
+    desc:
+      "Keep entity PAN, incorporation or firm deed, proof of principal place of business, rent agreement with owner NOC if rented, signatory ID, photo, list of employees with designation, and manager details. Have a board or partner authorization if applicable.",
+  },
+  {
+    number: "2",
+    title: "Create State Portal Account",
+    desc:
+      "Register on your State Labour Department or Municipal portal. Verify mobile and email via OTP and complete the profile such as nature of business, date of commencement, and local jurisdiction if asked.",
+  },
+  {
+    number: "3",
+    title: "Fill Registration Form",
+    desc:
+      "Enter legal name, trade name, constitution, address, signatory, manager, number of employees, and business category. Some states ask for shift details and weekly off day.",
+  },
+  {
+    number: "4",
+    title: "Upload Documents",
+    desc:
+      "Upload KYC and address proofs in the prescribed size and format. Attach photograph of the premises if required and any declarations mandated by the state.",
+  },
+  {
+    number: "5",
+    title: "e-Sign and Pay Fees",
+    desc:
+      "e-Sign using DSC or Aadhaar as permitted. Pay the registration fee or consolidated fee as applicable. Some states auto-approve while others may schedule scrutiny or inspection.",
+  },
+  {
+    number: "6",
+    title: "Get Certificate & Comply",
+    desc:
+      "Download the Shops and Establishment Registration Certificate. Display it at the premises and maintain registers, notices, and records. Track renewal or amendments in case of changes to name, address, employees, or ownership.",
+  },
+];
+
+
 
                         const rows = [steps.slice(0, 3), steps.slice(3, 6)];
 
@@ -959,7 +1032,7 @@ export default function LutRegistration({ webAppUrl }) {
                                             <Typography
                                                 variant="h6"
                                                 sx={{
-                                                    fontWeight: 600,
+                                                    fontWeight: 700,
                                                     color: "#0f2555",
                                                     mb: 1,
                                                     fontSize: "1.1em",
@@ -983,282 +1056,263 @@ export default function LutRegistration({ webAppUrl }) {
                     <WhyRekotax fullBleed />
                 </Box>
 
-                <Box
-                    sx={{
-                        maxWidth: 1100,
-                        mx: "auto",
-                        px: { xs: 2, md: 4 },
-                        py: { xs: 6, md: 10 },
-                        fontFamily: "'Open Sans', sans-serif",
-                        color: "#333",
-                        lineHeight: 1.7,
-                        backgroundColor: "#fff",
-                    }}
-                >
-                    <Typography
-                        variant="h1"
-                        sx={{
-                            fontSize: { xs: "2rem", md: "2.5rem" },
-                            fontWeight: 600,
-                            textAlign: "center",
-                            color: "#0f2555",
-                            mb: 4,
-                        }}
-                    >
-                        LUT Registration Under GST - A Complete Guide for Exporters
-                    </Typography>
+              <Box
+  sx={{
+    maxWidth: 1100,
+    mx: "auto",
+    px: { xs: 2, md: 4 },
+    py: { xs: 4, md: 8 },
+    backgroundColor: "#fff",
+    color: "#333",
+    lineHeight: 1.7,
+  }}
+>
+  <Typography
+    variant="h3"
+    sx={{ textAlign: "center", color: "#0f2555", fontWeight: 600, mb: 4 }}
+  >
+    Shops &amp; Establishment Registration in India – A Complete Guide
+  </Typography>
 
-                    {/* Introduction to LUT Registration */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Introduction to LUT Registration
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        For businesses engaged in international trade, managing cash flow is critical. The Goods and Services Tax (GST) regime
-                        provides a powerful tool for exporters called the <strong>Letter of Undertaking (LUT)</strong>. This facility allows
-                        businesses to export goods or services without paying the Integrated GST (IGST) upfront, preventing working capital from
-                        being blocked in refunds.
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        Filing an LUT is a crucial compliance step for exporters seeking to optimize financial operations and gain a competitive
-                        edge globally. At <strong>Rekotax</strong>, we simplify the LUT registration process so your export operations remain
-                        smooth, compliant, and efficient.
-                    </Typography>
+  {/* Introduction */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 2, mb: 1.5 }}>
+    Introduction
+  </Typography>
+  <Typography paragraph>
+    The Shops &amp; Establishments Act (state-specific) regulates conditions of work in shops,
+    offices, restaurants, theatres and other commercial establishments. It covers working hours,
+    weekly holidays, leave, wages, safety and employee welfare.
+  </Typography>
+  <Typography paragraph>
+    Most states mandate registration within a prescribed timeline from starting operations. With{" "}
+    <strong>Rekotax</strong>, you get end-to-end assistance for registration, amendments and
+    renewals so your premises stays compliant and inspection-ready.
+  </Typography>
 
-                    {/* What is a Letter of Undertaking (LUT)? */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        What is a Letter of Undertaking (LUT)?
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        A Letter of Undertaking (LUT) is submitted under <strong>Form GST RFD-11</strong> by an exporter on the GST portal. By
-                        filing an LUT, the exporter undertakes to follow GST rules - either export the goods or services within the prescribed
-                        time or pay IGST with interest if they fail to do so. It effectively functions like a waiver from furnishing a bond for
-                        zero-rated exports without immediate tax payment.
-                    </Typography>
+  {/* What is it */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    What is Shops &amp; Establishment Registration?
+  </Typography>
+  <Typography paragraph>
+    It is a state-level registration for any premises where trade, business or services are carried
+    on. On approval, the authority issues a <strong>Shops &amp; Establishment Registration
+    Certificate</strong> (often called a trade license in some jurisdictions) which must be
+    displayed at the premises.
+  </Typography>
 
-                    {/* Who should file for LUT */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Who Should File for LUT Registration?
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>LUT registration is intended for any GST-registered taxpayer who exports goods or services, including:</Typography>
-                    <ul>
-                        <li>
-                            <strong>Exporters of Goods:</strong> Businesses shipping products to countries outside India.
-                        </li>
-                        <li>
-                            <strong>Exporters of Services:</strong> Professionals and companies providing services to clients located abroad.
-                        </li>
-                        <li>
-                            <strong>Suppliers to Special Economic Zones (SEZs):</strong> Supplies to SEZ units or developers are treated as zero-rated.
-                        </li>
-                    </ul>
-                    <Typography sx={{ mb: 4 }}>
-                        In short, any business making <strong>zero-rated supplies</strong> can opt for LUT to avoid the pay-and-refund cycle.
-                    </Typography>
+  {/* Who needs it */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Who Needs Shops &amp; Establishment Registration?
+  </Typography>
+  <Typography paragraph>Registration is typically required for the following:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      <><strong>Retail &amp; service outlets:</strong> Shops, showrooms, salons, gyms, cafes, restaurants, eateries.</>,
+      <><strong>Offices &amp; agencies:</strong> IT/ITES, consulting, marketing, staffing, brokerage and other service firms.</>,
+      <><strong>Warehouses &amp; godowns:</strong> Storage, distribution and logistics premises.</>,
+      <><strong>Startups &amp; established entities:</strong> Proprietorships, Partnerships, LLPs and Companies operating from a commercial address.</>,
+      <><strong>Multi-state presence:</strong> Each branch/premises must register under the respective state’s Act.</>,
+    ].map((item, idx) => (
+      <ListItem key={idx} sx={{ py: 0 }}>
+        <ListItemText primaryTypographyProps={{ component: "span" }} primary={item} />
+      </ListItem>
+    ))}
+  </List>
 
-                    {/* Eligibility criteria */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Eligibility Criteria for Filing an LUT
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>To use the LUT facility, the applicant must:</Typography>
-                    <ul>
-                        <li>Be registered under GST.</li>
-                        <li>
-                            Not have been prosecuted for any offence under the CGST Act or any other existing law where the tax evaded exceeds{" "}
-                            <strong>₹250 lakhs</strong>.
-                        </li>
-                    </ul>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        If these conditions are not met, the exporter must furnish an <strong>export bond</strong> with a bank guarantee to export
-                        without payment of IGST.
-                    </Typography>
+  {/* Applicability & timelines */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Applicability &amp; Timelines
+  </Typography>
+  <Typography paragraph>
+    Rules, fees, and validity differ by state. Many states require registration{" "}
+    <strong>within 30 days of commencement</strong> (check your state portal/notification). Some
+    states grant lifetime certificates; others require periodic renewal.
+  </Typography>
 
-                    {/* Benefits */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Benefits of LUT Registration
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        <ul >
-                            <li>
-                                <strong>Improved Working Capital:</strong> No upfront IGST payment keeps funds available for core operations.
-                            </li>
-                            <li>
-                                <strong>Simplified Compliance:</strong> Skips the lengthy refund process otherwise required after export.
-                            </li>
-                            <li>
-                                <strong>Annual Validity:</strong> One LUT remains valid for the entire financial year.
-                            </li>
-                            <li>
-                                <strong>Enhanced Global Competitiveness:</strong> Better liquidity and lower costs help you price competitively.
-                            </li>
-                            <li>
-                                <strong>Hassle-Free Exports:</strong> Fully online, quick, and transparent filing.
-                            </li>
-                        </ul>
-                    </Typography>
+  <Box
+    sx={{
+      background: "#f4f6f8",
+      p: 2,
+      borderLeft: "4px solid #0f2555",
+      borderRadius: 1,
+      my: 2,
+    }}
+  >
+    <Typography sx={{ m: 0 }}>
+      <strong>Tip:</strong> If you change <em>name, address, manager, employee count or nature of
+      business</em>, file an amendment within the state-prescribed time.
+    </Typography>
+  </Box>
 
-                    {/* Documents required */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Documents Required for LUT Registration
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        <ul>
-                            <li>
-                                <strong>GST portal login credentials</strong> for the taxpayer.
-                            </li>
-                            <li>
-                                <strong>Details of two independent witnesses</strong> (name, occupation, address).
-                            </li>
-                            <li>
-                                <strong>Digital Signature Certificate (DSC)</strong> for companies or LLPs, or <strong>EVC</strong> verification via OTP for others.
-                            </li>
-                        </ul>
-                    </Typography>
-                    {/* Step-by-step process */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Step-by-Step Process for LUT Registration
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        <ol>
-                            <li>
-                                <strong>Login to GST Portal:</strong> Use official credentials to access your dashboard.
-                            </li>
-                            <li>
-                                <strong>Navigate to LUT Application:</strong> Go to Services - User Services - Furnish Letter of Undertaking (LUT).
-                            </li>
-                            <li>
-                                <strong>Select Financial Year:</strong> Choose the year for which the LUT is being filed.
-                            </li>
-                            <li>
-                                <strong>Fill Form GST RFD-11:</strong> Tick the self-declarations and provide witness details.
-                            </li>
-                            <li>
-                                <strong>Sign and Submit:</strong> Sign with DSC or EVC to complete submission.
-                            </li>
-                            <li>
-                                <strong>Download Acknowledgment:</strong> An ARN is generated instantly for your records.
-                            </li>
-                        </ol>
-                    </Typography>
-                    {/* Consequences */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Consequences of Non-Compliance
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        If an exporter files an LUT but fails to meet conditions (for example, export not completed within three months or payment
-                        for services not received within one year), the LUT facility can be revoked. In such cases, the exporter must:
-                    </Typography>
-                    <ul>
-                        <li>
-                            Pay applicable IGST along with <strong>18% interest</strong>.
-                        </li>
-                        <li>Furnish an export bond for future exports.</li>
-                    </ul>
+  {/* Key features */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Key Features of Registration
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      <><strong>State-specific online portals:</strong> Apply, pay fees and download certificates digitally in most states.</>,
+      <><strong>Employee welfare norms:</strong> Working hours, weekly off, leave, overtime, safety and display requirements.</>,
+      <><strong>Mandatory display:</strong> Certificate and prescribed notices must be displayed at a visible spot.</>,
+      <><strong>Inspection readiness:</strong> Maintain registers/records as specified by the state rules.</>,
+    ].map((item, idx) => (
+      <ListItem key={idx} sx={{ py: 0 }}>
+        <ListItemText primaryTypographyProps={{ component: "span" }} primary={item} />
+      </ListItem>
+    ))}
+  </List>
 
-                    {/* How Rekotax helps */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        How Rekotax Can Help You
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        <ul>
-                            <li>
-                                <strong>End-to-end assistance:</strong> Eligibility check, filing, and acknowledgment download.
-                            </li>
-                            <li>
-                                <strong>Error-free filing:</strong> Accurate details for smooth, instant submission.
-                            </li>
-                            <li>
-                                <strong>Timely renewals:</strong> Reminders and filing before every financial year.
-                            </li>
-                            <li>
-                                <strong>Expert GST advisory:</strong> Complete support for ongoing GST compliance.
-                            </li>
-                        </ul>
-                    </Typography>
-                    {/* Conclusion */}
-                    <Typography variant="h2" sx={{ color: "#0f2555", fontWeight: 500, fontSize: "25px", mb: 2, mt: 4 }}>
-                        Conclusion
-                    </Typography>
-                    <Typography sx={{
-                        color: "#333", // or theme.palette.text.primary
-                        fontWeight: 400, // normal weight, not 200
-                        fontSize: "1.05rem", // adjust size for comfortable reading
-                        lineHeight: 1.8,
-                        mb: 2,
-                    }}>
-                        The Letter of Undertaking is an indispensable tool for Indian exporters, improving liquidity and simplifying compliance so
-                        you can focus on growth instead of refunds and delays.
-                    </Typography>
-                    <Typography>
-                        At <strong>Rekotax</strong>, we make LUT filing simple and reliable. Contact us to file your LUT quickly and correctly and
-                        unlock the full potential of your export business.
-                    </Typography>
-                </Box>
+  {/* Registration / Renewal / Amendment table */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Registration, Renewal &amp; Amendment
+  </Typography>
+  <Table sx={{ my: 2 }}>
+    <TableHead>
+      <TableRow>
+        {["Action", "Who needs it", "Purpose", "Typical timeline"].map((h) => (
+          <TableCell key={h} sx={{ background: "#0f2555", color: "#fff", fontWeight: 700 }}>
+            {h}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[
+        ["Registration", "Newly opened shops/establishments", "Operate lawfully under state labour regulations", "Often within 30 days of start (state-specific)"],
+        ["Renewal", "States with fixed validity", "Extend certificate validity", "As per state cycle / lifetime in some states"],
+        ["Amendment", "On business detail changes", "Keep records correct for inspections", "Within prescribed days (state-specific)"],
+      ].map((row, idx) => (
+        <TableRow key={idx}>
+          {row.map((cell, i) => (
+            <TableCell key={i} sx={{ fontSize: "0.95em" }}>
+              {i === 0 ? <strong>{cell}</strong> : cell}
+            </TableCell>
+          ))}
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+
+  {/* Benefits */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Benefits of Registration
+  </Typography>
+  <Typography paragraph>Getting registered provides tangible operational and compliance advantages:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      <><strong>Legal recognition:</strong> Lawful operation at your commercial premises.</>,
+      <><strong>Smoother licensing:</strong> Helpful for bank account opening, other licenses and tenders.</>,
+      <><strong>Inspection-ready:</strong> Clear documentation for labour inspections.</>,
+      <><strong>Stakeholder trust:</strong> Boosts credibility with landlords, vendors and authorities.</>,
+    ].map((item, idx) => (
+      <ListItem key={idx} sx={{ py: 0 }}>
+        <ListItemText primaryTypographyProps={{ component: "span" }} primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Why register even if small */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Why Register Even If You’re Small?
+  </Typography>
+  <Typography paragraph>Even micro establishments benefit from timely registration:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      <><strong>Avoid penalties:</strong> Non-registration can lead to fines and prosecution.</>,
+      <><strong>Lease &amp; utilities:</strong> Landlords and utilities often insist on registration proof.</>,
+      <><strong>Hiring readiness:</strong> Provides a framework for lawful work conditions and records.</>,
+      <><strong>Future expansion:</strong> Easier to add employees, open branches and apply for other approvals.</>,
+    ].map((item, idx) => (
+      <ListItem key={idx} sx={{ py: 0 }}>
+        <ListItemText primaryTypographyProps={{ component: "span" }} primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Documents Required */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Documents Required
+  </Typography>
+  <Typography paragraph>Keep clear, legible copies as per your state portal’s format/size limits:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      <><strong>Entity proof:</strong> PAN; Incorporation Certificate / Partnership Deed / LLP Agreement.</>,
+      <><strong>Premises proof:</strong> Electricity bill / property tax; <strong>rent agreement &amp; owner NOC</strong> if rented.</>,
+      <><strong>Signatory/Manager KYC:</strong> PAN, Aadhaar, photo and contact details.</>,
+      <><strong>Employee details:</strong> Count, designations, weekly off day; shift details where asked.</>,
+      <><strong>Board/Partner authorization:</strong> If an authorised person is filing.</>,
+      <><strong>State-specific declarations:</strong> Prescribed forms, undertakings and premises photo if required.</>,
+    ].map((item, idx) => (
+      <ListItem key={idx} sx={{ py: 0 }}>
+        <ListItemText primaryTypographyProps={{ component: "span" }} primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Step-by-step process */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Step-by-Step Registration Process
+  </Typography>
+  <Typography paragraph>
+    The flow below reflects most state portals (exact fields vary by state):
+  </Typography>
+  <List sx={{ listStyleType: "decimal", pl: 4 }}>
+    {[
+      "Create account: Register on your State Labour/Municipal portal and verify contacts.",
+      "Fill the form: Legal name, trade name, address, nature of business, manager, employee count.",
+      "Upload documents: KYC, address proof, authorization and any state-mandated forms.",
+      "Pay fees & e-sign: Pay online and e-sign via Aadhaar/DSC as permitted.",
+      "Scrutiny/inspection: Some states auto-approve; others may schedule verification.",
+      "Download certificate: Display it at the premises and maintain required registers.",
+    ].map((step, idx) => (
+      <ListItem key={idx} sx={{ display: "list-item", py: 0 }}>
+        <ListItemText primary={step} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Penalties */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Penalties for Non-Compliance
+  </Typography>
+  <Typography paragraph>
+    States can levy fines for late/failed registration, not maintaining registers, or violating
+    working-hour and leave provisions. Repeated non-compliance may invite prosecution. Check your
+    state rules for exact amounts.
+  </Typography>
+
+  {/* How Rekotax helps */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    How Rekotax Can Help You
+  </Typography>
+  <Typography paragraph>We make registration simple and accurate:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      <><strong>State assessment:</strong> Applicability, timelines, fees and validity mapping.</>,
+      <><strong>Documentation &amp; filing:</strong> End-to-end preparation, portal filing and fee payment.</>,
+      <><strong>Inspection readiness:</strong> Guidance on displays, registers and notices.</>,
+      <><strong>Lifecycle support:</strong> Amendments, renewals and responses to authority queries.</>,
+      <><strong>Dedicated expert:</strong> One-on-one assistance till certificate download.</>,
+    ].map((item, idx) => (
+      <ListItem key={idx} sx={{ py: 0 }}>
+        <ListItemText primaryTypographyProps={{ component: "span" }} primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Conclusion */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 4, mb: 1.5 }}>
+    Conclusion
+  </Typography>
+  <Typography paragraph>
+    Shops &amp; Establishment Registration gives your premises legal standing and a clear framework
+    for employee welfare. Register on time, keep records updated, and stay inspection-ready to
+    operate with confidence.
+  </Typography>
+  <Typography paragraph>
+    <strong>Rekotax</strong> can handle the entire process so you can focus on running and scaling
+    your business.
+  </Typography>
+</Box>
 
 
 
@@ -1280,50 +1334,91 @@ export default function LutRegistration({ webAppUrl }) {
                                 fontFamily: "'Open Sans', sans-serif",
                             }}
                         >
-                            LUT Registration FAQs
+                            Frequently Asked Questions (FAQs)
                         </Typography>
                         {[
-                            {
-                                q: "What is a Letter of Undertaking (LUT) in GST?",
-                                a: "An LUT (filed in Form GST RFD-11) lets exporters supply goods or services without paying IGST upfront, subject to complying with GST export conditions."
-                            },
-                            {
-                                q: "Who is eligible to file an LUT for exports?",
-                                a: "Any GST-registered exporter of goods or services, including suppliers to SEZ units/developers, provided they have not been prosecuted for tax evasion exceeding ₹250 lakhs."
-                            },
-                            {
-                                q: "What are the main benefits of filing an LUT?",
-                                a: "Better working capital, simpler compliance by avoiding refund claims, fully online process, and improved global competitiveness."
-                            },
-                            {
-                                q: "Is it mandatory to file an LUT for all exports?",
-                                a: "No. Zero-rated exports can be done by filing an LUT (no IGST upfront) or by paying IGST and claiming a refund later. Most exporters prefer the LUT route."
-                            },
-                            {
-                                q: "What is the validity of an LUT?",
-                                a: "One financial year. You must file a fresh LUT for each new financial year."
-                            },
-                            {
-                                q: "What documents are required for LUT registration?",
-                                a: "GST portal login, details of two independent witnesses (name, address, occupation), and DSC for companies/LLPs or EVC (OTP) for others."
-                            },
-                            {
-                                q: "What is the difference between an LUT and a Bond?",
-                                a: "LUT is a simple undertaking available to eligible exporters. A Bond with bank guarantee is required if the exporter is not eligible for an LUT (e.g., past prosecution over ₹250 lakhs)."
-                            },
-                            {
-                                q: "What happens if I fail to export after filing an LUT?",
-                                a: "You must pay IGST with interest at 18% per annum. The LUT facility may be revoked and a bond may be required for future exports."
-                            },
-                            {
-                                q: "Can a single LUT cover multiple export shipments?",
-                                a: "Yes. One LUT covers all export shipments made during the financial year for which it is filed."
-                            },
-                            {
-                                q: "How can Rekotax help with LUT filing?",
-                                a: "Rekotax handles end-to-end filing, ensures accurate submission, manages documentation, and reminds you for timely annual renewals."
-                            }
-                        ]
+  {
+    q: "What is Shops & Establishment Registration?",
+    a: "A state-level registration under the Shops & Establishments Act regulating working conditions in shops, offices, eateries and other commercial premises—covering hours, weekly holidays, leave, wages and employee welfare. Registration is required within the prescribed timeline after starting business."
+  },
+  {
+    q: "Who needs to register under the Act?",
+    a: "Retail shops, commercial offices, warehouses, restaurants/cafés, service agencies, salons, clinics, coaching centres and similar premises-based businesses. (Factories are usually covered under the Factories Act instead.)"
+  },
+  {
+    q: "What is the timeline for registration after commencement?",
+    a: "Many states require registration within 30 days of starting operations (exact timelines vary by state). Early filing avoids penalties and eases other licences/inspections."
+  },
+  {
+    q: "What documents are required?",
+    a: "Entity PAN and incorporation/firm deed, premises proof (electricity bill/property tax), rent agreement & owner NOC (if rented), KYC of proprietor/authorised signatory with photo, manager details, employee count and weekly off, plus any state-specific declarations/photos."
+  },
+  {
+    q: "Is the process online?",
+    a: "In most states, yes—apply on the Labour/Municipal portal with e-payment and e-sign. Some jurisdictions may still do physical verification or inspection before approval."
+  },
+  {
+    q: "What is the validity of the certificate?",
+    a: "State-specific. Some issue lifetime certificates; others require renewal (e.g., every 1–5 years). Track the validity on your certificate and renew on time."
+  },
+  {
+    q: "Do I need separate registration for each branch or state?",
+    a: "Yes. Registration is premises-specific. Each branch/outlet must register in the respective state and display its certificate at that location."
+  },
+  {
+    q: "What are my obligations after registration?",
+    a: "Display the certificate, follow working hours/weekly off/leave norms, maintain prescribed registers/records, display required notices and amend details on changes within the stipulated time."
+  },
+  {
+    q: "What changes require amendment?",
+    a: "Change in establishment name, address, nature of business, employee strength, manager/authorised person or ownership. File the amendment promptly and display the updated certificate."
+  },
+  {
+    q: "Are inspections conducted?",
+    a: "Yes. Authorities may conduct pre/post-approval or periodic inspections. Keep registers, attendance, wage/leave records and required notices up to date."
+  },
+  {
+    q: "What are the penalties for non-compliance?",
+    a: "Penalties are state-specific and can include fines for late registration/renewal and for not maintaining registers/notices. Repeated non-compliance may invite higher fines or prosecution."
+  },
+  {
+    q: "Is this the same as Trade License or GST?",
+    a: "No. Shops & Establishment regulates employment conditions. A Trade License authorises a specific trade at a premises. GST is a tax registration. Many businesses need all, depending on activity/jurisdiction."
+  },
+  {
+    q: "Do home offices or small setups also need registration?",
+    a: "Generally yes, if commercial activity is conducted from a fixed premises in a state where the Act applies—subject to local zoning/HOA norms and owner/society NOC where required."
+  },
+  {
+    q: "Are part-time or contractual staff covered?",
+    a: "Typically yes. Declare total employees (including part-time/contract). Maintain records of engagement, hours, wages and weekly off as per state rules and allied labour laws."
+  },
+  {
+    q: "Which registers and notices should be maintained?",
+    a: "Commonly attendance, wages, leave, working hours/overtime, holiday list and notices for opening/closing hours and weekly off. Many states allow e-registers—follow current state formats."
+  },
+  {
+    q: "What are typical government fees?",
+    a: "State-specific; often based on employee strength, nature of business and chosen validity. Portals usually compute fees dynamically at checkout."
+  },
+  {
+    q: "How to close registration on shutdown or relocation?",
+    a: "Apply online for surrender/cancellation with reasons and proofs. Clear pending compliances and retain the cancellation order. For relocation within the state, file an amendment; for another state, obtain a new registration there and cancel the old one."
+  },
+  {
+    q: "Does the Act mandate minimum wages or ESI/EPF?",
+    a: "The Act focuses on working conditions. You must additionally comply with Minimum Wages, Payment of Wages, Bonus, Gratuity, EPF and ESI as applicable by thresholds."
+  },
+  {
+    q: "Do restaurants and cafés need additional licences?",
+    a: "Yes—typically FSSAI registration/licence, Trade License, Fire NOC, signage/music permissions where applicable, and GST as triggered. City/state requirements vary."
+  },
+  {
+    q: "How does Rekotax help with Shops & Establishment registration?",
+    a: "End-to-end support: state-wise applicability check, document prep, online filing, fee payment, amendments/renewals and post-registration compliance (registers, notices, inspection readiness) for quicker, audit-ready outcomes."
+  }
+]
+
 
                             .map(({ q, a }, idx) => {
                                 const isOpen = expanded === idx;

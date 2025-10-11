@@ -22,6 +22,8 @@ import {
   Snackbar,
   TextField
 } from "@mui/material";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
+
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useTheme } from "@mui/material/styles";
 import { useState, useEffect, useRef } from "react";
@@ -97,7 +99,7 @@ const InfoCard = ({ title, desc }) => (
   >
     <Typography
       variant="h4"
-      sx={{ color: "#0f2555", fontWeight: 500, mb: 1.5, fontSize: "1.5rem" }}
+      sx={{ color: "#0f2555", fontWeight: 700, mb: 1.5, fontSize: "1.5rem" }}
     >
       {title}
     </Typography>
@@ -157,7 +159,7 @@ const fieldSx = {
   "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
 };
 
-export default function ImportExportCode({ webAppUrl }) {
+export default function Trademark({ webAppUrl }) {
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const [show, setShow] = useState(true);
@@ -298,7 +300,7 @@ export default function ImportExportCode({ webAppUrl }) {
                 fontSize: "0.95rem",
               }}
             >
-              Expert GST Registration Services in India
+              Expert Trademark Registration  Services in India
             </Box>
           </Box>
 
@@ -336,7 +338,8 @@ export default function ImportExportCode({ webAppUrl }) {
               px: { xs: 2, md: 0 },
             }}
           >
-            Fast, Accurate, and Hassle-free Import-Export <br />Code (IEC) Registration
+            Trademark Registration 
+
           </Typography>
 
 
@@ -352,8 +355,9 @@ export default function ImportExportCode({ webAppUrl }) {
               color: "rgba(255,255,255,0.9)",
             }}
           >
-            An Import-Export Code (IEC) is the essential first step for any business aiming to enter the global marketplace, serving as the primary license for importing and exporting goods. At Rekotax, we manage the entire IEC registration from start to finish, ensuring you can focus on expanding your business internationally while we handle the foundational legal requirements.                    </Typography>
-
+Register your Trademark Registration 
+ with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
+       </Typography>
           {/* CTAs centered */}
           <Box
             sx={{
@@ -482,13 +486,13 @@ export default function ImportExportCode({ webAppUrl }) {
           align="center"
           sx={{
             color: "#0f2555",
-            fontWeight: 600,
+            fontWeight: 700,
             mb: 4,
             mt: 2,
             fontSize: { xs: "2rem", md: "2.5rem" },
           }}
         >
-          Know All About IEC Registration
+Know All About Trademark Registration
         </Typography>
 
         {/* What is GST + GSTIN (left) AND Contact Form (right) */}
@@ -511,40 +515,45 @@ export default function ImportExportCode({ webAppUrl }) {
               variant="h3"
               sx={{
                 color: "#0f2555",
-                fontWeight: 500,
+                fontWeight: 700,
                 mb: 1.5,
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
             >
-              What is an Import-Export Code (IEC)?
+What is Trademark Registration?
             </Typography>
             {/* Para 1 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, mb: 2, color: "#333" }}>
-              An Import-Export Code (IEC) is a unique 10-digit identification number issued by <br />
-              the Director General of Foreign Trade (DGFT). It is a mandatory prerequisite for any <br />
-              business or individual looking to start an import or export business in India.
+             Trademark Registration grants exclusive rights over a brand name, logo, label,<br/>
+              slogan, or any mark capable of distinguishing your goods or services. <br/>
+              Registration under the Trade Marks Act, 1999 helps prevent imitation and <br/>
+              enables legal action against infringers.
             </Typography>
 
             {/* Para 2 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, color: "#333" }}>
-              LUT registration is <strong>mandatory</strong> for any exporter who wishes to export goods or <br />
-              services without paying integrated tax and claiming refunds later. With LUT,<br /> businesses can
-              save time, improve liquidity, and expand globally without tax <br />blockages.
+             Applications are filed class-wise based on the Nice Classification (Classes 1–45). <br/>
+             Once accepted and registered, the mark is valid for 10 years and can be renewed <br/>
+             indefinitely in 10-year blocks.
             </Typography>
 
             <Divider sx={{ my: 2 }} />
             <Box sx={{ mt: 4 }}>
               {/* Heading */}
               <Typography
-                variant="h3"
-              sx={{
-                color: "#0f2555",
-                fontWeight: 500,
-                mb: 1.5,
-                fontSize: { xs: "1.5rem", md: "1.8rem" },
-              }}
+                variant="h4"
+                component="h3"
+                sx={{
+                  fontWeight: 800,
+                  color: "#0f2555",
+                  fontSize: { xs: "1.6rem", md: "2rem" },
+                  textAlign: "center",
+                  mb: 2.5,
+                  lineHeight: 1.2,
+                  textWrap: "balance",
+                }}
               >
-                Key Features of IEC Registration
+Key Features of Trademark Registration
               </Typography>
 
               {/* Bulleted list */}
@@ -562,25 +571,62 @@ export default function ImportExportCode({ webAppUrl }) {
                 }}
               >
                 <li>
-                  Acts as the primary <strong>license for import and export </strong> activities
+Protects brand identity (word, logo, device, label, color/shape, sound marks)
                 </li>
                 <li>
-                  Carries <strong>lifetime validity </strong> and requires no renewal
+Filed and tracked online via the IP India portal with e-payments
                 </li>
                 <li>
-                  A PAN-based registration, meaning one PAN card can have only one IEC
+Undergoes examination, advertisement in Journal, and potential opposition period
                 </li>
                 <li>
-                  No need to file any returns or follow complex post-registration compliance
+Registration enables legal enforcement, ®usage, and licensing/franchising
                 </li>
                 <li>
-                  Essential for <strong> customs clearance</strong> and foreign bank transfers
+Validity of 10 years from filing date; renewable indefinitely
                 </li>
               </Box>
             </Box>
 
 
-          
+            {/* <Typography
+                            variant="h3"
+                            sx={{
+                                color: "#0f2555",
+                                fontWeight: 700,
+                                mb: 2,
+                                mt:3,
+                                fontSize: { xs: "1.6rem", md: "1.7rem" },
+                            }}
+                        >
+                            GSTIN Structure Explained
+                        </Typography> */}
+
+            {/* <Box
+                            sx={{
+                                display: "inline-block",
+                                bgcolor: "#0f2555",
+                                color: "#fff",
+                                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                                fontWeight: 600,
+                                px: 2,
+                                py: 1,
+                                borderRadius: 2,
+                                letterSpacing: 2,
+                                mb: 2,
+                                boxShadow: 3,
+                            }}
+                        >
+                            22ABCDE1234F1Z5
+                        </Box> */}
+
+            {/* <Grid container spacing={1.5} wrap="wrap">
+                            <GstinBox code="22" label="State Code" />
+                            <GstinBox code="ABCDE1234F" label="PAN Number" />
+                            <GstinBox code="1" label="Entity Code" />
+                            <GstinBox code="Z" label="Default Letter" />
+                            <GstinBox code="5" label="Check Digit" />
+                        </Grid> */}
           </Grid>
 
           {/* RIGHT: Contact form */}
@@ -724,7 +770,8 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, textAlign: "left" }}
           >
-            Who Needs an IEC?                </Typography>
+         Who Should Apply for a Trademark?
+              </Typography>
 
           <Grid
             container
@@ -737,19 +784,35 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Importers",
-                desc: <>Any business or individual bringing goods <strong>into India</strong> from a foreign country.</>,
-              },
-              {
-                title: "Exporters",
-                desc: <>Businesses or individuals sending goods or services <strong>from India</strong> to other countries.</>,
-              },
-              {
-                title: "Service Providers",
-                desc: <>Service providers who wish to avail benefits under the <strong>Foreign Trade Policy</strong>.</>,
-              },
-            ].map((card) => (
+  {
+    title: "Businesses & Startups",
+    desc: (
+      <>
+        Companies, LLPs, partnerships, and proprietorships protecting brand{" "}
+        <strong>names, logos, products,</strong> or <strong>services</strong>.
+      </>
+    ),
+  },
+  {
+    title: "Professionals & Creators",
+    desc: (
+      <>
+        Consultants, designers, artists, and agencies safeguarding distinctive{" "}
+        <strong>brand identities</strong>.
+      </>
+    ),
+  },
+  {
+    title: "NGOs & Institutions",
+    desc: (
+      <>
+        Trusts, societies, and educational bodies protecting{" "}
+        <strong>names, emblems,</strong> or <strong>program labels</strong>.
+      </>
+    ),
+  },
+]
+.map((card) => (
               <Grid
                 item
                 key={card.title}
@@ -773,7 +836,7 @@ export default function ImportExportCode({ webAppUrl }) {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#0f2555", mb: 1 }}>
                     {card.title}
                   </Typography>
                   <Typography sx={{ lineHeight: 1.6 }}>{card.desc}</Typography>
@@ -791,10 +854,12 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, mt: 4, textAlign: "left" }}
           >
-            Benefits of IEC Registration            </Typography>
+           Benefits of Trademark Registration
+         </Typography>
 
           <Typography sx={{ mb: 5, color: "#444" }}>
-            Securing an IEC is the first step to unlocking global business opportunities. It is not just a legal requirement but a gateway to international trade, enabling businesses to expand their reach, access new markets, and benefit from government schemes.
+A registered trademark is a powerful intangible asset that builds trust and market value.
+
           </Typography>
 
           <Box
@@ -810,30 +875,60 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Gateway to Global Markets",
-                desc: <>Legally access international markets for <strong>buying and selling</strong> goods and services.</>,
-              },
-              {
-                title: "Lifetime Validity",
-                desc: <>No need for renewals, making it a <strong>one-time, hassle-free</strong> registration.</>,
-              },
-              {
-                title: "Unlocks Trade Benefits",
-                desc: <>Become eligible for various government <strong>export promotion schemes</strong> and subsidies.</>,
-              },
-              {
-                title: "Simplifies Customs Clearance",
-                desc: <>Mandatory for clearing shipments with <strong>customs authorities</strong> smoothly.</>,
-              },
-              {
-                title: "Easy Bank Transactions",
-                desc: <>Required by banks for sending or receiving <strong>foreign currency</strong> for trade.</>,
-              },
-              {
-                title: "No Compliance Burden",
-                desc: <>No need to file any returns or follow complex <strong>post-registration compliance</strong> for IEC.</>,
-              }]
+  {
+    title: "Exclusive Rights",
+    desc: (
+      <>
+        Legal monopoly over the mark for listed goods/services in selected
+        classes.
+      </>
+    ),
+  },
+  {
+    title: "Brand Protection",
+    desc: (
+      <>
+        Strong remedy against imitation, cybersquatting, and unfair competition.
+      </>
+    ),
+  },
+  {
+    title: "Asset & Licensing",
+    desc: (
+      <>
+        Enables licensing, franchising, and valuation for investments or exits.
+      </>
+    ),
+  },
+  {
+    title: "Customer Trust",
+    desc: (
+      <>
+        The <strong>®</strong> symbol signals authenticity, reliability, and
+        consistent quality.
+      </>
+    ),
+  },
+  {
+    title: "Global Expansion",
+    desc: (
+      <>
+        Supports foreign filings (e.g., <strong>Madrid Protocol</strong>) using
+        the home application.
+      </>
+    ),
+  },
+  {
+    title: "Simple Online Process",
+    desc: (
+      <>
+        Digital filing, e-sign, tracking, and e-certificates on the IP India
+        portal.
+      </>
+    ),
+  },
+]
+
               .map((card) => (
                 <Box key={card.title} sx={{ display: "flex" }}>
                   {/* If InfoCard already renders a Paper, just keep it; otherwise use a Paper here */}
@@ -858,42 +953,49 @@ export default function ImportExportCode({ webAppUrl }) {
               mb: 6,
             }}
           >
-            Simplified Process for IEC Registration
+Simplified Process for IEC Registration
           </Typography>
 
           {(() => {
-            const steps = [
-             {
-              number: "1",
-              title: "Prepare Your Documents",
-              desc: "Gather the necessary documents, including the PAN card, Aadhaar card, proof of business address (like a rent agreement or electricity bill), and a cancelled cheque for bank account verification.",
-            },
-            {
-              number: "2",
-              title: "Register on DGFT Portal",
-              desc: "Visit the official Director General of Foreign Trade (DGFT) portal. Register as a new user by providing and verifying your mobile number and email address via OTP.",
-            },
-            {
-              number: "3",
-              title: "Fill the Application Form",
-              desc: "Log in to the portal and fill out the online application form (ANF-2A). You will need to enter details about your business, directors/partners, and bank account information accurately.",
-            },
-              {
-              number: "4",
-              title: "Upload Documents",
-              desc: "Scan and upload the required documents as per the specified format and size. This includes your address proof and the cancelled cheque.",
-            },
-            {
-              number: "5",
-              title: "Pay the Government Fee",
-              desc: "Proceed to pay the prescribed government application fee through the online payment gateway. The fee is non-refundable.",
-            },
-            {
-              number: "6",
-              title: "Receive Your IEC Certificate",
-              desc: "After successful submission and verification, the DGFT will issue your 10-digit IEC. You can download the e-IEC certificate directly from the portal.",
-            },
-            ];
+         const steps = [
+  {
+    number: "1",
+    title: "Pre-Filing Search",
+    desc:
+      "Conduct a trademark availability search to check for identical or similar marks in relevant classes and refine your filing strategy.",
+  },
+  {
+    number: "2",
+    title: "Identify Classes",
+    desc:
+      "Map your goods/services to the correct Nice Classes (1–45). Choose word/logo/combined mark and draft precise descriptions.",
+  },
+  {
+    number: "3",
+    title: "File TM Application",
+    desc:
+      "File Form TM-A online with applicant KYC, mark representation, and class details; pay the government fee.",
+  },
+  {
+    number: "4",
+    title: "Examination & Reply",
+    desc:
+      "Address the examination report (if issued) with a reasoned reply and evidence. Attend hearing if scheduled by the Registry.",
+  },
+  {
+    number: "5",
+    title: "Journal Publication",
+    desc:
+      "On acceptance, the mark is advertised for public opposition (4 months). Defend if any opposition is filed.",
+  },
+  {
+    number: "6",
+    title: "Registration & Renewal",
+    desc:
+      "If unopposed or opposition succeeds in your favour, receive the Registration Certificate. Renew every 10 years.",
+  },
+];
+
 
             const rows = [steps.slice(0, 3), steps.slice(3, 6)];
 
@@ -996,188 +1098,257 @@ export default function ImportExportCode({ webAppUrl }) {
           <WhyRekotax fullBleed />
         </Box>
 
-      <Box
-            sx={{
-              maxWidth: 1100,
-              mx: "auto",
-              px: { xs: 2, md: 4 },
-              py: { xs: 4, md: 8 },
-              backgroundColor: "#fff",
-              color: "#333",
-              lineHeight: 1.7,
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                textAlign: "center",
-                color: "#0f2555",
-                fontWeight: 700,
-                mb: 4,
-              }}
-            >
-              IEC Registration in India – A Complete Guide for Importers & Exporters
-            </Typography>
-    
-            {/* Introduction */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 4, mb: 2 }}>
-              Introduction to IEC Registration
-            </Typography>
-            <Typography paragraph>
-              For any business aspiring to engage in international trade, the <strong>Import-Export Code (IEC)</strong> is the first and most crucial requirement. Issued by the Director General of Foreign Trade (DGFT), the IEC is a mandatory license that enables businesses to import goods into India and export them to global markets.
-            </Typography>
-            <Typography paragraph>
-              Obtaining an IEC is the foundational step to unlocking your business's global potential. At <strong>Rekotax</strong>, we specialize in providing a seamless and efficient IEC registration service, ensuring you can focus on your international expansion while we handle the essential legal formalities.
-            </Typography>
-    
-            {/* What is IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              What is an Import-Export Code (IEC)?
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is a unique <strong>10-digit identification number</strong> linked to a business's or individual's PAN card. It is a mandatory requirement for clearing customs, processing international payments, and availing benefits under India's Foreign Trade Policy. Without a valid IEC, no entity can legally conduct import or export activities.
-            </Typography>
-    
-            {/* Who Needs an IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Who Needs an IEC Registration?
-            </Typography>
-            <Typography paragraph>
-              IEC registration is mandatory for any person or entity involved in the cross-border trade of goods and services. This includes:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Importers: Any business that needs to clear customs for bringing goods into India.",
-                "Exporters: Any business that sends goods to another country and needs to send shipments.",
-                "Service Providers: Service or technology providers who want to avail benefits under the Foreign Trade Policy for their exports.",
-                "E-commerce Operators: Online sellers and platforms dealing with customers in foreign countries.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-            <Typography paragraph>
-              Essentially, if your business transactions involve foreign remittance or customs, an IEC is indispensable.
-            </Typography>
-    
-            {/* Key Features */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Key Features of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The IEC registration comes with several distinct features that make it business-friendly:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Lifetime Validity: Once an IEC is issued, it is valid for the lifetime of the entity and requires no renewal.",
-                "No Return Filing: Unlike other tax registrations, IEC holders are not required to file any periodic returns.",
-                "PAN-Based: The IEC is linked to the PAN of the business. One PAN can have only one IEC.",
-                "Quick Processing: The application process is entirely online and is generally processed within a few working days.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Benefits */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Benefits of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              Registering for an IEC opens up a world of opportunities and offers tangible benefits:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Global Market Access: It is the primary license that legally allows you to expand your business to international markets.",
-                "Unlocks Export Benefits: An IEC is necessary to avail benefits from the DGFT, Customs, and Export Promotion Councils under various schemes.",
-                "Simplifies Customs Clearance: It is a mandatory document for clearing shipments with customs authorities, ensuring smooth logistics.",
-                "Facilitates International Banking: Banks require an IEC for processing transactions involving foreign currency for import or export purposes.",
-                "Enhances Business Credibility: Having an IEC adds to the credibility of your business when dealing with international clients and partners.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Documents Required */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Documents Required for IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The application process for an IEC is digital and requires the following key documents:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "PAN Card: A digital copy of the PAN card of the individual or the business entity.",
-                "Identity Proof: Aadhaar card, Voter ID, or Passport of the applicant.",
-                "Address Proof: A utility bill (electricity or telephone), rent agreement, or sale deed of the business premises.",
-                "Bank Account Proof: A cancelled cheque or a bank certificate of the business's current account.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Step-by-Step Process */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Step-by-Step Process for IEC Registration
-            </Typography>
-            <Typography paragraph>The IEC application process is handled online through the DGFT portal:</Typography>
-            <List sx={{ listStyleType: "decimal", pl: 4 }}>
-              {[
-                "Portal Registration: Register on the official DGFT website by verifying your mobile number and email.",
-                "Application Filing: Log in and fill out the online application form (ANF-2A) with accurate business, director/partner, and bank details.",
-                "Document Upload: Upload scanned copies of all the required documents in the prescribed format.",
-                "Fee Payment: Pay the requisite government application fee using the online payment options.",
-                "IEC Issuance: Once the application is submitted and verified by the department, the e-IEC certificate is generated and can be downloaded from the portal.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Updating IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Updating Your IEC
-            </Typography>
-            <Typography paragraph>
-              While IEC has lifetime validity, it is mandatory for every IEC holder to update their details on the DGFT portal annually between April and June. Failure to do so can result in the deactivation of the IEC. This ensures that the information in the DGFT database remains current.
-            </Typography>
-    
-            {/* How Rekotax Helps */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              How Rekotax Can Help You
-            </Typography>
-            <Typography paragraph>At Rekotax, we simplify the entire IEC registration process. Our services include:</Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Complete Documentation Support: We assist in preparing and verifying all required documents for a flawless application.",
-                "Error-Free Application Filing: Our experts handle the online submission to ensure accuracy and avoid rejections.",
-                "Fast and Efficient Processing: We manage the entire process to get your IEC issued in the shortest possible time.",
-                "Post-Registration Support: We provide guidance on annual updates and other compliance matters related to foreign trade.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Conclusion */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Conclusion
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is more than just a number; it's your passport to the world of international business. It is the first and most critical step in taking your products and services to a global audience, ensuring compliance and unlocking numerous government benefits.
-            </Typography>
-            <Typography paragraph>
-              Let <strong>Rekotax</strong> be your partner in this journey. Contact us today for a swift and professional IEC registration experience, and take your business across borders.
-            </Typography>
-          </Box>
+ <Box
+  sx={{
+    maxWidth: 1100,
+    mx: "auto",
+    px: { xs: 2, md: 4 },
+    py: { xs: 4, md: 8 },
+    backgroundColor: "#fff",
+    color: "#333",
+    lineHeight: 1.7,
+  }}
+>
+  <Typography
+    variant="h3"
+    sx={{ textAlign: "center", color: "#0f2555", fontWeight: 600, mb: 4 }}
+  >
+    Trademark Registration in India – A Complete Guide
+  </Typography>
+
+  {/* Introduction */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mb: 2 }}>
+    Introduction
+  </Typography>
+  <Typography paragraph>
+    A <strong>Trademark</strong> is a visual identity—name, logo, symbol, design,
+    or slogan—that distinguishes your brand from others. Registration under the{" "}
+    <strong>Trademarks Act, 1999</strong> grants exclusive legal rights to use
+    the mark and protects it from misuse or duplication.
+  </Typography>
+  <Typography paragraph>
+    <strong>Rekotax</strong> helps startups, MSMEs, and growing brands secure and
+    manage trademarks end-to-end—from search and filing to examination,
+    objections, and renewal—so your brand identity stays protected.
+  </Typography>
+
+  {/* What is TM Registration */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    What is Trademark Registration?
+  </Typography>
+  <Typography paragraph>
+    Trademark registration provides legal ownership of a brand name, logo,
+    tagline, or product identity. The owner gets the exclusive right to use the
+    mark and prevent others from using a confusingly similar mark for related
+    goods/services. Registered trademarks are valid for{" "}
+    <strong>10 years</strong> and can be renewed indefinitely every 10 years.
+  </Typography>
+
+  {/* Who can apply */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Who Can Apply for a Trademark?
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Individual entrepreneurs, startups, and proprietors",
+      "Partnership firms and LLPs",
+      "Private or Public Limited Companies",
+      "Trusts, NGOs, and educational institutions",
+      "Foreign companies seeking protection in India",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Types of marks */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Types of Marks That Can Be Registered
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Word Mark: Brand name, slogan, or tagline (e.g., REKOTAX, NIKE)",
+      "Logo Mark: Symbolic or graphic representation (e.g., Apple logo)",
+      "Combination Mark: Text + design elements",
+      "Shape, Color, or Sound Mark: Distinct packaging, color pattern, or jingle",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Classes table */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Trademark Classes in India
+  </Typography>
+  <Typography>
+    The Registry follows the <strong>NICE Classification</strong>:{" "}
+    <strong>45 classes</strong> (Classes 1–34 for goods, 35–45 for services).
+  </Typography>
+  <Table sx={{ mt: 2 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Class Range
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Category
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Examples
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[
+        ["1 – 34", "Goods", "Manufactured items like clothing, cosmetics, food, electronics"],
+        ["35 – 45", "Services", "Consulting, legal, IT, education, financial, marketing, etc."],
+      ].map(([a, b, c]) => (
+        <TableRow key={a}>
+          <TableCell>{a}</TableCell>
+          <TableCell>{b}</TableCell>
+          <TableCell>{c}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+  <Typography paragraph>
+    Choosing the correct class is critical—filing under the wrong class can make
+    a mark unenforceable. Rekotax helps identify the right classes for your
+    activities.
+  </Typography>
+
+  {/* Key benefits */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Key Benefits of Trademark Registration
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Exclusive ownership: Only the registered proprietor can use the mark for listed goods/services.",
+      "Legal protection: Strong remedy against imitation, infringement, and cybersquatting.",
+      "Brand credibility: Enhances customer trust and investor confidence.",
+      "Asset creation: A trademark is an intangible asset that can be sold, licensed, or franchised.",
+      "Global protection: Facilitates international filings via the Madrid Protocol.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Documents required */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Documents Required
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Applicant’s details: Name, address, nationality",
+      "Business proof: Incorporation/registration certificate (as applicable)",
+      "Logo or word mark image: High-resolution file (optional for word mark only)",
+      "Power of Attorney (TM-48): Authorising agent/consultant to file",
+      "Description of goods/services: Clear identification under the correct class",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Process */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Step-by-Step Process of Trademark Registration
+  </Typography>
+  <List sx={{ listStyleType: "decimal", pl: 4 }}>
+    {[
+      "Trademark Search: Check availability on IP India to avoid conflicts.",
+      "Application Filing: File Form TM-A online with the appropriate class and description.",
+      "Examination: Registry examines and may issue an examination report.",
+      "Objection (if any): Reply within the stipulated time with arguments/evidence.",
+      "Publication: Accepted marks are published for 4 months for public opposition.",
+      "Registration: If unopposed, the mark proceeds to registration and certificate is issued.",
+      "Renewal: Every 10 years to keep the registration valid indefinitely.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Govt Fees */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Government Fees (Indicative)
+  </Typography>
+  <Table sx={{ mt: 2 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Applicant Type
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Government Fee (per class)
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[
+        ["Individual / Startup / MSME", "₹4,500"],
+        ["Company / LLP / Other Entities", "₹9,000"],
+      ].map(([a, b]) => (
+        <TableRow key={a}>
+          <TableCell>{a}</TableCell>
+          <TableCell>{b}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+
+  {/* Why register early */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Why Register Early?
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Priority claim: First-to-file principle protects you from future conflicts.",
+      "Brand consistency: Secure identity before expansion or franchising.",
+      "Avoid disputes: Prevent costly legal battles with competitors.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* How Rekotax helps */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    How Rekotax Can Help You
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Trademark search & class selection: Comprehensive analysis to avoid conflicts.",
+      "End-to-end filing: From TM-A submission to follow-ups with the Registry.",
+      "Response management: Drafting replies for objections or oppositions.",
+      "Renewal & monitoring: Alerts for renewals and infringement tracking.",
+      "International filing: Guidance under the Madrid Protocol for global protection.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Conclusion */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Conclusion
+  </Typography>
+  <Typography paragraph>
+    Trademark registration secures your brand’s identity and builds a legal
+    shield around your reputation. With <strong>Rekotax</strong>, your brand is
+    protected at every step—from name search to final registration—with expert
+    handling and compliance assurance.
+  </Typography>
+</Box>
 
 
 
@@ -1202,47 +1373,88 @@ export default function ImportExportCode({ webAppUrl }) {
              Frequently Asked Questions (FAQs)
             </Typography>
             {[
-              {
-                   q: "What is an Import-Export Code (IEC)?",
-                   a: "An Import-Export Code (IEC) is a unique 10-digit number issued by the DGFT (Director General of Foreign Trade) that is mandatory for any business or individual to start an import-export business in India."
-                 },
-                 {
-                   q: "Who needs to obtain an IEC?",
-                   a: "Any person or entity looking to import goods into India or export goods from India must have an IEC. It is required for customs clearance, international trade payments, and availing benefits under the Foreign Trade Policy."
-                 },
-                 {
-                   q: "What are the main benefits of having an IEC?",
-                   a: "The key benefits include legal access to global markets, eligibility for government export schemes, lifetime validity with no renewal hassles, and simplified customs and banking procedures."
-                 },
-                 {
-                   q: "Is there any renewal required for an IEC?",
-                   a: "No, an IEC has lifetime validity and does not require any renewal. However, it is mandatory to update your IEC details on the DGFT portal annually between April and June to keep it active."
-                 },
-                 {
-                   q: "What documents are needed for IEC registration?",
-                   a: "You will need a digital copy of the PAN card, identity proof (Aadhaar/Voter ID), proof of business address, and a cancelled cheque or bank certificate of the business's current account."
-                 },
-                 {
-                   q: "How long does it take to get an IEC?",
-                   a: "Once the online application is submitted with all the correct documents, the IEC is typically issued by the DGFT within 3-5 working days."
-                 },
-                 {
-                   q: "Can an individual apply for an IEC?",
-                   a: "Yes, both individuals (as proprietors) and business entities like partnership firms, LLPs, and companies can apply for and obtain an IEC."
-                 },
-                 {
-                   q: "Is GST registration mandatory to get an IEC?",
-                   a: "While GST registration is not a mandatory prerequisite to apply for an IEC, it is required for claiming GST refunds on exports. Most businesses involved in regular trade will need both."
-                 },
-                 {
-                   q: "What happens if I don't update my IEC annually?",
-                   a: "Failure to update your IEC details on the DGFT portal between April and June each year will result in the deactivation of your IEC, which will halt all your import and export activities until it is reactivated."
-                 },
-                 {
-                   q: "How can Rekotax help with IEC registration?",
-                   a: "Rekotax offers a complete end-to-end service for IEC registration. We assist with document preparation, ensure an error-free online application, and provide support for annual updates, making the entire process fast and seamless for you."
-                 }
-            ]
+  {
+    q: "What is a trademark and why should I register it?",
+    a: "A trademark is a brand identifier (name, logo, tagline, shape, colour combo, or sound). Registration grants exclusive rights in chosen classes, deters misuse, builds brand value, and enables legal action for infringement."
+  },
+  {
+    q: "Who can apply for a trademark in India?",
+    a: "Individuals, startups/MSMEs, proprietorships, partnerships, LLPs, companies, trusts and societies can apply. Foreign applicants can file directly in India or via the Madrid Protocol designating India."
+  },
+  {
+    q: "What is the difference between ™, ® and ℠ symbols?",
+    a: "™ (and ℠ for services) indicates a claimed but unregistered mark. ® may be used only after registration is granted and valid; misuse of ® can attract penalties."
+  },
+  {
+    q: "What are trademark classes and how do I choose the right one(s)?",
+    a: "India uses the Nice Classification—45 classes (1–34 goods, 35–45 services). Choose classes covering current and foreseeable goods/services; many brands file in multiple classes."
+  },
+  {
+    q: "Should I file a word mark or a logo/device mark?",
+    a: "A word mark generally offers broader protection for the name; a device/logo protects stylization. Many applicants file both, budget permitting."
+  },
+  {
+    q: "How important is a trademark search before filing?",
+    a: "Very. A comprehensive availability search (including similar/phonetic hits, domains, marketplaces) reduces objections/oppositions and rebranding risk."
+  },
+  {
+    q: "What is the process to register a trademark in India?",
+    a: "Search & class mapping → File Form TM-A → Examination & report → Response/hearing (if needed) → Journal publication for 4-month opposition → Registration & certificate."
+  },
+  {
+    q: "How long does trademark registration take?",
+    a: "Timelines vary by objections/oppositions and registry workload. Distinctive, unopposed marks may register in several months; contested cases take longer."
+  },
+  {
+    q: "What documents are needed to file a trademark?",
+    a: "Applicant details; brand name/logo image (for device mark); class(es) and description; TM-48 (if using an agent); priority docs (if any); MSME/Startup proof for reduced fee."
+  },
+  {
+    q: "What are the filing fees and categories?",
+    a: "Govt fee is per class, per mark. Individuals/Startups/Small Enterprises (MSMEs) pay a reduced fee versus larger entities. Professional fees are separate."
+  },
+  {
+    q: "What is the validity of a trademark and how do I renew it?",
+    a: "Registration is valid for 10 years from the application date and is renewable every 10 years. Renew before expiry to avoid surcharge/restoration."
+  },
+  {
+    q: "What is the difference between objection and opposition?",
+    a: "An objection is raised by the Examiner during examination; an opposition is filed by a third party after journal publication. Both require timely, reasoned responses."
+  },
+  {
+    q: "Can I claim use of the mark before registration?",
+    a: "Yes. File as proposed-to-be-used or claim a prior date of first use with evidence (invoices, ads, website, packaging). Prior use can strengthen rights."
+  },
+  {
+    q: "How do Madrid Protocol international filings work?",
+    a: "With an Indian base application/registration, file an International Application via Madrid designating multiple countries. Each office examines under local law; renewals are managed centrally."
+  },
+  {
+    q: "Can a trademark be assigned or licensed?",
+    a: "Yes. Trademarks may be assigned (with/without goodwill) or licensed. Record assignments/licences with the Registry to perfect rights against third parties."
+  },
+  {
+    q: "What is trademark infringement vs. passing off?",
+    a: "Infringement is unauthorized use of a similar/identical mark against a registered owner’s rights. Passing off protects unregistered marks based on goodwill and misrepresentation."
+  },
+  {
+    q: "Can descriptive or generic terms be registered?",
+    a: "Purely descriptive/generic terms are ordinarily refused unless they have acquired distinctiveness (secondary meaning). Distinct stylization may help but usually needs evidence."
+  },
+  {
+    q: "What if I need to change the mark or add classes after filing?",
+    a: "Material alteration of the mark isn’t allowed on the same application—file a fresh application. Add new business lines by filing additional class applications."
+  },
+  {
+    q: "How do I monitor and enforce my trademark rights?",
+    a: "Use watch services for new filings, monitor marketplaces/domains/social media, and act quickly with cease-and-desist letters, takedowns, customs recordals, and legal actions."
+  },
+  {
+    q: "How does Rekotax help with trademark registration and protection?",
+    a: "We handle strategy, searches, class selection, filing, prosecution (objections/hearings), opposition defence, renewals/monitoring, Madrid filings, assignments/licensing, and enforcement support."
+  }
+]
+
 
               .map(({ q, a }, idx) => {
                 const isOpen = expanded === idx;

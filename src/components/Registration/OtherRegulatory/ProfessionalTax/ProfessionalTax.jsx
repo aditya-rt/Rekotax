@@ -157,7 +157,7 @@ const fieldSx = {
   "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
 };
 
-export default function ImportExportCode({ webAppUrl }) {
+export default function ProfessionalTax({ webAppUrl }) {
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const [show, setShow] = useState(true);
@@ -336,8 +336,8 @@ export default function ImportExportCode({ webAppUrl }) {
               px: { xs: 2, md: 0 },
             }}
           >
-            Fast, Accurate, and Hassle-free Import-Export <br />Code (IEC) Registration
-          </Typography>
+Professional Tax Registration 
+    </Typography> 
 
 
 
@@ -352,8 +352,8 @@ export default function ImportExportCode({ webAppUrl }) {
               color: "rgba(255,255,255,0.9)",
             }}
           >
-            An Import-Export Code (IEC) is the essential first step for any business aiming to enter the global marketplace, serving as the primary license for importing and exporting goods. At Rekotax, we manage the entire IEC registration from start to finish, ensuring you can focus on expanding your business internationally while we handle the foundational legal requirements.                    </Typography>
-
+Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
+         </Typography>
           {/* CTAs centered */}
           <Box
             sx={{
@@ -488,7 +488,8 @@ export default function ImportExportCode({ webAppUrl }) {
             fontSize: { xs: "2rem", md: "2.5rem" },
           }}
         >
-          Know All About IEC Registration
+          Know All About Professional Tax Registration
+
         </Typography>
 
         {/* What is GST + GSTIN (left) AND Contact Form (right) */}
@@ -516,20 +517,22 @@ export default function ImportExportCode({ webAppUrl }) {
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
             >
-              What is an Import-Export Code (IEC)?
+              What is Professional Tax?
             </Typography>
             {/* Para 1 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, mb: 2, color: "#333" }}>
-              An Import-Export Code (IEC) is a unique 10-digit identification number issued by <br />
-              the Director General of Foreign Trade (DGFT). It is a mandatory prerequisite for any <br />
-              business or individual looking to start an import or export business in India.
+             Professional Tax is a state-imposed tax levied on income earned by <br/>
+              individuals through employment, trade, or profession. It applies  <br/>
+              to both salaried and self-employed persons, and the responsibility <br/>
+              of deduction and remittance lies with the employer.
             </Typography>
 
             {/* Para 2 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, color: "#333" }}>
-              LUT registration is <strong>mandatory</strong> for any exporter who wishes to export goods or <br />
-              services without paying integrated tax and claiming refunds later. With LUT,<br /> businesses can
-              save time, improve liquidity, and expand globally without tax <br />blockages.
+            Every business entity, employer, or professional operating in India must <br/>
+             register under the respective State Professional Tax Department within <br/>
+             the prescribed timeline. The rates and rules vary from state to state, <br/>
+             with a maximum limit of ₹2,500 per annum as per the Constitution. <br/>
             </Typography>
 
             <Divider sx={{ my: 2 }} />
@@ -544,7 +547,8 @@ export default function ImportExportCode({ webAppUrl }) {
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
               >
-                Key Features of IEC Registration
+                Key Features of Professional Tax Registration
+
               </Typography>
 
               {/* Bulleted list */}
@@ -562,19 +566,19 @@ export default function ImportExportCode({ webAppUrl }) {
                 }}
               >
                 <li>
-                  Acts as the primary <strong>license for import and export </strong> activities
+Mandatory for all <strong> employers, professionals, and traders </strong>operating in applicable states
                 </li>
                 <li>
-                  Carries <strong>lifetime validity </strong> and requires no renewal
+State-specific registration – governed by individual <strong>State Tax Departments</strong>
                 </li>
                 <li>
-                  A PAN-based registration, meaning one PAN card can have only one IEC
+Employers must obtain a <strong> Professional Tax Employer Registration Certificate (PTEC)</strong>
                 </li>
                 <li>
-                  No need to file any returns or follow complex post-registration compliance
+Self-employed professionals must obtain a <strong>Professional Tax Enrollment Certificate (PTRC)</strong> 
                 </li>
                 <li>
-                  Essential for <strong> customs clearance</strong> and foreign bank transfers
+Tax slabs are based on <strong>monthly income levels</strong> as prescribed by the respective state
                 </li>
               </Box>
             </Box>
@@ -724,7 +728,8 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, textAlign: "left" }}
           >
-            Who Needs an IEC?                </Typography>
+            Who Needs Professional Tax Registration?
+               </Typography>
 
           <Grid
             container
@@ -738,16 +743,16 @@ export default function ImportExportCode({ webAppUrl }) {
           >
             {[
               {
-                title: "Importers",
-                desc: <>Any business or individual bringing goods <strong>into India</strong> from a foreign country.</>,
+                title: "Employers",
+                desc: <>Companies, firms, or organizations employing staff and responsible for <strong>deducting and remitting</strong>  professional tax.</>,
               },
               {
-                title: "Exporters",
-                desc: <>Businesses or individuals sending goods or services <strong>from India</strong> to other countries.</>,
+                title: "Professionals",
+                desc: <>Individuals practicing professions like <strong>CA, doctor, lawyer, consultant, architect, or freelancer.</strong> </>,
               },
               {
-                title: "Service Providers",
-                desc: <>Service providers who wish to avail benefits under the <strong>Foreign Trade Policy</strong>.</>,
+                title: "Traders & Businesses",
+                desc: <>Entities engaged in trade or business required to obtain registration as per <strong>state laws.</strong> </>,
               },
             ].map((card) => (
               <Grid
@@ -791,11 +796,11 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, mt: 4, textAlign: "left" }}
           >
-            Benefits of IEC Registration            </Typography>
+            Benefits of Professional Tax Registration
+           </Typography>
 
           <Typography sx={{ mb: 5, color: "#444" }}>
-            Securing an IEC is the first step to unlocking global business opportunities. It is not just a legal requirement but a gateway to international trade, enabling businesses to expand their reach, access new markets, and benefit from government schemes.
-          </Typography>
+Professional Tax registration not only ensures compliance with state laws but also helps businesses maintain credibility, avoid penalties, and contribute to state welfare programs.          </Typography>
 
           <Box
             sx={{
@@ -810,30 +815,32 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Gateway to Global Markets",
-                desc: <>Legally access international markets for <strong>buying and selling</strong> goods and services.</>,
-              },
-              {
-                title: "Lifetime Validity",
-                desc: <>No need for renewals, making it a <strong>one-time, hassle-free</strong> registration.</>,
-              },
-              {
-                title: "Unlocks Trade Benefits",
-                desc: <>Become eligible for various government <strong>export promotion schemes</strong> and subsidies.</>,
-              },
-              {
-                title: "Simplifies Customs Clearance",
-                desc: <>Mandatory for clearing shipments with <strong>customs authorities</strong> smoothly.</>,
-              },
-              {
-                title: "Easy Bank Transactions",
-                desc: <>Required by banks for sending or receiving <strong>foreign currency</strong> for trade.</>,
-              },
-              {
-                title: "No Compliance Burden",
-                desc: <>No need to file any returns or follow complex <strong>post-registration compliance</strong> for IEC.</>,
-              }]
+  {
+    title: "Legal Compliance",
+    desc: <>Mandatory under state laws to operate a <strong>business or profession</strong> legally.</>,
+  },
+  {
+    title: "Avoid Penalties",
+    desc: <>Timely registration and payment help avoid <strong>interest and penalties</strong> under respective acts.</>,
+  },
+  {
+    title: "Employee Trust",
+    desc: <>Shows that the employer adheres to <strong>statutory compliance</strong>, building employee confidence.</>,
+  },
+  {
+    title: "State Welfare Contribution",
+    desc: <>Funds collected are used for <strong>developmental and welfare activities</strong> by state governments.</>,
+  },
+  {
+    title: "Applicable to Multiple Entities",
+    desc: <>Valid for <strong>companies, LLPs, proprietorships, and professionals</strong> across different states.</>,
+  },
+  {
+    title: "Simple Online Process",
+    desc: <>Easy online registration through the respective <strong>State Commercial Tax Department</strong> portal.</>,
+  },
+]
+
               .map((card) => (
                 <Box key={card.title} sx={{ display: "flex" }}>
                   {/* If InfoCard already renders a Paper, just keep it; otherwise use a Paper here */}
@@ -858,42 +865,44 @@ export default function ImportExportCode({ webAppUrl }) {
               mb: 6,
             }}
           >
-            Simplified Process for IEC Registration
+           Simplified Process for Professional Tax Registration
+
           </Typography>
 
           {(() => {
-            const steps = [
-             {
-              number: "1",
-              title: "Prepare Your Documents",
-              desc: "Gather the necessary documents, including the PAN card, Aadhaar card, proof of business address (like a rent agreement or electricity bill), and a cancelled cheque for bank account verification.",
-            },
-            {
-              number: "2",
-              title: "Register on DGFT Portal",
-              desc: "Visit the official Director General of Foreign Trade (DGFT) portal. Register as a new user by providing and verifying your mobile number and email address via OTP.",
-            },
-            {
-              number: "3",
-              title: "Fill the Application Form",
-              desc: "Log in to the portal and fill out the online application form (ANF-2A). You will need to enter details about your business, directors/partners, and bank account information accurately.",
-            },
-              {
-              number: "4",
-              title: "Upload Documents",
-              desc: "Scan and upload the required documents as per the specified format and size. This includes your address proof and the cancelled cheque.",
-            },
-            {
-              number: "5",
-              title: "Pay the Government Fee",
-              desc: "Proceed to pay the prescribed government application fee through the online payment gateway. The fee is non-refundable.",
-            },
-            {
-              number: "6",
-              title: "Receive Your IEC Certificate",
-              desc: "After successful submission and verification, the DGFT will issue your 10-digit IEC. You can download the e-IEC certificate directly from the portal.",
-            },
-            ];
+        const steps = [
+  {
+    number: "1",
+    title: "Prepare Your Documents",
+    desc: "Keep PAN, Aadhaar, incorporation or firm deed, principal place of business address proof, signatory ID, bank details, and employee list with salary slabs. Sole proprietors and professionals should keep personal PAN and photo.",
+  },
+  {
+    number: "2",
+    title: "Create State PT Portal Account",
+    desc: "Register on your State Commercial Taxes or Professional Tax portal. Verify mobile and email via OTP and complete profile details like nature of business, commencement date, and jurisdiction if asked.",
+  },
+  {
+    number: "3",
+    title: "Select PTEC or PTRC",
+    desc: "Choose the correct application based on your case. PTEC is for enrollment of business or self-employed professionals. PTRC is for employers who deduct PT from employees. Many entities need both.",
+  },
+  {
+    number: "4",
+    title: "Fill Application & Upload",
+    desc: "Enter legal name, trade name, constitution, addresses, signatory details, employee strength, and salary ranges. Upload required documents in the prescribed format and size. Review all entries for accuracy.",
+  },
+  {
+    number: "5",
+    title: "e-Sign and Pay Dues",
+    desc: "e-Sign using DSC or Aadhaar eKYC as allowed. Pay registration fee if applicable. Some states require first month or first year challan during registration. Save the acknowledgment for records.",
+  },
+  {
+    number: "6",
+    title: "Get PT Numbers & Comply",
+    desc: "Download your PTEC and or PTRC certificates. Configure payroll slabs, start monthly deductions from next pay cycle, and file PT returns and challans as per your state schedule to avoid penalties.",
+  },
+];
+
 
             const rows = [steps.slice(0, 3), steps.slice(3, 6)];
 
@@ -992,192 +1001,243 @@ export default function ImportExportCode({ webAppUrl }) {
           })()}
         </Box>
 
+        
+
         <Box sx={{ mt: 0, p: 0, mx: 0, overflow: "visible" }} ref={aboutRef}>
           <WhyRekotax fullBleed />
         </Box>
 
+   <Box
+  sx={{
+    backgroundColor: "#f4f6f8",
+    py: { xs: 6, md: 8 },
+    px: { xs: 2, md: 4 },
+  }}
+>
+  <Container maxWidth="md">
+    {/* H1 */}
+    <Box
+      sx={{
+        backgroundColor: "#fff",
+        p: { xs: 3, md: 4 },
+        mb: 4,
+        borderRadius: 2,
+        boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+        textAlign: "center",
+      }}
+    >
+      <Typography
+        variant="h4"
+        sx={{ color: "#0f2555", mb: 1.5, fontWeight: 700, lineHeight: 1.3 }}
+      >
+        Professional Tax Registration in India - Complete PTEC and PTRC Guide
+      </Typography>
+    </Box>
+
+    {/* Introduction */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Introduction to Professional Tax Registration
+      </Typography>
+      <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8, mb: 2 }}>
+        <strong>Professional Tax</strong> is a state-level tax on income earned by individuals through employment, trade, or profession.
+        It applies to salaried employees as well as self-employed professionals and businesses, subject to the rules of the state where
+        they operate. Compliance requires timely <strong>PTEC</strong> and or <strong>PTRC</strong> registration, monthly deductions
+        where applicable, and periodic return filing.
+      </Typography>
+      <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        With <strong>Rekotax</strong>, you get a smooth, end-to-end Professional Tax registration experience. We handle documentation,
+        state portal filings, and post-registration compliance so you can focus on business operations with confidence.
+      </Typography>
+    </Box>
+
+    {/* What is Professional Tax */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        What is Professional Tax
+      </Typography>
+      <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        Professional Tax is levied by state governments on income from employment or self-employment. While rates and timelines vary by
+        state, the annual PT payable by an individual is capped at <strong>₹2,500</strong>. Businesses and professionals typically
+        require enrollment, and employers who pay salaries must also register to deduct and remit PT for employees as per state slabs.
+      </Typography>
+    </Box>
+
+    {/* Who Needs Registration */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Who Needs Professional Tax Registration
+      </Typography>
+      <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        <p>Professional Tax registration is required based on the nature of activity and state rules:</p>
+        <ul>
+          <li><strong>Employers:</strong> Companies, LLPs, firms, and other entities paying salaries must register for <strong>PTRC</strong> to deduct PT from employees and deposit it with the state.</li>
+          <li><strong>Self-employed professionals:</strong> Consultants, doctors, lawyers, CAs, architects, freelancers, and other professionals must obtain <strong>PTEC</strong> and pay their own liability.</li>
+          <li><strong>Businesses and traders:</strong> Proprietorships, partnerships, and corporate entities typically require <strong>PTEC</strong> based on state thresholds.</li>
+          <li><strong>Multi-state operations:</strong> Entities operating in multiple states need to comply in each applicable state.</li>
+        </ul>
+        <p>In many cases, a business may need both PTEC and PTRC to stay fully compliant.</p>
+      </Typography>
+    </Box>
+
+    {/* Key Features */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Key Features of Professional Tax Registration
+      </Typography>
+      <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        <ul>
+          <li><strong>State-specific:</strong> Rules, slabs, and due dates differ by state, and registration is done on the respective state tax portal.</li>
+          <li><strong>PTEC and PTRC coverage:</strong> Enrollment for the business or professional and registration for employer deductions.</li>
+          <li><strong>Payroll integration:</strong> Monthly salary deductions based on slab rates set by the state.</li>
+          <li><strong>Digital process:</strong> Most states support online application, e-sign, and e-payment.</li>
+        </ul>
+      </Typography>
+    </Box>
+
+    {/* Benefits */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Benefits of Professional Tax Registration
+      </Typography>
+      <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        <ul>
+          <li><strong>Legal compliance:</strong> Operate within state laws and avoid interest and penalties.</li>
+          <li><strong>Smoother payroll:</strong> Standardized deduction process aligns HR and finance practices.</li>
+          <li><strong>Employee confidence:</strong> Transparent statutory deductions build trust with staff.</li>
+          <li><strong>Easy audits:</strong> Proper registration and challans simplify assessments and inspections.</li>
+        </ul>
+      </Typography>
+    </Box>
+
+    {/* PTEC vs PTRC Table + Note */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        PTEC vs PTRC - What You Need
+      </Typography>
+      <Typography component="div" sx={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr style={{ backgroundColor: "#0f2555", color: "#fff" }}>
+              <th style={{ padding: 12, textAlign: "left" }}>Certificate</th>
+              <th style={{ padding: 12, textAlign: "left" }}>Who needs it</th>
+              <th style={{ padding: 12, textAlign: "left" }}>Purpose</th>
+              <th style={{ padding: 12, textAlign: "left" }}>Payment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style={{ borderBottom: "1px solid #ddd" }}>
+              <td style={{ padding: 12 }}><strong>PTEC</strong> (Professional Tax Enrollment)</td>
+              <td style={{ padding: 12 }}>Self-employed professionals and businesses</td>
+              <td style={{ padding: 12 }}>Pay own Professional Tax as per state rules</td>
+              <td style={{ padding: 12 }}>Usually annual payment by the enrolled person or entity</td>
+            </tr>
+            <tr>
+              <td style={{ padding: 12 }}><strong>PTRC</strong> (Professional Tax Registration)</td>
+              <td style={{ padding: 12 }}>Employers paying salaries</td>
+              <td style={{ padding: 12 }}>Deduct PT from employees and remit to the state</td>
+              <td style={{ padding: 12 }}>Monthly or state-prescribed schedule with returns</td>
+            </tr>
+          </tbody>
+        </table>
+      </Typography>
+
       <Box
-            sx={{
-              maxWidth: 1100,
-              mx: "auto",
-              px: { xs: 2, md: 4 },
-              py: { xs: 4, md: 8 },
-              backgroundColor: "#fff",
-              color: "#333",
-              lineHeight: 1.7,
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                textAlign: "center",
-                color: "#0f2555",
-                fontWeight: 700,
-                mb: 4,
-              }}
-            >
-              IEC Registration in India – A Complete Guide for Importers & Exporters
-            </Typography>
-    
-            {/* Introduction */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 4, mb: 2 }}>
-              Introduction to IEC Registration
-            </Typography>
-            <Typography paragraph>
-              For any business aspiring to engage in international trade, the <strong>Import-Export Code (IEC)</strong> is the first and most crucial requirement. Issued by the Director General of Foreign Trade (DGFT), the IEC is a mandatory license that enables businesses to import goods into India and export them to global markets.
-            </Typography>
-            <Typography paragraph>
-              Obtaining an IEC is the foundational step to unlocking your business's global potential. At <strong>Rekotax</strong>, we specialize in providing a seamless and efficient IEC registration service, ensuring you can focus on your international expansion while we handle the essential legal formalities.
-            </Typography>
-    
-            {/* What is IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              What is an Import-Export Code (IEC)?
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is a unique <strong>10-digit identification number</strong> linked to a business's or individual's PAN card. It is a mandatory requirement for clearing customs, processing international payments, and availing benefits under India's Foreign Trade Policy. Without a valid IEC, no entity can legally conduct import or export activities.
-            </Typography>
-    
-            {/* Who Needs an IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Who Needs an IEC Registration?
-            </Typography>
-            <Typography paragraph>
-              IEC registration is mandatory for any person or entity involved in the cross-border trade of goods and services. This includes:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Importers: Any business that needs to clear customs for bringing goods into India.",
-                "Exporters: Any business that sends goods to another country and needs to send shipments.",
-                "Service Providers: Service or technology providers who want to avail benefits under the Foreign Trade Policy for their exports.",
-                "E-commerce Operators: Online sellers and platforms dealing with customers in foreign countries.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-            <Typography paragraph>
-              Essentially, if your business transactions involve foreign remittance or customs, an IEC is indispensable.
-            </Typography>
-    
-            {/* Key Features */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Key Features of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The IEC registration comes with several distinct features that make it business-friendly:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Lifetime Validity: Once an IEC is issued, it is valid for the lifetime of the entity and requires no renewal.",
-                "No Return Filing: Unlike other tax registrations, IEC holders are not required to file any periodic returns.",
-                "PAN-Based: The IEC is linked to the PAN of the business. One PAN can have only one IEC.",
-                "Quick Processing: The application process is entirely online and is generally processed within a few working days.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Benefits */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Benefits of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              Registering for an IEC opens up a world of opportunities and offers tangible benefits:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Global Market Access: It is the primary license that legally allows you to expand your business to international markets.",
-                "Unlocks Export Benefits: An IEC is necessary to avail benefits from the DGFT, Customs, and Export Promotion Councils under various schemes.",
-                "Simplifies Customs Clearance: It is a mandatory document for clearing shipments with customs authorities, ensuring smooth logistics.",
-                "Facilitates International Banking: Banks require an IEC for processing transactions involving foreign currency for import or export purposes.",
-                "Enhances Business Credibility: Having an IEC adds to the credibility of your business when dealing with international clients and partners.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Documents Required */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Documents Required for IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The application process for an IEC is digital and requires the following key documents:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "PAN Card: A digital copy of the PAN card of the individual or the business entity.",
-                "Identity Proof: Aadhaar card, Voter ID, or Passport of the applicant.",
-                "Address Proof: A utility bill (electricity or telephone), rent agreement, or sale deed of the business premises.",
-                "Bank Account Proof: A cancelled cheque or a bank certificate of the business's current account.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Step-by-Step Process */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Step-by-Step Process for IEC Registration
-            </Typography>
-            <Typography paragraph>The IEC application process is handled online through the DGFT portal:</Typography>
-            <List sx={{ listStyleType: "decimal", pl: 4 }}>
-              {[
-                "Portal Registration: Register on the official DGFT website by verifying your mobile number and email.",
-                "Application Filing: Log in and fill out the online application form (ANF-2A) with accurate business, director/partner, and bank details.",
-                "Document Upload: Upload scanned copies of all the required documents in the prescribed format.",
-                "Fee Payment: Pay the requisite government application fee using the online payment options.",
-                "IEC Issuance: Once the application is submitted and verified by the department, the e-IEC certificate is generated and can be downloaded from the portal.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Updating IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Updating Your IEC
-            </Typography>
-            <Typography paragraph>
-              While IEC has lifetime validity, it is mandatory for every IEC holder to update their details on the DGFT portal annually between April and June. Failure to do so can result in the deactivation of the IEC. This ensures that the information in the DGFT database remains current.
-            </Typography>
-    
-            {/* How Rekotax Helps */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              How Rekotax Can Help You
-            </Typography>
-            <Typography paragraph>At Rekotax, we simplify the entire IEC registration process. Our services include:</Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Complete Documentation Support: We assist in preparing and verifying all required documents for a flawless application.",
-                "Error-Free Application Filing: Our experts handle the online submission to ensure accuracy and avoid rejections.",
-                "Fast and Efficient Processing: We manage the entire process to get your IEC issued in the shortest possible time.",
-                "Post-Registration Support: We provide guidance on annual updates and other compliance matters related to foreign trade.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Conclusion */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Conclusion
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is more than just a number; it's your passport to the world of international business. It is the first and most critical step in taking your products and services to a global audience, ensuring compliance and unlocking numerous government benefits.
-            </Typography>
-            <Typography paragraph>
-              Let <strong>Rekotax</strong> be your partner in this journey. Contact us today for a swift and professional IEC registration experience, and take your business across borders.
-            </Typography>
-          </Box>
+        sx={{
+          mt: 2.5,
+          background: "#f4f6f8",
+          borderLeft: "4px solid #0f2555",
+          p: 2,
+          borderRadius: 1,
+          color: "#333",
+          fontSize: "0.98rem",
+          lineHeight: 1.7,
+        }}
+      >
+        <strong>Note:</strong> Thresholds, slabs, and filing cycles vary by state. If you have employees across multiple
+        locations, register and comply in each relevant state.
+      </Box>
+    </Box>
+
+    {/* Documents Required */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Documents Required for Professional Tax Registration
+      </Typography>
+      <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        <p>Keep clear, legible copies ready in the formats accepted by your state portal:</p>
+        <ul>
+          <li><strong>Entity documents:</strong> PAN, incorporation certificate or firm deed, MOA or partnership deed where applicable.</li>
+          <li><strong>Address proof:</strong> Electricity bill, property tax receipt, rent agreement with owner NOC if rented.</li>
+          <li><strong>Signatory KYC:</strong> PAN and Aadhaar of proprietor, partner, director, or authorized signatory.</li>
+          <li><strong>Bank details:</strong> Cancelled cheque or bank letter for the current account.</li>
+          <li><strong>Employee details for PTRC:</strong> Employee list, designation, salary ranges as per slab, date of joining.</li>
+          <li><strong>Other state-specific items:</strong> Shop and establishment certificate, GST details, or any portal-specific declarations.</li>
+        </ul>
+      </Typography>
+    </Box>
+
+    {/* Step-by-Step Process */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Step-by-Step Process for Professional Tax Registration
+      </Typography>
+      <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        <p>The application is filed on the respective state tax portal. A typical flow is outlined below:</p>
+        <ol>
+          <li><strong>Portal account creation:</strong> Sign up on the state Commercial Taxes or Professional Tax portal and verify mobile or email.</li>
+          <li><strong>Select application type:</strong> Choose <strong>PTEC</strong> for enrollment, <strong>PTRC</strong> for employer registration, or both if required.</li>
+          <li><strong>Form filing:</strong> Enter legal name, trade name, constitution, principal place of business, signatory details, and employee information where applicable.</li>
+          <li><strong>Document upload:</strong> Upload KYC, address proof, and any state-specific attachments in the prescribed size and format.</li>
+          <li><strong>e-Sign and payment:</strong> e-Sign using DSC or Aadhaar as allowed. Pay the registration fee or initial PT payment if asked by the state.</li>
+          <li><strong>Certificate issuance:</strong> Download the <strong>PTEC</strong> and or <strong>PTRC</strong> certificate once approved and keep acknowledgments for records.</li>
+        </ol>
+      </Typography>
+    </Box>
+
+    {/* Post-Registration Compliance */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Post-Registration Compliance and Due Dates
+      </Typography>
+      <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        After registration, configure payroll to deduct PT as per the correct slab from the next salary cycle and deposit within due dates.
+        File returns at the frequency set by your state. Keep challans and return acknowledgments safely for audit trails.
+      </Typography>
+    </Box>
+
+    {/* How Rekotax Can Help */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 4, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        How Rekotax Can Help You
+      </Typography>
+      <Typography component="div" sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        <ul>
+          <li><strong>State assessment:</strong> We identify whether you need PTEC, PTRC, or both and map state-specific rules.</li>
+          <li><strong>Documentation and filing:</strong> Complete preparation, validation, and online submission on the correct portal.</li>
+          <li><strong>Payroll-ready setup:</strong> Slab configuration note, deduction policy, and compliance calendar for your HR team.</li>
+          <li><strong>Ongoing support:</strong> Monthly return filing options, challan assistance, and notice or query handling.</li>
+        </ul>
+      </Typography>
+    </Box>
+
+    {/* Conclusion */}
+    <Box sx={{ backgroundColor: "#fff", p: 4, mb: 2, borderRadius: 2, boxShadow: "0 2px 6px rgba(0,0,0,0.05)" }}>
+      <Typography variant="h5" sx={{ color: "#0f2555", mb: 2, fontWeight: 600 }}>
+        Conclusion
+      </Typography>
+      <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8, mb: 2 }}>
+        Professional Tax registration keeps your business compliant and your payroll clean. Whether you are a growing startup, an
+        established company, or a self-employed professional, timely PTEC and PTRC registration protects you from penalties and builds
+        trust with employees and regulators.
+      </Typography>
+      <Typography sx={{ color: "#333", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.8 }}>
+        Let <strong>Rekotax</strong> set up your Professional Tax compliance with a quick, accurate, and fully guided process. Connect
+        with us to get started today.
+      </Typography>
+    </Box>
+  </Container>
+</Box>
 
 
 
@@ -1201,48 +1261,49 @@ export default function ImportExportCode({ webAppUrl }) {
             >
              Frequently Asked Questions (FAQs)
             </Typography>
-            {[
-              {
-                   q: "What is an Import-Export Code (IEC)?",
-                   a: "An Import-Export Code (IEC) is a unique 10-digit number issued by the DGFT (Director General of Foreign Trade) that is mandatory for any business or individual to start an import-export business in India."
-                 },
-                 {
-                   q: "Who needs to obtain an IEC?",
-                   a: "Any person or entity looking to import goods into India or export goods from India must have an IEC. It is required for customs clearance, international trade payments, and availing benefits under the Foreign Trade Policy."
-                 },
-                 {
-                   q: "What are the main benefits of having an IEC?",
-                   a: "The key benefits include legal access to global markets, eligibility for government export schemes, lifetime validity with no renewal hassles, and simplified customs and banking procedures."
-                 },
-                 {
-                   q: "Is there any renewal required for an IEC?",
-                   a: "No, an IEC has lifetime validity and does not require any renewal. However, it is mandatory to update your IEC details on the DGFT portal annually between April and June to keep it active."
-                 },
-                 {
-                   q: "What documents are needed for IEC registration?",
-                   a: "You will need a digital copy of the PAN card, identity proof (Aadhaar/Voter ID), proof of business address, and a cancelled cheque or bank certificate of the business's current account."
-                 },
-                 {
-                   q: "How long does it take to get an IEC?",
-                   a: "Once the online application is submitted with all the correct documents, the IEC is typically issued by the DGFT within 3-5 working days."
-                 },
-                 {
-                   q: "Can an individual apply for an IEC?",
-                   a: "Yes, both individuals (as proprietors) and business entities like partnership firms, LLPs, and companies can apply for and obtain an IEC."
-                 },
-                 {
-                   q: "Is GST registration mandatory to get an IEC?",
-                   a: "While GST registration is not a mandatory prerequisite to apply for an IEC, it is required for claiming GST refunds on exports. Most businesses involved in regular trade will need both."
-                 },
-                 {
-                   q: "What happens if I don't update my IEC annually?",
-                   a: "Failure to update your IEC details on the DGFT portal between April and June each year will result in the deactivation of your IEC, which will halt all your import and export activities until it is reactivated."
-                 },
-                 {
-                   q: "How can Rekotax help with IEC registration?",
-                   a: "Rekotax offers a complete end-to-end service for IEC registration. We assist with document preparation, ensure an error-free online application, and provide support for annual updates, making the entire process fast and seamless for you."
-                 }
-            ]
+         { [
+  {
+    q: "What is Professional Tax in India?",
+    a: "Professional Tax is a state-level tax on income from employment, trade, or profession. It is levied by state governments and is payable by salaried employees and self-employed professionals. The annual liability for an individual is capped at ₹2,500."
+  },
+  {
+    q: "What is the difference between PTEC and PTRC?",
+    a: "PTEC is the Professional Tax Enrollment Certificate for businesses and self-employed persons to pay their own PT. PTRC is the Professional Tax Registration Certificate for employers to deduct PT from employees and remit it to the state. Many entities need both depending on activity and state rules."
+  },
+  {
+    q: "Who must obtain Professional Tax registration?",
+    a: "Employers paying salaries must obtain PTRC. Self-employed professionals such as consultants, doctors, lawyers, CAs, architects, and freelancers must obtain PTEC. Proprietorships, partnerships, LLPs, and companies usually need PTEC. Register in each state where you operate or employ staff."
+  },
+  {
+    q: "Is Professional Tax applicable in all states?",
+    a: "Professional Tax is implemented by several states and union territories. Rates, slabs, forms, and due dates vary by state. If you operate in multiple states, register and comply in each applicable jurisdiction."
+  },
+  {
+    q: "What documents are required for PTEC or PTRC?",
+    a: "Common documents include PAN of the entity or individual, incorporation or firm deed, address proof of principal place of business, signatory KYC (PAN and Aadhaar), bank proof, and for PTRC the employee list with salary slabs. Some states may also ask for GST or Shop and Establishment details and NOC if premises are rented."
+  },
+  {
+    q: "What is the process to register for Professional Tax?",
+    a: "Sign up on the respective state tax portal, choose PTEC, PTRC, or both, fill the online form with entity and signatory details, upload documents, e-sign via DSC or Aadhaar as allowed, and submit. On approval, download the certificates and begin payments and return filing as per the state schedule."
+  },
+  {
+    q: "What are the due dates and payment frequency?",
+    a: "Frequency depends on the state. PTRC often requires monthly deduction and deposit based on salary slabs, with monthly or periodic returns. PTEC is typically paid annually by the enrolled person or entity. Follow your state's latest calendar to avoid interest and penalties."
+  },
+  {
+    q: "What are the penalties for non-compliance?",
+    a: "Late registration, non-deduction, late payment, or delayed return filing can attract interest, penalties, and notices under the relevant state act. Maintain regular challans, returns, and reconciliations to keep a clean compliance trail."
+  },
+  {
+    q: "How should multi-state employers comply?",
+    a: "Register separately in each state where employees are located, apply the correct local salary slabs, deduct month-wise in payroll, and deposit within due dates. Maintain state-wise registers, challans, and return acknowledgments for audit readiness."
+  },
+  {
+    q: "How can Rekotax help with Professional Tax registration and filing?",
+    a: "Rekotax provides end-to-end Professional Tax support. We assess whether you need PTEC, PTRC, or both, prepare and verify documents, complete online registration, set up payroll slabs, and handle ongoing payments and returns. We also assist with notices and queries."
+  }
+]
+
 
               .map(({ q, a }, idx) => {
                 const isOpen = expanded === idx;

@@ -22,6 +22,7 @@ import {
   Snackbar,
   TextField
 } from "@mui/material";
+
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useTheme } from "@mui/material/styles";
 import { useState, useEffect, useRef } from "react";
@@ -33,6 +34,7 @@ import Alert from "@mui/material/Alert";
 import Footer from "../../../Dashboard/Footer";
 import ContactSection from "../../../Dashboard/ContactSection";
 import WhyRekotax from "../../../Dashboard/WhyRekotax";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 
 
 /**
@@ -97,7 +99,7 @@ const InfoCard = ({ title, desc }) => (
   >
     <Typography
       variant="h4"
-      sx={{ color: "#0f2555", fontWeight: 500, mb: 1.5, fontSize: "1.5rem" }}
+      sx={{ color: "#0f2555", fontWeight: 700, mb: 1.5, fontSize: "1.5rem" }}
     >
       {title}
     </Typography>
@@ -157,7 +159,7 @@ const fieldSx = {
   "& .MuiFilledInput-underline:after": { borderBottomColor: "#fff" },
 };
 
-export default function ImportExportCode({ webAppUrl }) {
+export default function StartupIndia({ webAppUrl }) {
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const [show, setShow] = useState(true);
@@ -336,7 +338,7 @@ export default function ImportExportCode({ webAppUrl }) {
               px: { xs: 2, md: 0 },
             }}
           >
-            Fast, Accurate, and Hassle-free Import-Export <br />Code (IEC) Registration
+            Start-up India Registration 
           </Typography>
 
 
@@ -352,8 +354,8 @@ export default function ImportExportCode({ webAppUrl }) {
               color: "rgba(255,255,255,0.9)",
             }}
           >
-            An Import-Export Code (IEC) is the essential first step for any business aiming to enter the global marketplace, serving as the primary license for importing and exporting goods. At Rekotax, we manage the entire IEC registration from start to finish, ensuring you can focus on expanding your business internationally while we handle the foundational legal requirements.                    </Typography>
-
+Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
+         </Typography>
           {/* CTAs centered */}
           <Box
             sx={{
@@ -482,13 +484,14 @@ export default function ImportExportCode({ webAppUrl }) {
           align="center"
           sx={{
             color: "#0f2555",
-            fontWeight: 600,
+            fontWeight: 700,
             mb: 4,
             mt: 2,
             fontSize: { xs: "2rem", md: "2.5rem" },
           }}
         >
-          Know All About IEC Registration
+         Know All About Startup India (DPIIT) Recognition
+
         </Typography>
 
         {/* What is GST + GSTIN (left) AND Contact Form (right) */}
@@ -511,40 +514,47 @@ export default function ImportExportCode({ webAppUrl }) {
               variant="h3"
               sx={{
                 color: "#0f2555",
-                fontWeight: 500,
+                fontWeight: 700,
                 mb: 1.5,
                 fontSize: { xs: "1.5rem", md: "1.8rem" },
               }}
             >
-              What is an Import-Export Code (IEC)?
+What is Startup India Registration?
             </Typography>
             {/* Para 1 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, mb: 2, color: "#333" }}>
-              An Import-Export Code (IEC) is a unique 10-digit identification number issued by <br />
-              the Director General of Foreign Trade (DGFT). It is a mandatory prerequisite for any <br />
-              business or individual looking to start an import or export business in India.
+             Startup India Registration means obtaining DPIIT recognition on the Startup <br/>
+              India portal for eligible entities. Recognition validates that your <br/>
+               business is innovation driven and eligible for Startup India benefits <br/>
+               like tax incentives, IPR support, and public procurement relaxations.
             </Typography>
 
             {/* Para 2 */}
             <Typography sx={{ fontSize: "1rem", lineHeight: 1.8, color: "#333" }}>
-              LUT registration is <strong>mandatory</strong> for any exporter who wishes to export goods or <br />
-              services without paying integrated tax and claiming refunds later. With LUT,<br /> businesses can
-              save time, improve liquidity, and expand globally without tax <br />blockages.
+              Recognition is granted online after a self-certified application with supporting <br/>
+              documents. It is available to eligible Private Limited Companies, LLPs, and <br/>
+               Registered Partnerships that meet the age, turnover, and innovation criteria <br/>
+               prescribed by DPIIT.
             </Typography>
 
             <Divider sx={{ my: 2 }} />
             <Box sx={{ mt: 4 }}>
               {/* Heading */}
               <Typography
-                variant="h3"
-              sx={{
-                color: "#0f2555",
-                fontWeight: 500,
-                mb: 1.5,
-                fontSize: { xs: "1.5rem", md: "1.8rem" },
-              }}
+                variant="h4"
+                component="h3"
+                sx={{
+                  fontWeight: 800,
+                  color: "#0f2555",
+                  fontSize: { xs: "1.6rem", md: "2rem" },
+                  textAlign: "center",
+                  mb: 2.5,
+                  lineHeight: 1.2,
+                  textWrap: "balance",
+                }}
               >
-                Key Features of IEC Registration
+               Key Features of Startup India Recognition
+
               </Typography>
 
               {/* Bulleted list */}
@@ -562,25 +572,62 @@ export default function ImportExportCode({ webAppUrl }) {
                 }}
               >
                 <li>
-                  Acts as the primary <strong>license for import and export </strong> activities
+Central recognition administered by <strong>DPIIT</strong> under the Startup India initiative
                 </li>
                 <li>
-                  Carries <strong>lifetime validity </strong> and requires no renewal
+Available to <strong>Company, LLP, or Partnership Firm</strong> that meets eligibility norms
+            </li>
+                <li>
+Facilitates <strong>tax incentives, IPR support, procurement relaxations, and access to government programs</strong> 
                 </li>
                 <li>
-                  A PAN-based registration, meaning one PAN card can have only one IEC
+Simple <strong> online application</strong> on the Startup India portal with quick approvals in many cases
                 </li>
                 <li>
-                  No need to file any returns or follow complex post-registration compliance
-                </li>
-                <li>
-                  Essential for <strong> customs clearance</strong> and foreign bank transfers
+Recognition remains valid up to the maximum tenure allowed for a startup under DPIIT rules
                 </li>
               </Box>
             </Box>
 
 
-          
+            {/* <Typography
+                            variant="h3"
+                            sx={{
+                                color: "#0f2555",
+                                fontWeight: 700,
+                                mb: 2,
+                                mt:3,
+                                fontSize: { xs: "1.6rem", md: "1.7rem" },
+                            }}
+                        >
+                            GSTIN Structure Explained
+                        </Typography> */}
+
+            {/* <Box
+                            sx={{
+                                display: "inline-block",
+                                bgcolor: "#0f2555",
+                                color: "#fff",
+                                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                                fontWeight: 600,
+                                px: 2,
+                                py: 1,
+                                borderRadius: 2,
+                                letterSpacing: 2,
+                                mb: 2,
+                                boxShadow: 3,
+                            }}
+                        >
+                            22ABCDE1234F1Z5
+                        </Box> */}
+
+            {/* <Grid container spacing={1.5} wrap="wrap">
+                            <GstinBox code="22" label="State Code" />
+                            <GstinBox code="ABCDE1234F" label="PAN Number" />
+                            <GstinBox code="1" label="Entity Code" />
+                            <GstinBox code="Z" label="Default Letter" />
+                            <GstinBox code="5" label="Check Digit" />
+                        </Grid> */}
           </Grid>
 
           {/* RIGHT: Contact form */}
@@ -724,7 +771,8 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, textAlign: "left" }}
           >
-            Who Needs an IEC?                </Typography>
+           Who is Eligible for Startup India Recognition
+             </Typography>
 
           <Grid
             container
@@ -738,16 +786,16 @@ export default function ImportExportCode({ webAppUrl }) {
           >
             {[
               {
-                title: "Importers",
-                desc: <>Any business or individual bringing goods <strong>into India</strong> from a foreign country.</>,
+                title: "Eligible Entities",
+                desc: <>Incorporated as a Private Limited Company, LLP, or Registered Partnership Firm.</>,
               },
               {
-                title: "Exporters",
-                desc: <>Businesses or individuals sending goods or services <strong>from India</strong> to other countries.</>,
+                title: "Age and Turnover",
+                desc: <>Entity not older than 10 years from <br/> the date of incorporation, with annual turnover not exceeding ₹100 crore in any financial year since incorporation.</>,
               },
               {
-                title: "Service Providers",
-                desc: <>Service providers who wish to avail benefits under the <strong>Foreign Trade Policy</strong>.</>,
+                title: "Innovation Criteria",
+                desc: <>Working on innovation, improvement, <br/> or scalable business model with high potential for employment or wealth creation. Not formed by splitting or reconstruction of an existing business</>,
               },
             ].map((card) => (
               <Grid
@@ -773,7 +821,7 @@ export default function ImportExportCode({ webAppUrl }) {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 500, color: "#0f2555", mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: "#0f2555", mb: 1 }}>
                     {card.title}
                   </Typography>
                   <Typography sx={{ lineHeight: 1.6 }}>{card.desc}</Typography>
@@ -791,10 +839,12 @@ export default function ImportExportCode({ webAppUrl }) {
             variant="h4"
             sx={{ color: "#0f2555", fontWeight: 600, mb: 3, mt: 4, textAlign: "left" }}
           >
-            Benefits of IEC Registration            </Typography>
+          Benefits of DPIIT Recognition
+          </Typography>
 
           <Typography sx={{ mb: 5, color: "#444" }}>
-            Securing an IEC is the first step to unlocking global business opportunities. It is not just a legal requirement but a gateway to international trade, enabling businesses to expand their reach, access new markets, and benefit from government schemes.
+Recognition gives access to flagship incentives and ecosystem support designed for innovative businesses.
+
           </Typography>
 
           <Box
@@ -810,30 +860,63 @@ export default function ImportExportCode({ webAppUrl }) {
             }}
           >
             {[
-              {
-                title: "Gateway to Global Markets",
-                desc: <>Legally access international markets for <strong>buying and selling</strong> goods and services.</>,
-              },
-              {
-                title: "Lifetime Validity",
-                desc: <>No need for renewals, making it a <strong>one-time, hassle-free</strong> registration.</>,
-              },
-              {
-                title: "Unlocks Trade Benefits",
-                desc: <>Become eligible for various government <strong>export promotion schemes</strong> and subsidies.</>,
-              },
-              {
-                title: "Simplifies Customs Clearance",
-                desc: <>Mandatory for clearing shipments with <strong>customs authorities</strong> smoothly.</>,
-              },
-              {
-                title: "Easy Bank Transactions",
-                desc: <>Required by banks for sending or receiving <strong>foreign currency</strong> for trade.</>,
-              },
-              {
-                title: "No Compliance Burden",
-                desc: <>No need to file any returns or follow complex <strong>post-registration compliance</strong> for IEC.</>,
-              }]
+  {
+    title: "Income Tax Holiday",
+    desc: (
+      <>
+        Option to apply for <strong>Section 80-IAC</strong> deduction for{" "}
+        <strong>3 consecutive years</strong> within the specified period, subject to
+        CBDT approval and conditions.
+      </>
+    ),
+  },
+  {
+    title: "Angel Tax Relief",
+    desc: (
+      <>
+        Relaxations for eligible DPIIT-recognized startups on specified{" "}
+        <strong>share issuances</strong>, as per prevailing CBDT notifications and conditions.
+      </>
+    ),
+  },
+  {
+    title: "Public Procurement",
+    desc: (
+      <>
+        <strong>Exemptions in prior experience or turnover</strong> and easier access on
+        Government e-Marketplace where applicable.
+      </>
+    ),
+  },
+  {
+    title: "IPR Fast-Track",
+    desc: (
+      <>
+        Faster examination and <strong>fee rebates on patents and trademarks</strong> through
+        SIPP and allied schemes.
+      </>
+    ),
+  },
+  {
+    title: "Self Certification",
+    desc: (
+      <>
+        Self-certify under select <strong>labour and environment laws</strong> for a limited
+        period, as notified from time to time.
+      </>
+    ),
+  },
+  {
+    title: "Funding Support",
+    desc: (
+      <>
+        Access to programs like the <strong>Fund of Funds for Startups</strong> (via SIDBI)
+        and other government-linked initiatives.
+      </>
+    ),
+  },
+]
+
               .map((card) => (
                 <Box key={card.title} sx={{ display: "flex" }}>
                   {/* If InfoCard already renders a Paper, just keep it; otherwise use a Paper here */}
@@ -858,42 +941,49 @@ export default function ImportExportCode({ webAppUrl }) {
               mb: 6,
             }}
           >
-            Simplified Process for IEC Registration
+Simplified Process for Startup India (DPIIT) Recognition
           </Typography>
 
           {(() => {
-            const steps = [
-             {
-              number: "1",
-              title: "Prepare Your Documents",
-              desc: "Gather the necessary documents, including the PAN card, Aadhaar card, proof of business address (like a rent agreement or electricity bill), and a cancelled cheque for bank account verification.",
-            },
-            {
-              number: "2",
-              title: "Register on DGFT Portal",
-              desc: "Visit the official Director General of Foreign Trade (DGFT) portal. Register as a new user by providing and verifying your mobile number and email address via OTP.",
-            },
-            {
-              number: "3",
-              title: "Fill the Application Form",
-              desc: "Log in to the portal and fill out the online application form (ANF-2A). You will need to enter details about your business, directors/partners, and bank account information accurately.",
-            },
-              {
-              number: "4",
-              title: "Upload Documents",
-              desc: "Scan and upload the required documents as per the specified format and size. This includes your address proof and the cancelled cheque.",
-            },
-            {
-              number: "5",
-              title: "Pay the Government Fee",
-              desc: "Proceed to pay the prescribed government application fee through the online payment gateway. The fee is non-refundable.",
-            },
-            {
-              number: "6",
-              title: "Receive Your IEC Certificate",
-              desc: "After successful submission and verification, the DGFT will issue your 10-digit IEC. You can download the e-IEC certificate directly from the portal.",
-            },
-            ];
+          const steps = [
+  {
+    number: "1",
+    title: "Incorporate the Entity",
+    desc:
+      "Ensure your business is a Company, LLP, or Partnership Firm with PAN, registered office proof, and basic KYC in place.",
+  },
+  {
+    number: "2",
+    title: "Create Startup India Account",
+    desc:
+      "Sign up on the Startup India portal, verify email and mobile, and complete the entity profile including industry, stage, and team details.",
+  },
+  {
+    number: "3",
+    title: "Prepare Application Inputs",
+    desc:
+      "Keep your incorporation certificate, PAN, directors or partners details, a concise write-up/deck explaining the innovation, website/product links, and IP or award details (if any).",
+  },
+  {
+    number: "4",
+    title: "Apply for DPIIT Recognition",
+    desc:
+      "Fill the online form, upload documents, and provide self-certifications. Submit the application and track status from your dashboard.",
+  },
+  {
+    number: "5",
+    title: "Obtain Recognition Certificate",
+    desc:
+      "On approval, download the DPIIT Recognition Certificate and unique startup number. Use it to access benefits and programs.",
+  },
+  {
+    number: "6",
+    title: "Apply for Tax Benefits",
+    desc:
+      "If eligible, apply for 80-IAC deduction and other available relaxations through the relevant sections of the portal, subject to timelines and conditions.",
+  },
+];
+
 
             const rows = [steps.slice(0, 3), steps.slice(3, 6)];
 
@@ -996,188 +1086,260 @@ export default function ImportExportCode({ webAppUrl }) {
           <WhyRekotax fullBleed />
         </Box>
 
-      <Box
-            sx={{
-              maxWidth: 1100,
-              mx: "auto",
-              px: { xs: 2, md: 4 },
-              py: { xs: 4, md: 8 },
-              backgroundColor: "#fff",
-              color: "#333",
-              lineHeight: 1.7,
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                textAlign: "center",
-                color: "#0f2555",
-                fontWeight: 700,
-                mb: 4,
-              }}
-            >
-              IEC Registration in India – A Complete Guide for Importers & Exporters
-            </Typography>
-    
-            {/* Introduction */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 4, mb: 2 }}>
-              Introduction to IEC Registration
-            </Typography>
-            <Typography paragraph>
-              For any business aspiring to engage in international trade, the <strong>Import-Export Code (IEC)</strong> is the first and most crucial requirement. Issued by the Director General of Foreign Trade (DGFT), the IEC is a mandatory license that enables businesses to import goods into India and export them to global markets.
-            </Typography>
-            <Typography paragraph>
-              Obtaining an IEC is the foundational step to unlocking your business's global potential. At <strong>Rekotax</strong>, we specialize in providing a seamless and efficient IEC registration service, ensuring you can focus on your international expansion while we handle the essential legal formalities.
-            </Typography>
-    
-            {/* What is IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              What is an Import-Export Code (IEC)?
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is a unique <strong>10-digit identification number</strong> linked to a business's or individual's PAN card. It is a mandatory requirement for clearing customs, processing international payments, and availing benefits under India's Foreign Trade Policy. Without a valid IEC, no entity can legally conduct import or export activities.
-            </Typography>
-    
-            {/* Who Needs an IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Who Needs an IEC Registration?
-            </Typography>
-            <Typography paragraph>
-              IEC registration is mandatory for any person or entity involved in the cross-border trade of goods and services. This includes:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Importers: Any business that needs to clear customs for bringing goods into India.",
-                "Exporters: Any business that sends goods to another country and needs to send shipments.",
-                "Service Providers: Service or technology providers who want to avail benefits under the Foreign Trade Policy for their exports.",
-                "E-commerce Operators: Online sellers and platforms dealing with customers in foreign countries.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-            <Typography paragraph>
-              Essentially, if your business transactions involve foreign remittance or customs, an IEC is indispensable.
-            </Typography>
-    
-            {/* Key Features */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Key Features of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The IEC registration comes with several distinct features that make it business-friendly:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Lifetime Validity: Once an IEC is issued, it is valid for the lifetime of the entity and requires no renewal.",
-                "No Return Filing: Unlike other tax registrations, IEC holders are not required to file any periodic returns.",
-                "PAN-Based: The IEC is linked to the PAN of the business. One PAN can have only one IEC.",
-                "Quick Processing: The application process is entirely online and is generally processed within a few working days.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Benefits */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Benefits of IEC Registration
-            </Typography>
-            <Typography paragraph>
-              Registering for an IEC opens up a world of opportunities and offers tangible benefits:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Global Market Access: It is the primary license that legally allows you to expand your business to international markets.",
-                "Unlocks Export Benefits: An IEC is necessary to avail benefits from the DGFT, Customs, and Export Promotion Councils under various schemes.",
-                "Simplifies Customs Clearance: It is a mandatory document for clearing shipments with customs authorities, ensuring smooth logistics.",
-                "Facilitates International Banking: Banks require an IEC for processing transactions involving foreign currency for import or export purposes.",
-                "Enhances Business Credibility: Having an IEC adds to the credibility of your business when dealing with international clients and partners.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Documents Required */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Documents Required for IEC Registration
-            </Typography>
-            <Typography paragraph>
-              The application process for an IEC is digital and requires the following key documents:
-            </Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "PAN Card: A digital copy of the PAN card of the individual or the business entity.",
-                "Identity Proof: Aadhaar card, Voter ID, or Passport of the applicant.",
-                "Address Proof: A utility bill (electricity or telephone), rent agreement, or sale deed of the business premises.",
-                "Bank Account Proof: A cancelled cheque or a bank certificate of the business's current account.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Step-by-Step Process */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Step-by-Step Process for IEC Registration
-            </Typography>
-            <Typography paragraph>The IEC application process is handled online through the DGFT portal:</Typography>
-            <List sx={{ listStyleType: "decimal", pl: 4 }}>
-              {[
-                "Portal Registration: Register on the official DGFT website by verifying your mobile number and email.",
-                "Application Filing: Log in and fill out the online application form (ANF-2A) with accurate business, director/partner, and bank details.",
-                "Document Upload: Upload scanned copies of all the required documents in the prescribed format.",
-                "Fee Payment: Pay the requisite government application fee using the online payment options.",
-                "IEC Issuance: Once the application is submitted and verified by the department, the e-IEC certificate is generated and can be downloaded from the portal.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Updating IEC */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Updating Your IEC
-            </Typography>
-            <Typography paragraph>
-              While IEC has lifetime validity, it is mandatory for every IEC holder to update their details on the DGFT portal annually between April and June. Failure to do so can result in the deactivation of the IEC. This ensures that the information in the DGFT database remains current.
-            </Typography>
-    
-            {/* How Rekotax Helps */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              How Rekotax Can Help You
-            </Typography>
-            <Typography paragraph>At Rekotax, we simplify the entire IEC registration process. Our services include:</Typography>
-            <List sx={{ pl: 3 }}>
-              {[
-                "Complete Documentation Support: We assist in preparing and verifying all required documents for a flawless application.",
-                "Error-Free Application Filing: Our experts handle the online submission to ensure accuracy and avoid rejections.",
-                "Fast and Efficient Processing: We manage the entire process to get your IEC issued in the shortest possible time.",
-                "Post-Registration Support: We provide guidance on annual updates and other compliance matters related to foreign trade.",
-              ].map((item) => (
-                <ListItem key={item} sx={{ py: 0 }}>
-                  <ListItemText primary={item} />
-                </ListItem>
-              ))}
-            </List>
-    
-            {/* Conclusion */}
-            <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 700, mt: 6, mb: 2 }}>
-              Conclusion
-            </Typography>
-            <Typography paragraph>
-              An Import-Export Code is more than just a number; it's your passport to the world of international business. It is the first and most critical step in taking your products and services to a global audience, ensuring compliance and unlocking numerous government benefits.
-            </Typography>
-            <Typography paragraph>
-              Let <strong>Rekotax</strong> be your partner in this journey. Contact us today for a swift and professional IEC registration experience, and take your business across borders.
-            </Typography>
-          </Box>
+    <Box
+  sx={{
+    maxWidth: 1100,
+    mx: "auto",
+    px: { xs: 2, md: 4 },
+    py: { xs: 4, md: 8 },
+    backgroundColor: "#fff",
+    color: "#333",
+    lineHeight: 1.7,
+  }}
+>
+  <Typography
+    variant="h3"
+    sx={{ textAlign: "center", color: "#0f2555", fontWeight: 600, mb: 4 }}
+  >
+    Startup India (DPIIT) Recognition – A Complete Guide
+  </Typography>
+
+  {/* Introduction */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mb: 2 }}>
+    Introduction
+  </Typography>
+  <Typography paragraph>
+    <strong>Startup India</strong> is a flagship initiative of the Government of
+    India that supports innovation-driven businesses with regulatory
+    relaxations, market access, and incentives. Obtaining{" "}
+    <strong>DPIIT recognition</strong> validates your startup status and unlocks
+    benefits like tax incentives, IPR rebates, and public procurement
+    relaxations.
+  </Typography>
+  <Typography paragraph>
+    At <strong>Rekotax</strong>, we manage the entire recognition
+    journey—eligibility check, documentation, online filing, and
+    post-recognition enablement—so you can focus on building and scaling.
+  </Typography>
+
+  {/* What is Recognition */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    What is Startup India (DPIIT) Recognition?
+  </Typography>
+  <Typography paragraph>
+    DPIIT recognition is an online certification on the Startup India portal for
+    eligible entities. Recognized startups receive a{" "}
+    <strong>certificate of recognition</strong> and a unique startup ID,
+    enabling access to Startup India programs and certain tax and procurement
+    relaxations subject to conditions.
+  </Typography>
+
+  {/* Eligibility */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Who is Eligible for Recognition?
+  </Typography>
+  <Typography>Recognition is typically available to entities that meet all of the following:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Entity type: Private Limited Company, LLP, or Registered Partnership Firm.",
+      "Age: Not older than 10 years from the date of incorporation.",
+      "Turnover: Annual turnover has not exceeded ₹100 crore in any financial year since incorporation.",
+      "Innovation: Working on innovation, improvement of products/processes/services, or a scalable business model with high potential for employment or wealth creation.",
+      "No split/reconstruction: Not formed by splitting up or reconstructing an existing business.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Eligibility Limits Snapshot */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Eligibility Limits Snapshot
+  </Typography>
+  <Typography>These headline limits define the scope of who can be recognized as a startup under DPIIT norms:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Age limit: ≤ 10 years from incorporation.",
+      "Turnover limit: ≤ ₹100 crore in any preceding financial year.",
+      "Innovation criterion: Clear demonstration of innovation or substantial improvement.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+  <Typography paragraph>
+    If you’re close to the limits, we can help evaluate suitability and refine your application narrative.
+  </Typography>
+
+  {/* Types of Applications */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Types of Applications
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Newly incorporated startups: Early-stage entities applying soon after incorporation.",
+      "Existing eligible entities: Firms that meet age/turnover/innovation criteria and seek recognition to access benefits.",
+      "With/without IP or traction: Recognition does not require patents or revenue; however, strong evidence strengthens your case.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Key Benefits Table */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Key Benefits at a Glance
+  </Typography>
+  <Typography>
+    Recognized startups can access several benefits (subject to applicable rules and approvals):
+  </Typography>
+
+  <Table sx={{ mt: 2 }}>
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          Benefit / Provision
+        </TableCell>
+        <TableCell sx={{ bgcolor: "#0f2555", color: "#fff", fontWeight: 700 }}>
+          What It Means
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[
+        ["Tax Holiday (Section 80-IAC)", "Option to apply for a 3-year profit deduction within the specified window, subject to CBDT approval and conditions."],
+        ["Angel Tax Relief", "Relaxations for eligible DPIIT-recognized startups on specified share issuances, per prevailing CBDT notifications."],
+        ["IPR Support", "Faster examination and fee rebates on patents/trademarks via SIPP and allied programs."],
+        ["Public Procurement", "Relaxations in prior experience/turnover criteria in eligible government tenders and GeM facilitation."],
+        ["Self-Certification", "Self-certify under select labour and environment laws for a limited period, as notified."],
+        ["Programs & Funding Linkages", "Access to Startup India programs and Fund of Funds linkages through institutions like SIDBI."],
+      ].map(([a, b]) => (
+        <TableRow key={a}>
+          <TableCell>{a}</TableCell>
+          <TableCell>{b}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+
+  {/* Benefits of Getting Recognized */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Benefits of Getting Recognized
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Signal of legitimacy: Recognition boosts credibility with customers, investors, and partners.",
+      "Easier market access: Procurement relaxations and GeM onboarding support.",
+      "Cost savings: Potential tax incentives and IPR fee rebates reduce early-stage burn.",
+      "Ecosystem unlock: Visibility to programs, challenges, incubators, and mentoring.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Why Apply Early */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Why Apply Even If You’re Early?
+  </Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Investor confidence: Aids diligence and can reduce friction in fundraising.",
+      "Faster go-to-market: Procurement relaxations open doors to pilots and POCs.",
+      "Future readiness: Be prepared to claim incentives within time-bound windows.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Documents Required */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Documents Required
+  </Typography>
+  <Typography>Keep the following handy (PDFs/links/screens as applicable):</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Incorporation certificate and PAN of the entity.",
+      "Directors/partners’ details (IDs, emails, phone numbers).",
+      "Brief write-up/deck describing innovation, problem-solution, USP, business model, and market.",
+      "Website/app/product links, demo videos, customer references or traction metrics (if any).",
+      "IP filings/awards or accelerator letters (optional but supportive).",
+      "Registered office address proof.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Process */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Step-by-Step Process
+  </Typography>
+  <Typography>Recognition is fully online on the Startup India portal:</Typography>
+  <List sx={{ listStyleType: "decimal", pl: 4 }}>
+    {[
+      "Create account & profile: Sign up, verify contacts, and complete the entity profile.",
+      "Application form: Enter company/LLP/firm details, team, sector, and innovation write-up.",
+      "Upload/supporting info: Add pitch deck, product/website links, IP/awards if available.",
+      "Self-declarations: Confirm eligibility and accept the declarations.",
+      "Submit & track: Submit the application and monitor status on your dashboard.",
+      "Download certificate: Upon approval, obtain the recognition certificate and startup ID.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ display: "list-item", py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* What if not recognized */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    What If You Don’t Get Recognized?
+  </Typography>
+  <Typography paragraph>
+    There is no statutory “penalty” for not applying, but you may miss out on incentives and relaxations. If an
+    application is rejected due to insufficient innovation details or documentation gaps, you can refine the narrative
+    and re-apply. Misrepresentation can lead to revocation and potential consequences under applicable laws.
+  </Typography>
+
+  {/* How Rekotax Can Help */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    How Rekotax Can Help You
+  </Typography>
+  <Typography>We streamline recognition with precision:</Typography>
+  <List sx={{ pl: 3 }}>
+    {[
+      "Eligibility & narrative: Assess fit, refine the innovation storyline, and map to DPIIT criteria.",
+      "Document prep & filing: Curate a crisp deck, compile proofs, and file accurately.",
+      "Post-recognition actions: Guidance on 80-IAC application, angel-tax relaxations, and IPR rebates.",
+      "Tender & GeM readiness: Checklists for procurement opportunities and onboarding.",
+      "Dedicated expert: Single point of contact till certificate and beyond.",
+    ].map((item) => (
+      <ListItem key={item} sx={{ py: 0 }}>
+        <ListItemText primary={item} />
+      </ListItem>
+    ))}
+  </List>
+
+  {/* Conclusion */}
+  <Typography variant="h4" sx={{ color: "#0f2555", fontWeight: 500, mt: 6, mb: 2 }}>
+    Conclusion
+  </Typography>
+  <Typography paragraph>
+    DPIIT recognition validates your startup’s innovation and opens access to incentives, faster IPR, and public
+    procurement opportunities. Apply early, keep your documentation sharp, and leverage the ecosystem to scale
+    confidently.
+  </Typography>
+  <Typography paragraph>
+    With <strong>Rekotax</strong>, you get an end-to-end, founder-first process—clear, quick, and compliant.
+  </Typography>
+</Box>
 
 
 
@@ -1202,47 +1364,88 @@ export default function ImportExportCode({ webAppUrl }) {
              Frequently Asked Questions (FAQs)
             </Typography>
             {[
-              {
-                   q: "What is an Import-Export Code (IEC)?",
-                   a: "An Import-Export Code (IEC) is a unique 10-digit number issued by the DGFT (Director General of Foreign Trade) that is mandatory for any business or individual to start an import-export business in India."
-                 },
-                 {
-                   q: "Who needs to obtain an IEC?",
-                   a: "Any person or entity looking to import goods into India or export goods from India must have an IEC. It is required for customs clearance, international trade payments, and availing benefits under the Foreign Trade Policy."
-                 },
-                 {
-                   q: "What are the main benefits of having an IEC?",
-                   a: "The key benefits include legal access to global markets, eligibility for government export schemes, lifetime validity with no renewal hassles, and simplified customs and banking procedures."
-                 },
-                 {
-                   q: "Is there any renewal required for an IEC?",
-                   a: "No, an IEC has lifetime validity and does not require any renewal. However, it is mandatory to update your IEC details on the DGFT portal annually between April and June to keep it active."
-                 },
-                 {
-                   q: "What documents are needed for IEC registration?",
-                   a: "You will need a digital copy of the PAN card, identity proof (Aadhaar/Voter ID), proof of business address, and a cancelled cheque or bank certificate of the business's current account."
-                 },
-                 {
-                   q: "How long does it take to get an IEC?",
-                   a: "Once the online application is submitted with all the correct documents, the IEC is typically issued by the DGFT within 3-5 working days."
-                 },
-                 {
-                   q: "Can an individual apply for an IEC?",
-                   a: "Yes, both individuals (as proprietors) and business entities like partnership firms, LLPs, and companies can apply for and obtain an IEC."
-                 },
-                 {
-                   q: "Is GST registration mandatory to get an IEC?",
-                   a: "While GST registration is not a mandatory prerequisite to apply for an IEC, it is required for claiming GST refunds on exports. Most businesses involved in regular trade will need both."
-                 },
-                 {
-                   q: "What happens if I don't update my IEC annually?",
-                   a: "Failure to update your IEC details on the DGFT portal between April and June each year will result in the deactivation of your IEC, which will halt all your import and export activities until it is reactivated."
-                 },
-                 {
-                   q: "How can Rekotax help with IEC registration?",
-                   a: "Rekotax offers a complete end-to-end service for IEC registration. We assist with document preparation, ensure an error-free online application, and provide support for annual updates, making the entire process fast and seamless for you."
-                 }
-            ]
+  {
+    q: "What is Startup India (DPIIT) recognition?",
+    a: "An official recognition by the Department for Promotion of Industry & Internal Trade (DPIIT) on the Startup India portal for eligible innovation-driven Indian entities. It enables access to benefits such as tax incentives, IPR rebates, and public-procurement relaxations."
+  },
+  {
+    q: "Which entity types are eligible?",
+    a: "Indian Private Limited Companies, Limited Liability Partnerships (LLPs), and Registered Partnership Firms. Sole proprietorships and unregistered partnerships are not eligible."
+  },
+  {
+    q: "What are the age and turnover limits?",
+    a: "Not older than 10 years from incorporation/registration and turnover not exceeding ₹100 crore in any financial year since incorporation (plus the innovation criterion)."
+  },
+  {
+    q: "What qualifies as ‘innovation’ for recognition?",
+    a: "Innovation, development or improvement of products/services/processes, or a scalable business model with high employment/wealth creation potential. Entities formed by splitting/reconstructing an existing business are ineligible."
+  },
+  {
+    q: "Is there a government fee to apply?",
+    a: "No. DPIIT recognition is free to apply on the Startup India portal. (Professional assistance charges, if you use a service provider, are separate.)"
+  },
+  {
+    q: "What documents are required?",
+    a: "Incorporation/Registration Certificate, PAN, directors/partners details, an innovation write-up or pitch deck, website/app/product links, and any IP filings/awards/traction or funding letters (if available). Keep registered office proof handy."
+  },
+  {
+    q: "How long does recognition take?",
+    a: "Complete applications are often processed in a few working days, subject to documentation quality, responses to clarifications, and portal workload."
+  },
+  {
+    q: "What benefits do recognized startups get?",
+    a: "Potential tax holiday under Sec. 80-IAC (with separate approval), angel-tax relief (per notifications), fast-track IPR with fee rebates, procurement relaxations/GeM facilitation, and access to Startup India programs, seed funds, and networks."
+  },
+  {
+    q: "Is the 3-year tax holiday automatic after recognition?",
+    a: "No. Section 80-IAC requires a separate application and approval. On approval, a 100% profit deduction for any 3 consecutive years within the permitted window may be claimed, subject to conditions."
+  },
+  {
+    q: "How does angel-tax relief work?",
+    a: "Recognized startups may get relief on share-premium taxation for specified investments, subject to notified conditions, eligible investor categories, valuation norms, and prescribed filings."
+  },
+  {
+    q: "What public-procurement benefits apply?",
+    a: "Relaxations in prior experience/turnover criteria in eligible government tenders and easier GeM onboarding, while still meeting essential technical/quality requirements of each tender."
+  },
+  {
+    q: "What IPR benefits are available?",
+    a: "Fast-track patent examination, significant fee rebates (e.g., patents/trademarks as per prevailing schedules), and access to facilitator programs like SIPP to reduce time and cost."
+  },
+  {
+    q: "How long is DPIIT recognition valid?",
+    a: "As long as the entity meets the Startup definition—within 10 years of incorporation and below ₹100 crore turnover—and complies with ongoing conditions. Crossing limits generally ends startup status (the company continues to operate)."
+  },
+  {
+    q: "Can foreign subsidiaries apply?",
+    a: "The recognized entity must be incorporated/registered in India (Company/LLP/Registered Partnership). Foreign investment/shareholding is allowed per law; eligibility is assessed on the Indian entity and compliance with DPIIT and FEMA/FDI rules."
+  },
+  {
+    q: "Can I edit my application or details after submission?",
+    a: "You can respond to portal clarifications and keep your Startup profile updated (team, traction, IP, address, website). Reflect material changes promptly to avoid issues during benefit applications."
+  },
+  {
+    q: "Is GST or any other registration mandatory first?",
+    a: "Not specifically for recognition, but you must be a legally incorporated Indian entity. Obtain other registrations relevant to your business model (e.g., GST, Shops & Establishment, FSSAI) for operations and diligence."
+  },
+  {
+    q: "Can pre-revenue or prototype-stage startups apply?",
+    a: "Yes. Provide a clear problem–solution narrative, innovation write-up, and evidence such as prototype/pilots/IP filings/demos/user feedback. Strong documentation aids faster approval."
+  },
+  {
+    q: "Does recognition guarantee funding?",
+    a: "No. It improves access to ecosystem programs (Seed Fund, Fund of Funds via SIDBI, incubators/accelerators), each with separate eligibility and selection criteria."
+  },
+  {
+    q: "Can recognition/status be lost later?",
+    a: "Yes—on crossing 10 years or ₹100 crore turnover, or for material misstatements. Maintain true and complete disclosures and retain proof of innovation/operations for verification."
+  },
+  {
+    q: "How does Rekotax help with DPIIT recognition?",
+    a: "End-to-end support: eligibility check, innovation write-up/deck, profile setup, filing, responses to clarifications, and post-recognition guidance on 80-IAC, angel-tax relief, IPR rebates, and GeM onboarding."
+  }
+]
+
 
               .map(({ q, a }, idx) => {
                 const isOpen = expanded === idx;
