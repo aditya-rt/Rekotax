@@ -236,7 +236,7 @@ export default function ContactSection() {
                 icon={<EmailRoundedIcon />}
                 values={["business@rekotax.com", "grievance@rekotax.com", "enquiry@rekotax.com"]}
                 sx={{
-                  flex: { xs: "1 1 auto", sm: "0 0 calc(50% - 8px)" },
+                  flex: { xs: "1 1 auto", sm: "0 0 calc(80% - 8px)" },
                   maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
                   minWidth: 0,
                   "& a, & span": {
@@ -259,7 +259,7 @@ export default function ContactSection() {
                 kind="address"
                 icon={<PlaceRoundedIcon />}
                 value="108, Udyog Vihar Phase 1, Sector 20, Gurugram, Haryana 122016"
-                value2="205, 2nd Floor, Tower A, Spaze iTech Park, Sohna Road, Sector 49, Gurugram, Haryana 122018"
+                value2="166, G/f, St No 8, Kapil Vihar Rd,North West Delhi, Delhi,Delhi, 110042"
                 sx={{
                   // was: { xs: "0 0 calc((100% - 32px) / 3)", sm: "1 1 0" }
                   flex: { xs: "1 1 auto", sm: "0 0 80%", md: "0 0 60%" }, // slightly smaller on sm/md

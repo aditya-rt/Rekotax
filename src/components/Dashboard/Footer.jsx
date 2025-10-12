@@ -137,10 +137,9 @@ export default function Footer() {
               <Grid item xs={12} sm={6} md={4}>
                 <Typography sx={headSx}>Company</Typography>
                 <Link href="/about" underline="hover" sx={linkSx}>About Us</Link>
-                <Link href="/values" underline="hover" sx={linkSx}>Our Values</Link>
-                <Link href="/mission" underline="hover" sx={linkSx}>Our Mission</Link>
-                <Link href="/vision" underline="hover" sx={linkSx}>Our Vision</Link>
-                <Link href="/approach" underline="hover" sx={linkSx}>Our Approach</Link>
+                <Link href="#principle" underline="hover" sx={linkSx}>Our Mission</Link>
+                <Link href="#principle" underline="hover" sx={linkSx}>Our Vision</Link>
+                <Link href="#principle" underline="hover" sx={linkSx}>Our Approach</Link>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>

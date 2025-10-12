@@ -3,29 +3,27 @@ import React from "react";
 import { Box, Grid, Typography, Stack, Divider } from "@mui/material";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
-const visionPoints = [
-  "Here, “Quality Is An Assurance”.",
-  "Driven by the concept of Quality as Priority, our team strives to foster a reputable and dynamic firm that excels in its operations, serving the best interests of our clients.",
-  "We aim to provide opportunities for prosperity and growth to all those associated with us, becoming a leader in our respective areas of expertise.",
-  "At IGCA, we are trailblazers for growth and pioneers of quality work.",
+const missionPoints = [
+  "To simplify the complex world of compliance, taxation, and business management through intelligent systems and human-centered design.",
+  "We exist to eliminate friction and uncertainty — enabling founders to focus on innovation while we manage precision, transparency, and trust.",
+  "Our mission is to make business operations seamless through expertise, technology, and accountability.",
+  "We aim to be the most reliable growth partner for entrepreneurs, startups, and enterprises across India and beyond.",
 ];
 
-const valuesPoints = [
-  "We help our clients grow.",
-  "Excellence: at the core of everything we do.",
-  "Integrity: guiding our actions, fostering trust and inspiring excellence.",
-  "Commitment: the unwavering dedication and relentless pursuit of excellence that fuels success.",
-  "Collaboration: powering innovation and achieving greatness through synergy and shared expertise.",
-  "Prosperity: enhancing achievement.",
-  "Diversity & Inclusivity.",
+const visionPoints = [
+  "To redefine how entrepreneurs experience compliance and business management.",
+  "Creating a future where launching, running, and scaling a business is effortless, transparent, and growth-driven.",
+  "We envision a world where compliance becomes a catalyst for innovation, credibility, and sustainable success.",
+  "Rekotax strives to empower founders with clarity, confidence, and control across every stage of their business journey.",
 ];
 
 const approachPoints = [
-  "Holistic collaborations that yield effective results.",
-  "Tailored solutions driven by a thorough understanding of our clients’ needs.",
-  "Confidentiality and security are our top priorities, safeguarding client information with utmost care.",
-  "Human capital and leadership advancement drive success.",
-  "Our unwavering service standards set us apart.",
+  "At Rekotax, our approach blends technology, expertise, and empathy to deliver results that truly matter.",
+  "We begin by understanding your business, identifying compliance and financial goals, and designing a roadmap that aligns with your vision.",
+  "Every engagement follows a structured process — Evaluate, Plan, Implement, and Improve — ensuring consistency, precision, and measurable outcomes.",
+  "We integrate compliance into your business model, transforming it from a regulatory obligation into a strategic advantage.",
+  "Our advisory is powered by automation but guided by people — experts who understand not just the laws, but the entrepreneurs behind them.",
+  "Through collaboration, innovation, and accountability, we make sure our clients stay compliant, confident, and future-ready."
 ];
 
 /** One responsive row (text + image). Stacks on small screens, splits 60/40 on md+. */
@@ -157,7 +155,7 @@ export default function CompanyPrinciples() {
             fontSize: { xs: "clamp(26px, 7vw, 34px)", md: "clamp(38px, 4.5vw, 54px)" },
           }}
         >
-          Our Principles
+          Built for Founders, Driven by Purpose
         </Typography>
 
         <Typography
@@ -171,11 +169,11 @@ export default function CompanyPrinciples() {
             lineHeight: 1.7,
           }}
         >
-          Our company adheres to unwavering success principles guided by integrity and excellence.
+          Empowering entrepreneurs with clarity, compliance, and confidence to build businesses that last.
         </Typography>
 
         {/* Rows */}
-        <PrincipleRow title="Our Vision" points={visionPoints} img="/who1.png" />
+        <PrincipleRow title="Our Vision" points={visionPoints} img="/vision.jpeg" />
 
         <Divider
           sx={{
@@ -186,7 +184,7 @@ export default function CompanyPrinciples() {
         />
 
         {/* image first on md+ */}
-        <PrincipleRow title="Our Values" points={valuesPoints} img="/who2.png" reverse />
+        <PrincipleRow title="Our Mission" points={missionPoints} img="/mission.jpeg" reverse />
 
         <Divider
           sx={{
@@ -196,7 +194,7 @@ export default function CompanyPrinciples() {
           }}
         />
 
-        <PrincipleRow title="Our Approach" points={approachPoints} img="/who3.png" />
+        <PrincipleRow title="Our Approach" points={approachPoints} img="/approach.jpeg" />
       </Box>
     </Box>
   );

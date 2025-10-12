@@ -1,5 +1,5 @@
 // InsightsCarousel.jsx
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import {
   Box,
   Typography,
@@ -12,29 +12,50 @@ import {
 import { useTheme } from "@mui/material/styles";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import Footer from "../Footer";
+import ContactSection from "../ContactSection";
+import ClientTestimonials from "../ClientTestimonials";
+import blog1 from "../../../Data/Blog/blog1";
+import blog2 from "../../../Data/Blog/blog2";
+import blog3 from "../../../Data/Blog/blog3";
+
 
 // Demo data - replace with your API/props
-const ITEMS = [
-  { title: "Spotting India’s PRIME innovation moment", excerpt: "The theme of this report, PRIME: Promoting Resilient, Inclusive Manufacturing & Employment, reflects the urgent need to build a...", tag: "Industry", readTime: "4 minute read", image: "/who1.png", href: "#" },
-  { title: "Wheelwatch", excerpt: "Wheelwatch brings you a sharp quarterly view of the changing contours of the automotive industry.", tag: "Industry", readTime: "4 minute read", image: "/who2.png", href: "#" },
-  { title: "The business imperative for Agentic AI", excerpt: "Agentic AI enables businesses to operate efficiently by automating front, middle and back-office functions, including customer...", tag: "Industry", readTime: "4 minute read", image: "/who2.png", href: "#" },
-  { title: "Global Capability Centers (GCCs)", excerpt: "Deloitte offers service portfolio to bring innovation, deliver value, and lead the evolution of GCCs from resource centers to Centers of...", tag: "Collection", readTime: "6 minute read", image: "/who3.png", href: "#" },
-  { title: "India Budget Highlights", excerpt: "Top changes impacting businesses and consumers this fiscal...", tag: "Tax", readTime: "5 minute read", image: "/who1.png", href: "#" },
-  { title: "ESG and Compliance in 2025", excerpt: "How mid-market firms can keep pace with evolving ESG norms...", tag: "ESG", readTime: "3 minute read", image: "/who2.png", href: "#" },
-];
+// const ITEMS = [
+//   // { title: "Spotting India’s PRIME innovation moment", excerpt: "The theme of this report, PRIME: Promoting Resilient, Inclusive Manufacturing & Employment, reflects the urgent need to build a...", tag: "Industry", readTime: "4 minute read", image: "/who1.png", href: "#" },
+//   // { title: "Wheelwatch", excerpt: "Wheelwatch brings you a sharp quarterly view of the changing contours of the automotive industry.", tag: "Industry", readTime: "4 minute read", image: "/who2.png", href: "#" },
+//   // { title: "The business imperative for Agentic AI", excerpt: "Agentic AI enables businesses to operate efficiently by automating front, middle and back-office functions, including customer...", tag: "Industry", readTime: "4 minute read", image: "/who2.png", href: "#" },
+//   // { title: "Global Capability Centers (GCCs)", excerpt: "Deloitte offers service portfolio to bring innovation, deliver value, and lead the evolution of GCCs from resource centers to Centers of...", tag: "Collection", readTime: "6 minute read", image: "/who3.png", href: "#" },
+//   // { title: "India Budget Highlights", excerpt: "Top changes impacting businesses and consumers this fiscal...", tag: "Tax", readTime: "5 minute read", image: "/who1.png", href: "#" },
+//   // { title: "ESG and Compliance in 2025", excerpt: "How mid-market firms can keep pace with evolving ESG norms...", tag: "ESG", readTime: "3 minute read", image: "/who2.png", href: "#" },
+// ];
+
+const ALL_BLOGS = [...blog1, ...blog2,...blog3];
+const ITEMS = ALL_BLOGS.map(b => ({
+  title: b.title,
+  excerpt: b.excerpt,
+  tag: b.tag || "Insight",
+  // readTime: b.readTime || "5 minute read",
+  image: b.image,
+  href: `/insights/${b.slug}`,
+}));
 
 const safeHref = (href) => (href && href !== "#" ? href : undefined);
 
-export default function InsightsCarousel({
-  title = "The latest from Rekotax",
+export default function Insights({
+
   items = ITEMS,
+  showExtras = true,
+  showArrows = true,
 }) {
   const theme = useTheme();
   const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));   // <600
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600-900
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));       // >=900
   const isXlUp = useMediaQuery(theme.breakpoints.up("xl"));       // >=1536
-
+  const aboutRef = useRef(null);
+  const contactRef = useRef(null);
+  const footerRef = useRef(null);
   // Responsive items per view
   const itemsPerView = isXlUp ? 4 : isMdUp ? 3 : isSm ? 2 : 1;
 
@@ -82,16 +103,78 @@ export default function InsightsCarousel({
   return (
     <Box
       component="section"
+
       sx={{
         fontFamily: "'Open Sans', sans-serif",
         // (optional hard-force)
         "& *": { fontFamily: "'Open Sans', sans-serif" },
         bgcolor: "#fff",
-        py: { xs: 5, sm: 6.5, md: 8 },
-        px: { xs: 1.5, sm: 2.5, md: 3 },
+        // py: { xs: 5, sm: 6.5, md: 8 },
+        // px: { xs: 1.5, sm: 2.5, md: 3 },
         position: "relative",
+        overflowX: "hidden",
       }}
+
     >
+
+      <Box
+        component="section"
+        sx={{
+          color: "#fff",
+          position: "relative",
+          overflow: "hidden",
+          minHeight: { xs: "52vh", md: "60vh" },
+          bgcolor: "transparent",
+          backgroundImage: `
+    radial-gradient(1000px 600px at 76% 60%, rgba(2,54,145,0.20), rgba(2,54,145,0) 60%),
+    radial-gradient(800px 420px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 70%),
+    linear-gradient(118deg, #0f2555 0%, #023691 100%)
+  `,
+          backgroundBlendMode: "screen, normal, normal",
+          backgroundRepeat: "no-repeat",
+
+          // *** offset for fixed navbar ***
+          pt: { xs: 12, md: 14 }, // 12*8=96px, 14*8=112px
+          mt: 0,
+        }}
+
+      >
+        {/* inner container */}
+        <Box
+          sx={{
+            maxWidth: 1280,
+            mx: "auto",
+            px: { xs: 2, sm: 3, md: 6 },
+            // py: { xs: 6, md: 10 },
+          }}
+        >
+          <Typography
+            component="h1"
+            sx={{
+              fontWeight: 500,
+              lineHeight: 1.05,
+              letterSpacing: { md: -0.5 },
+              // big, elegant headline
+              fontSize: { xs: 28, sm: 40, md: 56, lg: 64 },
+
+            }}
+          >
+            The latest from Rekotax
+          </Typography>
+
+          <Typography
+            sx={{
+              mt: { xs: 1.5, md: 0.5 },
+              fontSize: { xs: 16, sm: 20, md: 24 },
+              opacity: 0.9,
+            }}
+          >
+            Blog & Insights 
+          </Typography>
+        </Box>
+      </Box>
+
+
       {/* Slightly smaller container for laptops */}
       <Box
         sx={{
@@ -100,7 +183,7 @@ export default function InsightsCarousel({
           position: "relative",
         }}
       >
-        <Typography
+        {/* <Typography
           component="h2"
           align="center"
           sx={{
@@ -112,7 +195,7 @@ export default function InsightsCarousel({
           }}
         >
           {title}
-        </Typography>
+        </Typography> */}
 
         {/* Viewport */}
         <Box sx={{ position: "relative", overflow: "hidden" }}>
@@ -126,6 +209,7 @@ export default function InsightsCarousel({
               transform: `translateX(${translate})`,
               transition: "transform 400ms ease",
               pb: 1,
+              mt:6,
               minWidth: "100%",
             }}
             aria-live="polite"
@@ -222,22 +306,25 @@ export default function InsightsCarousel({
                         transition: "transform .2s ease",
                         position: "relative",
                         width: "calc(100% - 24px)",
-                        height: 0,
-                        pb: { xs: "60%", sm: "56%", md: "50%" }, // 5:2.5-ish on md+
-                        backgroundColor: "#000",
+                        // height: 0,
+                        // pb: { xs: "60%", sm: "56%", md: "50%" }, // 5:2.5-ish on md+
+                        // backgroundColor: "#000",
+                        aspectRatio: { xs: "3 / 2", sm: "16 / 9", md: "21 / 9" },
                       }}
                     >
                       <Box
                         component="img"
                         src={it.image}
                         alt={it.title}
+                        width={800}
+                        height={450}
                         sx={{
                           position: "absolute",
                           inset: 0,
                           width: "100%",
                           height: "100%",
                           objectFit: "cover",
-                          borderRadius: 2,
+                          display: "block",
                         }}
                         loading="lazy"
                       />
@@ -250,7 +337,7 @@ export default function InsightsCarousel({
         </Box>
 
         {/* Controls */}
-        {isMdUp ? (
+        {showArrows && (isMdUp ? (
           <>
             <IconButton
               aria-label="Previous"
@@ -315,8 +402,22 @@ export default function InsightsCarousel({
               <ArrowForwardIosRoundedIcon />
             </IconButton>
           </Box>
-        )}
+        ))}
       </Box>
+      {showExtras && (
+        <>
+          <Box sx={{ mt: 8, mx: 0 }} ref={aboutRef}>
+            <ClientTestimonials fullBleed />
+          </Box>
+          <Box sx={{ mt: 0, mx: -6 }} ref={aboutRef}>
+            <ContactSection />
+          </Box>
+          <Box sx={{ mt: 0, mx: 0 }} ref={footerRef}>
+            <Footer />
+          </Box>
+        </>
+      )}
+
     </Box>
   );
 }

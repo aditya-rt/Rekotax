@@ -18,7 +18,7 @@ import ProducerCompany from "./components/Registration/StartNewBusiness/Producer
 import ClientTestimonials from "./components/Dashboard/ClientTestimonials";
 import PrincipleAndApproach from "./components/Dashboard/PrincipleAndApproach";
 import WhyRekotax from "./components/Dashboard/WhyRekotax";
-import Insights from "./components/Dashboard/Insights";
+import Insights from "./components/Dashboard/Insights/Insights"
 import ShopsAndEstablishment from "./components/Registration/OtherRegulatory/ShopsAndEstablishment/ShopsAndEstablishment";
 import StartupIndia from "./components/Registration/OtherRegulatory/StartupIndia/StartUpIndia";
 import Msme from "./components/Registration/OtherRegulatory/MSME/Msme";
@@ -32,6 +32,8 @@ import OtherRegistration from "./components/Registration/OtherRegulatory/OtherRe
 import ProfessionalTax from "./components/Registration/OtherRegulatory/ProfessionalTax/ProfessionalTax";
 import Contact from "./components/Navbar/Contact";
 import EightyG from "./components/Registration/OtherRegulatory/12A/EightyGRegistration";
+import BlogDetails from "./components/Dashboard/Insights/BlogDetails";
+import About from "./components/Dashboard/AboutUs/About";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -100,7 +102,7 @@ export default function App() {
         <Route path ="/client-testimonials" element = {<ClientTestimonials/>}/>
         <Route path="/principles-and-approach" element={<PrincipleAndApproach />} />
         <Route path="/why-rekotax" element={<WhyRekotax />} />
-        <Route path="/insights" element={<Insights/>} />
+        <Route path="/insights-blog" element={<Insights showArrows={false}/>} />
         <Route path="/shops-and-establishment" element={<ShopsAndEstablishment/>}/>
         <Route path="/startup-india" element={<StartupIndia/>} />
         <Route path="/msme" element={<Msme/>}/>
@@ -110,6 +112,10 @@ export default function App() {
         <Route path="/professional-tax" element={<ProfessionalTax/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/eighty-g-registration" element={<EightyG/>}/>
+        <Route path="/about" element={<About/>}/>
+
+
+        <Route path="/insights/:slug" element={<BlogDetails />} />
       </Routes>
     </Router>
   );

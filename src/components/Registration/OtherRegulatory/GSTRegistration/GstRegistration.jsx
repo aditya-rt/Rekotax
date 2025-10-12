@@ -274,7 +274,7 @@ export default function GSTRegistration({ webAppUrl, onSubmitted }) {
             component="h1"
             variant="h2"
             sx={{
-              fontWeight: 800,
+              fontWeight: 600,
               lineHeight: 1.12,
 
               // Fluid sizes that stay compact enough to fit one line on wide screens

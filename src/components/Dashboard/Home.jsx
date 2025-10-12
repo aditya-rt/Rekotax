@@ -21,8 +21,7 @@ import {
   CurrencyRupee,
 } from "@mui/icons-material";
 import WhyRekotax from "./WhyRekotax";
-import Insights from "./Insights";
-
+import Insights from "./Insights/Insights";
 export default function Home() {
   const [activeSection] = useState("");
   const heroRef = useRef(null);
@@ -272,7 +271,7 @@ export default function Home() {
 
         {/* Insights Section */}
         <Box sx={{ mx: { xs: -2, md: -6 } }} ref={aboutRef}>
-          <Insights />
+          <Insights showExtras={false}/>
         </Box>
 
 
