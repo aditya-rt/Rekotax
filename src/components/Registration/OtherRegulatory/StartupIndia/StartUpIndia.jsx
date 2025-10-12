@@ -300,7 +300,8 @@ export default function StartupIndia({ webAppUrl }) {
                 fontSize: "0.95rem",
               }}
             >
-              Expert GST Registration Services in India
+              Expert Start-up India Registration
+Services in India
             </Box>
           </Box>
 
@@ -354,7 +355,8 @@ export default function StartupIndia({ webAppUrl }) {
               color: "rgba(255,255,255,0.9)",
             }}
           >
-Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
+Register your Start-up India Registration
+ with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
          </Typography>
           {/* CTAs centered */}
           <Box

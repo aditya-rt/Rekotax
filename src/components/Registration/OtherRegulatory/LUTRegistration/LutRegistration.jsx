@@ -298,7 +298,7 @@ export default function LutRegistration({ webAppUrl }) {
                                 fontSize: "0.95rem",
                             }}
                         >
-                            Expert GST Registration Services in India
+                            Expert LUT Registration Services in India
                         </Box>
                     </Box>
 

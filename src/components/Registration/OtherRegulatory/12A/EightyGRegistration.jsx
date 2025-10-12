@@ -299,7 +299,7 @@ export default function EightyG({ webAppUrl }) {
                 fontSize: "0.95rem",
               }}
             >
-              Expert GST Registration Services in India
+              Expert 12A/80G Registration Services in India
             </Box>
           </Box>
 
@@ -353,7 +353,7 @@ export default function EightyG({ webAppUrl }) {
               color: "rgba(255,255,255,0.9)",
             }}
           >
-Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.         </Typography>
+Register your 12A/80G Registration with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.         </Typography>
           {/* CTAs centered */}
           <Box
             sx={{

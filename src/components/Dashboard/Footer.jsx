@@ -75,25 +75,25 @@ export default function Footer() {
               {/* Start your new business */}
               <Grid item xs={10} sm={6} md={4}>
                 <Typography sx={headSx}>Start your new business</Typography>
-                <Link href="/private-limited-company" underline="hover" sx={linkSx}>Private Limited Company</Link>
+                <Link href="/plc-registration" underline="hover" sx={linkSx}>Private Limited Company</Link>
                 <Link href="/opc-registration" underline="hover" sx={linkSx}>One Person Company (OPC)</Link>
                 <Link href="/llp-registration" underline="hover" sx={linkSx}>Limited Liability Partnership (LLP)</Link>
                 <Link href="/partnership-firm" underline="hover" sx={linkSx}>Partnership Firm</Link>
                 <Link href="/sole-proprietorship" underline="hover" sx={linkSx}>Sole Proprietorship</Link>
-                <Link href="/section-8-company" underline="hover" sx={linkSx}>Section 8 Company</Link>
-                <Link href="/public-limited-company" underline="hover" sx={linkSx}>Public Limited Company</Link>
+                <Link href="/section-and-company" underline="hover" sx={linkSx}>Section 8 Company</Link>
+                <Link href="/public-company" underline="hover" sx={linkSx}>Public Limited Company</Link>
               </Grid>
 
               {/* Other regulatory registrations */}
               <Grid item xs={12} sm={6} md={4}>
                 <Typography sx={headSx}>Other  registrations</Typography>
                 <Link href="/gst-registration" underline="hover" sx={linkSx}>GST Registration</Link>
-                <Link href="/msme-registration" underline="hover" sx={linkSx}>MSME/Udyam Registration</Link>
-                <Link href="/iec-registration" underline="hover" sx={linkSx}>Import Export Code (IEC)</Link>
-                <Link href="/shops-establishment" underline="hover" sx={linkSx}>Shops &amp; Establishment</Link>
-                <Link href="/pt-registration" underline="hover" sx={linkSx}>Professional Tax</Link>
-                <Link href="/fssai-registration" underline="hover" sx={linkSx}>FSSAI/Food License</Link>
-                <Link href="/trade-license" underline="hover" sx={linkSx}>Trade License</Link>
+                <Link href="/msme" underline="hover" sx={linkSx}>MSME/Udyam Registration</Link>
+                <Link href="/import-export-code" underline="hover" sx={linkSx}>Import Export Code (IEC)</Link>
+                <Link href="/shops-and-establishment" underline="hover" sx={linkSx}>Shops &amp; Establishment</Link>
+                <Link href="/professional-tax" underline="hover" sx={linkSx}>Professional Tax</Link>
+                <Link href="/fssai" underline="hover" sx={linkSx}>FSSAI/Food License</Link>
+                <Link href="/trademark" underline="hover" sx={linkSx}>Trade License</Link>
               </Grid>
 
               {/* Compliance */}

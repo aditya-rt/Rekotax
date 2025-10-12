@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+  import React, { useState ,useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import {
   AppBar,
@@ -83,9 +83,65 @@ const openContact = () => setContactOpen(true);
     "Trademark",
     // "Other Registrations",
   ];
+
   const midIdx = Math.ceil(otherRegItems.length / 2);
   const otherRegColA = otherRegItems.slice(0, midIdx);
   const otherRegColB = otherRegItems.slice(midIdx);
+
+  /* FOR COMPLIANCE */
+  const complianceItems = [
+  "MCA/ROC Compliances",
+  "FEMA/RBI Compliance",
+  "Labour Law Compliances (PF, ESI, PT)",
+  "Secretarial Compliances",
+  "Auditory Compliances",
+  "Startup India/DPIIT Compliance",
+  "Shops & Establishment Act Compliance",
+  "FSSAI Compliances (Food Businesses)",
+];
+
+const midComplianceIdx = Math.ceil(complianceItems.length / 2);
+const complianceColA = complianceItems.slice(0, midComplianceIdx);
+const complianceColB = complianceItems.slice(midComplianceIdx);
+/* -------------------------------------------- */
+
+  /* FOR TAXATION */
+const taxationItems = [
+  "Corporate Taxation",
+  "Goods & Services Tax",
+  "TDS Filings",
+  "Advance Tax",
+  "Taxation for Individuals/Proprietors",
+  "Taxation for Partnership firms",
+  "Taxation for AOP/BOI",
+  "Tax Audit",
+  "GST Audit",
+  "Manage Tax Disputes",
+];
+
+const midTaxIdx = Math.ceil(taxationItems.length / 2);
+const taxationColA = taxationItems.slice(0, midTaxIdx);
+const taxationColB = taxationItems.slice(midTaxIdx);
+/* ------------------------------------- */
+
+/* FOR OUTSOURCING */
+// ⬇️ Add near your other arrays
+const outsourcingItems = [
+  "Virtual CFO Services",
+  "Bookkeeping & Accounting",
+  "Payroll & HR Management",
+  "Cost & Management Accounting",
+  "Business Valuation Services",
+  "Pitch Deck Preparation",
+  "Internal Process Development",
+  "Technical Integrations",
+];
+
+const midOutIdx = Math.ceil(outsourcingItems.length / 2);
+const outsourcingColA = outsourcingItems.slice(0, midOutIdx);
+const outsourcingColB = outsourcingItems.slice(midOutIdx);
+
+/* --------------------------------------------------- */
 
   const handleRoute = (text) => {
     closeMenu("services");
@@ -110,6 +166,38 @@ const openContact = () => setContactOpen(true);
     if (text === "Other Registrations") return navigate("/other-registration");
     if (text === "Professional Tax") return navigate("/professional-tax");
     if (text === "12A & 80G Registration") return navigate("/eighty-g-registration");
+    // FOR COMPLIANCE
+    if (text === "MCA/ROC Compliances") return navigate("/mca-roc-compliances");
+    if (text === "FEMA/RBI Compliance") return navigate("/fema-rbi-compliance");
+    if (text === "Labour Law Compliances (PF, ESI, PT)") return navigate("/labour-law-compliances");
+    if (text === "Secretarial Compliances") return navigate("/secretarial-compliances");
+    if (text === "Auditory Compliances") return navigate("/auditory-compliances");
+    if (text === "Startup India/DPIIT Compliance") return navigate("/startup-india-dpiit-compliance");
+    if (text === "Shops & Establishment Act Compliance") return navigate("/shops-and-establishment-compliance");
+    if (text === "FSSAI Compliances (Food Businesses)") return navigate("/fssai-compliances");
+    // ⬇ FOR TAXATION
+    if (text === "Corporate Taxation") return navigate("/corporate-taxation");
+    if (text === "Goods & Services Tax") return navigate("/goods-and-services-tax");
+    if (text === "TDS Filings") return navigate("/tds-filings");
+    if (text === "Advance Tax") return navigate("/advance-tax");
+    if (text === "Taxation for Individuals/Proprietors") return navigate("/individuals-proprietors-taxation");
+    if (text === "Taxation for Partnership firms") return navigate("/partnership-taxation");
+    if (text === "Taxation for AOP/BOI") return navigate("/aop-boi-taxation");
+    if (text === "Tax Audit") return navigate("/tax-audit");
+    if (text === "GST Audit") return navigate("/gst-audit");
+    if (text === "Manage Tax Disputes") return navigate("/manage-tax-disputes");
+    // FOR OUTSOURCING
+    // ⬇️ Append inside handleRoute
+    if (text === "Virtual CFO Services") return navigate("/virtual-cfo-services");
+    if (text === "Bookkeeping & Accounting") return navigate("/bookkeeping-accounting");
+    if (text === "Payroll & HR Management") return navigate("/payroll-hr-management");
+    if (text === "Cost & Management Accounting") return navigate("/cost-management-accounting");
+    if (text === "Business Valuation Services") return navigate("/business-valuation-services");
+    if (text === "Pitch Deck Preparation") return navigate("/pitch-deck-preparation");
+    if (text === "Internal Process Development") return navigate("/internal-process-development");
+    if (text === "Technical Integrations") return navigate("/technical-integrations");
+
+
   };
 
   return (
@@ -434,24 +522,216 @@ const openContact = () => setContactOpen(true);
                         </Grid>
                       )}
 
-                      {activeService === "Compliance" && (
-                        <>
-                          <Typography sx={{ mb: 1 }}>Compliance item 1</Typography>
-                          <Typography>Compliance item 2</Typography>
-                        </>
-                      )}
-                      {activeService === "Taxation" && (
-                        <>
-                          <Typography sx={{ mb: 1 }}>Taxation item 1</Typography>
-                          <Typography>Taxation item 2</Typography>
-                        </>
-                      )}
-                      {activeService === "OutSourcing" && (
-                        <>
-                          <Typography sx={{ mb: 1 }}>Outsourcing item 1</Typography>
-                          <Typography>Outsourcing item 2</Typography>
-                        </>
-                      )}
+                   {activeService === "Compliance" && (
+  <Grid container spacing={6}>
+    <Grid
+      item
+      xs={12}
+      md={12}
+      sx={{
+        position: "relative",
+      }}
+    >
+      <Typography
+        sx={{
+          mb: 2,
+          fontWeight: 600,
+          color: "#f0f6ff",
+          fontSize: { xs: 12, md: 14 },
+          position: "relative",
+          pb: 1,
+          display: "inline-block",
+          "&:after": {
+            content: '""',
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            width: "100%",
+            height: "2px",
+            bgcolor: "rgba(255,255,255,0.35)",
+            borderRadius: 1,
+          },
+        }}
+      >
+        Compliance Services
+      </Typography>
+
+      <Grid container spacing={2} columnSpacing={6}>
+        <Grid item xs={12} sm={6}>
+          {complianceColA.map((text) => (
+            <Typography
+              key={text}
+              sx={{
+                mb: 1.1,
+                fontSize: { xs: 12, sm: 12, md: 14 },
+                color: "rgba(255,255,255,0.95)",
+                cursor: "pointer",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              onClick={() => handleRoute(text)}
+            >
+              {text}
+            </Typography>
+          ))}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          {complianceColB.map((text) => (
+            <Typography
+              key={text}
+              sx={{
+                mb: 1.1,
+                fontSize: { xs: 12, sm: 12, md: 14 },
+                color: "rgba(255,255,255,0.95)",
+                cursor: "pointer",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              onClick={() => handleRoute(text)}
+            >
+              {text}
+            </Typography>
+          ))}
+        </Grid>
+      </Grid>
+    </Grid>
+  </Grid>
+)}
+
+                    {/* ⬇️ Replace your current Taxation panel */}
+{activeService === "Taxation" && (
+  <Grid container spacing={6}>
+    <Grid item xs={12} md={12}>
+      <Typography
+        sx={{
+          mb: 2,
+          fontWeight: 600,
+          color: "#f0f6ff",
+          fontSize: { xs: 12, md: 14 },
+          position: "relative",
+          pb: 1,
+          display: "inline-block",
+          "&:after": {
+            content: '""',
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            width: "100%",
+            height: "2px",
+            bgcolor: "rgba(255,255,255,0.35)",
+            borderRadius: 1,
+          },
+        }}
+      >
+        Taxation Services
+      </Typography>
+
+      <Grid container spacing={2} columnSpacing={6}>
+        <Grid item xs={12} sm={6}>
+          {taxationColA.map((text) => (
+            <Typography
+              key={text}
+              sx={{
+                mb: 1.1,
+                fontSize: { xs: 12, sm: 12, md: 14 },
+                color: "rgba(255,255,255,0.95)",
+                cursor: "pointer",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              onClick={() => handleRoute(text)}
+            >
+              {text}
+            </Typography>
+          ))}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          {taxationColB.map((text) => (
+            <Typography
+              key={text}
+              sx={{
+                mb: 1.1,
+                fontSize: { xs: 12, sm: 12, md: 14 },
+                color: "rgba(255,255,255,0.95)",
+                cursor: "pointer",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              onClick={() => handleRoute(text)}
+            >
+              {text}
+            </Typography>
+          ))}
+        </Grid>
+      </Grid>
+    </Grid>
+  </Grid>
+)}
+
+                    {/* ⬇️ Replace your current OutSourcing panel */}
+{activeService === "OutSourcing" && (
+  <Grid container spacing={6}>
+    <Grid item xs={12} md={12}>
+      <Typography
+        sx={{
+          mb: 2,
+          fontWeight: 600,
+          color: "#f0f6ff",
+          fontSize: { xs: 12, md: 14 },
+          position: "relative",
+          pb: 1,
+          display: "inline-block",
+          "&:after": {
+            content: '""',
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            width: "100%",
+            height: "2px",
+            bgcolor: "rgba(255,255,255,0.35)",
+            borderRadius: 1,
+          },
+        }}
+      >
+        Outsourcing Services
+      </Typography>
+
+      <Grid container spacing={2} columnSpacing={6}>
+        <Grid item xs={12} sm={6}>
+          {outsourcingColA.map((text) => (
+            <Typography
+              key={text}
+              sx={{
+                mb: 1.1,
+                fontSize: { xs: 12, sm: 12, md: 14 },
+                color: "rgba(255,255,255,0.95)",
+                cursor: "pointer",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              onClick={() => handleRoute(text)}
+            >
+              {text}
+            </Typography>
+          ))}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          {outsourcingColB.map((text) => (
+            <Typography
+              key={text}
+              sx={{
+                mb: 1.1,
+                fontSize: { xs: 12, sm: 12, md: 14 },
+                color: "rgba(255,255,255,0.95)",
+                cursor: "pointer",
+                "&:hover": { textDecoration: "underline" },
+              }}
+              onClick={() => handleRoute(text)}
+            >
+              {text}
+            </Typography>
+          ))}
+        </Grid>
+      </Grid>
+    </Grid>
+  </Grid>
+)}
+
                       {activeService === "Business Advisory" && (
                         <>
                           <Typography sx={{ mb: 1 }}>Advisory item 1</Typography>

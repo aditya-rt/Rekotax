@@ -298,7 +298,7 @@ export default function ImportExportCode({ webAppUrl }) {
                 fontSize: "0.95rem",
               }}
             >
-              Expert GST Registration Services in India
+              Expert IEC Registration Services in India
             </Box>
           </Box>
 

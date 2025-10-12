@@ -300,7 +300,7 @@ export default function ShopsAndEstablishment({ webAppUrl }) {
                                 fontSize: "0.95rem",
                             }}
                         >
-                            Expert GST Registration Services in India
+                            Expert Shops & Establishment Registration Services in India
                         </Box>
                     </Box>
 
@@ -354,7 +354,8 @@ export default function ShopsAndEstablishment({ webAppUrl }) {
                             color: "rgba(255,255,255,0.9)",
                         }}
                     >
-                        Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.                    </Typography>
+                        Register your Shops & Establishment Registration
+ with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.                    </Typography>
 
                     {/* CTAs centered */}
                     <Box

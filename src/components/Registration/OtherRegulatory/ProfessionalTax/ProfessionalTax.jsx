@@ -298,7 +298,8 @@ export default function ProfessionalTax({ webAppUrl }) {
                 fontSize: "0.95rem",
               }}
             >
-              Expert GST Registration Services in India
+              Expert Professional Tax Registration
+ Services in India
             </Box>
           </Box>
 
@@ -352,7 +353,8 @@ Professional Tax Registration
               color: "rgba(255,255,255,0.9)",
             }}
           >
-Register your Proprietorsip with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
+Register your Professional Tax Registration
+ with Rekotax — experience fast setup, full legal compliance, expert documentation, and dedicated support to launch your business effortlessly.
          </Typography>
           {/* CTAs centered */}
           <Box
