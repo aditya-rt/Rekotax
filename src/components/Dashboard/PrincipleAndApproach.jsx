@@ -2,6 +2,10 @@
 import React from "react";
 import { Box, Grid, Typography, Stack, Divider } from "@mui/material";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import Footer from "../Dashboard/Footer";
+import ClientTestimonials from "./ClientTestimonials";
+import ContactSection from "./ContactSection";
+
 
 const missionPoints = [
   "To simplify the complex world of compliance, taxation, and business management through intelligent systems and human-centered design.",
@@ -133,9 +137,9 @@ function PrincipleRow({ title, points, img, reverse = false }) {
   );
 }
 
-export default function CompanyPrinciples() {
+export default function CompanyPrinciples( { showExtras = true, aboutRef, footerRef } ) {
   return (
-    <Box sx={{ bgcolor: "#fff", py: { xs: 6, sm: 8, md: 2 } }}>
+    <Box sx={{ bgcolor: "#fff", py: { xs: 6, sm: 8, md: 2 ,overflow:"hidden"} }}>
       {/* Contained, centered, with responsive gutters */}
       <Box
         sx={{
@@ -196,6 +200,20 @@ export default function CompanyPrinciples() {
 
         <PrincipleRow title="Our Approach" points={approachPoints} img="/approach.jpeg" />
       </Box>
+
+       {showExtras && (
+              <>
+                <Box sx={{ mt: 8, mx: 0 }} ref={aboutRef}>
+                  <ClientTestimonials fullBleed />
+                </Box>
+                <Box sx={{ mt: 0, mx: -6,overflowX: "hidden"}} ref={aboutRef}>
+                  <ContactSection />
+                </Box>
+                <Box sx={{ mt: 0, mx: 0 }} ref={footerRef}>
+                  <Footer />
+                </Box>
+              </>
+            )}
     </Box>
   );
 }

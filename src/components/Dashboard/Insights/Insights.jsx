@@ -47,8 +47,11 @@ export default function Insights({
   items = ITEMS,
   showExtras = true,
   showArrows = true,
+   visible = true,
 }) {
   const theme = useTheme();
+  const SHOW_INSIGHTS_ON_HOME = false;
+
   const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));   // <600
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600-900
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));       // >=900
@@ -116,7 +119,8 @@ export default function Insights({
       }}
 
     >
-
+    
+    {visible && (
       <Box
         component="section"
         sx={{
@@ -173,7 +177,7 @@ export default function Insights({
           </Typography>
         </Box>
       </Box>
-
+    )}
 
       {/* Slightly smaller container for laptops */}
       <Box

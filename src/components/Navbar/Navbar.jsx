@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 import {
   AppBar,
   Toolbar,
@@ -9,6 +11,7 @@ import {
   MenuItem,
   Typography,
   useMediaQuery,
+  Collapse ,
   IconButton,
   Drawer,
   List,
@@ -42,6 +45,17 @@ export default function Navbar() {
     insights: false,
     about: false,
   });
+  const [mobileExp, setMobileExp] = useState({
+  start: false,
+  other: false,
+  compliance: false,
+  taxation: false,
+  outsourcing: false,
+});
+
+const toggleMobileExp = (k) =>
+  setMobileExp((p) => ({ ...p, [k]: !p[k] }));
+
 
   const [activeService, setActiveService] = useState("Registration");
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -199,6 +213,12 @@ export default function Navbar() {
 
 
   };
+
+  const navAndClose = (path) => {
+  setMobileOpen(false);
+  navigate(path);
+};
+
 
   return (
     <>
@@ -835,7 +855,7 @@ export default function Navbar() {
         ModalProps={{ keepMounted: true }}
         PaperProps={{
           sx: {
-            width: { xs: "88vw", sm: 320 },
+           width: { xs: "60vw", sm: 260 },
             bgcolor: "rgba(15, 37, 85, 0.58)",
             backgroundImage:
               "linear-gradient(180deg, rgba(15,37,85,0.18), rgba(15,37,85,0.06))",
@@ -860,36 +880,143 @@ export default function Navbar() {
         </Box>
         <Divider sx={{ borderColor: "rgba(255,255,255,0.15)" }} />
 
-        <List dense>
-          {/* <ListItemButton onClick={() => setMobileOpen(false)}>
-            <ListItemText primary="Home" primaryTypographyProps={{ sx: { color: "#fff" } }} />
-          </ListItemButton> */}
+  <List
+  dense
+  sx={{
+    py: 0,
+    // all items
+    "& .MuiListItemButton-root": { minHeight: 36, px: 1.25 },
+    // headers (first-level) - a bit more left/right
+    "& > .MuiListItemButton-root": { px: 1.5 },
+    // items inside collapses
+    "& .MuiCollapse-root .MuiListItemButton-root": { pl: 3, pr: 1.25, minHeight: 34 },
+  }}
+>
 
-          <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#e5f2ff" }}>
-            Start your New Business
-          </Typography>
-          {startBusinessItems.map((text) => (
-            <ListItemButton key={text} onClick={() => handleRoute(text)}>
-              <ListItemText primary={text} primaryTypographyProps={{ sx: { color: "#fff" } }} />
-            </ListItemButton>
-          ))}
+  {/* For Mobile Screen nav */}
 
-          <Typography sx={{ px: 2, pt: 2, pb: 1, fontWeight: 800, color: "#e5f2ff" }}>
-            Other Regulatory Registrations
-          </Typography>
-          {otherRegItems.map((text) => (
-            <ListItemButton key={text} onClick={() => handleRoute(text)}>
-              <ListItemText primary={text} primaryTypographyProps={{ sx: { color: "#fff" } }} />
-            </ListItemButton>
-          ))}
 
-          <Divider sx={{ my: 1, borderColor: "rgba(255,255,255,0.15)" }} />
-          {["Industries", "Insights", "About Us"].map((label) => (
-            <ListItemButton key={label} onClick={() => setMobileOpen(false)}>
-              <ListItemText primary={label} primaryTypographyProps={{ sx: { color: "#fff" } }} />
-            </ListItemButton>
-          ))}
-        </List>
+  {/* Start your New Business (expandable) */}
+  <ListItemButton onClick={() => toggleMobileExp("start")}>
+    <ListItemText
+      primary="Start your New Business"
+      primaryTypographyProps={{ sx: { color: "#e5f2ff" } }}
+      sx={{ my: 0, flex: "unset", mr: 0.7 }}  
+    />
+    {mobileExp.start ? <ExpandLess /> : <ExpandMore />}
+  </ListItemButton>
+
+  <Collapse in={mobileExp.start} timeout="auto" unmountOnExit>
+    {startBusinessItems.map((text) => (
+      <ListItemButton
+        key={text}
+        sx={{ pl: 4 }}
+        onClick={() => handleRoute(text)}
+      >
+        <ListItemText primary={text} primaryTypographyProps={{ sx: { color: "#fff" } }} />
+      </ListItemButton>
+    ))}
+  </Collapse>
+
+  {/* Other Regulatory Registrations (expandable) */}
+  <ListItemButton onClick={() => toggleMobileExp("other")}>
+    <ListItemText
+      primary="Other Regulatory"
+      primaryTypographyProps={{ sx: { color: "#e5f2ff"} }}
+            sx={{ my: 0, flex: "unset", mr: 0.7 }}  
+
+    />
+    {mobileExp.other ? <ExpandLess /> : <ExpandMore />}
+  </ListItemButton>
+  <Collapse in={mobileExp.other} timeout="auto" unmountOnExit>
+    {otherRegItems.map((text) => (
+      <ListItemButton
+        key={text}
+        sx={{ pl: 4 }}
+        onClick={() => handleRoute(text)}
+      >
+        <ListItemText primary={text} primaryTypographyProps={{ sx: { color: "#fff" } }} />
+      </ListItemButton>
+    ))}
+  </Collapse>
+
+  {/* Compliance (optional - expandable) */}
+  <ListItemButton onClick={() => toggleMobileExp("compliance")}>
+    <ListItemText
+      primary="Compliance"
+      primaryTypographyProps={{ sx: { color: "#e5f2ff" } }}
+            sx={{ my: 0, flex: "unset", mr: 0.7 }}  
+
+    />
+    {mobileExp.compliance ? <ExpandLess /> : <ExpandMore />}
+  </ListItemButton>
+  <Collapse in={mobileExp.compliance} timeout="auto" unmountOnExit>
+    {[...complianceColA, ...complianceColB].map((text) => (
+      <ListItemButton
+        key={text}
+        sx={{ pl: 4 }}
+        onClick={() => handleRoute(text)}
+      >
+        <ListItemText primary={text} primaryTypographyProps={{ sx: { color: "#fff" } }} />
+      </ListItemButton>
+    ))}
+  </Collapse>
+
+  {/* Taxation (optional - expandable) */}
+  <ListItemButton onClick={() => toggleMobileExp("taxation")}>
+    <ListItemText
+      primary="Taxation"
+      primaryTypographyProps={{ sx: { color: "#e5f2ff"} }}
+            sx={{ my: 0, flex: "unset", mr: 0.7 }}  
+
+    />
+    {mobileExp.taxation ? <ExpandLess /> : <ExpandMore />}
+  </ListItemButton>
+  <Collapse in={mobileExp.taxation} timeout="auto" unmountOnExit>
+    {[...taxationColA, ...taxationColB].map((text) => (
+      <ListItemButton
+        key={text}
+        sx={{ pl: 4 }}
+        onClick={() => handleRoute(text)}
+      >
+        <ListItemText primary={text} primaryTypographyProps={{ sx: { color: "#fff" } }} />
+      </ListItemButton>
+    ))}
+  </Collapse>
+
+  {/* Outsourcing (optional - expandable) */}
+  <ListItemButton onClick={() => toggleMobileExp("outsourcing")}>
+    <ListItemText
+      primary="Outsourcing"
+      primaryTypographyProps={{ sx: { color: "#e5f2ff", fontWeight: 500 } }}
+            sx={{ my: 0, flex: "unset", mr: 0.7}}  
+
+    />
+    {mobileExp.outsourcing ? <ExpandLess /> : <ExpandMore />}
+  </ListItemButton>
+  <Collapse in={mobileExp.outsourcing} timeout="auto" unmountOnExit>
+    {[...outsourcingColA, ...outsourcingColB].map((text) => (
+      <ListItemButton
+        key={text}
+        sx={{ pl: 4 }}
+        onClick={() => handleRoute(text)}
+      >
+        <ListItemText primary={text} primaryTypographyProps={{ sx: { color: "#fff" } }} />
+      </ListItemButton>
+    ))}
+  </Collapse>
+    <ListItemButton onClick={() => navAndClose("/industries")}>
+    <ListItemText primary="Industries" primaryTypographyProps={{ sx: { color: "#fff" } }} />
+  </ListItemButton>
+  <ListItemButton onClick={() => navAndClose("/insights-blog")}>
+    <ListItemText primary="Insights" primaryTypographyProps={{ sx: { color: "#fff" } }} />
+  </ListItemButton>
+  <ListItemButton onClick={() => navAndClose("/about")}>
+    <ListItemText primary="About Us" primaryTypographyProps={{ sx: { color: "#fff" } }} />
+  </ListItemButton>
+
+</List>
+
       </Drawer>
 
       {/* Spacer so content is not hidden behind the fixed AppBar */}

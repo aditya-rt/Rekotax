@@ -137,9 +137,9 @@ export default function Footer() {
               <Grid item xs={12} sm={6} md={4}>
                 <Typography sx={headSx}>Company</Typography>
                 <Link href="/about" underline="hover" sx={linkSx}>About Us</Link>
-                <Link href="#principle" underline="hover" sx={linkSx}>Our Mission</Link>
-                <Link href="#principle" underline="hover" sx={linkSx}>Our Vision</Link>
-                <Link href="#principle" underline="hover" sx={linkSx}>Our Approach</Link>
+                <Link href="/principles-and-approach" underline="hover" sx={linkSx}>Our Mission</Link>
+                <Link href="/principles-and-approach" underline="hover" sx={linkSx}>Our Vision</Link>
+                <Link href="/principles-and-approach" underline="hover" sx={linkSx}>Our Approach</Link>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
@@ -147,7 +147,7 @@ export default function Footer() {
                 <Link href="/nic-codes" underline="hover" sx={linkSx}>NIC Codes</Link>
                 <Link href="/compliance-checklists" underline="hover" sx={linkSx}>Compliance Checklists</Link>
                 <Link href="/stamp-duty" underline="hover" sx={linkSx}>Stamp Duty Guides</Link>
-                <Link href="/blogs" underline="hover" sx={linkSx}>Blog &amp; Insights</Link>
+                <Link href="/insights-blog" underline="hover" sx={linkSx}>Blog &amp; Insights</Link>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>

@@ -34,6 +34,9 @@ import Contact from "./components/Navbar/Contact";
 import EightyG from "./components/Registration/OtherRegulatory/12A/EightyGRegistration";
 import BlogDetails from "./components/Dashboard/Insights/BlogDetails";
 import About from "./components/Dashboard/AboutUs/About";
+import TermsAndConditions from "./components/Dashboard/TermsAndConditions";
+import PrivacyPolicy from "./components/Dashboard/PrivacyPolicy";
+import RefundPolicy from "./components/Dashboard/RefundPolicy";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -113,8 +116,10 @@ export default function App() {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/eighty-g-registration" element={<EightyG/>}/>
         <Route path="/about" element={<About/>}/>
-
-
+        <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+        <Route path="/refund-policy" element={<RefundPolicy/>}/>
+ 
         <Route path="/insights/:slug" element={<BlogDetails />} />
       </Routes>
     </Router>

@@ -259,8 +259,8 @@ export default function Home() {
         </Box>
 
 
-        <Box sx={{ mx: { xs: -2, md: -6 } }} ref={aboutRef}>
-          <PrincipleAndApproach />
+        <Box id="principle" sx={{ mx: { xs: -2, md: -6 } }} ref={aboutRef}>
+          <PrincipleAndApproach showExtras={false}/>
         </Box>
 
 
@@ -271,7 +271,7 @@ export default function Home() {
 
         {/* Insights Section */}
         <Box sx={{ mx: { xs: -2, md: -6 } }} ref={aboutRef}>
-          <Insights showExtras={false}/>
+          <Insights showExtras={false} visible={false} />
         </Box>
 
 
