@@ -22,6 +22,7 @@ import {
 } from "@mui/icons-material";
 import WhyRekotax from "./WhyRekotax";
 import Insights from "./Insights/Insights";
+import Contact from "../Navbar/Contact";
 export default function Home() {
   const [activeSection] = useState("");
   const heroRef = useRef(null);
@@ -29,6 +30,11 @@ export default function Home() {
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
   const footerRef = useRef(null);
+
+  const [contactOpen, setContactOpen] = useState(false);
+  const openContact = () => setContactOpen(true);
+  const closeContact = () => setContactOpen(false);
+  
 
   return (
     <>
@@ -194,6 +200,7 @@ export default function Home() {
                     backgroundImage: "linear-gradient(90deg,#5ab2ff 0%, #4888ff 100%)",
                   },
                 }}
+                onClick={openContact}
               >
                 Get Started
               </Button>
@@ -303,6 +310,7 @@ export default function Home() {
         >
           <WhatsAppIcon />
         </Fab>
+        <Contact open={contactOpen} onClose={closeContact} />
       </Box>
     </>
   );

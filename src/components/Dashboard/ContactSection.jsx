@@ -275,7 +275,7 @@ export default function ContactSection() {
             <Stack direction="row" spacing={1.25} sx={{ mt: 2 }}>
               <IconButton
                 component="a"
-                href="https://facebook.com/yourhandle"
+                href="https://www.facebook.com/rekotax.official"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -292,7 +292,7 @@ export default function ContactSection() {
 
               <IconButton
                 component="a"
-                href="https://instagram.com/yourhandle"
+                href="https://www.instagram.com/rekotax_"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -310,7 +310,7 @@ export default function ContactSection() {
               {/* X (Twitter) – use TwitterIcon or the custom XIcon below */}
               <IconButton
                 component="a"
-                href="https://x.com/yourhandle"
+                href="https://x.com/rekotax_"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X"
@@ -328,7 +328,7 @@ export default function ContactSection() {
 
               <IconButton
                 component="a"
-                href="https://linkedin.com/company/yourhandle"
+                href="https://www.linkedin.com/company/rekotax/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
