@@ -104,11 +104,13 @@ const toggleMobileExp = (k) =>
 
   /* FOR COMPLIANCE */
   const complianceItems = [
-    "MCA/ROC Compliances",
+    "MCA Compliance for Companies",
+    "MCA Compliance for LLP",
+    "MCA Compliance for Section 8 Company",
+    "MCA Compliance for Nidhi Company",
     "FEMA/RBI Compliance",
     "Labour Law Compliances (PF, ESI, PT)",
     "Secretarial Compliances",
-    "Auditory Compliances",
     "Startup India/DPIIT Compliance",
     "Shops & Establishment Act Compliance",
     "FSSAI Compliances (Food Businesses)",
@@ -141,13 +143,11 @@ const toggleMobileExp = (k) =>
   /* FOR OUTSOURCING */
   // ⬇️ Add near your other arrays
   const outsourcingItems = [
-    "Virtual CFO Services",
     "Bookkeeping & Accounting",
     "Payroll & HR Management",
     "Cost & Management Accounting",
     "Business Valuation Services",
     "Pitch Deck Preparation",
-    "Internal Process Development",
     "Technical Integrations",
   ];
 
@@ -156,6 +156,12 @@ const toggleMobileExp = (k) =>
   const outsourcingColB = outsourcingItems.slice(midOutIdx);
 
   /* --------------------------------------------------- */
+
+  /* FOR BUSINESS ADVISORY */
+  const businessAdvisoryItems = [
+    "Advisory item 1",
+    "Advisory item 2",
+  ];
 
   const handleRoute = (text) => {
     closeMenu("services");
@@ -332,10 +338,11 @@ const toggleMobileExp = (k) =>
                         m: 0,
                         position: "fixed",
                         top: APPBAR_H_DESKTOP,
-                        left: 0,
-                        right: 0,
-                        width: "100%",
-                        maxWidth: "100%",
+                         left: "50%",
+      transform: "translateX(-50%)",
+      width: "100vw",
+      maxWidth: 1265,          // or use CONTENT_MAX_W
+      overflowX: "hidden",  
                         borderRadius: 0,
                         bgcolor: "rgba(15, 37, 85, 0.55)",
                         backgroundImage:
@@ -385,7 +392,7 @@ const toggleMobileExp = (k) =>
                         "Registration",
                         "Compliance",
                         "Taxation",
-                        "OutSourcing",
+                        "Outsourcing",
                         "Business Advisory",
                         "Virtual Office",
                         "Other Services",
