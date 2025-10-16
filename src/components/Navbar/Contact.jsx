@@ -228,6 +228,7 @@ const [submitting, setSubmitting] = React.useState(false);
 
   return (
     <Dialog
+     hideBackdrop
       open={open}
       onClose={onClose} // backdrop click + Esc
       fullScreen={fullScreen}
@@ -235,27 +236,19 @@ const [submitting, setSubmitting] = React.useState(false);
       fullWidth
       TransitionComponent={Transition}
       scroll="body"
-      BackdropProps={{
-        sx: {
-        //   background:
-        //     "linear-gradient(180deg, rgba(7,22,58,0.75), rgba(7,22,58,0.82))",
-        //   backdropFilter: "blur(10px) saturate(160%)",
-        //   WebkitBackdropFilter: "blur(10px) saturate(160%)",
-           background: "rgba(7,22,58,0.65)", 
-           maxHeight: "none", 
-        },
-      }}
-      PaperProps={{
-        sx: {
-        //   borderRadius: { xs: 0, sm: 4 }, // round outer container
-          height: { xs: "100dvh", sm: "auto" },
-          m:0,
-        //   border: "1px solid rgba(255,255,255,0.16)",
-          overflow: "hidden",
-          background: "transparent", // let inner card do the look
-        //   boxShadow: "0 28px 80px rgba(0,0,0,0.55)",
-        },
-      }}
+     BackdropProps={{
+    invisible: true,
+    sx: {
+      backgroundColor: 'transparent !important',
+      backdropFilter: 'none',
+      WebkitBackdropFilter: 'none',
+      boxShadow: 'none',
+    },
+  }}
+     PaperProps={{
+    elevation: 0,
+    sx: { background: 'transparent', boxShadow: 'none', border: 'none', outline: 'none', m: 0 }
+  }}
     >
       <DialogContent
        sx={{
@@ -298,8 +291,8 @@ const [submitting, setSubmitting] = React.useState(false);
      background:
      "linear-gradient(180deg, rgba(19,43,97,0.55), rgba(19,43,97,0.45))",
    border: "1px solid rgba(255,255,255,0.10)",
-   boxShadow:
-     "inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 40px rgba(0,0,0,0.45)",
+  //  boxShadow:
+  //    "inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 40px rgba(0,0,0,0.45)",
    backdropFilter: "blur(10px) saturate(160%)",
    WebkitBackdropFilter: "blur(10px) saturate(160%)",
    }}

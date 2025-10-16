@@ -1002,23 +1002,42 @@ export default function PvtLimitedCompliance({ webAppUrl, onSubmitted }) {
                                 Book a 10-minute clarity call. We’ll answer your questions and outline your exact next
                                 steps..
                             </p>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                href="#contact"
-                                sx={{
-                                    textTransform: "none",
-                                    fontWeight: 700,
-                                    borderRadius: 2,
-                                    px: 2.5,
-                                    py: 1,
-                                    textDecoration: "none !important",
-                                    "&:hover": { textDecoration: "none !important" },
-                                }}
-                                onClick={openContact}
-                            >
-                                Talk to a compliance experts
-                            </Button>
+                           <Button
+  href="#contact"
+  onClick={openContact}
+  disableElevation
+  sx={{
+    // glassmorphism style
+    color: "#fff",
+    textTransform: "none",
+    fontWeight: 700,
+    borderRadius: 999,
+    px: 3,
+    py: 1.25,
+    bgcolor: "rgba(255,255,255,0.12)",
+    backgroundImage:
+      "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+    border: "1px solid rgba(255,255,255,0.28)",
+    boxShadow: "0 10px 30px rgba(15,37,85,0.35)",
+    backdropFilter: "blur(14px) saturate(160%)",
+    WebkitBackdropFilter: "blur(14px) saturate(160%)",
+    textDecoration: "none !important",
+    "&:hover": {
+      bgcolor: "rgba(255,255,255,0.18)",
+      borderColor: "rgba(255,255,255,0.38)",
+      boxShadow: "0 12px 36px rgba(15,37,85,0.45)",
+      textDecoration: "none !important",
+      transform: "translateY(-1px)",
+    },
+    "&:active": {
+      transform: "translateY(0)",
+      boxShadow: "0 8px 22px rgba(15,37,85,0.35)",
+    },
+  }}
+>
+  Talk to a compliance experts
+</Button>
+
 
 
 
