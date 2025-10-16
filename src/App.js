@@ -37,6 +37,7 @@ import About from "./components/Dashboard/AboutUs/About";
 import TermsAndConditions from "./components/Dashboard/TermsAndConditions";
 import PrivacyPolicy from "./components/Dashboard/PrivacyPolicy";
 import RefundPolicy from "./components/Dashboard/RefundPolicy";
+import PvtLimitedCompliance from "./components/Compilance/PvtLimitedCompliance";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -119,6 +120,7 @@ export default function App() {
         <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
         <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
         <Route path="/refund-policy" element={<RefundPolicy/>}/>
+        <Route path="/privtate-limited-compliance" element={<PvtLimitedCompliance/>}/>
  
         <Route path="/insights/:slug" element={<BlogDetails />} />
       </Routes>

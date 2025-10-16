@@ -104,7 +104,7 @@ const toggleMobileExp = (k) =>
 
   /* FOR COMPLIANCE */
   const complianceItems = [
-    "MCA Compliance for Companies",
+    "MCA Compliance for PVT LTD",
     "MCA Compliance for LLP",
     "MCA Compliance for Section 8 Company",
     "MCA Compliance for Nidhi Company",
@@ -158,10 +158,45 @@ const toggleMobileExp = (k) =>
   /* --------------------------------------------------- */
 
   /* FOR BUSINESS ADVISORY */
-  const businessAdvisoryItems = [
-    "Advisory item 1",
-    "Advisory item 2",
-  ];
+ const businessAdvisoryItems = [
+  "Virtual CFO Services",
+  "Business Process Development",
+  "Internal Audit",
+  "Corporate Law Advisory",
+  "Risk Management",
+  "Corporate Financial Advisory",
+  "Cross-Border Transaction Advisory",
+  "International Taxation",
+  "Business Structuring and Re-structuring",
+];
+
+
+  const midBusinessAdvisoryIdx = Math.ceil(businessAdvisoryItems.length / 2);
+  const businessAdvisoryColA = businessAdvisoryItems.slice(0, midBusinessAdvisoryIdx);
+  const businessAdvisoryColB = businessAdvisoryItems.slice(midBusinessAdvisoryIdx);
+
+  /* ----------------------------------------------- */
+
+  /* Other Services */
+ const otherServicesItems = [
+  "Name change of organisation",
+  "Change in object clause",
+  "Addition of director/partner",
+  "Removal/resignation of director/partner",
+  "Change of auditor",
+  "Issue of shares",
+  "Transfer of shares",
+  "Increasing authorised capital/paid-up capital",
+  "Conversion of current form to another form of business",
+  "Winding-up of company",
+];
+
+
+  const midOtherIdx = Math.ceil(otherServicesItems.length / 2);
+  const otherServicesColA = otherServicesItems.slice(0, midOtherIdx);
+  const otherServicesColB = otherServicesItems.slice(midOtherIdx);
+
+  /* ------------------------------ */
 
   const handleRoute = (text) => {
     closeMenu("services");
@@ -187,7 +222,7 @@ const toggleMobileExp = (k) =>
     if (text === "Professional Tax") return navigate("/professional-tax");
     if (text === "12A & 80G Registration") return navigate("/eighty-g-registration");
     // FOR COMPLIANCE
-    if (text === "MCA/ROC Compliances") return navigate("/mca-roc-compliances");
+    if (text === "MCA Compliance for PVT LTD") return navigate("/privtate-limited-compliance");
     if (text === "FEMA/RBI Compliance") return navigate("/fema-rbi-compliance");
     if (text === "Labour Law Compliances (PF, ESI, PT)") return navigate("/labour-law-compliances");
     if (text === "Secretarial Compliances") return navigate("/secretarial-compliances");
@@ -692,7 +727,7 @@ const toggleMobileExp = (k) =>
                       )}
 
                       {/* ⬇️ Replace your current OutSourcing panel */}
-                      {activeService === "OutSourcing" && (
+                      {activeService === "Outsourcing" && (
                         <Grid container spacing={6}>
                           <Grid item xs={12} md={12}>
                             <Typography
@@ -759,11 +794,71 @@ const toggleMobileExp = (k) =>
                         </Grid>
                       )}
 
-                      {activeService === "Business Advisory" && (
-                        <>
-                          <Typography sx={{ mb: 1 }}>Advisory item 1</Typography>
-                          <Typography>Advisory item 2</Typography>
-                        </>
+                       {activeService === "Business Advisory" && (
+                        <Grid container spacing={6}>
+                          <Grid item xs={12} md={12}>
+                            <Typography
+                              sx={{
+                                mb: 2,
+                                fontWeight: 600,
+                                color: "#f0f6ff",
+                                fontSize: { xs: 12, md: 14 },
+                                position: "relative",
+                                pb: 1,
+                                display: "inline-block",
+                                "&:after": {
+                                  content: '""',
+                                  position: "absolute",
+                                  left: 0,
+                                  bottom: 0,
+                                  width: "100%",
+                                  height: "2px",
+                                  bgcolor: "rgba(255,255,255,0.35)",
+                                  borderRadius: 1,
+                                },
+                              }}
+                            >
+                              Business Advisory
+                            </Typography>
+
+                            <Grid container spacing={2} columnSpacing={6}>
+                              <Grid item xs={12} sm={6}>
+                                {businessAdvisoryColA.map((text) => (
+                                  <Typography
+                                    key={text}
+                                    sx={{
+                                      mb: 1.1,
+                                      fontSize: { xs: 12, sm: 12, md: 14 },
+                                      color: "rgba(255,255,255,0.95)",
+                                      cursor: "pointer",
+                                      "&:hover": { textDecoration: "underline" },
+                                    }}
+                                    onClick={() => handleRoute(text)}
+                                  >
+                                    {text}
+                                  </Typography>
+                                ))}
+                              </Grid>
+                              <Grid item xs={12} sm={6}>
+                                {businessAdvisoryColB.map((text) => (
+                                  <Typography
+                                    key={text}
+                                    sx={{
+                                      mb: 1.1,
+                                      fontSize: { xs: 12, sm: 12, md: 14 },
+                                      color: "rgba(255,255,255,0.95)",
+                                      cursor: "pointer",
+                                      "&:hover": { textDecoration: "underline" },
+                                    }}
+                                    onClick={() => handleRoute(text)}
+                                  >
+                                    {text}
+                                  </Typography>
+                                ))}
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                        </Grid>
                       )}
                       {activeService === "Virtual Office" && (
                         <>
@@ -771,11 +866,95 @@ const toggleMobileExp = (k) =>
                           <Typography>Virtual Office item 2</Typography>
                         </>
                       )}
-                      {activeService === "Other Services" && (
-                        <>
-                          <Typography sx={{ mb: 1 }}>Other service 1</Typography>
-                          <Typography>Other service 2</Typography>
-                        </>
+                        {activeService === "Other Services" && (
+                        <Grid container spacing={6}>
+                          <Grid item xs={12} md={12}>
+                            <Typography
+                              sx={{
+                                mb: 2,
+                                fontWeight: 600,
+                                color: "#f0f6ff",
+                                fontSize: { xs: 12, md: 14 },
+                                position: "relative",
+                                pb: 1,
+                                display: "inline-block",
+                                "&:after": {
+                                  content: '""',
+                                  position: "absolute",
+                                  left: 0,
+                                  bottom: 0,
+                                  width: "100%",
+                                  height: "2px",
+                                  bgcolor: "rgba(255,255,255,0.35)",
+                                  borderRadius: 1,
+                                },
+                              }}
+                            >
+                              Other Services
+                            </Typography>
+
+                            <Grid container spacing={2} columnSpacing={6}>
+                              <Grid item xs={12} sm={6}>
+                                {otherServicesColA.map((text) => (
+                                <Typography
+  key={text}
+  sx={{
+    mb: 1.1,
+    fontSize: { xs: 12, sm: 12, md: 14 },
+    color: "rgba(255,255,255,0.95)",
+    cursor: "pointer",
+    "&:hover": { textDecoration: "underline" },
+
+    // keep long labels to two lines
+    lineHeight: 1.35,
+    whiteSpace: "normal",
+    wordBreak: "break-word",
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  }}
+  onClick={() => handleRoute(text)}
+>
+  {text}
+</Typography>
+
+                                ))}
+                              </Grid>
+                              <Grid item xs={12} sm={6}>
+                                {otherServicesColB.map((text) => (
+                               <Typography
+  key={text}
+  sx={{
+    mb: 1.1,
+    fontSize: { xs: 12, sm: 12, md: 14 },
+    color: "rgba(255,255,255,0.95)",
+    cursor: "pointer",
+    "&:hover": { textDecoration: "underline" },
+
+    // --- force at most 2 lines + consistent height ---
+    lineHeight: 1.35,
+    //minHeight: "calc(1.35em * 2)",          // reserve 2 lines of space
+    whiteSpace: "normal",
+    overflowWrap: "anywhere",               // break even mid-word if needed
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: { xs: "100%", sm: 220 },      // set a width cap so wrapping happens
+  }}
+  onClick={() => handleRoute(text)}
+>
+  {text}
+</Typography>
+
+                                ))}
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                        </Grid>
                       )}
                     </Box>
                   </Box>
