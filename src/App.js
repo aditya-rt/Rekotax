@@ -38,6 +38,8 @@ import TermsAndConditions from "./components/Dashboard/TermsAndConditions";
 import PrivacyPolicy from "./components/Dashboard/PrivacyPolicy";
 import RefundPolicy from "./components/Dashboard/RefundPolicy";
 import PvtLimitedCompliance from "./components/Compilance/PvtLimitedCompliance";
+import LLPCompliance from "./components/Compilance/CompilanceForLLP";
+import Section8Compilance from "./components/Compilance/CompilanceForSection8";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -121,7 +123,9 @@ export default function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
         <Route path="/refund-policy" element={<RefundPolicy/>}/>
         <Route path="/privtate-limited-compliance" element={<PvtLimitedCompliance/>}/>
- 
+        <Route path="/llp-compliance" element={<LLPCompliance/>}/>
+        <Route path="section8-compilance" element={<Section8Compilance/>}/>
+
         <Route path="/insights/:slug" element={<BlogDetails />} />
       </Routes>
     </Router>
