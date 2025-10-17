@@ -225,6 +225,7 @@ const toggleMobileExp = (k) =>
     if (text === "MCA Compliance for PVT LTD") return navigate("/privtate-limited-compliance");
     if (text === "MCA Compliance for LLP") return navigate("/llp-compliance");
     if (text === "MCA Compliance for Section 8 Company") return navigate("/section8-compilance");
+    if (text === "MCA Compliance for Nidhi Company") return navigate("/nidhi-compliance");
     if (text === "FEMA/RBI Compliance") return navigate("/fema-rbi-compliance");
     if (text === "Labour Law Compliances (PF, ESI, PT)") return navigate("/labour-law-compliances");
     if (text === "Secretarial Compliances") return navigate("/secretarial-compliances");

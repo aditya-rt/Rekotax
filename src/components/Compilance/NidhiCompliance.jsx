@@ -90,7 +90,7 @@ const GstinBox = ({ code, label }) => (
     </Grid>
 );
 
-export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
+export default function NidhiCompliance({ webAppUrl, onSubmitted }) {
     const theme = useTheme();
     const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
     const footerRef = useRef(null);
@@ -332,8 +332,7 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                             px: { xs: 2, md: 0 },
                         }}
                     >
-                        MCA Compliances for Section 8 Companies in India
-
+                        Compliances for NIdhi Companies in India
 
                     </Typography>
 
@@ -351,8 +350,10 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                         }}
                     >
                         Your complete ROC and MCA partner for accurate, on-time filings.
+
                         <br />
-                        From annual returns to event-based filings, we manage it end-to-end with CA/CS oversight and proactive reminders.                    </Typography>
+                        From annual returns to event-based filings, we manage it end-to-end with CA/CS oversight and proactive reminders.
+                    </Typography>
 
                     {/* CTAs centered */}
                     <Box
@@ -490,7 +491,7 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                         fontSize: { xs: "2rem", md: "2.5rem" },
                     }}
                 >
-                    Compliance for Section 8 Company (India)
+                    Compliance for Nidhi Companies (India)
                 </Typography>
 
                 {/* What is GST + GSTIN (left) AND Contact Form (right) */}
@@ -518,26 +519,24 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 fontSize: { xs: "1.5rem", md: "1.8rem" },
                             }}
                         >
-                            What is Compliance for a Section 8 Company?
-
+                            What is Compliance for a Nidhi Company?
                         </Typography>
                         <Typography sx={{ fontSize: "1rem", mb: 2 }}>
-                            Compliance for a Section 8 (non‑profit) company means operating within the <br />
-                            framework of the Companies Act, 2013 and the conditions of the Section 8 <br />
-                            licence, administered by the Ministry of Corporate Affairs (MCA) through <br />
-                            the Registrar of Companies (RoC). It covers Board/AGM meetings, <br />
-                            appointment of auditors, maintenance of registers and minutes, and timely <br />
-                            filing of financial statements and annual returns.
+                            <strong>Compliance</strong>  means operating your Nidhi within the framework of the <strong>Companies <br /> Act,
+                                2013</strong>  and the <strong> Nidhi Rules, 2014</strong> (as amended), under the supervision of the<br />
+                            <strong>Ministry of Corporate Affairs (MCA)</strong>  through the <strong>Registrar of Companies (RoC)</strong>. <br />
+                            It covers admission of members, deposit and lending limits, maintenance of <br />
+                            statutory registers, conduct of Board and General Meetings, and preparation <br />
+                            and filing of financial statements and annual returns.
                         </Typography>
 
                         <Divider sx={{ my: 2 }} />
 
                         <Typography>
-                            In practice, compliance includes a calendar of annual filings (AOC‑4, MGT‑7, ADT‑1, <br />
-                            DIR‑3 KYC, and DPT‑3 if the company has outstanding loans or receipts) plus <br />
-                            event‑based filings (MGT‑14 for certain Board/Member resolutions, PAS‑3 for <br />
-                            allotments, SH‑7 for capital changes, CHG‑1/4 for charges, INC‑22 for address <br />
-                            change, DIR‑12 for changes in directors) whenever applicable.
+                            In practice, the calendar includes annual filings like <strong> AOC-4, MGT-7/7A, ADT-1, DIR-3 <br />
+                                KYC, </strong>plus Nidhi-specific returns such as <strong>NDH-1 </strong> (annual),<strong> NDH-3 </strong>(half-yearly), and <br />
+                            where applicable <strong>NDH-2/NDH-4</strong> . It also includes event-based filings (for example <br />
+                            <strong>  PAS-3, SH-7, CHG-1/4, INC-22, MGT-14</strong>) whenever relevant changes occur.
                         </Typography>
 
                         <Divider sx={{ my: 2 }} />
@@ -700,12 +699,10 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                         }}
                     >
                         {[
-                            { title: "Preserves Licence", desc: "Ensures adherence to Section 8 licence conditions (apply profits to objects, no dividend distribution) and avoids suspension or revocation." },
-                            { title: "Stays Active", desc: "Keeps the company in active status on MCA records and prevents strike‑off risks." },
-                            { title: "Avoids Penalties", desc: " Late filings attract additional fees; KYC lapses can deactivate DINs." },
-                            { title: "Builds Credibility", desc: "Clean compliance supports grants, CSR partnerships, banking, and due diligence." },
-                            { title: "Improves Governance", desc: "Robust minutes, registers, and disclosures reduce operational and fiduciary risks." },
-
+                            { title: "Stays Active", desc: "Keeps your Nidhi valid on MCA records and sustains its Nidhi status." },
+                            { title: "Avoids Penalties", desc: "Delays in NDH and annual filings attract additional fees and can trigger restrictions on accepting deposits or granting loans." },
+                            { title: "Protects Members", desc: "Strong governance and prudential compliance safeguard member deposits and reduce operational risk." },
+                            { title: "Builds Credibility", desc: "Clean records improve trust with banks, auditors, stakeholders, and during regulatory reviews or due diligence." },
 
                         ].map((card) => (
                             <Grid
@@ -743,6 +740,8 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
 
 
 
+                {/* Benefits Section */}
+                {/* Nidhi Company Annual Compliance Section (content updated, styles/structure unchanged) */}
                 <Box
                     component="section"
                     sx={{
@@ -885,94 +884,110 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                 >
                     {/* ---------- CONTENT START ---------- */}
 
-                    {/* Compliances for Newly Registered Section 8 Company */}
+                    {/* Compliances for Newly Registered Nidhi Company */}
                     <div className="content-row">
                         <div className="content-col-full">
-                            <h3>Compliances for Newly Registered Section 8 Company (India)</h3>
+                            <h3>Compliances for Newly Registered Nidhi Company (India)</h3>
                             <ul>
                                 <li>
                                     <strong>First Board Meeting (within 30 days)</strong>
                                     <p>
-                                        Hold the inaugural Board meeting within thirty days to constitute governance, approve authorised
-                                        signatories and the financial year, and record director disclosures (MBP-1 and DIR-8). Adopt the
-                                        Section 8 licence conditions formally in minutes and approve a compliance calendar. Ensure proper
-                                        notice, agenda and minutes to set an audit-ready precedent.
+                                        Hold the inaugural Board meeting to appoint authorised signatories, fix the financial year, and record directors’ disclosures (MBP-1 and DIR-8). Approve bank account opening and adopt a dated Nidhi compliance calendar. Proper notice, agenda and minutes establish an audit-ready precedent.
                                     </p>
                                 </li>
 
                                 <li>
                                     <strong>Appointment of First Auditor</strong>
                                     <p>
-                                        The Board appoints the first statutory auditor within thirty days of incorporation, failing which
-                                        members appoint within the next ninety days. Obtain auditor consent and eligibility certificate and
-                                        record the appointment in minutes. Maintain the engagement letter to align AGM actions and ADT-1 filing.
+                                        The Board appoints the first statutory auditor within 30 days of incorporation, otherwise members appoint within the next 90 days. Obtain written consent and eligibility certificate and minute the decision. Keep the engagement letter aligned to later AGM actions and ADT-1 filing.
                                     </p>
                                 </li>
 
                                 <li>
-                                    <strong>Bank Account Opening and Corpus/Subscription Receipt</strong>
+                                    <strong>Bank Account Opening and Capital Receipt</strong>
                                     <p>
-                                        Open the current account and receive initial corpus or subscription monies strictly as per the charter
-                                        documents. Map each credit with UTR references and bank advices, and reconcile with books and the
-                                        Register of Members (or share capital, if any). This alignment supports INC-20A (if applicable for
-                                        companies with share capital) and future diligence.
+                                        Open the current account and receive subscription monies as per the Memorandum. Map each credit to the respective subscriber with UTR references and reconcile paid-up capital with the Register of Members. This alignment supports INC-20A filing and later diligence.
                                     </p>
                                 </li>
 
                                 <li>
-                                    <strong>Issue of Share Certificates (if share capital) and Stamp Duty</strong>
+                                    <strong>Issue of Share Certificates (within 60 days) and Stamp Duty</strong>
                                     <p>
-                                        If the Section 8 company has share capital, prepare, execute and deliver share certificates within
-                                        sixty days of allotment/subscription and pay applicable state stamp duty within time. Cross-reference
-                                        certificate numbers, folios and allotments in the Register of Members. For companies without share
-                                        capital, ensure member registers and admissions are properly recorded.
+                                        Prepare, execute and deliver share certificates to subscribers within 60 days and discharge applicable state stamp duty in time. Cross-reference certificate numbers, folios and allotments in the Register of Members to preserve title and avoid penalties.
                                     </p>
                                 </li>
 
                                 <li>
-                                    <strong>Commencement of Business – INC-20A (if applicable)</strong>
+                                    <strong>Commencement of Business – INC-20A (within 180 days)</strong>
                                     <p>
-                                        File INC-20A within one hundred eighty days confirming receipt of subscription capital into the
-                                        company’s bank account (required for companies having share capital). Non-filing may trigger restrictions
-                                        and monetary penalties. Treat it as a mandatory milestone where applicable.
+                                        File INC-20A confirming receipt of subscription capital into the company bank account with clear banking evidence. Non-filing can restrict operations and attract penalties. Treat this as a mandatory milestone.
                                     </p>
                                 </li>
 
                                 <li>
                                     <strong>Registered Office Confirmation – INC-22 (if applicable)</strong>
                                     <p>
-                                        If the permanent registered office is finalised post-incorporation, file INC-22 within thirty days
-                                        with utility bill, title/lease proof and owner’s NOC. Update name board, letterheads and statutory
-                                        imprints with legal name, CIN and address. Consistency across records and licenses prevents discrepancies.
+                                        If the permanent registered office is finalised post-incorporation, file INC-22 within 30 days with recent utility bill, title or lease proof and owner’s NOC. Update name board, letterheads and statutory imprints consistently.
                                     </p>
                                 </li>
 
                                 <li>
                                     <strong>Statutory Registers and Minutes</strong>
                                     <p>
-                                        Maintain statutory registers for Members, Directors/KMP, Charges and Transfers—physically or
-                                        electronically—with proper authentication. Open minutes books for Board and member meetings, ensure
-                                        serial numbering and timely signatures, and link resolutions to filings they necessitate. These records
-                                        are primary legal evidence.
+                                        Maintain statutory registers for Members, Directors or KMP, Charges and Transfers along with deposit-related records as per Nidhi Rules. Open minutes books for Board and general meetings. Link resolutions to required filings.
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <strong>Nidhi Onboarding Filings (NDH series)</strong>
+                                    <p className="muted">
+                                        For companies incorporated after 19 April 2022 under the Nidhi Amendment Rules, 2022, start deposit or lending activities only after you are declared a Nidhi.
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <strong>NDH-4 – Application for declaration as Nidhi</strong>
+                                            <p>
+                                                File within 120 days of incorporation after meeting entry criteria: at least 200 members, Net Owned Funds of at least ₹20 lakh, and promoters or directors meeting fit and proper criteria. If no decision is communicated within 45 days, approval is deemed granted.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <strong>NDH-3 – Half-yearly return</strong>
+                                            <p>
+                                                Starts after you are declared a Nidhi. File within 30 days of each half-year end, practically 30 April and 30 October.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <strong>Not part of onboarding for new incorporations</strong>
+                                            <p>
+                                                NDH-1 is a legacy annual return and NDH-2 is an extension application under the old framework. These are not onboarding steps for post-2022 incorporations.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <div className="callout" style={{ marginTop: 10 }}>
+                                        <p>
+                                            <strong>Important</strong>: Onboarding is NDH-4 once you have 200 members and ₹20 lakh NOF and within 120 days of incorporation. NDH-3 begins only after you are declared a Nidhi.
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <strong>DPT-3</strong>
+                                    <p>
+                                        File the annual Return of Deposits and Exempt Borrowings by 30 June each year, reporting all outstanding amounts as on 31 March. Mandatory for every public company, including Nidhis. Ensure figures align with audited financials and attach auditor’s certificate where required.
                                     </p>
                                 </li>
 
                                 <li>
                                     <strong>Tax and Labour Registrations (as applicable)</strong>
                                     <p>
-                                        Verify PAN/TAN activation and obtain GST registration where thresholds or counterparties require.
-                                        Complete EPFO/ESIC and Professional Tax registrations based on state norms and headcount. Configure
-                                        e-payment workflows early to avoid interest or late-fee exposures.
+                                        Verify PAN or TAN activation. Obtain GST registration where thresholds or counterparties require it. Complete EPFO or ESIC and Professional Tax registrations as per state norms and headcount. Configure e-payment workflows early.
                                     </p>
                                 </li>
 
                                 <li>
-                                    <strong>Year-One Governance Rhythm (Section 8 exemptions considered)</strong>
+                                    <strong>Year-One Filing Plan and Governance Rhythm</strong>
                                     <p>
-                                        Plan Board meetings at least <em>two times a year</em> with a gap of not less than six months (as per
-                                        Section 8 exemptions), and schedule the AGM within the statutory window. Back-schedule filings—AOC-4
-                                        (30 days from AGM), MGT-7 (60 days), ADT-1 (15 days), DIR-3 KYC (by 30 September), DPT-3 (by 30 June)
-                                        and MSME-1 where applicable. Assign clear ownership and set reminders.
+                                        Publish a dated plan for Board meetings and a compliant AGM timeline. Back-schedule AOC-4, MGT-7 or 7A, ADT-1, DIR-3 KYC, and Nidhi returns (NDH-3 and, if applicable, NDH-1 for legacy cases). Assign clear ownership and reminders.
                                     </p>
                                 </li>
                             </ul>
@@ -982,106 +997,91 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                     {/* CTA */}
                     <section id="rk-roc-cta" aria-label="Done-for-you RoC compliance plan">
                         <div className="cta-wrap">
-                            <h3>Want to know more about what applies to you?</h3>
-                            <p>
-                                Book a 10-minute clarity call. We’ll answer your questions and outline your exact next steps.
-                            </p>
-                             <Button
-                             href="#contact"
-                             onClick={openContact}
-                             disableElevation
-                             sx={{
-                               // glassmorphism style
-                               color: "#fff",
-                               textTransform: "none",
-                               fontWeight: 700,
-                               borderRadius: 999,
-                               px: 3,
-                               py: 1.25,
-                               bgcolor: "rgba(255,255,255,0.12)",
-                               backgroundImage:
-                                 "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
-                               border: "1px solid rgba(255,255,255,0.28)",
-                               boxShadow: "0 10px 30px rgba(15,37,85,0.35)",
-                               backdropFilter: "blur(14px) saturate(160%)",
-                               WebkitBackdropFilter: "blur(14px) saturate(160%)",
-                               textDecoration: "none !important",
-                               "&:hover": {
-                                 bgcolor: "rgba(255,255,255,0.18)",
-                                 borderColor: "rgba(255,255,255,0.38)",
-                                 boxShadow: "0 12px 36px rgba(15,37,85,0.45)",
-                                 textDecoration: "none !important",
-                                 transform: "translateY(-1px)",
-                               },
-                               "&:active": {
-                                 transform: "translateY(0)",
-                                 boxShadow: "0 8px 22px rgba(15,37,85,0.35)",
-                               },
-                             }}
-                           >
-                             Talk to a compliance experts
-                           </Button>
+                            <h3>Want to know what applies to your Nidhi?</h3>
+                            <p>Book a 10-minute clarity call. We will answer your questions and outline your exact next steps.</p>
+                            <Button
+                                href="#contact"
+                                onClick={openContact}
+                                disableElevation
+                                sx={{
+                                    color: "#fff",
+                                    textTransform: "none",
+                                    fontWeight: 700,
+                                    borderRadius: 999,
+                                    px: 3,
+                                    py: 1.25,
+                                    bgcolor: "rgba(255,255,255,0.12)",
+                                    backgroundImage:
+                                        "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+                                    border: "1px solid rgba(255,255,255,0.28)",
+                                    boxShadow: "0 10px 30px rgba(15,37,85,0.35)",
+                                    backdropFilter: "blur(14px) saturate(160%)",
+                                    WebkitBackdropFilter: "blur(14px) saturate(160%)",
+                                    textDecoration: "none !important",
+                                    "&:hover": {
+                                        bgcolor: "rgba(255,255,255,0.18)",
+                                        borderColor: "rgba(255,255,255,0.38)",
+                                        boxShadow: "0 12px 36px rgba(15,37,85,0.45)",
+                                        textDecoration: "none !important",
+                                        transform: "translateY(-1px)",
+                                    },
+                                    "&:active": {
+                                        transform: "translateY(0)",
+                                        boxShadow: "0 8px 22px rgba(15,37,85,0.35)",
+                                    },
+                                }}
+                            >
+                                Talk to a compliance expert
+                            </Button>
                         </div>
                     </section>
 
-                    {/* Key Pillars */}
+                    {/* Key Pillars (Nidhi) */}
                     <div className="content-row">
                         <div className="content-col-full">
-                            <h3>Key Pillars of Annual Compliance (Section 8 Company)</h3>
+                            <h3>Key Pillars of Annual Compliance (Nidhi Company)</h3>
                             <ul>
                                 <li>
                                     <strong>Board &amp; Member Meetings</strong>
                                     <p>
-                                        Hold at least two Board meetings in a year with a minimum gap of six months, plus one AGM. Issue formal
-                                        notices with agenda, record attendance, and maintain signed minutes. Proper documentation supports
-                                        approvals for accounts, auditor matters, borrowings, programme approvals, and policy decisions.
+                                        Hold at least four Board meetings annually with a maximum 120 day gap and one AGM. Issue formal notices with agenda, record attendance, and maintain signed minutes. Approvals should cover accounts, auditor items, and deposit or lending policies under Nidhi Rules.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>Financial Reporting (AOC-4)</strong>
                                     <p>
-                                        Prepare audited financial statements (Balance Sheet, Income &amp; Expenditure, notes; cash flow if
-                                        applicable) and get Board/AGM approval. File AOC-4 within 30 days of the AGM along with the Auditor’s
-                                        Report and Board’s Report. Accurate mapping of figures and attachments avoids resubmissions and late fees.
+                                        Prepare audited financial statements and obtain Board or AGM approval. File AOC-4 within 30 days of the AGM with Auditor’s Report and Board’s Report. Ensure accurate mapping of figures and attachments.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>Annual Return (MGT-7)</strong>
+                                    <strong>Annual Return (MGT-7 / MGT-7A)</strong>
                                     <p>
-                                        Submit a snapshot of members, directors/KMP, and corporate events for the year. File within 60 days of
-                                        the AGM, ensuring consistency with registers and prior filings. This return is widely used for diligence
-                                        by banks, donors, CSR partners, and regulators.
+                                        File within 60 days of the AGM capturing members, directors or KMP, and corporate events. Keep consistency with statutory registers and prior filings.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>Auditors (ADT-1)</strong>
                                     <p>
-                                        Appoint or ratify the statutory auditor at the AGM and file ADT-1 within 15 days. Ensure auditor
-                                        eligibility, tenure, and consent documents are in order before filing. Timely filings prevent compliance
-                                        gaps and portal mismatches.
+                                        Appoint or ratify the statutory auditor at the AGM and file ADT-1 within 15 days. Verify eligibility, tenure and consent before filing.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>Disclosures (DIR-3 KYC, MBP-1, BEN-2 where applicable)</strong>
+                                    <strong>Disclosures &amp; Nidhi Returns (DIR-3 KYC, MBP-1, NDH series)</strong>
                                     <p>
-                                        Each director must complete annual KYC to keep the DIN active. Directors disclose interests via MBP-1;
-                                        significant beneficial ownership is reported in BEN-2 when thresholds are met. Keeping these current
-                                        prevents conflicts and improves transparency.
+                                        Each director must complete annual KYC to keep DIN active. Directors disclose interests via MBP-1. File Nidhi returns NDH-3 half-yearly and NDH-1 annually if applicable for legacy cases. NDH-4 is for declaration or registration as a Nidhi at onboarding.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>Registers &amp; Minutes</strong>
                                     <p>
-                                        Maintain statutory registers of members, directors/KMP, charges and transfers (if share capital). Keep
-                                        Board/AGM minutes consecutively numbered, signed, and stored for inspection. Up-to-date registers are
-                                        essential evidence during audits, diligence, or inspections.
+                                        Maintain registers of members, directors or KMP, charges and transfers, along with deposit records mandated by Nidhi Rules. Keep minutes consecutively numbered, signed and inspection-ready.
                                     </p>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* What You Must Track */}
+                    {/* What You Must Track (Nidhi) */}
                     <div className="content-row" style={{ marginTop: 10 }}>
                         <div className="content-col-full">
                             <h3>What You Must Track (Core Annual Items)</h3>
@@ -1089,142 +1089,119 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 <li>
                                     <strong>Board Meetings</strong>
                                     <p>
-                                        Schedule at least two meetings with a ≥6-month gap; circulate agendas and papers in advance. Record
-                                        attendance, resolutions, and dissent (if any) in signed minutes. Maintain proof of dispatch and
-                                        acknowledgement of notices for a complete audit trail.
-                                    </p>
-                                </li>
-                                <li>
-                                    <strong>AGM</strong>
-                                    <p>
-                                        Hold the AGM within six months from FY end (first AGM within nine months of the first FY). Approve
-                                        accounts, auditor matters, appointment/retirement of directors where applicable, and member business.
-                                        Serve notice with an explanatory statement, and file post-AGM forms within statutory windows.
-                                    </p>
-                                </li>
-                                <li>
-                                    <strong>AOC-4</strong>
-                                    <p>
-                                        File audited financials within 30 days of AGM with all required attachments. Ensure the Board’s Report
-                                        aligns with financials and includes mandated disclosures and licence-related affirmations. Any mismatch
-                                        or missing annexures can lead to resubmission and additional fees.
-                                    </p>
-                                </li>
-                                <li>
-                                    <strong>MGT-7</strong>
-                                    <p>
-                                        File the annual return within 60 days of AGM capturing members, directors/KMP, penalties/compounding, etc.
-                                        Cross-verify with registers and prior filings to avoid inconsistencies. Keep a copy signed by the required
-                                        professionals, where applicable.
-                                    </p>
-                                </li>
-                                <li>
-                                    <strong>ADT-1</strong>
-                                    <p>
-                                        Notify MCA of auditor appointment/re-appointment within 15 days of AGM. Attach consent letters and
-                                        eligibility confirmations as per the Act and rules. Late filing can create a mismatch between MCA records
-                                        and your actual auditor on record.
+                                        Schedule at least four meetings with spacing of 120 days or less. Circulate agendas and papers in advance. Record attendance, resolutions and dissent in signed minutes and preserve proof of dispatch.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>DPT-3</strong>
                                     <p>
-                                        Report deposits and exempt borrowings outstanding as on 31 March by 30 June annually. Classify items
-                                        correctly (deposit vs. exempt) to avoid scrutiny or penalties. Keep backup documentation like loan
-                                        agreements, ledgers, and bank proofs.
+                                        File by 30 June each year reporting outstanding deposits and exempt borrowings as on 31 March. Ensure alignment with audited financials. Attach auditor’s certificate where required.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>MSME-1 (if applicable)</strong>
+                                    <strong>AGM</strong>
                                     <p>
-                                        Half-yearly return of outstanding dues &gt;45 days to MSME vendors (April 30 and October 31). Validate
-                                        vendor MSME status and calculate aging accurately. Consistent reporting avoids notices and demonstrates
-                                        supplier discipline.
+                                        Hold within six months from FY end (first AGM within nine months of the first FY). Approve accounts, auditor items and other member business. Serve notice with explanatory statement and file post-AGM forms on time.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>DIR-3 KYC</strong>
+                                    <strong>AOC-4</strong>
                                     <p>
-                                        Each director must complete annual KYC by September 30 to keep the DIN active. Failure triggers DIN
-                                        deactivation and a fixed late fee before reactivation. Track all directors (including non-executive) to
-                                        prevent accidental lapses.
+                                        File audited financials within 30 days of AGM with required attachments. Ensure the Board’s Report aligns with financials and mandated disclosures.
+                                    </p>
+                                </li>
+                                <li>
+                                    <strong>MGT-7 / 7A</strong>
+                                    <p>
+                                        File within 60 days of AGM. Cross-verify with registers and prior filings to avoid inconsistencies.
+                                    </p>
+                                </li>
+                                <li>
+                                    <strong>ADT-1</strong>
+                                    <p>
+                                        Notify MCA of auditor appointment or re-appointment within 15 days of AGM. Attach consent and eligibility confirmations.
+                                    </p>
+                                </li>
+                                <li>
+                                    <strong>Recurring NDH Series Filings (for registered Nidhis)</strong>
+                                    <ul>
+                                        <li>
+                                            <strong>NDH-3 – Half-Yearly Return</strong>
+                                            <p>
+                                                File within 30 days of the close of each half-year. Practically by 30 April and 30 October.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <strong>NDH-4 – Update or deemed continuation (if asked)</strong>
+                                            <p>
+                                                Monitor MCA instructions. If there are material changes in membership, NOF or management affecting eligibility, be ready to confirm or re-submit details.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <p className="muted">
+                                        <strong>Note</strong>: NDH-1 and NDH-2 are legacy forms under the pre-2022 regime and are not part of the recurring set for newly incorporated Nidhis.
                                     </p>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* Event-Based Compliances */}
+                    {/* Event-Based Compliances (Nidhi) */}
                     <div className="content-row" style={{ marginTop: 6 }}>
                         <div className="content-col-full">
                             <h3>Event-Based Compliances (When Specific Changes Occur)</h3>
                             <ul>
                                 <li>
-                                    <strong>PAS-3 (Allotment of Shares, if share capital)</strong>
+                                    <strong>PAS-3 (Allotment of Shares)</strong>
                                     <p>
-                                        File for any allotment (private placement, rights, conversion) where the Section 8 company has share
-                                        capital. Include list of allottees, consideration details, and relevant resolutions. Ensure authorised
-                                        capital adequacy and supporting documents where required.
+                                        File for any share allotment approved under the Act and rules. Include list of allottees, consideration details and resolutions. Ensure authorised capital adequacy and supporting documents.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>SH-7 (Change in Authorised Share Capital, if applicable)</strong>
+                                    <strong>SH-7 (Change in Authorised Share Capital)</strong>
                                     <p>
-                                        File when increasing or reclassifying authorised capital before issuing new shares. Pass the necessary
-                                        resolution, amend MOA, and pay prescribed fees. Keep the capital structure consistent across MOA,
-                                        registers, and filings.
+                                        File when increasing or reclassifying authorised capital before issuing new shares. Pass the necessary resolution, amend MOA and pay prescribed fees.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>CHG-1 / CHG-4 (Charges on Assets)</strong>
                                     <p>
-                                        Use CHG-1 to register creation or modification of a charge within statutory timelines, and CHG-4 on
-                                        satisfaction. Coordinate with lenders to avoid delays that may attract heavy additional fees. Maintain
-                                        lender correspondence as evidence.
+                                        Use CHG-1 to register creation or modification of a charge within timelines. File CHG-4 upon satisfaction. Coordinate with lenders to avoid delays.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>INC-22 (Change in Registered Office)</strong>
                                     <p>
-                                        Notify any change of registered office address with supporting proofs. Different timelines apply for
-                                        intra-city vs. inter-ROC jurisdiction moves. Update letterheads, bank, GST, and other licenses in sync.
+                                        Notify change of registered office with supporting proofs like utility bills and NOC. Update letterheads, bank, GST and other licenses in sync.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>MGT-14 (Certain Resolutions/Agreements)</strong>
+                                    <strong>MGT-14 (Certain Resolutions or Agreements)</strong>
                                     <p>
-                                        File specified Board/Member resolutions where the Act or licence conditions demand (for example, approval
-                                        of financials or borrowings beyond limits). Check applicability carefully. When required, file within the
-                                        stipulated window to avoid penalties.
+                                        File specified Board or Member resolutions where required by the Act. Timely filing prevents penalties.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>DIR-12 (Director/KMP Changes)</strong>
+                                    <strong>DIR-12 (Director or KMP Changes)</strong>
                                     <p>
-                                        Intimate appointments, resignations, or changes in designation of directors/KMP promptly. Attach resignation
-                                        letters, consent/appointment forms, and relevant resolutions. Sync changes with registers and disclose in
-                                        the next annual return.
+                                        Intimate appointments, resignations or changes in designation of directors or KMP promptly. Attach resignation letters, consents and resolutions. Sync changes with registers and disclose in the next annual return.
                                     </p>
                                 </li>
                                 <li>
-                                    <strong>BEN-2 (Significant Beneficial Owner, where applicable)</strong>
+                                    <strong>NDH-2 / NDH-4 (Nidhi-Specific)</strong>
                                     <p>
-                                        Report individuals holding significant beneficial ownership through indirect or layered holdings when
-                                        thresholds are met. Maintain evidence to support SBO determination. Timely filing enhances transparency and
-                                        reduces enforcement risk.
+                                        Use NDH-2 to seek extension if eligibility norms are not met in time. NDH-4 is used for declaration or registration as a Nidhi at onboarding. Monitor these to safeguard Nidhi recognition.
                                     </p>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* Illustrative Calendar */}
+                    {/* Illustrative Calendar (Nidhi) */}
                     <div className="content-row" style={{ marginTop: 10 }}>
                         <div className="content-col-full">
-                            <h3>Illustrative RoC Calendar (FY 2025–26)</h3>
-                            <p className="muted">
-                                These dates are indicative and assume AGM on 30 September 2025. Re-compute from your actual AGM date.
-                            </p>
+                            <h3>Illustrative RoC Calendar for Nidhi (FY 2025–26)</h3>
+                            <p className="muted">These dates are indicative and assume AGM on 30 September 2025. Re-compute from your actual AGM or FY dates.</p>
                             <div className="table-wrap">
                                 <table>
                                     <thead>
@@ -1236,14 +1213,14 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>MSME-1</td>
-                                            <td>Outstanding dues to MSMEs (&gt; 45 days)</td>
-                                            <td>Apr 30, 2025 • Oct 31, 2025</td>
+                                            <td>DPT-3</td>
+                                            <td>Return of Deposits and Exempt Borrowings</td>
+                                            <td>30 June</td>
                                         </tr>
                                         <tr>
-                                            <td>DPT-3</td>
-                                            <td>Return of deposits / exempt borrowings</td>
-                                            <td>Jun 30, 2025</td>
+                                            <td>NDH-3</td>
+                                            <td>Half-yearly Nidhi return</td>
+                                            <td>Apr 30, 2025 • Oct 30, 2025</td>
                                         </tr>
                                         <tr>
                                             <td>DIR-3 KYC</td>
@@ -1252,7 +1229,7 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                         </tr>
                                         <tr>
                                             <td>AGM</td>
-                                            <td>Annual General Meeting (standard FY)</td>
+                                            <td>Annual General Meeting</td>
                                             <td>Sep 30, 2025</td>
                                         </tr>
                                         <tr>
@@ -1267,11 +1244,11 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                         </tr>
                                         <tr>
                                             <td>MGT-14</td>
-                                            <td>Board/Member resolution filing (if applicable)</td>
+                                            <td>Board resolution filing (if applicable)</td>
                                             <td>Oct 30, 2025</td>
                                         </tr>
                                         <tr>
-                                            <td>MGT-7</td>
+                                            <td>MGT-7 / 7A</td>
                                             <td>Annual return (60 days from AGM)</td>
                                             <td>Nov 29, 2025</td>
                                         </tr>
@@ -1281,7 +1258,7 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                         </div>
                     </div>
 
-                    {/* Documents Required */}
+                    {/* Documents Required (Nidhi) */}
                     <div className="content-row" style={{ marginTop: 50 }}>
                         <div className="content-col-full">
                             <h3>Documents Required (Core Set)</h3>
@@ -1289,39 +1266,33 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 <li>
                                     <strong>Audited Financials, Board’s Report, Auditor’s Report</strong>
                                     <p>
-                                        Keep final, signed copies ready for AGM approval and AOC-4 filing. Ensure figures reconcile across trial
-                                        balance, ledgers, and returns. Include licence-related disclosures and programme narratives where required.
+                                        Keep final, signed copies ready for AGM approval and AOC-4 filing. Ensure figures and notes reconcile with ledgers and returns.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>DIR-3 KYC Proofs &amp; DSCs</strong>
                                     <p>
-                                        Maintain PAN, identity/address proofs for each director and secure valid DSCs for signatories. Expired
-                                        DSCs delay filings—renew before the compliance window. Store KYC acknowledgements as part of your audit trail.
+                                        Maintain PAN, identity or address proofs for each director and secure valid DSCs for signatories. Renew expiring DSCs before the window.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>Statutory Registers &amp; Minutes</strong>
                                     <p>
-                                        Update registers of members, directors/KMP, charges, and transfers (if share capital) regularly. Keep
-                                        Board/AGM minutes page-numbered, signed, and cross-referenced with filings. These are primary evidence during
-                                        inspections and due diligence.
+                                        Update registers of members, directors or KMP, charges and transfers regularly, along with deposit records as per Nidhi Rules. Keep minutes page-numbered, signed and cross-referenced.
                                     </p>
                                 </li>
                                 <li>
                                     <strong>Supporting Papers for Specific Forms</strong>
                                     <p>
-                                        Collate proofs for DPT-3, MSME-1, PAS-3, SH-7, CHG-1/4, MGT-14, etc. (agreements, bank letters, resolutions).
-                                        Label annexures clearly to match form fields and narratives. Good documentation speeds approval and reduces
-                                        clarification calls.
+                                        Collate proofs for NDH-3, NDH-4, and other forms like PAS-3, SH-7, CHG-1 or CHG-4, MGT-14. Label annexures clearly to match form fields.
                                     </p>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
+                    {/* ---------- CONTENT END ---------- */}
                 </Box>
-
 
 
 
@@ -1346,37 +1317,37 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
 
                                 title: "Penalty Avoidance",
                                 desc:
-                                    "Skip costly late fees and DIN deactivation risks for DIR-3 KYC; avoid licence‑related action for non‑compliance.",
+                                    "Skip costly late fees and status risks from delayed NDH and annual filings.",
                             },
                             {
 
                                 title: "Better Credibility",
                                 desc:
-                                    "Clean MCA records support grants, CSR tie‑ups, vendor onboarding and banking relationships.",
+                                    "Clean MCA and NDH records help with banking relationships and regulatory reviews.",
                             },
                             {
 
                                 title: "Operational Confidence",
                                 desc:
-                                    "Proper minutes, registers and disclosures reduce risk and improve governance across programmes.",
+                                    "Proper minutes, registers and prudential compliance reduce exposure and improve decisions.",
                             },
                             {
 
-                                title: "Grant & CSR Readiness",
+                                title: "Regulatory Confidence",
                                 desc:
-                                    "Donors and CSR teams assess MCA filings and governance history first. Timely compliance boosts confidence and speeds approvals.",
+                                    "Transparent filings and timely responses improve confidence with auditors and authorities.",
                             },
                             {
 
-                                title: "Faster Partnerships",
+                                title: "Faster Onboarding",
                                 desc:
-                                    "Large institutions demand RoC acknowledgements, KYC and registers during due diligence. Being compliant cuts back‑and‑forth.",
+                                    "Vendors and partners often ask for MCA acknowledgements. Being compliant cuts delays.",
                             },
                             {
 
-                                title: "Policy & Audit Alignment",
+                                title: "Member Trust & Audit Readiness",
                                 desc:
-                                    "Well‑maintained records make statutory and donor audits smoother, reducing qualification risks.",
+                                    "Clear deposit records and NDH returns reassure members and ease inspections.",
                             },
                         ];
 
@@ -1459,8 +1430,7 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                     })()}
                 </Box>
 
-                {/* Rekotax | Our Approach (Card Layout) – MUI Box version */}
-                {/* Rekotax | Our Approach (Card Layout) – MUI Box version (Section 8 Companies) */}
+                {/* Rekotax | Our Approach (Card Layout) – MUI Box version (updated for Nidhi Company) */}
                 <Box
                     component="section"
                     id="rk-approach"
@@ -1591,8 +1561,8 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                             <div>
                                 <h2 className="rk-title">Our Approach</h2>
                                 <p className="rk-sub">
-                                    A five-step, CA/CS-led process that keeps your Section 8 company
-                                    filings on time, accurate, and licence-compliant.
+                                    A five-step, CA/CS-led process that keeps your filings accurate, on
+                                    time, and audit-ready.
                                 </p>
                             </div>
                         </div>
@@ -1604,9 +1574,11 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 <div className="rk-icon">📅</div>
                                 <h3>Plan</h3>
                                 <p>
-                                    Build an annual calendar from the last AGM and map every requirement —
-                                    AOC-4, MGT-7, ADT-1, DIR-3 KYC, DPT-3, MSME-1 — plus event-based
-                                    triggers, owners, dates, and Section 8 licence conditions.
+                                    Build an annual calendar from the last AGM and map every requirement -
+                                    NDH-3 (half-yearly), AOC-4, MGT-7/7A, ADT-1, DIR-3 KYC, DPT-3, MSME-1
+                                    - plus onboarding or exception items like NDH-4 (declaration as Nidhi)
+                                    and event-based triggers (PAS-3, SH-7, CHG-1/4, INC-22, MGT-14,
+                                    DIR-12) with clear owners and dates.
                                 </p>
                             </article>
 
@@ -1616,9 +1588,10 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 <div className="rk-icon">🗂️</div>
                                 <h3>Prepare</h3>
                                 <p>
-                                    Collate audited financials, registers, resolutions, and supporting
-                                    proofs; reconcile figures and ensure narratives align with licence
-                                    commitments and each MCA form’s attachment set.
+                                    Collate audited financials, statutory registers, minutes, and
+                                    supporting proofs; reconcile figures so attachments align perfectly
+                                    with AOC-4, MGT-7/7A, DPT-3 and NDH forms. Keep MBP-1, DIR-8 and DSCs
+                                    ready for sign-off.
                                 </p>
                             </article>
 
@@ -1628,9 +1601,10 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 <div className="rk-icon">🔍</div>
                                 <h3>Review</h3>
                                 <p>
-                                    Conduct CA/CS checks for accuracy, applicability, and annexures
-                                    (including licence-related affirmations); fix discrepancies before
-                                    filing to avoid resubmissions and late fees.
+                                    Conduct CA/CS checks for accuracy, applicability and annexures; verify
+                                    NOF, membership counts and prudential ratios under Nidhi Rules.
+                                    Resolve discrepancies before filing to avoid resubmissions and late
+                                    fees.
                                 </p>
                             </article>
 
@@ -1641,8 +1615,8 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 <h3>File</h3>
                                 <p>
                                     E-file on the MCA portal with valid DSCs, pay statutory fees, and
-                                    respond to any resubmission remarks until acknowledgements (SRNs) are
-                                    issued.
+                                    address any resubmission remarks until acknowledgements (SRNs) are
+                                    issued for AOC-4, MGT-7/7A, ADT-1, DPT-3 and NDH returns.
                                 </p>
                             </article>
 
@@ -1653,13 +1627,14 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                                 <h3>Archive</h3>
                                 <p>
                                     Share challans and SRNs, update registers and minutes, and maintain a
-                                    structured, audit-ready trail (including licence compliance evidence)
-                                    for donor, CSR, and regulatory diligence.
+                                    structured, audit-ready trail. Keep NDH, AGM and Board packs organized
+                                    for diligence, inspections and banking or CSR partner reviews.
                                 </p>
                             </article>
                         </div>
                     </div>
                 </Box>
+
 
 
                 <Box sx={{ mt: 0, p: 0, mx: 0, overflow: "visible" }} ref={aboutRef}>
@@ -1690,84 +1665,84 @@ export default function CompilanceForSection8({ webAppUrl, onSubmitted }) {
                         </Typography>
                         {[
                             {
-                                q: "What is annual compliance for a Section 8 Company in India?",
-                                a: "It is the set of statutory requirements under the Companies Act, 2013 and MCA/RoC rules, along with adherence to Section 8 licence conditions (apply income to objects, no dividend). Core items include Board/AGM meetings, audited financial statements (AOC-4), annual return (MGT-7), auditor appointment (ADT-1), DIR-3 KYC, DPT-3, MSME-1 (if applicable), and proper maintenance of registers/minutes."
+                                q: "What is annual compliance for a Nidhi Company in India?",
+                                a: "It is the set of statutory requirements for a Nidhi incorporated as a Public Limited Company under the Companies Act, 2013 and governed by the Nidhi Rules, 2014—covering Board/AGM meetings, audited financials (AOC-4), annual return (MGT-7/7A), ADT-1, DIR-3 KYC, DPT-3, MSME-1 (if applicable), NDH-3 (after recognition), and maintenance of registers/minutes including deposit records."
                             },
                             {
-                                q: "Do we need to file AOC-4 and MGT-7 even if there is no revenue or only grants/donations?",
-                                a: "Yes. All active Section 8 companies must file annual financial statements and the annual return irrespective of activity or turnover. Non-filing can trigger additional fees, show-cause notices, and compliance risks."
+                                q: "Do we need to file AOC-4 and MGT-7/7A even with zero revenue?",
+                                a: "Yes. All active Nidhi Public Companies must file annual financial statements and the annual return irrespective of turnover or activity. Non-filing can trigger additional fees, show-cause notices, and compliance risks."
                             },
                             {
-                                q: "How are AOC-4, MGT-7, and ADT-1 due dates calculated?",
-                                a: "They are linked to your AGM date: AOC-4 within 30 days of the AGM, MGT-7 within 60 days of the AGM, and ADT-1 within 15 days of the AGM. Any shift in AGM moves these windows accordingly."
+                                q: "How are AOC-4, MGT-7/7A, and ADT-1 due dates calculated?",
+                                a: "They are linked to your AGM date: AOC-4 within 30 days, MGT-7/7A within 60 days, and ADT-1 within 15 days of the AGM. If the AGM date shifts, these windows shift accordingly."
                             },
                             {
                                 q: "What is DIR-3 KYC and what happens if we miss it?",
-                                a: "DIR-3 KYC is the annual KYC for each director (DIN holder), generally due by 30 September. Missing it deactivates the DIN; a fixed late fee applies for reactivation. File immediately to restore status."
+                                a: "Annual KYC for each director (DIN holder), typically due by 30 September. Missing it deactivates the DIN; a fixed late fee applies for reactivation—file immediately to restore status."
                             },
                             {
-                                q: "What is DPT-3 and who must file it?",
-                                a: "DPT-3 reports deposits and exempt borrowings outstanding as on 31 March and is generally due by 30 June each year. Section 8 companies with loans or advances covered under the rules must file, even if they do not accept public deposits."
+                                q: "What is DPT-3 and who must file it for a Nidhi?",
+                                a: "DPT-3 reports deposits and exempt borrowings outstanding as on 31 March and is generally due by 30 June. Nidhis also file DPT-3, classifying member deposits per the Rules and reporting other exempt borrowings where relevant."
                             },
                             {
-                                q: "What is MSME-1 and when is it applicable?",
-                                a: "MSME-1 is a half-yearly return (April 30 and October 31) reporting outstanding dues to MSME vendors beyond 45 days. It applies where your vendors are registered MSMEs and payments exceed the threshold period."
+                                q: "What is MSME-1 and when is it applicable to a Nidhi?",
+                                a: "A half-yearly return (due April 30 and October 31) reporting dues to registered MSME vendors outstanding beyond 45 days—applicable where your vendors qualify and the threshold is breached."
                             },
                             {
-                                q: "What are event-based compliances for a Section 8 Company?",
-                                a: "Filings triggered by specific actions: PAS-3 for share allotments (where there is share capital), SH-7 for authorised capital changes, CHG-1 or CHG-4 for creation or satisfaction of charges, INC-22 for change of registered office, MGT-14 for specified resolutions, DIR-12 for director changes, and BEN-2 for significant beneficial ownership (where applicable)."
+                                q: "What are event-based compliances for a Nidhi Company?",
+                                a: "Filings triggered by actions such as PAS-3 (allotment), SH-7 (authorised capital changes), CHG-1/CHG-4 (charges), INC-22 (registered office change), MGT-14 (specified resolutions), DIR-12 (director changes), and BEN-2 (SBO). NDH-4 is an onboarding declaration, not a change filing."
                             },
                             {
-                                q: "What statutory registers and records must we maintain?",
-                                a: "Registers of Members, Directors/KMP, Charges, Transfers (if share capital), Renewed or Duplicate Share Certificates (as applicable), and minutes of Board, Committee, and AGM. These may be maintained physically or electronically with proper authentication."
+                                q: "What statutory registers and records must a Nidhi maintain?",
+                                a: "Registers of Members, Directors/KMP, Charges, Transfers, and deposit-related registers mandated by Nidhi Rules; plus minutes of Board/Committee/AGM. Maintain physically or electronically with proper authentication and inspection access."
                             },
                             {
                                 q: "What happens if we miss an MCA/RoC deadline?",
-                                a: "Late filings usually attract additional fees (often ₹100 per day for many forms) and may lead to penalties, DIN deactivation (for DIR-3 KYC), and notices. Persistent default can escalate to director disqualification or strike-off, and may draw scrutiny on licence compliance."
+                                a: "Late filings usually attract additional fees and may lead to penalties, DIN deactivation for DIR-3 KYC lapses, and regulator notices. Chronic delays can escalate to director disqualification or strike-off."
                             },
                             {
-                                q: "Can we change the registered office and what must be filed?",
-                                a: "Yes. File INC-22 within the prescribed timelines with valid proofs (utility bill, title or lease, NOC). Inter-ROC or interstate moves may require additional approvals; update stationery, bank, GST, and licences promptly."
+                                q: "Can a Nidhi change its registered office and what must be filed?",
+                                a: "Yes. File INC-22 within prescribed timelines with proofs (utility bill, title/lease, owner’s NOC). Inter-ROC/interstate moves may need additional approvals. Update stationery, bank, GST, and licenses."
                             },
                             {
-                                q: "Who appoints the first auditor and how is it recorded?",
-                                a: "The Board appoints the first statutory auditor within 30 days of incorporation; otherwise members appoint within 90 days. Keep the auditor’s consent and eligibility certificate, minute the decision, and file ADT-1 post-AGM."
+                                q: "Who appoints the first auditor and how is it recorded for a Nidhi?",
+                                a: "The Board appoints the first statutory auditor within 30 days of incorporation; otherwise members within the next 90 days. Keep consent/eligibility, minute the decision, and file ADT-1 post-AGM for ongoing appointments."
                             },
                             {
-                                q: "Is Secretarial Audit (MR-3) required for all Section 8 companies?",
-                                a: "No. MR-3 applies to specified classes (for example, larger or listed entities). Many Section 8 companies are exempt, but proper registers, minutes, and disclosures are still mandatory."
+                                q: "Is a Secretarial Audit required for all Nidhi Companies?",
+                                a: "No. MR-3 applies to specified classes per thresholds. Many smaller Nidhis are exempt, but all must maintain proper registers, minutes, disclosures, and NDH returns."
                             },
                             {
-                                q: "What is BEN-2 and when should it be filed?",
-                                a: "BEN-2 reports Significant Beneficial Owners (SBOs) where individuals meet prescribed thresholds through direct or indirect holdings or control. File when SBO conditions are met to enhance transparency."
+                                q: "What are NDH-3 and NDH-4 and how do they apply?",
+                                a: "NDH-4 is the application for declaration as a Nidhi, filed within 120 days of incorporation after meeting eligibility (e.g., 200 members and ₹20 lakh NOF). After recognition, NDH-3 is filed half-yearly within 30 days of each half-year end."
                             },
                             {
-                                q: "How should we prepare for the AGM?",
-                                a: "Issue AGM notice with agenda and explanatory statements in time, finalize audited financials and the Board’s Report, arrange venue or virtual logistics, and keep registers and attendance sheets ready. Post-AGM, file forms within their due dates."
+                                q: "How should a Nidhi prepare for the AGM?",
+                                a: "Issue AGM notice with agenda/explanatory statements on time; finalize audited financials and the Board’s Report; ensure deposit registers and NDH data are updated; arrange venue/virtual logistics; and file post-AGM forms within due dates."
                             },
                             {
-                                q: "Do Section 8 companies get any compliance relaxations?",
-                                a: "Yes, there are key exemptions. For example, many Section 8 companies may hold at least two Board meetings a year with a minimum six-month gap (instead of four). However, core filings like AOC-4, MGT-7, ADT-1, DIR-3 KYC, and applicable event-based forms still apply."
+                                q: "Do Nidhi Companies get any compliance relaxations like small companies?",
+                                a: "No. A Nidhi is a Public Limited Company, so small company relaxations don’t apply. Nidhi-specific provisions and exemptions under the Nidhi Rules, 2014 may apply—verify current applicability."
                             },
                             {
-                                q: "What documents are needed for annual filings?",
-                                a: "Audited financial statements, Board’s Report, Auditor’s Report, updated registers and minutes, and supporting papers for forms like DPT-3, MSME-1, PAS-3, SH-7, CHG-1 or CHG-4, and MGT-14 (where applicable). Valid DSCs for signatories are essential; include licence-related affirmations where required."
+                                q: "What documents are needed for annual filings of a Nidhi?",
+                                a: "Audited financial statements, Board’s Report, Auditor’s Report, updated registers/minutes, NDH-3 data, and supporting papers for DPT-3, MSME-1, PAS-3, SH-7, CHG-1/4, MGT-14 (as applicable). Ensure valid DSCs for signatories."
                             },
                             {
-                                q: "How do clean RoC records help with donors, CSR partners, and bankers?",
-                                a: "Timely, accurate filings and organized registers build credibility with donors and CSR teams, speed due diligence and grant approvals, and improve banking relationships, often reducing perceived risk."
+                                q: "How do clean RoC and NDH records help with banking and regulators?",
+                                a: "Timely, accurate filings with consistent NDH-3 data and well-maintained registers enhance credibility, speed vendor onboarding and due diligence, and reduce perceived risk with lenders and authorities."
                             },
                             {
-                                q: "Can we maintain statutory registers electronically?",
-                                a: "Yes, provided entries are accurate, authenticated, and accessible for inspection. Many companies use secure digital registers with backups, version control, and authorization trails."
+                                q: "Can a Nidhi maintain statutory registers electronically?",
+                                a: "Yes—if entries are accurate, authenticated, and inspection-ready. Use secure digital registers with backups and authorization trails."
                             },
                             {
-                                q: "What common mistakes lead to form resubmissions?",
-                                a: "Mismatched figures, missing annexures, expired DSCs, incorrect resolution references, and inconsistent dates. A CA or CS pre-check and a documentation checklist reduce resubmissions substantially."
+                                q: "What common mistakes cause resubmission of forms for a Nidhi?",
+                                a: "Mismatched figures across statements and NDH-3, missing annexures, expired DSCs, incorrect resolution references, and inconsistent dates. A CA/CS pre-check and documentation checklist reduce resubmissions."
                             },
                             {
-                                q: "Can a compliance partner manage everything end-to-end?",
-                                a: "Yes. A CA or CS-led team can map your calendar, prepare documents, e-file forms, share SRNs and challans, and maintain an audit-ready archive so you stay compliant without operational strain."
+                                q: "Can a compliance partner manage everything end to end for a Nidhi?",
+                                a: "Yes. A CA/CS-led team can map your calendar, set up NDH workflows, prepare documents, e-file forms, share SRNs/challans, and maintain an audit-ready archive—so you stay compliant without operational strain."
                             }
                         ].map(({ q, a }, idx) => {
                             const isOpen = expanded === idx;

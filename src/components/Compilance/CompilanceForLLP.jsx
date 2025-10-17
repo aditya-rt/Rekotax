@@ -953,7 +953,41 @@ export default function LLPCompliance({ webAppUrl, onSubmitted }) {
                         <div className="cta-wrap">
                             <h3>Want to know more about what applies to you?</h3>
                             <p>Book a 10-minute clarity call. We’ll answer your questions and outline your exact next steps.</p>
-                            <a href="#contact">Talk to a compliance expert</a>
+                            <Button
+                                href="#contact"
+                                onClick={openContact}
+                                disableElevation
+                                sx={{
+                                    // glassmorphism style
+                                    color: "#fff",
+                                    textTransform: "none",
+                                    fontWeight: 700,
+                                    borderRadius: 999,
+                                    px: 3,
+                                    py: 1.25,
+                                    bgcolor: "rgba(255,255,255,0.12)",
+                                    backgroundImage:
+                                        "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+                                    border: "1px solid rgba(255,255,255,0.28)",
+                                    boxShadow: "0 10px 30px rgba(15,37,85,0.35)",
+                                    backdropFilter: "blur(14px) saturate(160%)",
+                                    WebkitBackdropFilter: "blur(14px) saturate(160%)",
+                                    textDecoration: "none !important",
+                                    "&:hover": {
+                                        bgcolor: "rgba(255,255,255,0.18)",
+                                        borderColor: "rgba(255,255,255,0.38)",
+                                        boxShadow: "0 12px 36px rgba(15,37,85,0.45)",
+                                        textDecoration: "none !important",
+                                        transform: "translateY(-1px)",
+                                    },
+                                    "&:active": {
+                                        transform: "translateY(0)",
+                                        boxShadow: "0 8px 22px rgba(15,37,85,0.35)",
+                                    },
+                                }}
+                            >
+                                Talk to a compliance experts
+                            </Button>
                         </div>
                     </section>
 
@@ -1615,75 +1649,75 @@ export default function LLPCompliance({ webAppUrl, onSubmitted }) {
                                 q: "Can a compliance partner manage everything end-to-end for an LLP?",
                                 a: "Yes. A CA/CS-led team can map the calendar, prepare documents, e-file forms, share SRNs/challans, and maintain an audit-ready archive - so you stay compliant without operational strain."
                             }
-                        ] .map(({ q, a }, idx) => {
-                                const isOpen = expanded === idx;
-                                return (
-                                    <Accordion
-                                        key={idx}
-                                        elevation={0}
-                                        disableGutters
-                                        square
-                                        expanded={expanded === idx}
-                                        onChange={() => handleAccordionToggle(idx)}
+                        ].map(({ q, a }, idx) => {
+                            const isOpen = expanded === idx;
+                            return (
+                                <Accordion
+                                    key={idx}
+                                    elevation={0}
+                                    disableGutters
+                                    square
+                                    expanded={expanded === idx}
+                                    onChange={() => handleAccordionToggle(idx)}
+                                    sx={{
+                                        mb: 1.5,
+                                        borderRadius: 2,
+                                        overflow: "hidden",
+                                        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                                        transition: "box-shadow .3s ease, transform .2s ease",
+                                        "&:hover": { boxShadow: "0 4px 12px rgba(0,0,0,0.10)" },
+                                        "&:before": { display: "none" }, // remove default divider
+                                    }}
+                                >
+                                    <AccordionSummary
                                         sx={{
-                                            mb: 1.5,
-                                            borderRadius: 2,
-                                            overflow: "hidden",
-                                            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                                            transition: "box-shadow .3s ease, transform .2s ease",
-                                            "&:hover": { boxShadow: "0 4px 12px rgba(0,0,0,0.10)" },
-                                            "&:before": { display: "none" }, // remove default divider
+                                            px: 2.5,
+                                            py: 1.75,
+                                            bgcolor: "#fff",
+                                            transition: "background .3s ease",
+                                            "&:hover": { bgcolor: "#f7f9fc" },
+                                            "& .MuiAccordionSummary-content": { m: 0 },
                                         }}
+                                        expandIcon={
+                                            <Box sx={{ display: "grid", placeItems: "center" }}>
+                                                {isOpen ? (
+                                                    <RemoveIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
+                                                ) : (
+                                                    <AddIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
+                                                )}
+                                            </Box>
+                                        }
                                     >
-                                        <AccordionSummary
+                                        <Typography
                                             sx={{
-                                                px: 2.5,
-                                                py: 1.75,
-                                                bgcolor: "#fff",
-                                                transition: "background .3s ease",
-                                                "&:hover": { bgcolor: "#f7f9fc" },
-                                                "& .MuiAccordionSummary-content": { m: 0 },
-                                            }}
-                                            expandIcon={
-                                                <Box sx={{ display: "grid", placeItems: "center" }}>
-                                                    {isOpen ? (
-                                                        <RemoveIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
-                                                    ) : (
-                                                        <AddIcon sx={{ color: "#0f2555", fontWeight: 700 }} />
-                                                    )}
-                                                </Box>
-                                            }
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: { xs: 15, md: 16 },
-                                                    fontWeight: 600,
-                                                    color: "#0f2555",
-                                                    lineHeight: 1.5,
-                                                    pr: 2,
-                                                    fontFamily: "'Open Sans', sans-serif",
-                                                }}
-                                            >
-                                                {idx + 1}. {q}
-                                            </Typography>
-                                        </AccordionSummary>
-
-                                        <AccordionDetails
-                                            sx={{
-                                                px: 2.5,
-                                                py: 1.75,
-                                                bgcolor: "#fafbfc",
-                                                color: "#444",
-                                                fontSize: "0.95rem",
-                                                lineHeight: 1.6,
+                                                fontSize: { xs: 15, md: 16 },
+                                                fontWeight: 600,
+                                                color: "#0f2555",
+                                                lineHeight: 1.5,
+                                                pr: 2,
                                                 fontFamily: "'Open Sans', sans-serif",
                                             }}
                                         >
-                                            {a}
-                                        </AccordionDetails>
-                                    </Accordion>
-                                );
-                            })}
+                                            {idx + 1}. {q}
+                                        </Typography>
+                                    </AccordionSummary>
+
+                                    <AccordionDetails
+                                        sx={{
+                                            px: 2.5,
+                                            py: 1.75,
+                                            bgcolor: "#fafbfc",
+                                            color: "#444",
+                                            fontSize: "0.95rem",
+                                            lineHeight: 1.6,
+                                            fontFamily: "'Open Sans', sans-serif",
+                                        }}
+                                    >
+                                        {a}
+                                    </AccordionDetails>
+                                </Accordion>
+                            );
+                        })}
                     </Container>
 
                 </Box>

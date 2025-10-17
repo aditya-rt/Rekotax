@@ -205,6 +205,8 @@ export default function ContactSection() {
                 values={["+91-7303074762", "+91-7303075763", "+91-9220580064"]}
                 sx={{
                   // align like the email card (icon left, lines left-aligned)
+                   flex: { xs: "1 1 auto", sm: "0 0 calc(40% - 8px)" },   // was 50%
+    maxWidth: { xs: "100%", sm: "calc(40% - 8px)" },  
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "flex-start",        // ← was space-between
@@ -223,7 +225,7 @@ export default function ContactSection() {
                   },
 
                   // responsive sizing like your email card
-                  flex: { xs: "1 1 auto", sm: "0 0 calc(50% - 8px)" },
+                  flex: { xs: "1 1 auto", sm: "0 0 calc(46% - 8px)" },
                   maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
                   minWidth: 0,
                 }}
@@ -236,8 +238,9 @@ export default function ContactSection() {
                 icon={<EmailRoundedIcon />}
                 values={["business@rekotax.com", "grievance@rekotax.com", "enquiry@rekotax.com"]}
                 sx={{
-                  flex: { xs: "1 1 auto", sm: "0 0 calc(80% - 8px)" },
-                  maxWidth: { xs: "100%", sm: "calc(50% - 8px)" },
+                   flex: { xs: "1 1 auto", sm: "0 0 calc(64% - 8px)" },   // was 66.666% or 50% earlier
+    maxWidth: { xs: "100%", sm: "calc(60% - 8px)" }, 
+                
                   minWidth: 0,
                   "& a, & span": {
                     whiteSpace: { xs: "normal", sm: "nowrap" },

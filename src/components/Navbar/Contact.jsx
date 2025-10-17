@@ -84,28 +84,28 @@ export default function Contact({ open, onClose }) {
     return Object.keys(e).length === 0;
   };
 
-//   const handleSubmit = (ev) => {
-//     ev.preventDefault();
-//     if (!validate()) return;
+  //   const handleSubmit = (ev) => {
+  //     ev.preventDefault();
+  //     if (!validate()) return;
 
-//     // TODO: integrate with backend
-//     console.log("Submitting contact form:", form);
+  //     // TODO: integrate with backend
+  //     console.log("Submitting contact form:", form);
 
-//     setSnack({
-//       open: true,
-//       msg: "Submitted successfully",
-//       severity: "success",
-//     });
-//     setForm({
-//       name: "",
-//       countryCode: "+91",
-//       phone: "",
-//       email: "",
-//       subject: "",
-//       message: "",
-//     });
-//     onClose?.();
-//   };
+  //     setSnack({
+  //       open: true,
+  //       msg: "Submitted successfully",
+  //       severity: "success",
+  //     });
+  //     setForm({
+  //       name: "",
+  //       countryCode: "+91",
+  //       phone: "",
+  //       email: "",
+  //       subject: "",
+  //       message: "",
+  //     });
+  //     onClose?.();
+  //   };
 
 
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -120,7 +120,7 @@ export default function Contact({ open, onClose }) {
       digits.length >= 10
     );
   };
-    const initialForm = {
+  const initialForm = {
     name: "",
     countryCode: "+91",
     phone: "",
@@ -133,8 +133,8 @@ export default function Contact({ open, onClose }) {
   const [showReqWarn, setShowReqWarn] = React.useState(false);
   const isFormValid = requiredOk(form);
   const nameRe = /^[A-Za-z][A-Za-z\s'.-]{1,}$/;
-const [submitting, setSubmitting] = React.useState(false);
-  
+  const [submitting, setSubmitting] = React.useState(false);
+
 
   const validateField = (name, value) => {
     const v = (value ?? "").trim();
@@ -228,7 +228,7 @@ const [submitting, setSubmitting] = React.useState(false);
 
   return (
     <Dialog
-     hideBackdrop
+      hideBackdrop
       open={open}
       onClose={onClose} // backdrop click + Esc
       fullScreen={fullScreen}
@@ -236,30 +236,30 @@ const [submitting, setSubmitting] = React.useState(false);
       fullWidth
       TransitionComponent={Transition}
       scroll="body"
-     BackdropProps={{
-    invisible: true,
-    sx: {
-      backgroundColor: 'transparent !important',
-      backdropFilter: 'none',
-      WebkitBackdropFilter: 'none',
-      boxShadow: 'none',
-    },
-  }}
-     PaperProps={{
-    elevation: 0,
-    sx: { background: 'transparent', boxShadow: 'none', border: 'none', outline: 'none', m: 0 }
-  }}
+      BackdropProps={{
+        invisible: true,
+        sx: {
+          backgroundColor: 'transparent !important',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none',
+          boxShadow: 'none',
+        },
+      }}
+      PaperProps={{
+        elevation: 0,
+        sx: { background: 'transparent', boxShadow: 'none', border: 'none', outline: 'none', m: 0 }
+      }}
     >
       <DialogContent
-       sx={{
-     p: { xs: 1.5, sm: 2.5 },
-     position: "relative",
-     background: "transparent",
-     height: { xs: "100%", sm: "auto" },   // fill screen on mobile
-     display: "flex",
-     alignItems: "center",
-     justifyContent: "center",
-   }}
+        sx={{
+          p: { xs: 1.5, sm: 2.5 },
+          position: "relative",
+          background: "transparent",
+          height: { xs: "100%", sm: "auto" },   // fill screen on mobile
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         {/* Close (X) */}
         <IconButton
@@ -282,20 +282,20 @@ const [submitting, setSubmitting] = React.useState(false);
         <Box
           component="form"
           onSubmit={handleSubmit}
-           sx={{
-     mx: "auto",
-     width: "100%",
-     maxWidth: { xs: "80vw", sm: 620 },    // shrink to phone width
-     borderRadius: { xs: 4, sm: 5 },       // slightly smaller radius on mobile
-     p: { xs: 2, sm: 3 },                  // tighter padding on mobile
-     background:
-     "linear-gradient(180deg, rgba(19,43,97,0.55), rgba(19,43,97,0.45))",
-   border: "1px solid rgba(255,255,255,0.10)",
-  //  boxShadow:
-  //    "inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 40px rgba(0,0,0,0.45)",
-   backdropFilter: "blur(10px) saturate(160%)",
-   WebkitBackdropFilter: "blur(10px) saturate(160%)",
-   }}
+          sx={{
+            mx: "auto",
+            width: "100%",
+            maxWidth: { xs: "80vw", sm: 620 },    // shrink to phone width
+            borderRadius: { xs: 4, sm: 5 },       // slightly smaller radius on mobile
+            p: { xs: 2, sm: 3 },                  // tighter padding on mobile
+            background:
+              "linear-gradient(180deg, rgba(19,43,97,0.55), rgba(19,43,97,0.45))",
+            border: "1px solid rgba(255,255,255,0.10)",
+            //  boxShadow:
+            //    "inset 0 1px 0 rgba(255,255,255,0.10), 0 16px 40px rgba(0,0,0,0.45)",
+            backdropFilter: "blur(10px) saturate(160%)",
+            WebkitBackdropFilter: "blur(10px) saturate(160%)",
+          }}
         >
           <Typography
             variant="h4"
@@ -413,23 +413,23 @@ const [submitting, setSubmitting] = React.useState(false);
             InputProps={{ disableUnderline: true }}
           />
 
-       <Box sx={{ display: "flex", justifyContent: "center", mt: 2.5 }} onSubmit={handleSubmit}>
-  <Button
-    type="submit"
-    variant="contained"
-    sx={{
-      backgroundColor: "#000",
-      color: "#fff",
-      borderRadius: 999,
-      px: 5,
-      py: 1,
-      boxShadow: "0 6px 16px rgba(0,0,0,0.35)",
-      "&:hover": { backgroundColor: "#111" },
-    }}
-  >
-    SUBMIT
-  </Button>
-</Box>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2.5 }} onSubmit={handleSubmit}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                backgroundColor: "#000",
+                color: "#fff",
+                borderRadius: 999,
+                px: 5,
+                py: 1,
+                boxShadow: "0 6px 16px rgba(0,0,0,0.35)",
+                "&:hover": { backgroundColor: "#111" },
+              }}
+            >
+              SUBMIT
+            </Button>
+          </Box>
 
 
           <Snackbar

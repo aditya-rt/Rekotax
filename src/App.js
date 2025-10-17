@@ -40,6 +40,7 @@ import RefundPolicy from "./components/Dashboard/RefundPolicy";
 import PvtLimitedCompliance from "./components/Compilance/PvtLimitedCompliance";
 import LLPCompliance from "./components/Compilance/CompilanceForLLP";
 import Section8Compilance from "./components/Compilance/CompilanceForSection8";
+import NidhiCompliance from "./components/Compilance/NidhiCompliance";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
@@ -125,6 +126,7 @@ export default function App() {
         <Route path="/privtate-limited-compliance" element={<PvtLimitedCompliance/>}/>
         <Route path="/llp-compliance" element={<LLPCompliance/>}/>
         <Route path="section8-compilance" element={<Section8Compilance/>}/>
+        <Route path="/nidhi-compliance" element={<NidhiCompliance/>}/>
 
         <Route path="/insights/:slug" element={<BlogDetails />} />
       </Routes>
