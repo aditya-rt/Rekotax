@@ -41,33 +41,14 @@ import PvtLimitedCompliance from "./components/Compilance/PvtLimitedCompliance";
 import LLPCompliance from "./components/Compilance/CompilanceForLLP";
 import Section8Compilance from "./components/Compilance/CompilanceForSection8";
 import NidhiCompliance from "./components/Compilance/NidhiCompliance";
+import FemaRbiCompilance from "./components/Compilance/FemaRbiCompilance";
+import EpfoCompilance from "./components/Compilance/EpfoCompilance";
 
 function SmartHideNavbar({ children }) {
   const [visible, setVisible] = useState(true);
   const lastY = useRef(0);
 
-  // useEffect(() => {
-  //   const onScroll = () => {
-  //     const y = window.scrollY || 0;
-  //     const goingDown = y > lastY.current;
-  //     const atTop = y < 10;
-
-  //     // near bottom?
-  //     const docH = document.documentElement.scrollHeight;
-  //     const winH = window.innerHeight;
-  //     const nearBottom = y + winH > docH - 10;
-
-  //     if (atTop || nearBottom) {
-  //       setVisible(true);               // always show at very top & at footer
-  //     } else {
-  //       setVisible(!goingDown);         // show when scrolling up, hide when down
-  //     }
-
-  //     lastY.current = y;
-  //   };
-  //   window.addEventListener("scroll", onScroll, { passive: true });
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, []);
+ 
 
   return (
     <div
@@ -127,6 +108,8 @@ export default function App() {
         <Route path="/llp-compliance" element={<LLPCompliance/>}/>
         <Route path="section8-compilance" element={<Section8Compilance/>}/>
         <Route path="/nidhi-compliance" element={<NidhiCompliance/>}/>
+        <Route path="/fema-rbi-compliance" element={<FemaRbiCompilance/>}/>
+        <Route path="/epfo-compliance" element={<EpfoCompilance/>}/>
 
         <Route path="/insights/:slug" element={<BlogDetails />} />
       </Routes>

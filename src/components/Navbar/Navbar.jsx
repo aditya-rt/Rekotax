@@ -109,6 +109,7 @@ const toggleMobileExp = (k) =>
     "MCA Compliance for Section 8 Company",
     "MCA Compliance for Nidhi Company",
     "FEMA/RBI Compliance",
+    "EPFO & ESIC",
     "Labour Law Compliances (PF, ESI, PT)",
     "Secretarial Compliances",
     "Startup India/DPIIT Compliance",
@@ -227,6 +228,8 @@ const toggleMobileExp = (k) =>
     if (text === "MCA Compliance for Section 8 Company") return navigate("/section8-compilance");
     if (text === "MCA Compliance for Nidhi Company") return navigate("/nidhi-compliance");
     if (text === "FEMA/RBI Compliance") return navigate("/fema-rbi-compliance");
+    if (text === "EPFO & ESIC") return navigate("/epfo-compliance");
+    
     if (text === "Labour Law Compliances (PF, ESI, PT)") return navigate("/labour-law-compliances");
     if (text === "Secretarial Compliances") return navigate("/secretarial-compliances");
     if (text === "Auditory Compliances") return navigate("/auditory-compliances");
